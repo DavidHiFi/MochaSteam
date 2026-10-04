@@ -1,0 +1,280 @@
+@import url("./modalDialogPopup/steamSettings.css");
+@import url("./modalDialogPopup/millenniumSettings.css");
+
+@import url("./modalDialogPopup/aboutSteam.css");
+@import url("./modalDialogPopup/specialOffers.css");
+@import url("./modalDialogPopup/screenshotManager.css");
+
+
+/*
+! Base
+*/
+html.client_chat_frame body:not(.ContextMenuPopupBody),
+html.web_chat_frame body:not(.ContextMenuPopupBody),
+.ModalPosition_Content {
+    border-radius: var(--st-border-radius);
+    background-color: rgb(var(--st-background)) !important;
+}
+
+
+._3few7361SOf4k_YuKCmM62.MzjwfxXSiSauz8kyEuhYO,
+._2sssIwe0duyIrFvat2oXzH,
+.DialogContent._DialogLayout:not(.CFTLX2wIKOK3hNV-fS7_V),
+html .MillenniumSettings {
+    gap: 16px;
+    width: -webkit-fill-available !important;
+    min-width: unset !important;
+    min-height: -webkit-fill-available !important;
+    max-height: -webkit-fill-available !important;
+    margin: 32px 16px 16px;
+    border: none !important;
+}
+
+
+/*
+! Native modal wrapper
+*/
+/* Steam mounts modals in a <dialog> that keeps the browser's 3px border. It has
+   no content box, so the border draws a 6px square at the window centre that
+   shows through the translucent dialog surface. */
+dialog._32QRvPPBL733SpNR9x0Gp3,
+dialog:has(> .ModalOverlayContent) {
+    border: none !important;
+    background: none !important;
+}
+
+
+/*
+! Millennium install progress
+*/
+/* The fill-available rule above overrides Millennium's 450px width, so the box
+   shrank to the status text ("Done") and the title ran past its edge. */
+body .DialogContent._DialogLayout.MillenniumInstallerDialog {
+    width: min(450px, calc(100vw - 64px)) !important;
+}
+
+
+/*
+! Titel
+*/
+._2rjVTGz8aLvqOdz5v2gq5C,
+._2Nmun5feXmM6VdoGKSPapp,
+.DialogContent:not(.CFTLX2wIKOK3hNV-fS7_V) .DialogHeader {
+    position: absolute;
+    top: -22px;
+    left: 0;
+    width: max-content;
+    margin: 0;
+    padding: 0;
+    font-size: 12px !important;
+    line-height: 12px;
+    font-weight: 600;
+    text-transform: none;
+    color: #969696;
+}
+.DialogContent:not(.CFTLX2wIKOK3hNV-fS7_V) .DialogHeader>.DialogHeader {
+    top: 0;
+}
+
+
+/*
+! Sidebar
+*/
+body ._2kwFFHckg8jvnwJfg9-la8 {
+    min-height: unset !important;
+    padding: 0;
+    border-radius: var(--st-border-radius);
+    background-color: rgb(var(--st-color-2));
+}
+
+body ._2kwFFHckg8jvnwJfg9-la8 ._18QCu-7MTzd51UpVbYysDy {
+    gap: 2px;
+    padding: 6px;
+}
+
+
+/** Button */
+body ._2kwFFHckg8jvnwJfg9-la8 ._18QCu-7MTzd51UpVbYysDy ._1-vlriAtKYDViAEunue4VO {
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: var(--st-border-radius);
+}
+body ._2kwFFHckg8jvnwJfg9-la8 ._18QCu-7MTzd51UpVbYysDy ._1-vlriAtKYDViAEunue4VO:hover:not(._2DpXjzK3WWsOtUWUrcuOG7) {
+    color: #b8bcbf;
+    background-color: rgb(var(--st-color-4));
+}
+body ._2kwFFHckg8jvnwJfg9-la8 ._18QCu-7MTzd51UpVbYysDy ._1-vlriAtKYDViAEunue4VO._2DpXjzK3WWsOtUWUrcuOG7 {
+    color: #fff !important;
+    background-color: rgb(var(--st-color-3));
+}
+
+/*^ Icon */
+body ._2kwFFHckg8jvnwJfg9-la8 ._18QCu-7MTzd51UpVbYysDy ._1-vlriAtKYDViAEunue4VO ._1rD8X96FdnksZLvRRlEiCR {
+    width: 18px;
+    height: 18px;
+    margin: 0;
+}
+body ._2kwFFHckg8jvnwJfg9-la8 ._18QCu-7MTzd51UpVbYysDy ._1-vlriAtKYDViAEunue4VO:hover:not(._2DpXjzK3WWsOtUWUrcuOG7) ._1rD8X96FdnksZLvRRlEiCR {
+    color: #b8bcbf;
+}
+
+/*^ Text */
+body ._2kwFFHckg8jvnwJfg9-la8 ._18QCu-7MTzd51UpVbYysDy ._1-vlriAtKYDViAEunue4VO._2DpXjzK3WWsOtUWUrcuOG7 ._2PPbMrzl8PKBwpkjYs9b0i {
+    font-weight: 600;
+}
+
+
+/** Divider */
+body ._2kwFFHckg8jvnwJfg9-la8 ._18QCu-7MTzd51UpVbYysDy ._1Hye7o1wYIfc9TE9QKRW4T {
+    height: 3px;
+    margin: 0 12px;
+    border-radius: var(--st-border-radius);
+    background-color: rgb(var(--st-background));
+}
+
+
+
+/*
+! Main
+*/
+body .DialogContentTransition,
+body .DialogContent {
+    padding: 0 !important;
+    background: none !important;
+}
+
+body .DialogContent_InnerWidth {
+    box-sizing: border-box;
+    height: 100%;
+    border-radius: var(--st-border-radius);
+    background-color: rgb(var(--st-color-1));
+}
+
+body .DialogContent_InnerWidth:not(:has(.DialogBody)) {
+    padding: 16px;
+}
+
+
+/** Dialog header */
+body .DialogHeader {
+    margin: 0 !important;
+    padding: 16px 16px 0;
+}
+
+
+/** Dialog subheader */
+body .DialogSubHeader,
+body .SettingsDialogSubHeader {
+    margin: 0;
+    padding: 12px 12px 6px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 22px;
+    letter-spacing: .5px;
+    border-top-left-radius: var(--st-border-radius);
+    border-top-right-radius: var(--st-border-radius);
+    color: #fff;
+    background-color: rgb(var(--st-color-2));
+}
+body .DialogSubHeader:last-of-type,
+body .SettingsDialogSubHeader:last-of-type,
+body .DialogBody .DialogBodyText:last-of-type {
+    border-bottom-left-radius: var(--st-border-radius);
+    border-bottom-right-radius: var(--st-border-radius);
+}
+
+
+/** Dialog body */
+body .DialogBody {
+    overflow: overlay !important;
+    padding: 16px !important;
+    -webkit-mask-image: linear-gradient(to bottom, transparent, black 16px), linear-gradient(to left, black 0px 14px, transparent 14px) !important;
+}
+
+
+body .DialogBody .DialogControlsSection:not(:first-child),
+body .DialogBody .DialogControlsSectionHeader:not(:first-child),
+body .DialogBody .DialogHeader:not(:first-child),
+body .DialogBody .DialogSubHeader:not(:first-child) {
+    margin-top: 0 !important;
+}
+
+/*^ Dialog control sections */
+body .DialogBody > .Panel,
+body .DialogBody .DialogControlsSection>.Panel {
+    margin-top: -1px !important;
+    padding: 0 12px 6px !important;
+    background-color: rgb(var(--st-color-2));
+    transform: unset;
+}
+body .DialogBody > .Panel:first-child,
+body .DialogBody .DialogControlsSection>.Panel:first-child {
+    padding-top: 12px !important;
+    border-top-left-radius: var(--st-border-radius);
+    border-top-right-radius: var(--st-border-radius);
+}
+body .DialogBody > .Panel:has(+ .DialogControlsSection),
+body .DialogBody > .Panel:has(+ .SettingsDialogSubHeader),
+body .DialogBody > .Panel:last-of-type,
+body .DialogBody .DialogControlsSection > .Panel:has(+ .SettingsDialogSubHeader),
+body .DialogBody .DialogControlsSection > .Panel:last-of-type {
+    margin-bottom: 12px !important;
+    padding-bottom: 12px !important;
+    border-bottom-left-radius: var(--st-border-radius);
+    border-bottom-right-radius: var(--st-border-radius);
+}
+
+/*^ Dialog control items */
+body .DialogBody .eKmEXJCm_lgme24Fp_HWt ._2tALpM7z8naXJ35Pp5fNAG ._2VcTlXFC64Jtg9gvtT6cmY {
+    position: relative;
+    padding: 12px 12px 1px;
+    border-top-left-radius: var(--st-border-radius);
+    border-top-right-radius: var(--st-border-radius);
+    background-color: rgb(var(--st-color-3));
+}
+body .DialogBody .eKmEXJCm_lgme24Fp_HWt ._2tALpM7z8naXJ35Pp5fNAG:not(:has(._1W1to_azoBRG95oNAFpf9Q)) ._2VcTlXFC64Jtg9gvtT6cmY {
+    padding: 12px;
+    border-bottom-left-radius: var(--st-border-radius);
+    border-bottom-right-radius: var(--st-border-radius);
+}
+body .DialogBody .eKmEXJCm_lgme24Fp_HWt ._2tALpM7z8naXJ35Pp5fNAG ._2VcTlXFC64Jtg9gvtT6cmY:has(.SliderControlPanelGroup) {
+    flex-direction: column;
+    gap: 0;
+    align-items: unset;
+}
+
+/* Title */
+body .DialogBody .eKmEXJCm_lgme24Fp_HWt ._2tALpM7z8naXJ35Pp5fNAG ._2VcTlXFC64Jtg9gvtT6cmY ._3jMlJm4PQCA8SfNlUR99Fo {
+    font-weight: 500;
+}
+
+body .DialogBody .eKmEXJCm_lgme24Fp_HWt ._2tALpM7z8naXJ35Pp5fNAG ._1W1to_azoBRG95oNAFpf9Q {
+    margin: -1px 0 0;
+    padding: 6px 12px 12px;
+    border-bottom-left-radius: var(--st-border-radius);
+    border-bottom-right-radius: var(--st-border-radius);
+    background-color: rgb(var(--st-color-3));
+}
+
+
+
+
+
+
+
+
+
+
+
+/*
+& App/Steam Close Window
+*/
+/*
+! Text
+*/
+body.DialogContent_InnerWidth ._2Se5JD_UkWeIyaZiXXmxDD .DialogBodyText {
+    margin-bottom: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    color: #fff;
+}

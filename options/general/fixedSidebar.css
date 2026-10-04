@@ -1,0 +1,18 @@
+._9sPoVBFyE_vE87mnZJ5aB {
+    width: var(--st-fixed-sidebar-width) !important;
+}
+
+/* "Always show sidebar" (options/general/alwaysShowSidebar.css) drops the same
+   element to `width: unset !important` whenever the library's own content is
+   hidden (console, store, community), which cancels the fixed width and lets
+   the sidebar fall back to Steam's default. The downloads chip and user panel
+   are sized from --st-fixed-sidebar-width, so they then overflow the sidebar.
+   The extra ancestor classes out-specify that rule in every page state. */
+html ._1rDh5rXSFZJOqCa4UpnI4z .RGNMWtyj73_-WdhflrmuY ._9sPoVBFyE_vE87mnZJ5aB {
+    width: var(--st-fixed-sidebar-width) !important;
+}
+
+
+._276E6ijBpjMA2_iTxNhhjc {
+    visibility: hidden !important;
+}

@@ -1,0 +1,207 @@
+:root {
+    /* Catppuccin Mocha (https://github.com/catppuccin/catppuccin)
+       base #1e1e2e - mantle #181825 - crust #11111b - surface0 #313244
+       accents: Blue #89b4fa / Lavender #b4befe */
+    --st-accent-1: 137, 180, 250 !important;
+    --st-accent-2: 180, 190, 254 !important;
+
+    --st-color-1: 24, 24, 37, var(--st-mica-transparency, 50%) !important;
+    --st-color-2: 30, 30, 46, var(--st-mica-transparency, 50%) !important;
+    --st-color-3: 24, 24, 37, var(--st-mica-transparency, 50%) !important;
+    --st-color-4: 24, 24, 37, var(--st-mica-transparency, 50%) !important;
+    --st-color-5: 49, 50, 68, var(--st-mica-transparency, 50%) !important;
+    --st-color-6: 24, 24, 37, var(--st-mica-transparency, 50%) !important;
+    --st-background: 30, 30, 46, var(--st-mica-transparency, 50%) !important;
+    --st-background-rgb: 30, 30, 46 !important;
+
+    /* Chrome surfaces: solid enough to read, with a subtle edge */
+    --st-panel: 24, 24, 37;          /* mantle */
+    --st-panel-opacity: 92%;
+    --st-panel-hover: 49, 50, 68;    /* surface0 */
+    --st-hairline: 69, 71, 90;       /* surface1 */
+    --st-text-strong: 205, 214, 244; /* text */
+    --st-text-soft: 186, 194, 222;   /* subtext1 */
+}
+
+
+
+
+/*
+& Last played first game card
+*/
+._3VOR2AeYATx3qSE0I-Pm-5 ._2d1hSvdpY5L2-GN1EnUb9Z {
+    background-color: rgba(var(--st-color-1)) !important;
+    backdrop-filter: blur(4px) !important;
+}
+
+
+
+/*
+& Collection cards
+*/
+._3IWn-2rn7x98o5fDd0rAxb ._1J1LQ0vGtpM3n0xw7XwQM6 {
+    backdrop-filter: blur(4px) !important;
+}
+
+
+
+/*
+& Game card
+*/
+._1LJqx_qFOC8199RBQO5kU8 {
+    background-color: rgba(var(--st-color-1)) !important;
+}
+
+
+
+/*
+& Loading spinner background
+*/
+#st-loading-div {
+    background-color: rgba(30, 30, 46) !important;
+}
+
+
+
+/*
+& Chrome surfaces. The bottom bar (downloads) and the user panel now sit on
+& the continuous sidebar panel, so they carry no fill of their own - only the
+& Mocha edge that separates them. "Add shelf" floats over the library content
+& and keeps a solid-enough fill plus the same edge.
+*/
+body:has(._3x1HklzyDs4TEjACrRO2tB) [class~="BottomBar"] {
+    background-color: rgb(var(--st-color-3)) !important;
+    box-shadow: inset 0 0 0 1px var(--st-edge, rgba(88, 91, 112, 0.7)) !important;
+    color: rgb(var(--st-text-soft)) !important;
+}
+
+/* The user panel carries no fill of its own: its account row and icon pills
+   already paint the same chip, so filling it too would stack a second layer. */
+body:has(._3x1HklzyDs4TEjACrRO2tB) [class~="TitleBarControls"] {
+    background-color: transparent !important;
+    box-shadow: none !important;
+    color: rgb(var(--st-text-soft)) !important;
+}
+
+[class*="DownloadStat"] {
+    color: rgb(var(--st-text-soft)) !important;
+}
+
+[class~="AddShowcase"] {
+    background-color: rgba(var(--st-panel), var(--st-panel-opacity)) !important;
+    box-shadow: inset 0 0 0 1px rgba(var(--st-hairline), 0.55) !important;
+    color: rgb(var(--st-text-soft)) !important;
+    -webkit-backdrop-filter: blur(12px) saturate(1.25);
+    backdrop-filter: blur(12px) saturate(1.25);
+}
+
+[class~="AddShowcase"]:hover,
+[class*="AddGameButton"]:hover,
+[class*="DownloadStat"]:hover {
+    background-color: rgba(var(--st-panel-hover), var(--st-panel-opacity)) !important;
+    color: rgb(var(--st-text-strong)) !important;
+}
+
+[class~="AddShowcase"]:hover {
+    box-shadow: inset 0 0 0 1px rgba(var(--st-hairline), 0.9) !important;
+}
+
+
+
+/*
+& Flatten stacked alpha: only the window wrapper carries the backdrop tint.
+& The library stacked Wrapper + content Container + ShowcaseOuter (three 75%
+& layers, ~98% opaque) while the sidebar stacked two (~94%), so the library
+& painted darker and its edge showed as a hard vertical line - and nothing
+& looked see-through. Inner surfaces are transparent now.
+*/
+[class~="ShowcaseOuter"],
+._3VQUewWB8g6Z5qB4C7dGFr,
+._1ijTaXJJA5YWl_fW2IxcaT {
+    background-color: transparent !important;
+}
+
+
+
+/* Floating dialogs blur the Steam content behind them. Use the floating glass
+   tint rather than the main window's reduced panel opacity. */
+body .PagedSettingsDialog,
+body .ModalPosition_Content {
+    background-color: var(--st-glass, rgba(24, 24, 37, 0.72)) !important;
+    background-image: none !important;
+    -webkit-backdrop-filter: var(--st-glass-blur, blur(20px) saturate(1.35)) !important;
+    backdrop-filter: var(--st-glass-blur, blur(20px) saturate(1.35)) !important;
+    border-radius: var(--st-border-radius);
+    box-shadow: inset 0 0 0 1px var(--st-edge, rgba(88, 91, 112, 0.7)), 0 10px 32px rgba(0, 0, 0, 0.55);
+}
+
+/* Keep one backdrop per dialog. A second filter inside it cannot sample the
+   Steam page beyond its parent and adds another tinted layer. */
+body .ModalPosition_Content .PagedSettingsDialog {
+    background-color: transparent !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    box-shadow: none;
+}
+
+body .DialogContent_InnerWidth,
+body ._2kwFFHckg8jvnwJfg9-la8,
+body .DialogBody > .Panel,
+body .DialogSubHeader,
+body .SettingsDialogSubHeader,
+body .DialogBody .eKmEXJCm_lgme24Fp_HWt ._2tALpM7z8naXJ35Pp5fNAG ._2VcTlXFC64Jtg9gvtT6cmY,
+body .DialogBody .eKmEXJCm_lgme24Fp_HWt ._2tALpM7z8naXJ35Pp5fNAG ._1W1to_azoBRG95oNAFpf9Q {
+    background-color: transparent !important;
+}
+
+[class*="MillenniumThemes_ThemeItem"]:hover {
+    background-color: rgba(var(--st-panel-hover), 0.5) !important;
+    border-radius: var(--st-border-radius);
+}
+
+
+/* One window tint over the native acrylic. Regional filters and extra
+   title-strip fills create colour steps at the content frame's margins. */
+/* Store navbar frost lives on its ::before background layer in webkit.css.
+   Keep the container unfiltered so its dropdowns can sample the page. */
+html.MillenniumWindow_SteamBrowser .h2B3SGR_w4RWdrnsRZEcD ._16jZ3HEbtaJTl80pQINN2Y,
+html.MillenniumWindow_SteamBrowser .dm2SGcwBwj4- .WCG-2-OYepA- {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+}
+
+html.MillenniumWindow_MainSteamWindow ._1ENHEsrSLcTRtPQFl1F-wL {
+    background-color: rgba(var(--st-mantle, 24, 24, 37), 0.55) !important;
+    background-image: none !important;
+}
+html.MillenniumWindow_MainSteamWindow ._3Z7VQ1IMk4E3HsHvrkLNgo {
+    background: transparent !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+}
+html.MillenniumWindow_MainSteamWindow ._3Z7VQ1IMk4E3HsHvrkLNgo::before {
+    content: none !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+}
+html.MillenniumWindow_MainSteamWindow ._3lDczhulqraStjCitLYJ1K {
+    background-color: transparent !important;
+    background-image: none !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+}
+html.MillenniumWindow_MainSteamWindow ._3x1HklzyDs4TEjACrRO2tB {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+}
+
+/* Interior panels let the existing native acrylic show through. */
+html.MillenniumWindow_MainSteamWindow {
+    --st-sidebar-bg: rgba(24, 24, 37, 0.50);
+    --st-panel-opacity: 58%;
+}
+html.MillenniumWindow_MainSteamWindow ._2gSXCB6PbOlMxslr8hm6dm,
+html.MillenniumWindow_MainSteamWindow .u1xD3KJEgksF_J_5TLZzO,
+html.MillenniumWindow_MainSteamWindow ._2sNr7PFYcJZWNkEMCDVVPR {
+    background-color: transparent !important;
+}

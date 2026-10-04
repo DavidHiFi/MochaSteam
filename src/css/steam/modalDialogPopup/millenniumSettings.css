@@ -1,0 +1,284 @@
+.MillenniumSettings.ModalDialogPopup {
+    display: flex;
+    flex-direction: column;
+    margin: 0 !important;
+    border-top: none;
+}
+
+
+
+/*
+& Sidebar
+*/
+body .MillenniumDesktopSidebar_Overlay {
+    opacity: 1 !important;
+    transition: unset !important;
+}
+
+body .MillenniumDesktopSidebar {
+    box-sizing: border-box;
+    --sidebar-width: 700px;
+    top: 50%;
+    left: 50%;
+    height: 64vh;
+    margin: 16px 0;
+    padding: 16px;
+    border-radius: var(--st-border-radius);
+    /* Frosted, not just translucent: library art behind it was reading straight
+       through the 55% fill with no filter. */
+    background-color: var(--st-glass);
+    -webkit-backdrop-filter: var(--st-glass-blur);
+    backdrop-filter: var(--st-glass-blur);
+    box-shadow: inset 0 0 0 1px var(--st-edge), 0 10px 32px rgba(0, 0, 0, 0.55);
+    transform: translate(-50%, -50%);
+    transition: unset;
+}
+
+
+/*
+! Manager
+*/
+/** Haeder */
+.MillenniumDesktopSidebar .MillenniumDesktopSidebar_Title {
+    margin-bottom: 12px;
+    padding: 0;
+    background: unset;
+    box-shadow: unset;
+}
+
+
+/** List */
+.MillenniumDesktopSidebar .MillenniumDesktopSidebar_Content {
+    gap: 12px;
+    padding: 0 !important;
+}
+
+.MillenniumDesktopSidebar ._3gY0aBuNR8_NPTpXIYfkby {
+    position: relative;
+    display: grid;
+    gap: 6px;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    margin: 0;
+    padding: calc(12px + 20px + 12px) 12px 12px;
+    border-radius: var(--st-border-radius);
+    background-color: rgb(var(--st-color-2));
+}
+
+
+/*^ Title */
+.MillenniumDesktopSidebar ._1IigUZ3GHaZS2Y-3V3T2rT {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    color: #fff;
+}
+
+
+/*^ Button */
+.MillenniumDesktopSidebar .MillenniumDesktopSidebar_LibraryItemButton {
+    gap: 6px !important;
+    margin: 0;
+    margin-block: 0 !important;
+    padding: 16px 12px !important;
+    font-weight: 500;
+    line-height: unset;
+    color: #fff !important;
+    background-color: rgb(var(--st-color-3)) !important;
+}
+.MillenniumDesktopSidebar .MillenniumDesktopSidebar_LibraryItemButton:hover {
+    background-color: rgb(var(--st-color-4)) !important;
+}
+.MillenniumDesktopSidebar .MillenniumDesktopSidebar_LibraryItemButton.Disabled {
+    opacity: .4;
+}
+
+.MillenniumDesktopSidebar .MillenniumDesktopSidebar_LibraryItemButton::before {
+    content: "\f6b3";
+    font-family: FluentSystemIcons-Filled !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    opacity: 1 !important;
+    position: unset;
+    font-size: 16px;
+    box-shadow: unset;
+}
+
+.MillenniumDesktopSidebar .MillenniumDesktopSidebar_LibraryItemButton svg {
+    display: none;
+}
+
+
+/*
+! Settings
+*/
+/** Dropdown */
+.MillenniumDesktopSidebar .MillenniumDesktopSidebar_EditorHeader {
+    margin: 0;
+    padding: 0;
+    box-shadow: unset;
+}
+
+
+/** Content */
+.MillenniumDesktopSidebar .MillenniumDesktopSidebar_EditorContent {
+    padding: 0;
+    border-radius: var(--st-border-radius);
+}
+
+.MillenniumDesktopSidebar .MillenniumDesktopSidebar_EditorContent .DialogBody {
+    padding: 0 !important;
+}
+
+/*^ i description */
+.MillenniumDesktopSidebar .MillenniumDesktopSidebar_EditorContent .DialogBody ._3TPGDj4kc0QGKvO8FJmGz8 {
+    font-size: 11px;
+}
+
+/*^ Slider option value fix */
+.MillenniumDesktopSidebar .MillenniumDesktopSidebar_EditorContent .MillenniumThemeSliderValue {
+    top: 18px;
+    right: 12px;
+}
+
+
+
+
+/*
+& Navbar
+*/
+.MillenniumSettings ._2kwFFHckg8jvnwJfg9-la8 {
+    flex: unset;
+    max-width: unset;
+}
+
+.MillenniumSettings ._18QCu-7MTzd51UpVbYysDy {
+    flex-direction: row;
+}
+
+/*^ Divider */
+.MillenniumSettings ._18QCu-7MTzd51UpVbYysDy ._1Hye7o1wYIfc9TE9QKRW4T {
+    width: 3px;
+    height: initial !important;
+    margin: 6px 0 !important;
+}
+
+
+/*
+! Custom icons
+*/
+/*^ General */
+body ._2kwFFHckg8jvnwJfg9-la8 ._1-vlriAtKYDViAEunue4VO[id*="/millennium/settings/general"] ._1rD8X96FdnksZLvRRlEiCR svg{
+    display: block;
+}
+
+/*^ Themes */
+body ._2kwFFHckg8jvnwJfg9-la8 ._1-vlriAtKYDViAEunue4VO[id*="/settings/themes"] ._1rD8X96FdnksZLvRRlEiCR::before {
+    content: "\f2f6";
+}
+
+/*^ Quickcss */
+body ._2kwFFHckg8jvnwJfg9-la8 ._1-vlriAtKYDViAEunue4VO[id*="/settings/quickcss"] ._1rD8X96FdnksZLvRRlEiCR::before {
+    content: "\f2cd";
+}
+
+/*^ Plugins */
+body ._2kwFFHckg8jvnwJfg9-la8 ._1-vlriAtKYDViAEunue4VO[id*="/settings/plugins"] ._1rD8X96FdnksZLvRRlEiCR::before {
+    content: "\f614";
+}
+
+/*^ Updates */
+body ._2kwFFHckg8jvnwJfg9-la8 ._1-vlriAtKYDViAEunue4VO[id*="/settings/updates"] ._1rD8X96FdnksZLvRRlEiCR::before {
+    content: "\f191";
+}
+
+/*^ Logs */
+body ._2kwFFHckg8jvnwJfg9-la8 ._1-vlriAtKYDViAEunue4VO[id*="/settings/logs"] ._1rD8X96FdnksZLvRRlEiCR::before {
+    content: "\e4f8";
+}
+
+
+
+/*
+& Main
+*/
+.MillenniumSettings .OX7USkJ5dDP_icD00Gal6 {
+    width: unset;
+}
+
+
+
+
+/*
+& Settings sections. Each block ("On Startup", "Updates", "Notifications", ...)
+& sat on the same tone as the dialog surface behind it, so nothing separated one
+& segment from the next. Every section is its own rounded, edged panel now, and
+& the per-row fills inside it are dropped so each panel is one flat surface.
+*/
+body .MillenniumSettings .DialogControlsSection {
+    margin: 0 0 16px;
+    padding: 8px 0 12px;
+    border-radius: var(--st-border-radius, 16px);
+    background-color: rgba(var(--st-surface-0, 49, 50, 68), 0.3);
+    box-shadow: inset 0 0 0 1px var(--st-edge, rgba(88, 91, 112, 0.7));
+}
+
+body .MillenniumSettings .DialogControlsSection .Field {
+    background-color: transparent !important;
+}
+
+
+/*
+& Tabs. The active tab filled with mantle over the dialog's own mantle, so it
+& sank into the surface and you could not tell which tab was open. Every tab now
+& carries its own edge; the active one lifts to surface0 with a blue rim.
+*/
+body .MillenniumSettings .PagedSettingsDialog_PageListItem {
+    color: rgb(186, 194, 222) !important;
+    box-shadow: inset 0 0 0 1px rgba(88, 91, 112, 0.45) !important;
+    transition: background-color 0.12s ease, box-shadow 0.12s ease;
+}
+
+body .MillenniumSettings .PagedSettingsDialog_PageListItem:hover {
+    background-color: rgba(var(--st-surface-0, 49, 50, 68), 0.35) !important;
+}
+
+body .MillenniumSettings .PagedSettingsDialog_PageListItem.Active {
+    background-color: rgba(var(--st-surface-0, 49, 50, 68), 0.55) !important;
+    box-shadow: inset 0 0 0 1px rgba(137, 180, 250, 0.85) !important;
+}
+
+
+/*
+& Plugin and theme rows. They were stacked at -1px with no fill or edge, so the
+& list read as one continuous block of text. Each row is its own rounded card.
+*/
+body .MillenniumSettings .MillenniumPlugins_PluginField,
+body .MillenniumSettings .MillenniumThemes_ThemeItem {
+    margin: 0 0 8px !important;
+    padding: 8px 12px 10px !important;
+    border-radius: var(--st-border-radius, 16px) !important;
+    background-color: rgba(var(--st-surface-0, 49, 50, 68), 0.28) !important;
+    box-shadow: inset 0 0 0 1px var(--st-edge, rgba(88, 91, 112, 0.7)) !important;
+}
+
+body .MillenniumSettings .MillenniumPlugins_PluginField:hover,
+body .MillenniumSettings .MillenniumThemes_ThemeItem:hover {
+    background-color: rgba(var(--st-surface-0, 49, 50, 68), 0.42) !important;
+}
+
+
+/*
+& Color picker
+*/
+body .MillenniumColorPicker {
+    --size: 28px;
+    width: calc(var(--size) * 2);
+    margin: 0;
+}
+body .MillenniumColorPicker::-webkit-color-swatch {
+    border-radius: var(--st-border-radius);
+}

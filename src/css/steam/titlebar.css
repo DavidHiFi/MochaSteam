@@ -1,0 +1,205 @@
+/* On Focus blue line */
+._3pXasCUulX4jjqO79s4q_F._2MkHZqf7MrgW3f8qGHiI8Z {
+    display: none;
+}
+
+
+
+/* Keep blur off TopBar. A backdrop filter makes it the containing block
+   for the bottom-left controls and anchors them to the 46px title strip. */
+._3Z7VQ1IMk4E3HsHvrkLNgo {
+    box-shadow: none !important;
+    background: rgba(var(--st-mantle, 24, 24, 37), 0.75) !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+}
+._3Z7VQ1IMk4E3HsHvrkLNgo::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 46px;
+    pointer-events: none;
+    z-index: -1;
+    -webkit-backdrop-filter: var(--st-glass-blur, blur(20px) saturate(1.35)) !important;
+    backdrop-filter: var(--st-glass-blur, blur(20px) saturate(1.35)) !important;
+}
+@media (max-width: 1188px) {
+    ._3Z7VQ1IMk4E3HsHvrkLNgo:has(._39oUCO1OuizVPwcnnv88no ._3cykd-VfN_xBxf3Qxriccm)::before {
+        height: 80px;
+    }
+}
+._39oUCO1OuizVPwcnnv88no {
+    height: 46px;
+}
+
+
+
+/* URL bar */
+._1bGewp3tfzqAF6fVTFFUOz .UkR3sY319PuaUNuUWks2K {
+    margin-bottom: 12px;
+    padding: 6px;
+    border-radius: var(--st-border-radius);
+    background-color: rgb(var(--st-color-2));
+    box-shadow: none;
+}
+
+
+
+/* wierd top bar */
+._2CmrnGY-Amtd83ScJkFvx2 {
+    display: none !important;
+}
+
+
+/*
+! Menu
+*/
+._1Ky59qmywxOUtNcI1cgmkX {
+    gap: unset;
+    margin-top: 0 !important;
+    padding-left: 16px;
+}
+
+/* Item */
+._1Ky59qmywxOUtNcI1cgmkX ._2Lu3d-5qLmW4i19ysTt2jT {
+    padding: 6px 7px;
+    color: transparent;
+}
+._1Ky59qmywxOUtNcI1cgmkX ._2Lu3d-5qLmW4i19ysTt2jT:nth-of-type(1) {
+    z-index: 99999;
+    padding: 0 6px 0 0;
+    color: #8b929a;
+}
+
+/* Item on hover */
+._1Ky59qmywxOUtNcI1cgmkX:hover ._2Lu3d-5qLmW4i19ysTt2jT {
+    color: #8b929a;
+}
+._1Ky59qmywxOUtNcI1cgmkX ._2Lu3d-5qLmW4i19ysTt2jT:hover {
+    color: #fff;
+}
+
+/* Text Logo - "SpaceTheme" label removed in-theme (was Quick CSS) */
+.bSKGlAJG2UVWTsntEJY2v {
+    font-size: 0 !important;
+}
+.bSKGlAJG2UVWTsntEJY2v::before,
+.bSKGlAJG2UVWTsntEJY2v::after {
+    display: none !important;
+    content: none !important;
+    font-size: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+    margin: 0 !important;
+}
+._2UyOBeiSdBayaFdRa39N2O:nth-of-type(1)::after {
+    display: none !important;
+    content: none !important;
+    font-size: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+    margin: 0 !important;
+}
+
+/* Steam icon slightly larger (was Quick CSS) */
+.bSKGlAJG2UVWTsntEJY2v .GG9wVQz6PLlhGHlJyZh4E {
+    width: 23px !important;
+    height: 23px !important;
+    margin-top: 0 !important;
+}
+
+
+/*
+! Navigation
+*/
+._3Z3ohQ8-1NKnCZkbS6fvy {
+    position: absolute;
+    top: 23px;
+    left: 50%;
+    width: fit-content;
+    height: 46px;
+    padding: 0;
+    transform: translate(-50%, -50%);
+}
+
+/* Back & Forward */
+._3Z3ohQ8-1NKnCZkbS6fvy ._2D64jIEK7wpUR_NlObDW76 svg {
+    padding: 0 12px;
+}
+._3Z3ohQ8-1NKnCZkbS6fvy ._2D64jIEK7wpUR_NlObDW76 svg:nth-child(2) {
+    order: 2;
+}
+
+._3Z3ohQ8-1NKnCZkbS6fvy ._7AlhCx3XGzBeIrQaCneUD {
+    height: 20px;
+    font-size: unset;
+}
+._7AlhCx3XGzBeIrQaCneUD._1gqEjB5QsKT_NftD1dEsdZ:not(._2cO0HdvLEGAdhosLekWsmo) ._19axKcqYRuaJ8vdYKYmtTQ {
+    color: rgb(var(--st-accent-1));
+    text-shadow: none;
+}
+._7AlhCx3XGzBeIrQaCneUD._1gqEjB5QsKT_NftD1dEsdZ:not(._2cO0HdvLEGAdhosLekWsmo) ._19axKcqYRuaJ8vdYKYmtTQ::after {
+    height: 3.2px;
+    background: rgb(var(--st-accent-1));
+}
+
+
+
+/* Steam update notice: dark text contrasts with the bright blue fill. */
+body ._2iJsgdTIX9Tj23rWnB7Q-c:not(._2T8739wyg0K9mokTXWytuZ),
+body ._2iJsgdTIX9Tj23rWnB7Q-c:not(._2T8739wyg0K9mokTXWytuZ) ._2EXJTyc69b45nXI4h3RknI,
+body ._2iJsgdTIX9Tj23rWnB7Q-c:not(._2T8739wyg0K9mokTXWytuZ) .SwtQX-CurM3HPVJ9DPI1V,
+body ._2iJsgdTIX9Tj23rWnB7Q-c:not(._2T8739wyg0K9mokTXWytuZ) ._3om6pVKUdxdBkypYpSroHM {
+    color: #11111b !important;
+    text-shadow: none !important;
+}
+body ._2iJsgdTIX9Tj23rWnB7Q-c:not(._2T8739wyg0K9mokTXWytuZ) ._3om6pVKUdxdBkypYpSroHM,
+body ._2iJsgdTIX9Tj23rWnB7Q-c:not(._2T8739wyg0K9mokTXWytuZ) ._3om6pVKUdxdBkypYpSroHM:hover,
+body ._2iJsgdTIX9Tj23rWnB7Q-c:not(._2T8739wyg0K9mokTXWytuZ) ._3om6pVKUdxdBkypYpSroHM:focus-visible {
+    opacity: 1 !important;
+    text-decoration: underline !important;
+}
+body ._2iJsgdTIX9Tj23rWnB7Q-c ._2ohOQgahhMYnIEfAQmv9B8 {
+    color: #cdd6f4 !important;
+    background-color: #313244 !important;
+    text-shadow: none !important;
+}
+body ._2iJsgdTIX9Tj23rWnB7Q-c ._2ohOQgahhMYnIEfAQmv9B8:not(._TY57LlvVVnWqjaCz0EWr):hover,
+body ._2iJsgdTIX9Tj23rWnB7Q-c ._2ohOQgahhMYnIEfAQmv9B8:focus-visible {
+    color: #cdd6f4 !important;
+    background-color: #45475a !important;
+}
+
+/*
+! Size
+*/
+._3Z7VQ1IMk4E3HsHvrkLNgo:has(._39oUCO1OuizVPwcnnv88no ._3cykd-VfN_xBxf3Qxriccm) {
+    @media (max-width: 1188px) {
+        /** Titlebar */
+        ._39oUCO1OuizVPwcnnv88no {
+            height: 80px !important;
+            align-items: flex-start;
+        }
+
+        /*^ Steam Logo / buttons */
+        ._39oUCO1OuizVPwcnnv88no ._1Ky59qmywxOUtNcI1cgmkX {
+            height: 46px;
+        }
+
+        /*^ Navigation */
+        ._3Z3ohQ8-1NKnCZkbS6fvy {
+            position: absolute;
+            top: 36px;
+            left: 0;
+            width: -webkit-fill-available;
+            height: 28px;
+            transform: none;
+        }
+
+        ._3Z3ohQ8-1NKnCZkbS6fvy ._2D64jIEK7wpUR_NlObDW76 {
+            justify-content: center;
+        }
+    }
+}
