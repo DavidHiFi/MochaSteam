@@ -742,12 +742,12 @@
         {
             "MatchRegexString": ".ModalDialogPopup",
             "TargetCss": "src/css/libraryroot.custom.css",
-            "TargetJs": "src/css/libraryroot.custom.js"
+            "TargetJs": "src/js/libraryroot.custom.js"
         },
         {
             "MatchRegexString": ".friendsui-container",
             "TargetCss": "src/css/friends.custom.css",
-            "TargetJs": "src/css/friends.custom.js"
+            "TargetJs": "src/js/friends.custom.js"
         },
         {
             "MatchRegexString": "Supernav$",
@@ -772,10 +772,6 @@
         {
             "MatchRegexString": ".Rp8QOGJ2DypeDniMnRBhr",
             "TargetCss": "src/css/startupLogin.custom.css"
-        },
-        {
-            "MatchRegexString": "[href=\"/css/gamerecording.css\"]",
-            "TargetCss": "src/css/steam/screenshotManager.css"
         }
     ]
 }
