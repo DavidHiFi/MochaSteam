@@ -390,8 +390,14 @@ body.QsvsRVwbsApgKt1MhM0fz:has(._1_yS5UP7el0aN4vntx3dx .wi0pDywRgOCxhG7OqQNaA) .
 
 /*
 ! Game item title separator
+Must repeat the theme scope from the title rules above. This selector ties their
+specificity and, being later in the file, wins the position override. Without it
+the separator keeps position: relative and adds a second line box to the title
+span. A running game's row then grows to 36px inside its 26px grid cell, and the
+cell's overflow: hidden clips the bottom rounded corners of the selection
+highlight (square bottom edge, 2026-10-05).
 */
-._2-O4ZG0KrnSrzISHBKctFQ span._2RggXvVkWMDvvxFegjtKso {
+._3x1HklzyDs4TEjACrRO2tB ._2-O4ZG0KrnSrzISHBKctFQ span._2RggXvVkWMDvvxFegjtKso {
     position: absolute;
     visibility: hidden;
 }
