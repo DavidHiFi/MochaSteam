@@ -11,6 +11,11 @@ html.ContextMenuPopup body.ContextMenuPopupBody {
     box-shadow: none !important;
 }
 
+/* Popup windows cannot sample other windows with CSS, and the DWM acrylic on
+   the reused pre-composited menu popups does not reliably show, so the glass
+   fill read as see-through with sharp rows behind it. Paint the static Mocha
+   base instead (2026-09-30 notification-menu precedent). Radius and edge
+   stay. */
 body.DesktopUI .PP7LM0Ow1K5qkR8WElLpt {
     min-width: unset !important;
     max-height: 90%;
@@ -18,9 +23,7 @@ body.DesktopUI .PP7LM0Ow1K5qkR8WElLpt {
     border: 1px solid var(--st-edge, rgba(88, 91, 112, 0.7));
     border-radius: var(--st-border-radius);
     background: unset;
-    background-color: var(--st-glass, rgba(24, 24, 37, 0.72));
-    -webkit-backdrop-filter: var(--st-glass-blur, blur(20px) saturate(1.35));
-    backdrop-filter: var(--st-glass-blur, blur(20px) saturate(1.35));
+    background-color: rgb(var(--st-mantle, 24, 24, 37));
     box-shadow: inset 0 0 0 1px rgba(88, 91, 112, 0.25);
     overflow: hidden;
 }
