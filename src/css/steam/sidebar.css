@@ -826,3 +826,22 @@ body:has(._3x1HklzyDs4TEjACrRO2tB):has(._3E5iVG630BkOHTaJJaMEMw) ._1_yS5UP7el0aN
     margin-left: 0 !important;
     margin-right: 3px !important;
 }
+
+/*
+& The content frame cannot be scrolled by code. It had been scrolled 30px, which
+& pushed the library up under the 46px Steam top bar. overflow: clip stops that.
+& The bottom stack sits 16px inside the sidebar card: user panel, Downloads 6px
+& above it, and the list 6px above that (list margins in alwaysShowDownloadbar.css).
+*/
+._1rDh5rXSFZJOqCa4UpnI4z {
+    overflow: clip !important;
+}
+._3cykd-VfN_xBxf3Qxriccm {
+    bottom: 32px !important;
+}
+body:has(._3x1HklzyDs4TEjACrRO2tB) ._1_yS5UP7el0aN4vntx3dx {
+    bottom: 128px !important;
+}
+body:has(._3x1HklzyDs4TEjACrRO2tB):has(._3E5iVG630BkOHTaJJaMEMw) ._1_yS5UP7el0aN4vntx3dx {
+    bottom: 178px !important;
+}
