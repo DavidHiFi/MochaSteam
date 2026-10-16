@@ -26,6 +26,22 @@ Options include sidebar behavior, fonts, window controls, gift-card visibility a
 
 Steam updates can change selectors and popup behavior. Report problems in [GitHub issues](https://github.com/DavidHiFi/MochaSteam/issues) with your Steam, Millennium and Windows versions.
 
+## Contributing
+
+Bug reports, feature ideas and pull requests are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for setup, checks and what to include.
+
+## Star history
+
+⭐ Thanks for the stars, screenshots and theme fixes.
+
+<a href="https://www.star-history.com/?repos=DavidHiFi%2FMochaSteam&amp;type=date">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=DavidHiFi/MochaSteam&amp;type=date&amp;theme=dark&amp;legend=top-left" />
+    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=DavidHiFi/MochaSteam&amp;type=date" />
+    <img alt="DavidHiFi/MochaSteam GitHub star history" src="https://api.star-history.com/chart?repos=DavidHiFi/MochaSteam&amp;type=date" />
+  </picture>
+</a>
+
 ## Credits
 
 SpaceTheme by SpaceEnergy supplies the MIT-licensed base. The Catppuccin palette is MIT licensed. DavidHiFi maintains this fork and its theme changes. Original attribution is retained in `LICENSE` and `NOTICE.md`. The separate DWMX plugin is Apache-2.0 licensed and retains its own license in the bundle.
