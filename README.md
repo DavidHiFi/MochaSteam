@@ -48,14 +48,6 @@ For theme-only: download [this repo ZIP](https://github.com/DavidHiFi/MochaSteam
 > [!IMPORTANT]
 > Native acrylic needs Windows 11 and the bundled Window Styler plugin. The theme alone works as a dark theme without it.
 
----
-
-## Support development
-
-This theme is free and always will be. A coffee keeps it going.
-
-[![Support DavidHiFi on Ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/davidhifi)
-
 ## Contributing
 
 Bug reports with Steam, Millennium and Windows versions, feature ideas, and pull requests welcome. See [CONTRIBUTING.md](CONTRIBUTING.md).
