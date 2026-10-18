@@ -9,13 +9,13 @@
 By DavidHiFi, forked from [SpaceTheme for Steam](https://github.com/SpaceTheme/Steam) by SpaceEnergy.
 
 <a href="https://github.com/DavidHiFi/millennium-stuff/releases/latest">
-<img src="https://img.shields.io/badge/%E2%9C%93%EF%B8%8F%20DOWNLOAD%20BUNDLE-2EA043?style=for-the-badge&labelColor=161B22" alt="Download the bundle release" height="42">
+<img src="https://img.shields.io/badge/%E2%AC%87%EF%B8%8F%20DOWNLOAD%20LATEST%20RELEASE-2EA043?style=for-the-badge&labelColor=161B22" alt="Download the bundle release" height="42">
 </a>
 
 <br><br>
 
-<img src="https://img.shields.io/github/v/release/DavidHiFi/MochaSteam?style=flat-square&label=version&color=8957E5&labelColor=161B22" alt="Latest release">
-<img src="https://img.shields.io/github/downloads/DavidHiFi/MochaSteam/total?style=flat-square&label=downloads&color=1F6FEB&labelColor=161B22" alt="Total downloads">
+<img src="https://img.shields.io/github/v/release/DavidHiFi/millennium-stuff?style=flat-square&label=bundle&color=8957E5&labelColor=161B22" alt="Latest release">
+<img src="https://img.shields.io/github/downloads/DavidHiFi/millennium-stuff/total?style=flat-square&label=downloads&color=1F6FEB&labelColor=161B22" alt="Total downloads">
 <img src="https://img.shields.io/badge/platform-Steam%20%7C%20Windows-DB6D28?style=flat-square&labelColor=161B22" alt="Platforms: Steam and Windows">
 
 </div>
