@@ -1,38 +1,72 @@
+<div align="center">
+
+<img src="https://raw.githubusercontent.com/DavidHiFi/MochaSteam/main/.github/assets/preview.png" alt="Mocha Steam preview" width="100%">
+
 # Mocha Steam
 
-Catppuccin Mocha for Steam, with rounded controls, frosted menus and Blue/Lavender accents. By DavidHiFi, forked from [SpaceTheme for Steam](https://github.com/SpaceTheme/Steam) by SpaceEnergy.
+**Catppuccin Mocha theme for Steam. Rounded controls, frosted menus, Blue/Lavender accents.**
 
-![Mocha Steam preview](https://raw.githubusercontent.com/DavidHiFi/MochaSteam/main/.github/assets/preview.png)
+By DavidHiFi, forked from [SpaceTheme for Steam](https://github.com/SpaceTheme/Steam) by SpaceEnergy.
 
-## Install
+<a href="https://github.com/DavidHiFi/millennium-stuff/releases/latest">
+<img src="https://img.shields.io/badge/%E2%9C%93%EF%B8%8F%20DOWNLOAD%20BUNDLE-2EA043?style=for-the-badge&labelColor=161B22" alt="Download the bundle release" height="42">
+</a>
 
-Install [Millennium](https://docs.steambrew.app/users/getting-started/installation) first.
+<br><br>
 
-For the complete Windows 11 acrylic setup, download the **millennium-stuff ZIP** from the [bundle release](https://github.com/DavidHiFi/millennium-stuff/releases/latest). Extract it, exit Steam completely, and run PowerShell in the extracted folder:
+<img src="https://img.shields.io/github/v/release/DavidHiFi/MochaSteam?style=flat-square&label=version&color=8957E5&labelColor=161B22" alt="Latest release">
+<img src="https://img.shields.io/github/downloads/DavidHiFi/MochaSteam/total?style=flat-square&label=downloads&color=1F6FEB&labelColor=161B22" alt="Total downloads">
+<img src="https://img.shields.io/badge/platform-Steam%20%7C%20Windows-DB6D28?style=flat-square&labelColor=161B22" alt="Platforms: Steam and Windows">
+
+</div>
+
+---
+
+## Installation
+
+Requires [Millennium](https://docs.steambrew.app/users/getting-started/installation) first.
+
+For the complete Windows 11 acrylic setup, download the **millennium-stuff ZIP** from the [bundle release](https://github.com/DavidHiFi/millennium-stuff/releases/latest), extract it, exit Steam fully, and run PowerShell in the extracted folder:
 
 ```powershell
 powershell -NoProfile -ExecutionPolicy Bypass -File .\install.ps1 -Apply -Configure
 ```
 
-Start Steam. The installer enables Mocha Steam and the bundled Window Styler plugin, backs up replaced files, and preserves existing options and other plugins. Add `-SteamPath 'D:\Steam'` for a custom Steam location.
+For theme-only: download [this repo ZIP](https://github.com/DavidHiFi/MochaSteam/archive/refs/heads/main.zip), extract `skin.json` to `Steam\millennium\themes\MochaSteam`, restart Steam, and select **Mocha Steam** in Millennium's Themes tab.
 
-For a theme-only install, download [the repository ZIP](https://github.com/DavidHiFi/MochaSteam/archive/refs/heads/main.zip). Exit Steam, extract the folder containing `skin.json` to `Steam\millennium\themes\MochaSteam`, start Steam and select **Mocha Steam** in Millennium's Themes tab.
+---
 
-The theme-only download does not install a plugin. Native acrylic behind separate Steam windows requires Windows 11 and the patched **DWMX / Window Styler** plugin from the bundle. Enable **Mica & Acrylic plugin support** when that plugin is installed. The theme works as an ordinary dark theme without it. Select a font installed on your machine.
+## Features
 
-## Customization
+- Catppuccin Mocha palette throughout Steam.
+- Rounded controls, frosted menus, Blue and Lavender accents.
+- Native acrylic behind separate Steam windows (Windows 11 + patched Window Styler plugin from bundle).
+- Font and sidebar customization.
 
-Options include sidebar behavior, fonts, window controls, gift-card visibility and favorite-friend status backgrounds. Native popup acrylic is applied on display events, without polling. Library icons and status indicators share one alignment slot. SpaceTheme changes are integrated through `ce67165`.
+## Notes
 
-Steam updates can change selectors and popup behavior. Report problems in [GitHub issues](https://github.com/DavidHiFi/MochaSteam/issues) with your Steam, Millennium and Windows versions.
+> [!IMPORTANT]
+> Native acrylic needs Windows 11 and the bundled Window Styler plugin. The theme alone works as a dark theme without it.
+
+---
+
+## Support development
+
+This theme is free and always will be. A coffee keeps it going.
+
+[![Support DavidHiFi on Ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/davidhifi)
 
 ## Contributing
 
-Bug reports, feature ideas and pull requests are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for setup, checks and what to include.
+Bug reports with Steam, Millennium and Windows versions, feature ideas, and pull requests welcome. See [CONTRIBUTING.md](CONTRIBUTING.md).
+
+<a href="CONTRIBUTING.md">
+<img src="https://img.shields.io/badge/%F0%9F%A4%9D%20HOW%20TO%20CONTRIBUTE-8957E5?style=for-the-badge&labelColor=161B22" alt="How to contribute" height="36">
+</a>
 
 ## Star history
 
-⭐ Thanks for the stars, screenshots and theme fixes.
+Thanks for the stars, screenshots and theme fixes.
 
 <a href="https://www.star-history.com/?repos=DavidHiFi%2FMochaSteam&amp;type=date">
   <picture>
@@ -44,4 +78,20 @@ Bug reports, feature ideas and pull requests are welcome. See [CONTRIBUTING.md](
 
 ## Credits
 
-SpaceTheme by SpaceEnergy supplies the MIT-licensed base. The Catppuccin palette is MIT licensed. DavidHiFi maintains this fork and its theme changes. Original attribution is retained in `LICENSE` and `NOTICE.md`. The separate DWMX plugin is Apache-2.0 licensed and retains its own license in the bundle.
+- **Author:** Myself, [DavidHiFi](https://github.com/DavidHiFi)
+- **Base theme:** SpaceTheme by [SpaceEnergy](https://github.com/SpaceTheme/Steam), MIT licensed.
+- **Palette:** Catppuccin Mocha, MIT licensed.
+- **Bundle DWMX plugin:** Apache-2.0 licensed, retains its own license in the bundle.
+
+Built with Steam theme files and Windows 11 acrylic APIs.
+
+> Missing or wrong credit? [Open an issue](https://github.com/DavidHiFi/MochaSteam/issues/new) and I'll fix it.
+
+## Disclaimers
+
+Most of this theme's changes were developed with AI coding agents, including Claude Code, Codex and OpenCode. No single AI agent made this theme. The upstream SpaceTheme base belongs to SpaceEnergy.
+
+<div align="center">
+<br>
+<sub>Not affiliated with SpaceEnergy, Steam, Valve, or Catppuccin. Requires Steam and Windows 11 for full acrylic.</sub>
+</div>
