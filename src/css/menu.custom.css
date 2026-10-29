@@ -19,13 +19,20 @@ html.ContextMenuPopup body.ContextMenuPopupBody {
 body.DesktopUI .PP7LM0Ow1K5qkR8WElLpt {
     min-width: unset !important;
     max-height: 90%;
-    padding: 6px !important;
+    padding: 10px !important;
     border: 1px solid var(--st-edge, rgba(88, 91, 112, 0.7));
     border-radius: var(--st-border-radius);
     background: unset;
     background-color: rgb(var(--st-mantle, 24, 24, 37));
     box-shadow: inset 0 0 0 1px rgba(88, 91, 112, 0.25);
-    overflow: hidden;
+    overflow: clip !important;
+}
+
+/* The card fills its popup window edge to edge, and dwmx gives that window
+   Windows 11's 8px rounded corners and frame. A larger card radius leaves the
+   window's own frame and acrylic showing outside the card's curve. */
+html.ContextMenuPopup body.DesktopUI .PP7LM0Ow1K5qkR8WElLpt {
+    border-radius: 8px;
 }
 
 body.DesktopUI :has(._1bGewp3tfzqAF6fVTFFUOz:not([style="display: none;"])) .PP7LM0Ow1K5qkR8WElLpt {
@@ -39,7 +46,7 @@ body.DesktopUI ._1BAKXmqQdWRWmWX9_CbhuY {
     padding: 6px 12px;
     font-weight: 500;
     border-radius: var(--st-border-radius);
-    color: #9c9c9c;
+    color: rgb(166, 173, 200);
 }
 body.DesktopUI ._1n7Wloe5jZ6fSuvV18NNWI:hover,
 body.DesktopUI ._1BAKXmqQdWRWmWX9_CbhuY:hover {
@@ -47,7 +54,7 @@ body.DesktopUI ._1BAKXmqQdWRWmWX9_CbhuY:hover {
     background-color: rgb(var(--st-color-2));
 }
 body.DesktopUI ._1n7Wloe5jZ6fSuvV18NNWI._18z-3vkWndCBO5WJgFldRK {
-    color: #9c9c9c;
+    color: rgb(166, 173, 200);
     background: rgb(var(--st-color-2));
 }
 
@@ -269,4 +276,15 @@ body.DesktopUI ._2EstNjFIIZm_WUSKm5Wt7n ._3sTMvhkGXqBzwhsP2-IA5P ._1SQjN025UZ0z_
 */
 body.DesktopUI ._2EstNjFIIZm_WUSKm5Wt7n .p2CKe5nuC_8YgWL_lZbNn {
     padding: 0;
+}
+
+/* Account name in the account menu: Steam's link blue, moved onto the accent. */
+body.DesktopUI ._11phBiBefcVQdzrnrezkKa {
+    color: rgb(var(--st-accent-1));
+}
+
+/* Steam leaves an empty 50px item in the notifications menu when there is
+   nothing to show. */
+body.DesktopUI ._3zfQA8bEKpisPtsyT4SovP:empty {
+    display: none;
 }

@@ -816,3 +816,11 @@
     top: 8px;
     bottom: unset;
 }
+
+/* Capsules without art show the title at 30px. In the monospace font option a
+   ten-letter name is wider than the capsule and broke mid-word. */
+.Capsule ._13fGPw2BaM5wWIahr2xNKt {
+    font-size: 22px;
+    word-break: normal;
+    overflow-wrap: anywhere;
+}

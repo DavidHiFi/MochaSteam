@@ -181,3 +181,11 @@
     border-radius: var(--st-border-radius);
     background-color: rgb(var(--st-accent-2), .3);
 }
+
+/* Graph banner: Steam's navy fill and blue sweep, tinted to the palette. */
+._3Mbhnlk1Go2j8yCdjthzc7.IbePLaw-vSvhG1GTenYFg._2KB3yVOsiRCK9qK6mwKl9c {
+    background-color: rgb(var(--st-mantle, 24, 24, 37));
+}
+._3mZ2rKd2RECK4q4ufmsDYX.pHDI1ddoKXceD5KL7W-4z {
+    background: linear-gradient(to right, rgb(var(--st-accent-1)) 0%, rgb(var(--st-blue)) 100%);
+}

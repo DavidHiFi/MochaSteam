@@ -4,7 +4,7 @@
 
 # Mocha Steam
 
-**Catppuccin Mocha theme for Steam. Rounded controls, frosted menus, Blue/Lavender accents.**
+**Catppuccin Mocha theme for Steam. Rounded controls, frosted dropdowns, Blue/Lavender accents.**
 
 By DavidHiFi, forked from [SpaceTheme for Steam](https://github.com/SpaceTheme/Steam) by SpaceEnergy.
 
@@ -32,14 +32,14 @@ For the complete Windows 11 acrylic setup, download the **millennium-stuff ZIP**
 powershell -NoProfile -ExecutionPolicy Bypass -File .\install.ps1 -Apply -Configure
 ```
 
-For theme-only: download [this repo ZIP](https://github.com/DavidHiFi/MochaSteam/archive/refs/heads/main.zip), extract `skin.json` to `Steam\millennium\themes\MochaSteam`, restart Steam, and select **Mocha Steam** in Millennium's Themes tab.
+For theme-only: download [this repo ZIP](https://github.com/DavidHiFi/MochaSteam/archive/refs/heads/main.zip), extract the whole folder to `Steam\millennium\themes\MochaSteam` so `skin.json` sits at its root, restart Steam, and select **Mocha Steam** in Millennium's Themes tab.
 
 ---
 
 ## Features
 
 - Catppuccin Mocha palette throughout Steam.
-- Rounded controls, frosted menus, Blue and Lavender accents.
+- Rounded controls, frosted dropdowns, Blue and Lavender accents.
 - Native acrylic behind separate Steam windows (Windows 11 + patched Window Styler plugin from bundle).
 - Font and sidebar customization.
 

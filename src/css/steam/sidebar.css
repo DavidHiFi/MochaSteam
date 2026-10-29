@@ -320,6 +320,10 @@ body.QsvsRVwbsApgKt1MhM0fz:has(._1_yS5UP7el0aN4vntx3dx .wi0pDywRgOCxhG7OqQNaA) .
 
 ._3x1HklzyDs4TEjACrRO2tB ._2-O4ZG0KrnSrzISHBKctFQ ._1vO6BoiVslZgs1kqDGdUs8 {
     align-items: center;
+    /* Long titles run past the row and scroll on hover; fade the edge so they
+       do not end on a hard cut through a letter. */
+    -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 24px), transparent);
+    mask-image: linear-gradient(to right, #000 calc(100% - 24px), transparent);
 }
 
 ._3x1HklzyDs4TEjACrRO2tB ._2-O4ZG0KrnSrzISHBKctFQ span:not(.pdb-dot) {
@@ -328,14 +332,27 @@ body.QsvsRVwbsApgKt1MhM0fz:has(._1_yS5UP7el0aN4vntx3dx .wi0pDywRgOCxhG7OqQNaA) .
     overflow: hidden;
     white-space: nowrap;
     min-width: 0;
-    color: transparent;
+    color: rgb(166, 173, 200);
     position: relative;
+}
+
+/* The title moves into ::before only once the theme script has copied it into
+   data-st-hover-text. That runs on an animation frame, which never fires while
+   Steam is minimised, so until then the row keeps its own visible text. */
+._3x1HklzyDs4TEjACrRO2tB ._2-O4ZG0KrnSrzISHBKctFQ span:not(.pdb-dot)[data-st-hover-text] {
+    color: transparent;
+}
+._3x1HklzyDs4TEjACrRO2tB ._2-O4ZG0KrnSrzISHBKctFQ._1UBpAXP408Ez_L_mXhW5Q9 span:not(.pdb-dot):not([data-st-hover-text]) {
+    color: rgb(var(--st-accent-1));
+}
+._3x1HklzyDs4TEjACrRO2tB ._2-O4ZG0KrnSrzISHBKctFQ._2ws8DONH9fxQjPXEmRpujE span:not(.pdb-dot):not([data-st-hover-text]) {
+    color: rgb(205, 214, 244);
 }
 
 ._3x1HklzyDs4TEjACrRO2tB ._2-O4ZG0KrnSrzISHBKctFQ span:not(.pdb-dot)::before {
     content: attr(data-st-hover-text);
     display: block;
-    color: #a3aab9;
+    color: rgb(166, 173, 200);
     will-change: transform;
     transform: translate3d(0, -50%, 0);
     backface-visibility: hidden;
@@ -349,7 +366,7 @@ body.QsvsRVwbsApgKt1MhM0fz:has(._1_yS5UP7el0aN4vntx3dx .wi0pDywRgOCxhG7OqQNaA) .
 }
 
 ._3x1HklzyDs4TEjACrRO2tB ._2-O4ZG0KrnSrzISHBKctFQ._2ws8DONH9fxQjPXEmRpujE span:not(.pdb-dot)::before {
-    color: #f1f7ff;
+    color: rgb(205, 214, 244);
 }
 
 ._3x1HklzyDs4TEjACrRO2tB ._2-O4ZG0KrnSrzISHBKctFQ:hover span:not(.pdb-dot)::before {

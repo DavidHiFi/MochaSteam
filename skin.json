@@ -297,6 +297,18 @@
                 "unit": "%"
             }
         },
+        "LuaTools restyle": {
+            "description": "Paints the LuaTools plugin's buttons and dialogs in the theme colours. \n[i]Only matters if LuaTools is installed.[/i]",
+            "default": "yes",
+            "tab": "General",
+            "section": "Other",
+            "values": {
+                "no": {},
+                "yes": {
+                    "TargetCss": { "affects": [".*"], "src": "src/css/plugins/luatools.css" }
+                }
+            }
+        },
 
         "Game Overlay": {
             "description": "Game Overlay from the concept",

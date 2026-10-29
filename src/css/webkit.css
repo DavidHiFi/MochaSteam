@@ -1050,3 +1050,14 @@ html body.responsive_page #footer .footer_content {
 html body.responsive_page #footer .rule:nth-child(1) {
     display: none;
 }
+
+/* "See more" buttons: Steam paints white text on light grey (1.6:1). */
+.btnv6_white_transparent {
+    border-radius: var(--st-border-radius);
+    background: rgb(49, 50, 68);
+    color: rgb(205, 214, 244);
+}
+.btnv6_white_transparent:hover {
+    background: rgb(69, 71, 90);
+    color: rgb(205, 214, 244);
+}

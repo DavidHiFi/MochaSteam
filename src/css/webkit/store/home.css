@@ -881,3 +881,14 @@
     line-height: 1;
     -webkit-font-smoothing: antialiased;
 }
+
+/* Featured carousel: info panel used Steam's navy gradient. */
+.store_main_capsule .info {
+    background: linear-gradient(0deg, rgba(var(--st-mantle, 24, 24, 37), 0.6) 5%, rgba(49, 50, 68, 0.6) 100%);
+}
+
+/* Section date pill (Top New Releases). */
+.top_new_releases_date {
+    background: rgb(var(--st-accent-1));
+    color: rgb(17, 17, 27);
+}
