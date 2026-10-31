@@ -73,3 +73,55 @@ body button.DialogButton::before,
 body button.DialogButton::after {
     border-radius: inherit !important;
 }
+
+
+/*
+& Dialog buttons (Catppuccin Mocha). Steam paints every DialogButton #3d4450
+& with #dfe3e6 text and zero padding, sized to its text, so the 16px rounded
+& ends cut into the label ("Manage Games", "Relaunch Steam"). Buttons now carry
+& their own inline padding, never wrap, and use Mocha surface0 with a hairline
+& edge; Primary uses Mocha blue with crust text.
+*/
+body button.DialogButton {
+    color: #cdd6f4 !important;
+    background: rgb(var(--st-surface-0, 49, 50, 68)) !important;
+    box-shadow: inset 0 0 0 1px var(--st-edge, rgba(88, 91, 112, 0.7)) !important;
+}
+body button.DialogButton:not(:disabled):hover,
+body button.DialogButton.gpfocus {
+    color: #cdd6f4 !important;
+    background: rgb(var(--st-surface-1, 69, 71, 90)) !important;
+    box-shadow: inset 0 0 0 1px rgba(137, 180, 250, 0.6) !important;
+}
+body button.DialogButton.Primary {
+    color: #11111b !important;
+    background: #89b4fa !important;
+    box-shadow: none !important;
+}
+body button.DialogButton.Primary:not(:disabled):hover,
+body button.DialogButton.Primary.gpfocus {
+    color: #11111b !important;
+    background: #b4befe !important;
+}
+body button.DialogButton:disabled {
+    color: #6c7086 !important;
+    background: rgba(var(--st-surface-0, 49, 50, 68), 0.5) !important;
+}
+
+/* Field buttons size to their label plus padding instead of the bare text. */
+body .FieldChildrenInner > button.DialogButton {
+    box-sizing: border-box;
+    width: auto;
+    min-width: max-content;
+    padding: 0 16px;
+    white-space: nowrap;
+}
+
+/* Dialog footers: "Restart Plugin" wrapped to two 32px lines in a 100px button. */
+body .ModalPosition button.DialogButton {
+    box-sizing: border-box;
+    padding: 0 12px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}

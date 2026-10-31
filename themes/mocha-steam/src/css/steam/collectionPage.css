@@ -54,7 +54,7 @@
 ! Game count
 */
 ._2Dd4T78PcCTUVgOtDGFY5j ._2rqTSCLSSEycEiuCS_OkpX ._3Xgxj6vaGiKSEal2iaSrYl {
-    color: #8e8e8e;
+    color: rgb(166, 173, 200);
 }
 
 
@@ -121,7 +121,7 @@
 ._2Dd4T78PcCTUVgOtDGFY5j ._2rqTSCLSSEycEiuCS_OkpX ._8JUfQypf4Uxt2i_hxBk_t ._12pDikfkuNH_o3MHKU1skz::before {
     content: "\f6b3";
     font-size: 16px;
-    color: #8e8e8e;
+    color: rgb(166, 173, 200);
     font-family: FluentSystemIcons-Filled !important;
     font-style: normal;
     font-weight: normal !important;
@@ -214,7 +214,7 @@
     font-weight: 400;
     line-height: 22px;
     letter-spacing: .4px;
-    color: #8e8e8e;
+    color: rgb(166, 173, 200);
 }
 
 
@@ -258,4 +258,19 @@
 */
 ._2Dd4T78PcCTUVgOtDGFY5j ._2c0Fgw4ROufef0QaSULEkw {
     display: none;
+}
+
+
+/*
+! Header dropdowns (2026-10-31 client)
+  The Sort By label and the collection count no longer sit inside the old
+  list container, so the hash chains above never reach them. Theme them by
+  their own classes instead.
+*/
+body .SortingDropDown .SortingDropDownLabel {
+    color: rgb(166, 173, 200);
+}
+
+body .DialogDropDown_CurrentDisplay .CountDisplay {
+    color: rgb(166, 173, 200);
 }

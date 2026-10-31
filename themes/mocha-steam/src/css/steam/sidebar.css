@@ -744,7 +744,7 @@ body:not(:has(._1ijTaXJJA5YWl_fW2IxcaT)) ._3cykd-VfN_xBxf3Qxriccm {
 ._3x1HklzyDs4TEjACrRO2tB {
     background-color: var(--st-sidebar-bg, rgba(24, 24, 37, 0.8)) !important;
     border-radius: var(--st-border-radius);
-    box-shadow: inset 0 0 0 1px var(--st-edge, rgba(88, 91, 112, 0.7));
+    box-shadow: inset 0 0 0 1px var(--st-edge-strong, rgb(108, 112, 134));
     /* Frost filter, same value as the top strip and the content pane. The fill
        stays at 0.9 on purpose (0.8 is what let a bright app behind the window
        through as a lighter block), so most of the panel is fill and only the
@@ -861,4 +861,24 @@ body:has(._3x1HklzyDs4TEjACrRO2tB) ._1_yS5UP7el0aN4vntx3dx {
 }
 body:has(._3x1HklzyDs4TEjACrRO2tB):has(._3E5iVG630BkOHTaJJaMEMw) ._1_yS5UP7el0aN4vntx3dx {
     bottom: 178px !important;
+}
+
+/*
+& Palette audit 2026-10-31: Steam greys and blues that survived the Mocha
+& rework, mapped onto the palette.
+*/
+/* Collection headers (Lua Tools, Soundtracks...): #cae4fb to subtext1 */
+._3x1HklzyDs4TEjACrRO2tB ._3cV3O8FnPQqpJO5kIMUlLX,
+._3x1HklzyDs4TEjACrRO2tB ._3cV3O8FnPQqpJO5kIMUlLX .SectionName {
+    color: rgb(186, 194, 222);
+}
+/* View picker label and the Downloads line: #aeaeaf and #8b929a to subtext0 */
+._3x1HklzyDs4TEjACrRO2tB .ViewName,
+._1_yS5UP7el0aN4vntx3dx .ip-YZhijAMZcuRoXBGiye ._3wJnTtcTLEp0R7eQj_mK8Y {
+    color: rgb(166, 173, 200);
+}
+/* Signed-out account name: Steam's #515151 read at 2.2:1; overlay1 keeps the
+   "offline grey" meaning at about 4.7:1 */
+._3yD46y5pd3zOGR7CzKs0mC.offline {
+    color: rgb(127, 132, 156);
 }

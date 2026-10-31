@@ -62,23 +62,20 @@
     padding-left: 16px;
 }
 
-/* Item */
+/* Item. Always visible; the "Auto-hide menu" option
+   (options/general/menuAutoHide.css) hides them until hover. */
 ._1Ky59qmywxOUtNcI1cgmkX ._2Lu3d-5qLmW4i19ysTt2jT {
     padding: 6px 7px;
-    color: transparent;
+    color: rgb(166, 173, 200);
 }
 ._1Ky59qmywxOUtNcI1cgmkX ._2Lu3d-5qLmW4i19ysTt2jT:nth-of-type(1) {
     z-index: 99999;
     padding: 0 6px 0 0;
-    color: #8b929a;
 }
 
 /* Item on hover */
-._1Ky59qmywxOUtNcI1cgmkX:hover ._2Lu3d-5qLmW4i19ysTt2jT {
-    color: #8b929a;
-}
 ._1Ky59qmywxOUtNcI1cgmkX ._2Lu3d-5qLmW4i19ysTt2jT:hover {
-    color: #fff;
+    color: rgb(205, 214, 244);
 }
 
 /* Text Logo - "SpaceTheme" label removed in-theme (was Quick CSS) */
@@ -202,4 +199,15 @@ body ._2iJsgdTIX9Tj23rWnB7Q-c ._2ohOQgahhMYnIEfAQmv9B8:focus-visible {
             justify-content: center;
         }
     }
+}
+
+/*
+& Palette audit 2026-10-31: top nav labels were Steam's #dcdedf. The active
+& tab keeps the accent through its more specific rule above.
+*/
+._3Z3ohQ8-1NKnCZkbS6fvy ._19axKcqYRuaJ8vdYKYmtTQ {
+    color: rgb(205, 214, 244);
+}
+._3Z3ohQ8-1NKnCZkbS6fvy ._19axKcqYRuaJ8vdYKYmtTQ:hover {
+    color: #fff;
 }

@@ -25,6 +25,18 @@
                 }
             }
         },
+        "Auto-hide menu": {
+            "description": "Hide View, Friends, Games and Help next to the Steam icon until you hover over it",
+            "default": "no",
+            "tab": "General",
+            "section": "Titlebar",
+            "values": {
+                "no": {},
+                "yes": {
+                    "TargetCss": { "affects": ["^Steam$"], "src": "options/general/menuAutoHide.css" }
+                }
+            }
+        },
         "Navigation buttons": {
             "description": "Hide Navigation buttons",
             "default": "no",
