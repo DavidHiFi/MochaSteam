@@ -25,8 +25,13 @@
     /* Frosted floating surfaces (menus, dropdowns, tooltips, toasts) */
     --st-glass: rgba(24, 24, 37, 0.72);
     --st-glass-blur: blur(20px) saturate(1.35);
-    /* Hairline edge that separates one Mocha surface from the next */
-    --st-edge: rgba(88, 91, 112, 0.7);
+    /* Hairline edge that separates one Mocha surface from the next.
+       Solid surface2 since 2026-10-31: at 0.7 alpha over the 50% mica fills
+       the edge sank to about 1.9:1 and boxes and pills blended together. */
+    --st-edge: rgb(88, 91, 112);
+    /* overlay0, about 3.6:1 on mantle: menus, the sidebar panel and toggle
+       rails, where the owner could not make the box out at all. */
+    --st-edge-strong: rgb(108, 112, 134);
 }
 
 

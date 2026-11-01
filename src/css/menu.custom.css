@@ -20,7 +20,7 @@ body.DesktopUI .PP7LM0Ow1K5qkR8WElLpt {
     min-width: unset !important;
     max-height: 90%;
     padding: 10px !important;
-    border: 1px solid var(--st-edge, rgba(88, 91, 112, 0.7));
+    border: 1px solid var(--st-edge-strong, rgb(108, 112, 134));
     border-radius: var(--st-border-radius);
     background: unset;
     background-color: rgb(var(--st-mantle, 24, 24, 37));
@@ -122,6 +122,16 @@ body.DesktopUI ._2kvdTEDgtIT7T9wZIzanom {
     border: none;
     border-radius: var(--st-border-radius);
     background-color: rgb(var(--st-color-2)) !important;
+}
+
+
+/* The easy-restart-reload plugin draws its own divider with an inline
+   Steam grey (#67707b); match it to the theme's dividers. */
+body.DesktopUI [data-restart-steam-root-item="separator"] {
+    height: 3px !important;
+    margin: 2px 6px;
+    border-radius: var(--st-border-radius);
+    background: rgb(var(--st-color-2)) !important;
 }
 
 

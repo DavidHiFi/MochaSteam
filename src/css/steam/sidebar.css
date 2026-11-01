@@ -188,7 +188,7 @@
 ._20QAC4WMXm8qFE8waUT5oo,
 ._3x1HklzyDs4TEjACrRO2tB ._20QAC4WMXm8qFE8waUT5oo._3qwXPrhpZYqVbJxrZDrvjy {
     margin: 0;
-    padding: 0 6px 16px;
+    padding: 0 6px 4px;
     border-radius: 0;
     background-color: rgb(var(--st-color-2));
 }
@@ -238,18 +238,18 @@
 & Game list
 */
 ._3x1HklzyDs4TEjACrRO2tB ._1ijTaXJJA5YWl_fW2IxcaT {
-    margin-bottom: calc(90px + 16px);
+    margin-bottom: 90px;
     border-radius: 0 0 var(--st-border-radius) var(--st-border-radius);
     background-color: rgb(var(--st-color-2));
 }
 body.QsvsRVwbsApgKt1MhM0fz:has(._3E5iVG630BkOHTaJJaMEMw) ._1ijTaXJJA5YWl_fW2IxcaT {
-    margin-bottom: calc(90px + 6px + 44px + 16px);
+    margin-bottom: calc(90px + 6px + 44px);
 }
 body.QsvsRVwbsApgKt1MhM0fz:has(._1_yS5UP7el0aN4vntx3dx .wi0pDywRgOCxhG7OqQNaA):has(._3E5iVG630BkOHTaJJaMEMw) ._1ijTaXJJA5YWl_fW2IxcaT {
-    margin-bottom: calc(90px + 6px + 49px + 44px + 16px + 6px);
+    margin-bottom: calc(90px + 6px + 49px + 44px + 6px);
 }
 body.QsvsRVwbsApgKt1MhM0fz:has(._1_yS5UP7el0aN4vntx3dx .wi0pDywRgOCxhG7OqQNaA) ._1ijTaXJJA5YWl_fW2IxcaT {
-    margin-bottom: calc(90px + 6px + 49px + 16px);
+    margin-bottom: calc(90px + 6px + 49px);
 }
 
 /*
@@ -264,13 +264,15 @@ body.QsvsRVwbsApgKt1MhM0fz:has(._1_yS5UP7el0aN4vntx3dx .wi0pDywRgOCxhG7OqQNaA) .
 ! Collection header
 */
 ._3x1HklzyDs4TEjACrRO2tB ._2sYIghGVXJr6tsQVvcryy8 {
+    box-sizing: border-box;
+    height: calc(100% - 4px) !important;
     align-items: center;
-    margin: 0 0 0 6px;
+    margin: 2px 6px;
     border: none;
     border-radius: var(--st-border-radius);
     background: none;
     background-color: rgb(var(--st-color-1));
-    box-shadow: unset;
+    box-shadow: inset 0 0 0 1px var(--st-edge);
 }
 ._3x1HklzyDs4TEjACrRO2tB ._2sYIghGVXJr6tsQVvcryy8:hover {
     background-color: rgb(var(--st-color-3));
@@ -289,6 +291,9 @@ body.QsvsRVwbsApgKt1MhM0fz:has(._1_yS5UP7el0aN4vntx3dx .wi0pDywRgOCxhG7OqQNaA) .
 /** Title */
 ._3x1HklzyDs4TEjACrRO2tB ._2sYIghGVXJr6tsQVvcryy8 ._2mZ8LlvoUiyeEUtIWuTri {
     height: unset;
+    /* Fira Code caps sit 3.5px above the line box centre; this centres them in the pill */
+    position: relative;
+    top: 3.5px;
 }
 
 
@@ -436,12 +441,12 @@ body:not(:has(._1ijTaXJJA5YWl_fW2IxcaT)) ._1_yS5UP7el0aN4vntx3dx,
 
 ._1_yS5UP7el0aN4vntx3dx {
     position: absolute;
-    bottom: calc(16px + 90px + 6px);
+    bottom: 90px;
     left: 16px;
     height: 49px;
 }
 body:has(._3E5iVG630BkOHTaJJaMEMw) ._1_yS5UP7el0aN4vntx3dx {
-    bottom: calc(16px + 90px + 6px + 44px + 6px);
+    bottom: calc(90px + 44px + 6px);
 }
 
 
@@ -744,7 +749,7 @@ body:not(:has(._1ijTaXJJA5YWl_fW2IxcaT)) ._3cykd-VfN_xBxf3Qxriccm {
 ._3x1HklzyDs4TEjACrRO2tB {
     background-color: var(--st-sidebar-bg, rgba(24, 24, 37, 0.8)) !important;
     border-radius: var(--st-border-radius);
-    box-shadow: inset 0 0 0 1px var(--st-edge, rgba(88, 91, 112, 0.7));
+    box-shadow: inset 0 0 0 1px var(--st-edge-strong, rgb(108, 112, 134));
     /* Frost filter, same value as the top strip and the content pane. The fill
        stays at 0.9 on purpose (0.8 is what let a bright app behind the window
        through as a lighter block), so most of the panel is fill and only the
@@ -847,18 +852,46 @@ body:has(._3x1HklzyDs4TEjACrRO2tB):has(._3E5iVG630BkOHTaJJaMEMw) ._1_yS5UP7el0aN
 /*
 & The content frame cannot be scrolled by code. It had been scrolled 30px, which
 & pushed the library up under the 46px Steam top bar. overflow: clip stops that.
-& The bottom stack sits 16px inside the sidebar card: user panel, Downloads 6px
+& The bottom stack sits flush with the sidebar card bottom (the panel's own 6px padding matches the 6px side inset): user panel, Downloads touching its box so the visible gap is the panel's 6px padding
 & above it, and the list 6px above that (list margins in alwaysShowDownloadbar.css).
 */
 ._1rDh5rXSFZJOqCa4UpnI4z {
     overflow: clip !important;
 }
 ._3cykd-VfN_xBxf3Qxriccm {
-    bottom: 32px !important;
+    bottom: 16px !important;
 }
 body:has(._3x1HklzyDs4TEjACrRO2tB) ._1_yS5UP7el0aN4vntx3dx {
-    bottom: 128px !important;
+    bottom: 106px !important;
 }
 body:has(._3x1HklzyDs4TEjACrRO2tB):has(._3E5iVG630BkOHTaJJaMEMw) ._1_yS5UP7el0aN4vntx3dx {
-    bottom: 178px !important;
+    bottom: 156px !important;
+}
+
+/*
+& Palette audit 2026-10-31: Steam greys and blues that survived the Mocha
+& rework, mapped onto the palette.
+*/
+/* Collection headers (Lua Tools, Soundtracks...): #cae4fb to subtext1 */
+._3x1HklzyDs4TEjACrRO2tB ._3cV3O8FnPQqpJO5kIMUlLX,
+._3x1HklzyDs4TEjACrRO2tB ._3cV3O8FnPQqpJO5kIMUlLX .SectionName {
+    color: rgb(186, 194, 222);
+}
+/* View picker label and the Downloads line: #aeaeaf and #8b929a to subtext0 */
+._3x1HklzyDs4TEjACrRO2tB .ViewName,
+._1_yS5UP7el0aN4vntx3dx .ip-YZhijAMZcuRoXBGiye ._3wJnTtcTLEp0R7eQj_mK8Y {
+    color: rgb(166, 173, 200);
+}
+/* Signed-out account name: Steam's #515151 read at 2.2:1; overlay1 keeps the
+   "offline grey" meaning at about 4.7:1 */
+._3yD46y5pd3zOGR7CzKs0mC.offline {
+    color: rgb(127, 132, 156);
+}
+
+
+/*
+& URL bar above store pages: same hairline as every other card
+*/
+[class~="URLBar"] {
+    box-shadow: inset 0 0 0 1px var(--st-edge) !important;
 }

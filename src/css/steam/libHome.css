@@ -824,3 +824,10 @@
     word-break: normal;
     overflow-wrap: anywhere;
 }
+
+/* Steam paints no-art capsule titles its own grey; pin them to the theme
+   text colour. The element carries the colour itself, so match its structure
+   to out-specify Steam's rule. */
+.LibraryItemBox .Container > span._13fGPw2BaM5wWIahr2xNKt.Title {
+    color: rgb(var(--st-text-strong, 205, 214, 244));
+}

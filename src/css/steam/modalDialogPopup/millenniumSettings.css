@@ -230,6 +230,16 @@ body .MillenniumSettings .DialogControlsSection .Field {
     background-color: transparent !important;
 }
 
+/* The Plugins page action row (Save Changes, Install a plugin, Browse local
+   files) sat inside that same bordered section, so the three pills read as
+   one big pill. The row drops its own surface; each button floats alone. */
+body .MillenniumSettings .DialogControlsSection.MillenniumButtonsSection {
+    padding: 0;
+    gap: 12px;
+    background-color: transparent;
+    box-shadow: none;
+}
+
 
 /*
 & Tabs. The active tab filled with mantle over the dialog's own mantle, so it
@@ -281,4 +291,81 @@ body .MillenniumColorPicker {
 }
 body .MillenniumColorPicker::-webkit-color-swatch {
     border-radius: var(--st-border-radius);
+}
+
+/*
+& Plugin settings pages (the sidebar Millennium opens for "Configure"). Each
+& setting row was Steam's flat rgb(35,38,46) strip with a 2px corner, no edge
+& and grey Steam text. Rows are separate rounded Mocha cards with a hairline
+& edge now, labels in Mocha text and descriptions in subtext0.
+*/
+body .MillenniumDesktopSidebar_EditorContent .Field.Panel {
+    margin: 0 0 8px !important;
+    padding: 10px 14px !important;
+    border-radius: var(--st-border-radius, 16px) !important;
+    background: rgba(var(--st-surface-0, 49, 50, 68), 0.35) !important;
+    box-shadow: inset 0 0 0 1px var(--st-edge, rgba(88, 91, 112, 0.7)) !important;
+}
+body .MillenniumDesktopSidebar_EditorContent .Field.Panel::after {
+    display: none !important;
+}
+body .MillenniumDesktopSidebar_EditorContent .Field.Panel:hover {
+    background: rgba(var(--st-surface-0, 49, 50, 68), 0.5) !important;
+}
+
+body .MillenniumDesktopSidebar .FieldLabelRow,
+body .MillenniumDesktopSidebar .FieldLabel,
+body .MillenniumSettings .FieldLabel {
+    color: #cdd6f4 !important;
+}
+body .MillenniumDesktopSidebar .FieldDescription,
+body .MillenniumSettings .FieldDescription {
+    color: #a6adc8 !important;
+}
+
+/* Sidebar title bar buttons (back, close) */
+body .MillenniumDesktopSidebar .MillenniumIconButton {
+    color: #cdd6f4;
+    background: rgb(var(--st-surface-0, 49, 50, 68));
+    box-shadow: inset 0 0 0 1px var(--st-edge, rgba(88, 91, 112, 0.7));
+}
+
+/* Dropdowns and menu buttons left in Steam grey */
+body .MillenniumDesktopSidebar .DialogDropDown,
+body .MillenniumSettings .DialogDropDown {
+    color: #cdd6f4 !important;
+    background: rgb(var(--st-surface-0, 49, 50, 68)) !important;
+    box-shadow: inset 0 0 0 1px var(--st-edge, rgba(88, 91, 112, 0.7)) !important;
+}
+
+/*
+& Same text and control colors in every Steam dialog, not just Millennium's:
+& field labels, descriptions and section headers were Steam grey, Millennium's
+& icon buttons kept rgb(59,63,72), and the library's Save and accessibility
+& buttons kept Steam blue and grey.
+*/
+body .FieldLabel {
+    color: #cdd6f4 !important;
+}
+body .FieldDescription {
+    color: #a6adc8 !important;
+}
+body .DialogControlsSectionHeader {
+    color: #bac2de !important;
+}
+body button.DialogButton.MillenniumIconButton,
+body [class*="AccessibilityOptionsButton"],
+body .DialogDropDown {
+    color: #cdd6f4 !important;
+    background: rgb(var(--st-surface-0, 49, 50, 68)) !important;
+    box-shadow: inset 0 0 0 1px var(--st-edge, rgba(88, 91, 112, 0.7)) !important;
+}
+body button.DialogButton.MillenniumIconButton:hover,
+body [class*="AccessibilityOptionsButton"]:hover,
+body .DialogDropDown:hover {
+    background: rgb(var(--st-surface-1, 69, 71, 90)) !important;
+}
+body button[class*="SaveButton"] {
+    color: #11111b !important;
+    background: #89b4fa !important;
 }

@@ -1384,3 +1384,11 @@ div:has(>._1J21tLst5SEhBPkVRT53UV._28ZR8gHitOrJaSLxcIAl2p) {
 ._2TYVGoD27ZMfjRirKQNLfk {
     color: rgb(147, 153, 178);
 }
+
+/*
+& Palette audit 2026-10-31: the library's "Scroll To Top" label was Steam's
+& #7cc4ff.
+*/
+._1J21tLst5SEhBPkVRT53UV {
+    color: rgb(var(--st-accent-1));
+}

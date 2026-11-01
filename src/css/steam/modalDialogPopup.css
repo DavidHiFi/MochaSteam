@@ -278,3 +278,11 @@ body.DialogContent_InnerWidth ._2Se5JD_UkWeIyaZiXXmxDD .DialogBodyText {
     line-height: 16px;
     color: #fff;
 }
+
+/*
+& Palette audit 2026-10-31: dialog title ("Millennium" above the settings
+& pages) was Steam's #969696.
+*/
+body ._2rjVTGz8aLvqOdz5v2gq5C {
+    color: rgb(166, 173, 200);
+}

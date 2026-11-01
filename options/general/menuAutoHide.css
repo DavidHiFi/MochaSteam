@@ -1,0 +1,11 @@
+/* Auto-hide menu: View, Friends, Games and Help stay hidden until the
+   pointer is over the Steam icon or the menu strip. */
+._1Ky59qmywxOUtNcI1cgmkX ._2Lu3d-5qLmW4i19ysTt2jT:not(:nth-of-type(1)) {
+    color: transparent !important;
+}
+._1Ky59qmywxOUtNcI1cgmkX:hover ._2Lu3d-5qLmW4i19ysTt2jT:not(:nth-of-type(1)) {
+    color: rgb(166, 173, 200) !important;
+}
+._1Ky59qmywxOUtNcI1cgmkX ._2Lu3d-5qLmW4i19ysTt2jT:not(:nth-of-type(1)):hover {
+    color: rgb(205, 214, 244) !important;
+}

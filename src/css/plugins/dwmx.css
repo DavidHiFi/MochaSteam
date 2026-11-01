@@ -96,18 +96,23 @@ body:has(._3x1HklzyDs4TEjACrRO2tB) [class~="TitleBarControls"] {
 }
 
 [class~="AddShowcase"]:hover,
-[class*="AddGameButton"]:hover,
-[class*="DownloadStat"]:hover {
+[class*="AddGameButton"]:hover {
     background-color: rgba(var(--st-panel-hover), var(--st-panel-opacity)) !important;
     color: rgb(var(--st-text-strong)) !important;
 }
 
-/* DownloadStat as a substring also matches DownloadStatus and
-   DownloadStatusContent in the downloads dock row, whose hover fill painted
-   square against the rounded chip. Carry the theme radius on them. */
-[class*="DownloadStat"] {
-    border-radius: var(--st-border-radius, 8px) !important;
-    overflow: hidden;
+/* Hover on the downloads dock lights the chip itself, so a single rounded
+   layer covers the whole pill window; the strips inside paint nothing of
+   their own. DownloadStatus and DownloadStatusContent are 15px strips: a 16px
+   radius turned them into pill shapes whose rounded ends, plus overflow
+   hidden, clipped the first letter of the downloading label. */
+body:has(._3x1HklzyDs4TEjACrRO2tB) ._1_yS5UP7el0aN4vntx3dx ._3vCzSrrXZzZjVJFZNg9SGu:hover {
+    background-color: rgba(var(--st-panel-hover), var(--st-panel-opacity)) !important;
+}
+._1_yS5UP7el0aN4vntx3dx [class*="DownloadStat"] {
+    background-color: transparent !important;
+    border-radius: 0 !important;
+    overflow: visible !important;
 }
 
 [class~="AddShowcase"]:hover {
@@ -212,4 +217,76 @@ html.MillenniumWindow_MainSteamWindow ._2gSXCB6PbOlMxslr8hm6dm,
 html.MillenniumWindow_MainSteamWindow .u1xD3KJEgksF_J_5TLZzO,
 html.MillenniumWindow_MainSteamWindow ._2sNr7PFYcJZWNkEMCDVVPR {
     background-color: transparent !important;
+}
+
+
+/*
+& Settings-dialog action buttons. Game Properties > Installed Files renders
+& "Backup Game Files", "Move install folder", "Verify integrity" and "Browse..."
+& with Steam's SettingsDialogButton: an unthemed gray box (rgba(59,63,72,.5),
+& #464d58 hover) that ignores the theme entirely. Paint it with the panel
+& tokens and the theme radius. Same control appears across settings dialogs.
+*/
+body [class~="SettingsDialogButton"] {
+    border-radius: var(--st-border-radius) !important;
+    background-color: rgba(var(--st-panel), var(--st-panel-opacity)) !important;
+    box-shadow: inset 0 0 0 1px rgba(var(--st-hairline), 0.7) !important;
+    color: rgb(var(--st-text-soft)) !important;
+}
+
+body [class~="SettingsDialogButton"]:hover,
+body [class~="SettingsDialogButton"]:focus,
+body [class~="SettingsDialogButton"].gpfocus {
+    background-color: rgba(var(--st-panel-hover), var(--st-panel-opacity)) !important;
+    color: rgb(var(--st-text-strong)) !important;
+}
+
+/*
+& Backup Game Files modal: the read-only folder box and its Browse... button.
+*/
+body [class~="BackupAppsBrowse"] {
+    border-radius: var(--st-border-radius) !important;
+    background-color: rgba(var(--st-panel), var(--st-panel-opacity)) !important;
+    box-shadow: inset 0 0 0 1px rgba(var(--st-hairline), 0.7) !important;
+    color: rgb(var(--st-text-soft)) !important;
+}
+
+body [class~="BackupAppsBrowse"]:hover,
+body [class~="BackupAppsBrowse"]:focus {
+    background-color: rgba(var(--st-panel-hover), var(--st-panel-opacity)) !important;
+    color: rgb(var(--st-text-strong)) !important;
+}
+
+body [class~="BackupAppInput"] input {
+    border-radius: var(--st-border-radius) !important;
+    background-color: rgba(var(--st-panel), var(--st-panel-opacity)) !important;
+    box-shadow: inset 0 0 0 1px rgba(var(--st-hairline), 0.7) !important;
+    color: rgb(var(--st-text-soft)) !important;
+}
+
+/*
+& Hairline separators between the Installed Files rows.
+*/
+body [class~="SectionTopLine"] {
+    border-color: rgba(var(--st-hairline), 0.55) !important;
+}
+
+/*
+& Properties-window tab strip: same chip look the settings dialog got, as a
+& global fallback. Scoped .MillenniumSettings rules keep winning where present.
+*/
+body [class~="PagedSettingsDialog_PageListItem"] {
+    color: rgb(var(--st-text-soft)) !important;
+    box-shadow: inset 0 0 0 1px rgba(var(--st-hairline), 0.45) !important;
+    transition: background-color 0.12s ease, box-shadow 0.12s ease;
+}
+
+body [class~="PagedSettingsDialog_PageListItem"]:hover {
+    background-color: rgba(var(--st-panel-hover), 0.35) !important;
+}
+
+body [class~="PagedSettingsDialog_PageListItem"].Active {
+    background-color: rgba(var(--st-panel-hover), 0.55) !important;
+    box-shadow: inset 0 0 0 1px rgba(var(--st-accent-1), 0.85) !important;
+    color: rgb(var(--st-text-strong)) !important;
 }
