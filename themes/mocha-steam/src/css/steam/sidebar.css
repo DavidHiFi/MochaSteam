@@ -188,7 +188,7 @@
 ._20QAC4WMXm8qFE8waUT5oo,
 ._3x1HklzyDs4TEjACrRO2tB ._20QAC4WMXm8qFE8waUT5oo._3qwXPrhpZYqVbJxrZDrvjy {
     margin: 0;
-    padding: 0 6px 16px;
+    padding: 0 6px 4px;
     border-radius: 0;
     background-color: rgb(var(--st-color-2));
 }
@@ -291,6 +291,9 @@ body.QsvsRVwbsApgKt1MhM0fz:has(._1_yS5UP7el0aN4vntx3dx .wi0pDywRgOCxhG7OqQNaA) .
 /** Title */
 ._3x1HklzyDs4TEjACrRO2tB ._2sYIghGVXJr6tsQVvcryy8 ._2mZ8LlvoUiyeEUtIWuTri {
     height: unset;
+    /* Fira Code caps sit 3.5px above the line box centre; this centres them in the pill */
+    position: relative;
+    top: 3.5px;
 }
 
 
