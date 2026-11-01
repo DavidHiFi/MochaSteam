@@ -2,22 +2,22 @@
     --st-option-alwaysShowDownloadbar: on;
 }
 
-/* The list ends 6px above Downloads. Margin = 16px card inset + 90px user panel
+/* The list ends 6px above Downloads. Margin = 90px user panel (it sits flush with the card bottom)
    + 6px + Downloads height + 6px; the account alert adds 44px + 6px above the panel. */
 ._3x1HklzyDs4TEjACrRO2tB ._1ijTaXJJA5YWl_fW2IxcaT {
-    margin-bottom: calc(90px + 6px + 44px + 6px + 16px) !important;
+    margin-bottom: calc(90px + 6px + 44px + 6px) !important;
 }
 
 body:has(._1_yS5UP7el0aN4vntx3dx .wi0pDywRgOCxhG7OqQNaA) ._3x1HklzyDs4TEjACrRO2tB ._1ijTaXJJA5YWl_fW2IxcaT {
-    margin-bottom: calc(90px + 6px + 49px + 6px + 16px) !important;
+    margin-bottom: calc(90px + 6px + 49px + 6px) !important;
 }
 
 body:has(._3E5iVG630BkOHTaJJaMEMw) ._3x1HklzyDs4TEjACrRO2tB ._1ijTaXJJA5YWl_fW2IxcaT {
-    margin-bottom: calc(90px + 6px + 44px + 6px + 16px + 50px) !important;
+    margin-bottom: calc(90px + 6px + 44px + 6px + 50px) !important;
 }
 
 body:has(._3E5iVG630BkOHTaJJaMEMw):has(._1_yS5UP7el0aN4vntx3dx .wi0pDywRgOCxhG7OqQNaA) ._3x1HklzyDs4TEjACrRO2tB ._1ijTaXJJA5YWl_fW2IxcaT {
-    margin-bottom: calc(90px + 6px + 49px + 6px + 16px + 50px) !important;
+    margin-bottom: calc(90px + 6px + 49px + 6px + 50px) !important;
 }
 
 

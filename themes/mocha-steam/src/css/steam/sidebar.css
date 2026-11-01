@@ -238,18 +238,18 @@
 & Game list
 */
 ._3x1HklzyDs4TEjACrRO2tB ._1ijTaXJJA5YWl_fW2IxcaT {
-    margin-bottom: calc(90px + 16px);
+    margin-bottom: 90px;
     border-radius: 0 0 var(--st-border-radius) var(--st-border-radius);
     background-color: rgb(var(--st-color-2));
 }
 body.QsvsRVwbsApgKt1MhM0fz:has(._3E5iVG630BkOHTaJJaMEMw) ._1ijTaXJJA5YWl_fW2IxcaT {
-    margin-bottom: calc(90px + 6px + 44px + 16px);
+    margin-bottom: calc(90px + 6px + 44px);
 }
 body.QsvsRVwbsApgKt1MhM0fz:has(._1_yS5UP7el0aN4vntx3dx .wi0pDywRgOCxhG7OqQNaA):has(._3E5iVG630BkOHTaJJaMEMw) ._1ijTaXJJA5YWl_fW2IxcaT {
-    margin-bottom: calc(90px + 6px + 49px + 44px + 16px + 6px);
+    margin-bottom: calc(90px + 6px + 49px + 44px + 6px);
 }
 body.QsvsRVwbsApgKt1MhM0fz:has(._1_yS5UP7el0aN4vntx3dx .wi0pDywRgOCxhG7OqQNaA) ._1ijTaXJJA5YWl_fW2IxcaT {
-    margin-bottom: calc(90px + 6px + 49px + 16px);
+    margin-bottom: calc(90px + 6px + 49px);
 }
 
 /*
@@ -265,12 +265,12 @@ body.QsvsRVwbsApgKt1MhM0fz:has(._1_yS5UP7el0aN4vntx3dx .wi0pDywRgOCxhG7OqQNaA) .
 */
 ._3x1HklzyDs4TEjACrRO2tB ._2sYIghGVXJr6tsQVvcryy8 {
     align-items: center;
-    margin: 0 0 0 6px;
+    margin: 0 6px;
     border: none;
     border-radius: var(--st-border-radius);
     background: none;
     background-color: rgb(var(--st-color-1));
-    box-shadow: unset;
+    box-shadow: inset 0 0 0 1px var(--st-edge);
 }
 ._3x1HklzyDs4TEjACrRO2tB ._2sYIghGVXJr6tsQVvcryy8:hover {
     background-color: rgb(var(--st-color-3));
@@ -436,12 +436,12 @@ body:not(:has(._1ijTaXJJA5YWl_fW2IxcaT)) ._1_yS5UP7el0aN4vntx3dx,
 
 ._1_yS5UP7el0aN4vntx3dx {
     position: absolute;
-    bottom: calc(16px + 90px + 6px);
+    bottom: calc(90px + 6px);
     left: 16px;
     height: 49px;
 }
 body:has(._3E5iVG630BkOHTaJJaMEMw) ._1_yS5UP7el0aN4vntx3dx {
-    bottom: calc(16px + 90px + 6px + 44px + 6px);
+    bottom: calc(90px + 6px + 44px + 6px);
 }
 
 
@@ -847,20 +847,20 @@ body:has(._3x1HklzyDs4TEjACrRO2tB):has(._3E5iVG630BkOHTaJJaMEMw) ._1_yS5UP7el0aN
 /*
 & The content frame cannot be scrolled by code. It had been scrolled 30px, which
 & pushed the library up under the 46px Steam top bar. overflow: clip stops that.
-& The bottom stack sits 16px inside the sidebar card: user panel, Downloads 6px
+& The bottom stack sits flush with the sidebar card bottom (the panel's own 6px padding matches the 6px side inset): user panel, Downloads 6px
 & above it, and the list 6px above that (list margins in alwaysShowDownloadbar.css).
 */
 ._1rDh5rXSFZJOqCa4UpnI4z {
     overflow: clip !important;
 }
 ._3cykd-VfN_xBxf3Qxriccm {
-    bottom: 32px !important;
+    bottom: 16px !important;
 }
 body:has(._3x1HklzyDs4TEjACrRO2tB) ._1_yS5UP7el0aN4vntx3dx {
-    bottom: 128px !important;
+    bottom: 112px !important;
 }
 body:has(._3x1HklzyDs4TEjACrRO2tB):has(._3E5iVG630BkOHTaJJaMEMw) ._1_yS5UP7el0aN4vntx3dx {
-    bottom: 178px !important;
+    bottom: 162px !important;
 }
 
 /*
@@ -881,4 +881,12 @@ body:has(._3x1HklzyDs4TEjACrRO2tB):has(._3E5iVG630BkOHTaJJaMEMw) ._1_yS5UP7el0aN
    "offline grey" meaning at about 4.7:1 */
 ._3yD46y5pd3zOGR7CzKs0mC.offline {
     color: rgb(127, 132, 156);
+}
+
+
+/*
+& URL bar above store pages: same hairline as every other card
+*/
+[class~="URLBar"] {
+    box-shadow: inset 0 0 0 1px var(--st-edge) !important;
 }

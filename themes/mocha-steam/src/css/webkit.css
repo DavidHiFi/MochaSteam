@@ -36,6 +36,9 @@
 /*^ Extendium */
 @import url("./plugins/extendium/plugins.css");
 
+/*^ Mocha polish (loads last so it wins) */
+@import url("./webkit/store/polish.css");
+
 
 
 :root {
