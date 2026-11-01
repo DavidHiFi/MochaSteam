@@ -264,8 +264,10 @@ body.QsvsRVwbsApgKt1MhM0fz:has(._1_yS5UP7el0aN4vntx3dx .wi0pDywRgOCxhG7OqQNaA) .
 ! Collection header
 */
 ._3x1HklzyDs4TEjACrRO2tB ._2sYIghGVXJr6tsQVvcryy8 {
+    box-sizing: border-box;
+    height: calc(100% - 4px) !important;
     align-items: center;
-    margin: 0 6px;
+    margin: 2px 6px;
     border: none;
     border-radius: var(--st-border-radius);
     background: none;
@@ -436,12 +438,12 @@ body:not(:has(._1ijTaXJJA5YWl_fW2IxcaT)) ._1_yS5UP7el0aN4vntx3dx,
 
 ._1_yS5UP7el0aN4vntx3dx {
     position: absolute;
-    bottom: calc(90px + 6px);
+    bottom: 90px;
     left: 16px;
     height: 49px;
 }
 body:has(._3E5iVG630BkOHTaJJaMEMw) ._1_yS5UP7el0aN4vntx3dx {
-    bottom: calc(90px + 6px + 44px + 6px);
+    bottom: calc(90px + 44px + 6px);
 }
 
 
@@ -847,7 +849,7 @@ body:has(._3x1HklzyDs4TEjACrRO2tB):has(._3E5iVG630BkOHTaJJaMEMw) ._1_yS5UP7el0aN
 /*
 & The content frame cannot be scrolled by code. It had been scrolled 30px, which
 & pushed the library up under the 46px Steam top bar. overflow: clip stops that.
-& The bottom stack sits flush with the sidebar card bottom (the panel's own 6px padding matches the 6px side inset): user panel, Downloads 6px
+& The bottom stack sits flush with the sidebar card bottom (the panel's own 6px padding matches the 6px side inset): user panel, Downloads touching its box so the visible gap is the panel's 6px padding
 & above it, and the list 6px above that (list margins in alwaysShowDownloadbar.css).
 */
 ._1rDh5rXSFZJOqCa4UpnI4z {
@@ -857,10 +859,10 @@ body:has(._3x1HklzyDs4TEjACrRO2tB):has(._3E5iVG630BkOHTaJJaMEMw) ._1_yS5UP7el0aN
     bottom: 16px !important;
 }
 body:has(._3x1HklzyDs4TEjACrRO2tB) ._1_yS5UP7el0aN4vntx3dx {
-    bottom: 112px !important;
+    bottom: 106px !important;
 }
 body:has(._3x1HklzyDs4TEjACrRO2tB):has(._3E5iVG630BkOHTaJJaMEMw) ._1_yS5UP7el0aN4vntx3dx {
-    bottom: 162px !important;
+    bottom: 156px !important;
 }
 
 /*
