@@ -1,0 +1,138 @@
+/*
+& Gradient hover rings (2026-11-07 refactor)
+&
+& Every hoverable dock/control gets a 1px blue #89b4fa -> mauve #cba6f7
+& gradient border on hover, drawn by a mask-composite ::after ring so the
+& corner radius is respected (border-image cannot round corners). The ring
+& fades in over 150ms ease-out and paints above the resting grey inset edge.
+&
+& Rules for this file:
+& - Add a selector only after checking it has no conflicting ::after and that
+&   position: relative is safe on it (no absolute descendants that anchor
+&   outside the element; never on ReactVirtualized grid cells themselves).
+& - The resting edge and hover fill stay where they are; this file only adds
+&   the ring. Keep the ring 1px and the fade 150ms - matches the taskbar.
+*/
+
+/* Positioning context for the ring. The user chip is already relative
+   (sidebar.css); the rest are static flex children with no escaping
+   absolute descendants (verified live 2026-11-07). Batch 2: dialog, modal
+   and panel list rows plus the lib-home cards, same static pattern.
+   Friends-list rows are NOT ringed: Steam virtualizes that list and the
+   rows may be absolutely positioned. */
+._1Ky59qmywxOUtNcI1cgmkX ._2Lu3d-5qLmW4i19ysTt2jT,
+._3Z3ohQ8-1NKnCZkbS6fvy ._2Lu3d-5qLmW4i19ysTt2jT,
+body.DesktopUI ._1n7Wloe5jZ6fSuvV18NNWI,
+body.DesktopUI ._1BAKXmqQdWRWmWX9_CbhuY,
+body.DesktopUI ._2EstNjFIIZm_WUSKm5Wt7n ._3sTMvhkGXqBzwhsP2-IA5P :is(.QFW0BtI4l77AFmv1xLAkx, ._3B8wRA4H7e_oSksYNqpSPv, ._2NdiftmP-B3C4LPWnNGTCB, ._25gii5r23MmAqXvLZj24tK, ._3k90ug209sE23xAMqcM74s),
+body ._2kwFFHckg8jvnwJfg9-la8 ._18QCu-7MTzd51UpVbYysDy ._1-vlriAtKYDViAEunue4VO,
+body .DialogBody .onPxgvGKxGbKdE7dDWrMx ._2HosnnI_K6IvS1QMGhq46P,
+._240i58XQ0w78YFrd_p-9UY,
+.HruWVPwIDh2FFOOH7OiSs .gioyPMOZttYFcnmgLnsWf .iYW5hWQwg14WYT4PV3xe_,
+._23zCI_59RJTWRvY-_YCFb9 ._1c7FWVusLDkD_Lv6ZB0uTY ._1s3EpCtCwCVJ-7hbeqJeWw ._1Rrhq0ynyX66fxOi1wUNXv ._2c5PPSgndVK0fC-zcQwubR,
+body [class~="PagedSettingsDialog_PageListItem"],
+body [class~="MillenniumDesktopSidebar_LibraryItemButton"],
+body [class*="MillenniumPlugins_PluginField"],
+body [class*="MillenniumThemes_ThemeItem"],
+[class~="AddShowcase"],
+._3YO5BpDmZERh_G8kaWbaSJ,
+._3_xMyCJAh_Dv99KgZ54P3j,
+._8YrRmy_c6O0FCxFT8gjqo,
+._3IWn-2rn7x98o5fDd0rAxb,
+._1HS4twEHtDJ_8MWgJT4VBd,
+._1VNuYHM6BPBOJspC6zPf5r.IbePLaw-vSvhG1GTenYFg,
+._3x1HklzyDs4TEjACrRO2tB ._3pSPluBgf0NeR1kkCLWMhR,
+._3x1HklzyDs4TEjACrRO2tB ._2PF_m-I5yte3WnQhpcz8RC,
+._3x1HklzyDs4TEjACrRO2tB ._3mzKdQXht__YHo6PX1LmB6,
+._3x1HklzyDs4TEjACrRO2tB ._12vo5L1hsNGdao6_ssuirS,
+._3x1HklzyDs4TEjACrRO2tB .vCCmYvn9yQ_V8CpKupllU,
+._3x1HklzyDs4TEjACrRO2tB .uE7Pj4tb2n3_Bx4vjEX0a,
+._3x1HklzyDs4TEjACrRO2tB ._2Szzh5sKyGgnLUR870zbDE,
+._3x1HklzyDs4TEjACrRO2tB ._1TdaAqMFadi0UTqilrkelR,
+._3x1HklzyDs4TEjACrRO2tB ._2sYIghGVXJr6tsQVvcryy8,
+._3x1HklzyDs4TEjACrRO2tB ._2-O4ZG0KrnSrzISHBKctFQ,
+._3x1HklzyDs4TEjACrRO2tB ._3vCzSrrXZzZjVJFZNg9SGu {
+    position: relative;
+}
+
+._1Ky59qmywxOUtNcI1cgmkX ._2Lu3d-5qLmW4i19ysTt2jT::after,
+._3Z3ohQ8-1NKnCZkbS6fvy ._2Lu3d-5qLmW4i19ysTt2jT::after,
+body.DesktopUI ._1n7Wloe5jZ6fSuvV18NNWI::after,
+body.DesktopUI ._1BAKXmqQdWRWmWX9_CbhuY::after,
+body.DesktopUI ._2EstNjFIIZm_WUSKm5Wt7n ._3sTMvhkGXqBzwhsP2-IA5P :is(.QFW0BtI4l77AFmv1xLAkx, ._3B8wRA4H7e_oSksYNqpSPv, ._2NdiftmP-B3C4LPWnNGTCB, ._25gii5r23MmAqXvLZj24tK, ._3k90ug209sE23xAMqcM74s)::after,
+body ._2kwFFHckg8jvnwJfg9-la8 ._18QCu-7MTzd51UpVbYysDy ._1-vlriAtKYDViAEunue4VO::after,
+body .DialogBody .onPxgvGKxGbKdE7dDWrMx ._2HosnnI_K6IvS1QMGhq46P::after,
+._240i58XQ0w78YFrd_p-9UY::after,
+.HruWVPwIDh2FFOOH7OiSs .gioyPMOZttYFcnmgLnsWf .iYW5hWQwg14WYT4PV3xe_::after,
+._23zCI_59RJTWRvY-_YCFb9 ._1c7FWVusLDkD_Lv6ZB0uTY ._1s3EpCtCwCVJ-7hbeqJeWw ._1Rrhq0ynyX66fxOi1wUNXv ._2c5PPSgndVK0fC-zcQwubR::after,
+body [class~="PagedSettingsDialog_PageListItem"]::after,
+body [class~="MillenniumDesktopSidebar_LibraryItemButton"]::after,
+body [class*="MillenniumPlugins_PluginField"]::after,
+body [class*="MillenniumThemes_ThemeItem"]::after,
+[class~="AddShowcase"]::after,
+._3YO5BpDmZERh_G8kaWbaSJ::after,
+._3_xMyCJAh_Dv99KgZ54P3j::after,
+._8YrRmy_c6O0FCxFT8gjqo::after,
+._3IWn-2rn7x98o5fDd0rAxb::after,
+._1HS4twEHtDJ_8MWgJT4VBd::after,
+._1VNuYHM6BPBOJspC6zPf5r.IbePLaw-vSvhG1GTenYFg::after,
+._3x1HklzyDs4TEjACrRO2tB ._3pSPluBgf0NeR1kkCLWMhR::after,
+._3x1HklzyDs4TEjACrRO2tB ._2PF_m-I5yte3WnQhpcz8RC::after,
+._3x1HklzyDs4TEjACrRO2tB ._3mzKdQXht__YHo6PX1LmB6::after,
+._3x1HklzyDs4TEjACrRO2tB ._12vo5L1hsNGdao6_ssuirS::after,
+._3x1HklzyDs4TEjACrRO2tB .vCCmYvn9yQ_V8CpKupllU::after,
+._3x1HklzyDs4TEjACrRO2tB .uE7Pj4tb2n3_Bx4vjEX0a::after,
+._3x1HklzyDs4TEjACrRO2tB ._2Szzh5sKyGgnLUR870zbDE::after,
+._3x1HklzyDs4TEjACrRO2tB ._1TdaAqMFadi0UTqilrkelR::after,
+._3x1HklzyDs4TEjACrRO2tB ._2sYIghGVXJr6tsQVvcryy8::after,
+._3x1HklzyDs4TEjACrRO2tB ._2-O4ZG0KrnSrzISHBKctFQ::after,
+._3x1HklzyDs4TEjACrRO2tB ._3vCzSrrXZzZjVJFZNg9SGu::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: var(--st-ring, linear-gradient(135deg, rgb(137, 180, 250), rgb(203, 166, 247)));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.15s ease-out;
+    pointer-events: none;
+}
+
+._1Ky59qmywxOUtNcI1cgmkX ._2Lu3d-5qLmW4i19ysTt2jT:hover::after,
+._3Z3ohQ8-1NKnCZkbS6fvy ._2Lu3d-5qLmW4i19ysTt2jT:hover::after,
+body.DesktopUI ._1n7Wloe5jZ6fSuvV18NNWI:hover::after,
+body.DesktopUI ._1BAKXmqQdWRWmWX9_CbhuY:hover::after,
+body.DesktopUI ._2EstNjFIIZm_WUSKm5Wt7n ._3sTMvhkGXqBzwhsP2-IA5P :is(.QFW0BtI4l77AFmv1xLAkx, ._3B8wRA4H7e_oSksYNqpSPv, ._2NdiftmP-B3C4LPWnNGTCB, ._25gii5r23MmAqXvLZj24tK, ._3k90ug209sE23xAMqcM74s):hover::after,
+body ._2kwFFHckg8jvnwJfg9-la8 ._18QCu-7MTzd51UpVbYysDy ._1-vlriAtKYDViAEunue4VO:hover:not(._2DpXjzK3WWsOtUWUrcuOG7)::after,
+body .DialogBody .onPxgvGKxGbKdE7dDWrMx ._2HosnnI_K6IvS1QMGhq46P:hover::after,
+._240i58XQ0w78YFrd_p-9UY:hover::after,
+.HruWVPwIDh2FFOOH7OiSs .gioyPMOZttYFcnmgLnsWf .iYW5hWQwg14WYT4PV3xe_:hover::after,
+._23zCI_59RJTWRvY-_YCFb9 ._1c7FWVusLDkD_Lv6ZB0uTY ._1s3EpCtCwCVJ-7hbeqJeWw ._1Rrhq0ynyX66fxOi1wUNXv ._2c5PPSgndVK0fC-zcQwubR:hover::after,
+body [class~="PagedSettingsDialog_PageListItem"]:hover::after,
+body [class~="MillenniumDesktopSidebar_LibraryItemButton"]:hover::after,
+body [class*="MillenniumPlugins_PluginField"]:hover::after,
+body [class*="MillenniumThemes_ThemeItem"]:hover::after,
+[class~="AddShowcase"]:hover::after,
+._3YO5BpDmZERh_G8kaWbaSJ:hover::after,
+._3_xMyCJAh_Dv99KgZ54P3j:hover::after,
+._8YrRmy_c6O0FCxFT8gjqo:hover::after,
+._3IWn-2rn7x98o5fDd0rAxb:hover::after,
+._1HS4twEHtDJ_8MWgJT4VBd:hover::after,
+._1VNuYHM6BPBOJspC6zPf5r.IbePLaw-vSvhG1GTenYFg:hover::after,
+._3x1HklzyDs4TEjACrRO2tB ._3pSPluBgf0NeR1kkCLWMhR:hover::after,
+._3x1HklzyDs4TEjACrRO2tB ._2PF_m-I5yte3WnQhpcz8RC:hover::after,
+._3x1HklzyDs4TEjACrRO2tB ._3mzKdQXht__YHo6PX1LmB6:hover::after,
+._3x1HklzyDs4TEjACrRO2tB ._12vo5L1hsNGdao6_ssuirS:hover::after,
+._3x1HklzyDs4TEjACrRO2tB .vCCmYvn9yQ_V8CpKupllU:hover::after,
+._3x1HklzyDs4TEjACrRO2tB .uE7Pj4tb2n3_Bx4vjEX0a:hover::after,
+._3x1HklzyDs4TEjACrRO2tB ._2Szzh5sKyGgnLUR870zbDE:hover::after,
+._3x1HklzyDs4TEjACrRO2tB ._1TdaAqMFadi0UTqilrkelR:hover::after,
+._3x1HklzyDs4TEjACrRO2tB ._2sYIghGVXJr6tsQVvcryy8:hover::after,
+._3x1HklzyDs4TEjACrRO2tB ._2-O4ZG0KrnSrzISHBKctFQ:hover::after,
+._3x1HklzyDs4TEjACrRO2tB ._3vCzSrrXZzZjVJFZNg9SGu:hover::after {
+    opacity: 1;
+}

@@ -284,16 +284,35 @@ body.QsvsRVwbsApgKt1MhM0fz:has(._1_yS5UP7el0aN4vntx3dx .wi0pDywRgOCxhG7OqQNaA) .
     height: unset;
     display: flex;
     align-items: center;
-    padding: 0 2px 0 4px;
+    padding: 0 2px;
+}
+/* The 20px svg overflowed the 16px box and painted white (Steam default);
+   theme it to the header's subtext1 and let the 16px box centre it. */
+._3x1HklzyDs4TEjACrRO2tB ._2sYIghGVXJr6tsQVvcryy8 .SVGIcon_PlusCircle {
+    fill: rgb(186, 194, 222) !important;
+    stroke: rgba(186, 194, 222, 0.55) !important;
 }
 
 
-/** Title */
+/** Title and count */
 ._3x1HklzyDs4TEjACrRO2tB ._2sYIghGVXJr6tsQVvcryy8 ._2mZ8LlvoUiyeEUtIWuTri {
     height: unset;
     /* Fira Code caps sit 3.5px above the line box centre; this centres them in the pill */
     position: relative;
     top: 3.5px;
+}
+/* Baseline-align the count "(58)" with the title and drop the old 1px shift:
+   the count's 12px box put its ink 4px above the title's ink (measured live
+   2026-11-07). Baselines put both inks on one line; the -1.5px then centres
+   that ink on the 22px pill centre, level with the ± icon bar (pixel-measured
+   on the 4x capture: ink centre 82 vs pill centre 75.5 at 4x = 1.6px). */
+._3x1HklzyDs4TEjACrRO2tB ._2sYIghGVXJr6tsQVvcryy8 ._3cV3O8FnPQqpJO5kIMUlLX {
+    align-items: baseline;
+}
+._3x1HklzyDs4TEjACrRO2tB ._2sYIghGVXJr6tsQVvcryy8 ._2mZ8LlvoUiyeEUtIWuTri,
+._3x1HklzyDs4TEjACrRO2tB ._2sYIghGVXJr6tsQVvcryy8 ._29uten9Yy8q-n7woDEOXVF {
+    position: relative;
+    top: -1.5px;
 }
 
 

@@ -134,6 +134,15 @@ form[role="search"] button[type="submit"] svg {
     border-radius: 8px !important;
 }
 
+/* Steam wraps the dropdown in a Panel that carries its own backdrop-filter,
+   which makes that wrapper the backdrop root: the panel's blur then samples
+   an empty layer and page text reads straight through the tint. Drop the
+   wrapper's filter so the panel blurs the page itself. */
+.Panel.Focusable:has(> [id^="searchSuggestions"]) {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+}
+
 
 /*
 & Square blur layers behind rounded cards (the box poking out past the
