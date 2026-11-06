@@ -297,9 +297,6 @@ body.QsvsRVwbsApgKt1MhM0fz:has(._1_yS5UP7el0aN4vntx3dx .wi0pDywRgOCxhG7OqQNaA) .
 /** Title and count */
 ._3x1HklzyDs4TEjACrRO2tB ._2sYIghGVXJr6tsQVvcryy8 ._2mZ8LlvoUiyeEUtIWuTri {
     height: unset;
-    /* Fira Code caps sit 3.5px above the line box centre; this centres them in the pill */
-    position: relative;
-    top: 3.5px;
 }
 /* Baseline-align the count "(58)" with the title and drop the old 1px shift:
    the count's 12px box put its ink 4px above the title's ink (measured live

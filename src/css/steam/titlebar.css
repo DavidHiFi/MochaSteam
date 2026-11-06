@@ -76,16 +76,10 @@
     padding: 0 6px 0 0;
 }
 
-<<<<<<< HEAD
-/* Item on hover */
-._1Ky59qmywxOUtNcI1cgmkX ._2Lu3d-5qLmW4i19ysTt2jT:hover {
-    color: rgb(205, 214, 244);
-=======
 /* Item on hover: mantle fill behind the label, like the taskbar dock hover */
 ._1Ky59qmywxOUtNcI1cgmkX ._2Lu3d-5qLmW4i19ysTt2jT:hover {
     color: rgb(205, 214, 244);
     background-color: rgb(var(--st-color-1));
->>>>>>> 59b71be (Hover rings + taskbar dock borders + header baseline refactor)
 }
 
 /* Text Logo - "SpaceTheme" label removed in-theme (was Quick CSS) */
@@ -221,8 +215,6 @@ body ._2iJsgdTIX9Tj23rWnB7Q-c ._2ohOQgahhMYnIEfAQmv9B8:focus-visible {
 ._3Z3ohQ8-1NKnCZkbS6fvy ._19axKcqYRuaJ8vdYKYmtTQ:hover {
     color: #fff;
 }
-<<<<<<< HEAD
-=======
 /* Nav tab wrapper: mantle hover fill + pill radius for the hover ring */
 ._3Z3ohQ8-1NKnCZkbS6fvy ._2Lu3d-5qLmW4i19ysTt2jT {
     border-radius: 8px;
@@ -231,7 +223,6 @@ body ._2iJsgdTIX9Tj23rWnB7Q-c ._2ohOQgahhMYnIEfAQmv9B8:focus-visible {
 ._3Z3ohQ8-1NKnCZkbS6fvy ._2Lu3d-5qLmW4i19ysTt2jT:hover {
     background-color: rgb(var(--st-color-1));
 }
->>>>>>> 59b71be (Hover rings + taskbar dock borders + header baseline refactor)
 
 /*
 & Floating pills, 2026-11-01: the menu (Steam, View, Friends, Games, Help)
