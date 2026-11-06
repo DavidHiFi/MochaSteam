@@ -1,4 +1,4 @@
-.MillenniumSettings.ModalDialogPopup {
+﻿.MillenniumSettings.ModalDialogPopup {
     display: flex;
     flex-direction: column;
     margin: 0 !important;
@@ -29,7 +29,7 @@ body .MillenniumDesktopSidebar {
     background-color: var(--st-glass);
     -webkit-backdrop-filter: var(--st-glass-blur);
     backdrop-filter: var(--st-glass-blur);
-    box-shadow: inset 0 0 0 1px var(--st-edge), 0 10px 32px rgba(0, 0, 0, 0.55);
+    box-shadow: inset 0 0 0 2px var(--st-edge), 0 10px 32px rgba(0, 0, 0, 0.55);
     transform: translate(-50%, -50%);
     transition: unset;
 }
@@ -223,7 +223,7 @@ body .MillenniumSettings .DialogControlsSection {
     padding: 8px 0 12px;
     border-radius: var(--st-border-radius, 16px);
     background-color: rgba(var(--st-surface-0, 49, 50, 68), 0.3);
-    box-shadow: inset 0 0 0 1px var(--st-edge, rgba(88, 91, 112, 0.7));
+    box-shadow: inset 0 0 0 2px var(--st-edge, rgba(88, 91, 112, 0.7));
 }
 
 body .MillenniumSettings .DialogControlsSection .Field {
@@ -272,7 +272,7 @@ body .MillenniumSettings .MillenniumThemes_ThemeItem {
     padding: 8px 12px 10px !important;
     border-radius: var(--st-border-radius, 16px) !important;
     background-color: rgba(var(--st-surface-0, 49, 50, 68), 0.28) !important;
-    box-shadow: inset 0 0 0 1px var(--st-edge, rgba(88, 91, 112, 0.7)) !important;
+    box-shadow: inset 0 0 0 2px var(--st-edge, rgba(88, 91, 112, 0.7)) !important;
 }
 
 body .MillenniumSettings .MillenniumPlugins_PluginField:hover,
@@ -304,7 +304,7 @@ body .MillenniumDesktopSidebar_EditorContent .Field.Panel {
     padding: 10px 14px !important;
     border-radius: var(--st-border-radius, 16px) !important;
     background: rgba(var(--st-surface-0, 49, 50, 68), 0.35) !important;
-    box-shadow: inset 0 0 0 1px var(--st-edge, rgba(88, 91, 112, 0.7)) !important;
+    box-shadow: inset 0 0 0 2px var(--st-edge, rgba(88, 91, 112, 0.7)) !important;
 }
 body .MillenniumDesktopSidebar_EditorContent .Field.Panel::after {
     display: none !important;
@@ -327,7 +327,7 @@ body .MillenniumSettings .FieldDescription {
 body .MillenniumDesktopSidebar .MillenniumIconButton {
     color: #cdd6f4;
     background: rgb(var(--st-surface-0, 49, 50, 68));
-    box-shadow: inset 0 0 0 1px var(--st-edge, rgba(88, 91, 112, 0.7));
+    box-shadow: inset 0 0 0 2px var(--st-edge, rgba(88, 91, 112, 0.7));
 }
 
 /* Dropdowns and menu buttons left in Steam grey */
@@ -335,7 +335,7 @@ body .MillenniumDesktopSidebar .DialogDropDown,
 body .MillenniumSettings .DialogDropDown {
     color: #cdd6f4 !important;
     background: rgb(var(--st-surface-0, 49, 50, 68)) !important;
-    box-shadow: inset 0 0 0 1px var(--st-edge, rgba(88, 91, 112, 0.7)) !important;
+    box-shadow: inset 0 0 0 2px var(--st-edge, rgba(88, 91, 112, 0.7)) !important;
 }
 
 /*
@@ -358,7 +358,7 @@ body [class*="AccessibilityOptionsButton"],
 body .DialogDropDown {
     color: #cdd6f4 !important;
     background: rgb(var(--st-surface-0, 49, 50, 68)) !important;
-    box-shadow: inset 0 0 0 1px var(--st-edge, rgba(88, 91, 112, 0.7)) !important;
+    box-shadow: inset 0 0 0 2px var(--st-edge, rgba(88, 91, 112, 0.7)) !important;
 }
 body button.DialogButton.MillenniumIconButton:hover,
 body [class*="AccessibilityOptionsButton"]:hover,

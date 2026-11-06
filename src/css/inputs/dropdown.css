@@ -1,4 +1,4 @@
-/*
+﻿/*
 ! Dropdown button
 */
 ._DialogInputContainer {
@@ -54,7 +54,7 @@
     min-width: unset !important;
     max-height: 90% !important;
     padding: 6px !important;
-    border: 1px solid var(--st-edge, rgba(88, 91, 112, 0.7)) !important;
+    border: 2px solid var(--st-edge, rgba(88, 91, 112, 0.7)) !important;
     border-radius: var(--st-border-radius) !important;
     background: unset !important;
     background-color: var(--st-glass, rgba(24, 24, 37, 0.72)) !important;

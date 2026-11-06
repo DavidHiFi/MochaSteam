@@ -1,4 +1,4 @@
-:root {
+﻿:root {
     /* Catppuccin Mocha (https://github.com/catppuccin/catppuccin)
        base #1e1e2e - mantle #181825 - crust #11111b - surface0 #313244
        accents: Blue #89b4fa / Mauve #cba6f7 (owner's blue+mauve pair) */
@@ -71,7 +71,7 @@
 */
 body:has(._3x1HklzyDs4TEjACrRO2tB) [class~="BottomBar"] {
     background-color: rgb(var(--st-color-3)) !important;
-    box-shadow: inset 0 0 0 1px var(--st-edge, rgba(69, 71, 90, 0.9)) !important;
+    box-shadow: inset 0 0 0 2px var(--st-edge, rgba(69, 71, 90, 0.9)) !important;
     color: rgb(var(--st-text-soft)) !important;
 }
 
@@ -145,7 +145,7 @@ body .ModalPosition_Content {
     -webkit-backdrop-filter: var(--st-glass-blur, blur(20px) saturate(1.35)) !important;
     backdrop-filter: var(--st-glass-blur, blur(20px) saturate(1.35)) !important;
     border-radius: var(--st-border-radius);
-    box-shadow: inset 0 0 0 1px var(--st-edge, rgba(69, 71, 90, 0.9)), 0 10px 32px rgba(0, 0, 0, 0.55);
+    box-shadow: inset 0 0 0 2px var(--st-edge, rgba(69, 71, 90, 0.9)), 0 10px 32px rgba(0, 0, 0, 0.55);
 }
 
 /* Keep one backdrop per dialog. A second filter inside it cannot sample the

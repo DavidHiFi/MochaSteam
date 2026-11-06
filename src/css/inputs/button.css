@@ -1,4 +1,4 @@
-button,
+﻿button,
 button span,
 .btn_large,
 .btn_large span,
@@ -89,41 +89,25 @@ body button.DialogButton::after {
 body button.DialogButton {
     color: #cdd6f4 !important;
     background: rgb(var(--st-surface-0, 49, 50, 68)) !important;
-<<<<<<< HEAD
-    box-shadow: inset 0 0 0 1px var(--st-edge, rgba(88, 91, 112, 0.7)) !important;
-=======
-    border: 1px solid var(--st-edge) !important;
->>>>>>> 59b71be (Hover rings + taskbar dock borders + header baseline refactor)
+    border: 2px solid var(--st-edge) !important;
 }
 body button.DialogButton:not(:disabled):hover,
 body button.DialogButton.gpfocus {
     color: #cdd6f4 !important;
-<<<<<<< HEAD
-    background: rgb(var(--st-surface-1, 69, 71, 90)) !important;
-    box-shadow: inset 0 0 0 1px rgba(137, 180, 250, 0.6) !important;
-=======
     border-color: transparent !important;
     background: linear-gradient(rgb(var(--st-surface-1, 69, 71, 90)), rgb(var(--st-surface-1, 69, 71, 90))) padding-box,
         var(--st-ring, linear-gradient(135deg, rgb(137, 180, 250), rgb(203, 166, 247))) border-box !important;
->>>>>>> 59b71be (Hover rings + taskbar dock borders + header baseline refactor)
 }
 body button.DialogButton.Primary {
     color: #11111b !important;
     background: #89b4fa !important;
-<<<<<<< HEAD
-=======
     border-color: transparent !important;
->>>>>>> 59b71be (Hover rings + taskbar dock borders + header baseline refactor)
     box-shadow: none !important;
 }
 body button.DialogButton.Primary:not(:disabled):hover,
 body button.DialogButton.Primary.gpfocus {
     color: #11111b !important;
-<<<<<<< HEAD
-    background: #b4befe !important;
-=======
     background: var(--st-ring, linear-gradient(135deg, rgb(137, 180, 250), rgb(203, 166, 247))) !important;
->>>>>>> 59b71be (Hover rings + taskbar dock borders + header baseline refactor)
 }
 body button.DialogButton:disabled {
     color: #6c7086 !important;

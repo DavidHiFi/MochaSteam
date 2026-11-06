@@ -1,4 +1,4 @@
-/*
+﻿/*
 & Gamepage
 */
 
@@ -1374,7 +1374,7 @@ div:has(>._1J21tLst5SEhBPkVRT53UV._28ZR8gHitOrJaSLxcIAl2p) {
 
 /* Non-Steam games: Steam's dashed placeholder box, drawn as a theme card. */
 ._31ptFGGMZrSQc5BCX1e5lm ._1TGl52GwsFQg3CXUYvThP- {
-    border: 1px solid var(--st-edge, rgba(88, 91, 112, 0.7));
+    border: 2px solid var(--st-edge, rgba(88, 91, 112, 0.7));
     border-radius: var(--st-border-radius);
     background-color: rgb(var(--st-color-2));
 }

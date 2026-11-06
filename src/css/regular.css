@@ -27,16 +27,14 @@
     --st-glass: rgba(24, 24, 37, 0.72);
     --st-glass-blur: blur(20px) saturate(1.35);
     /* Hairline edge that separates one Mocha surface from the next.
-   /* Hairline edge that separates one Mocha surface from the next.
-      Taskbar dock border since 2026-11-07: surface1 #45475a at 90% is the
-      exact colour+alpha the Windhawk docks use (#E645475A), per the owner's
-      "use my taskbar colours" request. The old surface2 grey moved down to
-      --st-edge-strong so nothing lost the extra strength it had. This
-      supersedes the 2026-10-31 solid surface2 value from the bundle sync. */
-    --st-edge: rgba(69, 71, 90, 0.9);
+       Taskbar dock border since 2026-11-07: surface1 #45475a at 90% is the
+       exact colour+alpha the Windhawk docks use (#E645475A), per the owner's
+       "use my taskbar colours" request. The old surface2 grey moved down to
+       --st-edge-strong so nothing lost the extra strength it had. */
+    --st-edge: rgba(49, 50, 68, 0.9);
     /* The stronger edge for surfaces that sit on busier fills (menus, toggle
        rails, focus rings): the old --st-edge surface2 #585b70. */
-    --st-edge-strong: rgb(88, 91, 112);
+    --st-edge-strong: rgb(69, 71, 90);
     /* Hover ring: blue #89b4fa to mauve #cba6f7 gradient border, applied by a
        1px mask-composite ::after ring in hover-rings.css on every hoverable. */
     --st-ring: linear-gradient(135deg, rgb(var(--st-accent-1)), rgb(var(--st-accent-2)));
@@ -58,7 +56,7 @@ body .TextToolTip {
     background-color: var(--st-glass) !important;
     -webkit-backdrop-filter: var(--st-glass-blur) !important;
     backdrop-filter: var(--st-glass-blur) !important;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5), inset 0 0 0 1px var(--st-edge) !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5), inset 0 0 0 2px var(--st-edge) !important;
     color: rgb(var(--st-text-strong, 205, 214, 244)) !important;
 }
 
@@ -85,7 +83,7 @@ body [class~="ShowcaseHeader"] .DialogDropDown {
     height: 25px !important;
     padding: 0 7px !important;
     border-radius: 999px !important;
-    box-shadow: inset 0 0 0 1px var(--st-edge) !important;
+    box-shadow: inset 0 0 0 2px var(--st-edge) !important;
 }
 body [class~="ShowcaseHeader"] .DialogDropDown_CurrentDisplay {
     display: flex !important;
@@ -109,7 +107,7 @@ body .DialogDropDownMenu {
     background-color: var(--st-glass) !important;
     -webkit-backdrop-filter: var(--st-glass-blur) !important;
     backdrop-filter: var(--st-glass-blur) !important;
-    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.55), inset 0 0 0 1px var(--st-edge) !important;
+    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.55), inset 0 0 0 2px var(--st-edge) !important;
 }
 body .DialogDropDownMenu_Item {
     border-radius: var(--st-border-radius) !important;
@@ -130,7 +128,7 @@ body ._2sGn0cBsD44TjnUIh-lx9d {
     background-color: var(--st-glass) !important;
     -webkit-backdrop-filter: var(--st-glass-blur) !important;
     backdrop-filter: var(--st-glass-blur) !important;
-    box-shadow: inset 0 0 0 1px var(--st-edge) !important;
+    box-shadow: inset 0 0 0 2px var(--st-edge) !important;
 }
 
 

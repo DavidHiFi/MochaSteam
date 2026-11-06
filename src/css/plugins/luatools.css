@@ -1,7 +1,7 @@
-/* LuaTools paints its dialogs and buttons with inline Steam-blue styles.
+﻿/* LuaTools paints its dialogs and buttons with inline Steam-blue styles.
    Inline style attributes only yield to !important. */
 :is(.luatools-overlay, .luatools-settings-overlay, .luatools-loadedapps-overlay) > div {
-    border: 1px solid var(--st-edge, rgba(88, 91, 112, 0.7)) !important;
+    border: 2px solid var(--st-edge, rgba(88, 91, 112, 0.7)) !important;
     border-radius: var(--st-border-radius) !important;
     background: rgb(var(--st-mantle, 24, 24, 37)) !important;
     box-shadow: 0 8px 32px rgba(17, 17, 27, 0.6) !important;
@@ -18,7 +18,7 @@
 
 /* Scrolling list well and its rows. */
 :is(.luatools-overlay, .luatools-settings-overlay, .luatools-loadedapps-overlay) > div > div[style*="overflow"] {
-    border: 1px solid var(--st-edge, rgba(88, 91, 112, 0.7)) !important;
+    border: 2px solid var(--st-edge, rgba(88, 91, 112, 0.7)) !important;
     border-radius: calc(var(--st-border-radius) / 2) !important;
     background: rgba(49, 50, 68, 0.5) !important;
 }
@@ -34,7 +34,7 @@
 
 .luatools-btn,
 .luatools-header-button {
-    border: 1px solid var(--st-edge, rgba(88, 91, 112, 0.7)) !important;
+    border: 2px solid var(--st-edge, rgba(88, 91, 112, 0.7)) !important;
     background: rgb(49, 50, 68) !important;
     box-shadow: none !important;
     color: rgb(205, 214, 244) !important;

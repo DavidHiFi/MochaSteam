@@ -1,4 +1,4 @@
-/* Base */
+﻿/* Base */
 body.DesktopUI {
     background: unset !important;
 }
@@ -20,7 +20,7 @@ body.DesktopUI .PP7LM0Ow1K5qkR8WElLpt {
     min-width: unset !important;
     max-height: 90%;
     padding: 10px !important;
-    border: 1px solid var(--st-edge-strong, rgb(108, 112, 134));
+    border: 2px solid var(--st-edge-strong, rgb(108, 112, 134));
     border-radius: var(--st-border-radius);
     background: unset;
     background-color: rgb(var(--st-mantle, 24, 24, 37));
