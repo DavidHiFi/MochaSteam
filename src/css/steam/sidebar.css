@@ -782,6 +782,13 @@ body:not(:has(._1ijTaXJJA5YWl_fW2IxcaT)) ._3cykd-VfN_xBxf3Qxriccm {
     background-color: transparent !important;
 }
 
+/* The Home row and the filter block share one panel now, so no dead gap
+   between them: the same 6px rhythm as the rows inside. */
+._3x1HklzyDs4TEjACrRO2tB ._2TKEazUUS3TlniZfpc8OOe {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
 /* The hard divider that used to cut the search block off the game list */
 ._3x1HklzyDs4TEjACrRO2tB ._20QAC4WMXm8qFE8waUT5oo::after {
     display: none !important;

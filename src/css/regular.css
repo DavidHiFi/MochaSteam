@@ -37,7 +37,7 @@
     --st-edge-strong: rgb(69, 71, 90);
     /* Hover ring: blue #89b4fa to mauve #cba6f7 gradient border, applied by a
        1px mask-composite ::after ring in hover-rings.css on every hoverable. */
-    --st-ring: linear-gradient(135deg, rgb(var(--st-accent-1)), rgb(var(--st-accent-2)));
+    --st-ring: linear-gradient(135deg, #89b4fa, #cba6f7);
 }
 
 

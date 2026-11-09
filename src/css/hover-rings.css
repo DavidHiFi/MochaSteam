@@ -51,7 +51,19 @@ body [class*="MillenniumThemes_ThemeItem"],
 ._3x1HklzyDs4TEjACrRO2tB ._1TdaAqMFadi0UTqilrkelR,
 ._3x1HklzyDs4TEjACrRO2tB ._2sYIghGVXJr6tsQVvcryy8,
 ._3x1HklzyDs4TEjACrRO2tB ._2-O4ZG0KrnSrzISHBKctFQ,
-._3x1HklzyDs4TEjACrRO2tB ._3vCzSrrXZzZjVJFZNg9SGu {
+._3x1HklzyDs4TEjACrRO2tB ._3vCzSrrXZzZjVJFZNg9SGu,
+body .LibraryItemBoxSubscript,
+body .DialogDropDown,
+body .MillenniumSettings .DialogControlsSection:not(.MillenniumButtonsSection),
+body .TitleBarControls .AccountMenu,
+body .TitleBarControls .Button,
+body .TitleBarControls .FriendsButton,
+body .BottomBar .AddGameButton,
+body .BottomBar,
+body .ShowcaseHeader .easygrid-button,
+body .ShowcaseHeader .Collapser,
+body .ShowcaseHeader .Rule,
+body .TitleBarControls .st-steam-settings > div {
     position: relative;
 }
 
@@ -86,7 +98,19 @@ body [class*="MillenniumThemes_ThemeItem"]::after,
 ._3x1HklzyDs4TEjACrRO2tB ._1TdaAqMFadi0UTqilrkelR::after,
 ._3x1HklzyDs4TEjACrRO2tB ._2sYIghGVXJr6tsQVvcryy8::after,
 ._3x1HklzyDs4TEjACrRO2tB ._2-O4ZG0KrnSrzISHBKctFQ::after,
-._3x1HklzyDs4TEjACrRO2tB ._3vCzSrrXZzZjVJFZNg9SGu::after {
+._3x1HklzyDs4TEjACrRO2tB ._3vCzSrrXZzZjVJFZNg9SGu::after,
+body .LibraryItemBoxSubscript::after,
+body .DialogDropDown::after,
+body .MillenniumSettings .DialogControlsSection:not(.MillenniumButtonsSection)::after,
+body .TitleBarControls .AccountMenu::after,
+body .TitleBarControls .Button::after,
+body .TitleBarControls .FriendsButton::after,
+body .BottomBar .AddGameButton::after,
+body .BottomBar::after,
+body .ShowcaseHeader .easygrid-button::after,
+body .ShowcaseHeader .Collapser::after,
+body .ShowcaseHeader .Rule::after,
+body .TitleBarControls .st-steam-settings > div::after {
     content: "";
     position: absolute;
     inset: 0;
@@ -133,6 +157,38 @@ body [class*="MillenniumThemes_ThemeItem"]:hover::after,
 ._3x1HklzyDs4TEjACrRO2tB ._1TdaAqMFadi0UTqilrkelR:hover::after,
 ._3x1HklzyDs4TEjACrRO2tB ._2sYIghGVXJr6tsQVvcryy8:hover::after,
 ._3x1HklzyDs4TEjACrRO2tB ._2-O4ZG0KrnSrzISHBKctFQ:hover::after,
-._3x1HklzyDs4TEjACrRO2tB ._3vCzSrrXZzZjVJFZNg9SGu:hover::after {
+._3x1HklzyDs4TEjACrRO2tB ._3vCzSrrXZzZjVJFZNg9SGu:hover::after,
+body .LibraryItemBoxSubscript:hover::after,
+body .DialogDropDown:hover::after,
+body .MillenniumSettings .DialogControlsSection:not(.MillenniumButtonsSection):hover::after,
+body .TitleBarControls .AccountMenu:hover::after,
+body .TitleBarControls .Button:hover::after,
+body .TitleBarControls .FriendsButton:hover::after,
+body .BottomBar .AddGameButton:hover::after,
+body .BottomBar:hover::after,
+body .ShowcaseHeader .easygrid-button:hover::after,
+body .ShowcaseHeader .Collapser:hover::after,
+body .ShowcaseHeader .Rule:hover::after,
+body .TitleBarControls .st-steam-settings > div:hover::after {
     opacity: 1;
+}
+
+/* Date labels keep an edge at rest without changing capsule geometry. */
+body .LibraryItemBoxSubscript {
+    box-shadow: inset 0 0 0 2px var(--st-edge, rgba(69, 71, 90, 0.9));
+}
+body .DialogDropDown:focus-within::after,
+body .MillenniumSettings .DialogControlsSection:focus-within::after {
+    opacity: 1;
+}
+/* The focused control owns its frame when the pointer is inside it. */
+body .MillenniumSettings .DialogControlsSection:has(:is(.DialogDropDown, input, button):hover)::after {
+    opacity: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+    body .LibraryItemBoxSubscript::after,
+    body .DialogDropDown::after,
+    body .MillenniumSettings .DialogControlsSection::after {
+        transition: none;
+    }
 }

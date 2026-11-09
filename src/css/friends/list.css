@@ -864,3 +864,39 @@
 .friendlist .friendListFooter {
     display: none;
 }
+/* The empty quick-access hint must grow with wrapped text in narrow windows. */
+.friendlist .quickAccessFriends.emptyQuickAccess {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    height: auto;
+    min-height: 96px;
+    flex-shrink: 0;
+    padding: 16px;
+    gap: 8px;
+    overflow: visible;
+}
+.friendlist .emptyQuickAccess .quickAccessFriendsMessage {
+    box-sizing: border-box;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    white-space: normal;
+    line-height: 1.5;
+}
+.friendlist .emptyQuickAccess .quickAccessFriendsMessageDismiss {
+    position: static;
+    align-self: flex-end;
+    display: flex;
+    align-items: center;
+    min-height: 24px;
+}
+.friendlist .emptyQuickAccess .dropTargetBox {
+    inset: 8px;
+    width: auto;
+    height: auto;
+    transform: none;
+    pointer-events: none;
+}

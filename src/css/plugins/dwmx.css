@@ -89,7 +89,7 @@ body:has(._3x1HklzyDs4TEjACrRO2tB) [class~="TitleBarControls"] {
 
 [class~="AddShowcase"] {
     background-color: rgba(var(--st-panel), var(--st-panel-opacity)) !important;
-    box-shadow: inset 0 0 0 1px rgba(var(--st-hairline), 0.55) !important;
+    box-shadow: inset 0 0 0 2px var(--st-edge, rgba(69, 71, 90, 0.9)) !important;
     color: rgb(var(--st-text-soft)) !important;
     -webkit-backdrop-filter: blur(12px) saturate(1.25);
     backdrop-filter: blur(12px) saturate(1.25);
@@ -116,7 +116,74 @@ body:has(._3x1HklzyDs4TEjACrRO2tB) ._1_yS5UP7el0aN4vntx3dx ._3vCzSrrXZzZjVJFZNg9
 }
 
 [class~="AddShowcase"]:hover {
-    box-shadow: inset 0 0 0 1px rgba(var(--st-hairline), 0.9) !important;
+    box-shadow: inset 0 0 0 2px var(--st-edge, rgba(69, 71, 90, 0.9)) !important;
+}
+
+/* SGDB (easygrid) sits beside the sort dropdowns: same chip and resting edge.
+   Its stock border matched its own fill, so it looked borderless. */
+body .ShowcaseHeader .easygrid-button {
+    background-color: rgba(49, 50, 68, 0.45) !important;
+    border: 0 !important;
+    border-radius: 999px !important;
+    box-shadow: inset 0 0 0 2px var(--st-edge, rgba(49, 50, 68, 0.9)) !important;
+}
+body .ShowcaseHeader .easygrid-button:hover {
+    background-color: rgba(49, 50, 68, 0.7) !important;
+}
+
+/* One SGDB button only. easygrid checks for its button before React has drawn
+   the first one, so a second quick page event adds a twin beside it. */
+body .ShowcaseHeader > div:has(> .easygrid-button) ~ div:has(> .easygrid-button) {
+    display: none !important;
+}
+
+/* "Sort by" and the dropdown text sat a pixel high inside their row. */
+body .ShowcaseHeader .SortingDropDownLabel,
+body .ShowcaseHeader .DialogDropDown_CurrentDisplay {
+    transform: translateY(1px);
+}
+
+/* Shelf divider: a dark line at rest. The bar it grows into while the shelf
+   header is hovered is a rounded chip with the same fill, edge and ring as
+   the controls beside it, instead of a flat light-grey slab. */
+body .ShowcaseHeader .Rule {
+    margin-inline-start: 8px !important;
+    border-radius: 999px;
+    background-color: var(--st-edge, rgba(49, 50, 68, 0.9)) !important;
+}
+body .ShowcaseHeader:hover .Rule {
+    background-color: rgba(var(--st-panel), var(--st-panel-opacity)) !important;
+    box-shadow: inset 0 0 0 2px var(--st-edge, rgba(49, 50, 68, 0.9));
+}
+body .ShowcaseHeader .Rule:hover {
+    background-color: rgba(var(--st-panel-hover), var(--st-panel-opacity)) !important;
+}
+body .ShowcaseHeader .DragHandle {
+    stroke: rgba(166, 173, 200, 0.7);
+    fill: rgba(166, 173, 200, 0.7);
+}
+
+/* Shelf collapse arrow: the same dark chip and edge, not a white wash. */
+body .ShowcaseHeader .Collapser {
+    background-color: rgba(var(--st-panel), var(--st-panel-opacity)) !important;
+    box-shadow: inset 0 0 0 2px var(--st-edge, rgba(49, 50, 68, 0.9));
+}
+body .ShowcaseHeader .Collapser:hover {
+    background-color: rgba(var(--st-panel-hover), var(--st-panel-opacity)) !important;
+}
+body .ShowcaseHeader .Collapser polyline {
+    stroke: rgb(166, 173, 200) !important;
+}
+body .ShowcaseHeader .Collapser:hover polyline {
+    stroke: rgb(205, 214, 244) !important;
+}
+
+/* Account row and the icon pills under it light up on hover like the
+   downloads chip. Their own hover colour equals their resting colour under
+   the mica tokens, so nothing changed before. */
+body:has(._3x1HklzyDs4TEjACrRO2tB) ._3cykd-VfN_xBxf3Qxriccm ._2Lu3d-5qLmW4i19ysTt2jT ._3yD46y5pd3zOGR7CzKs0mC:hover,
+body:has(._3x1HklzyDs4TEjACrRO2tB) ._3cykd-VfN_xBxf3Qxriccm :is(._2Szzh5sKyGgnLUR870zbDE, ._1TdaAqMFadi0UTqilrkelR):hover {
+    background-color: rgba(var(--st-panel-hover), var(--st-panel-opacity)) !important;
 }
 
 
@@ -184,8 +251,8 @@ html.MillenniumWindow_SteamBrowser .dm2SGcwBwj4- .WCG-2-OYepA- {
 }
 
 html.MillenniumWindow_MainSteamWindow ._1ENHEsrSLcTRtPQFl1F-wL {
-    background-color: rgba(var(--st-mantle, 24, 24, 37), 0.55) !important;
-    background-image: none !important;
+    background-color: transparent !important;
+    background-image: linear-gradient(to bottom, transparent, rgba(var(--st-mantle, 24, 24, 37), 0.55) 56px) !important;
 }
 html.MillenniumWindow_MainSteamWindow ._3Z7VQ1IMk4E3HsHvrkLNgo {
     background: transparent !important;
