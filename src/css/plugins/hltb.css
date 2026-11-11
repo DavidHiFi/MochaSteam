@@ -27,7 +27,8 @@
     background-color: rgba(var(--st-panel, 24, 24, 37), 0.72) !important;
     backdrop-filter: blur(6px) !important;
     -webkit-backdrop-filter: blur(6px) !important;
-    box-shadow: 0px 4px 8px 0px rgb(0 0 0 / 50%);
+    /* Round 11: the resting edge the other game-page pills have. */
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, .9), 0px 4px 8px 0px rgb(0 0 0 / 50%);
 }
 #hltb-for-millennium .hltb-info ul li:has(.hltb-details-btn) {
     height: 38px;
@@ -64,6 +65,34 @@
 #hltb-for-millennium .hltb-info ul li .hltb-details-btn:hover::after {
     color: rgb(var(--st-blue));
 }
+
+/* Round 11: the Search HLTB pill is a button, so it gets the soft icon colour
+   and the blue-to-mauve hover ring the other game-page buttons have. */
+#hltb-for-millennium .hltb-info ul li .hltb-details-btn { color: rgb(186, 194, 222) !important; }
+#hltb-for-millennium .hltb-info ul li .hltb-details-btn::after { color: rgb(186, 194, 222); }
+#hltb-for-millennium .hltb-info ul li:has(.hltb-details-btn) {
+    position: relative;
+    transition: background-color .15s;
+}
+#hltb-for-millennium .hltb-info ul li:has(.hltb-details-btn)::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    padding: 2px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, rgb(137, 180, 250), rgb(203, 166, 247));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity .15s;
+    pointer-events: none;
+}
+#hltb-for-millennium .hltb-info ul li:has(.hltb-details-btn:hover) {
+    background-color: rgba(17, 17, 27, .85) !important;
+}
+#hltb-for-millennium .hltb-info ul li:has(.hltb-details-btn:hover)::after { opacity: 1; }
 
 
 

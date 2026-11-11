@@ -1,4 +1,4 @@
-﻿/*
+/*
 & Gamepage
 */
 
@@ -1476,3 +1476,199 @@ div:has(>._1J21tLst5SEhBPkVRT53UV._28ZR8gHitOrJaSLxcIAl2p) {
 ._1FnJ6dPuknQFQ2RTpKTI16:not(#a):not(#b) ._3ydigb6zZAjJ0JCDgHwSYA._2AzIX5kl9k6JnxLfR5H4kX::before { color: rgb(137, 180, 250) !important; }
 ._1FnJ6dPuknQFQ2RTpKTI16:has(.SVGIcon_Play):not(#a):not(#b) ._3ydigb6zZAjJ0JCDgHwSYA._2AzIX5kl9k6JnxLfR5H4kX::before { color: rgb(166, 227, 161) !important; }
 ._1FnJ6dPuknQFQ2RTpKTI16:has(.SVGIcon_Trash):not(#a):not(#b) ._3ydigb6zZAjJ0JCDgHwSYA._2AzIX5kl9k6JnxLfR5H4kX::before { color: rgb(243, 139, 168) !important; }
+
+/*
+! Round 11 (2026-11-11): full box audit of the game page
+  Every panel gets its one resting edge; the see-through panels get real
+  frosted blur; the light leftovers (update banner, "?" badges, square
+  achievement tiles) move to Mocha; every clickable box gets the
+  blue-to-mauve hover ring.
+*/
+
+/* One 2px resting edge on every panel box: both PlayBar bars (top and under
+   the hero), the description block, the tab-row containers, the review
+   prompt, the detail sections (controller, achievements...), the achievement
+   banners, activity day cards, community cards, guide
+   authors, trading cards, thumbnails, the comment box and the collection
+   badge. */
+:is(._3Y87YQY56ZCOqhgcZFaDc5.InnerContainer,
+    ._25oBZpa3dUcMw8QAsa2u67.AppGameInfoContainer,
+    ._31ptFGGMZrSQc5BCX1e5lm.AppDetailsSectionContainer,
+    ._3LE-6w1ItIAB4CKJFCa3Od.ReviewContainer,
+    ._2r4TK4BAuU-J4FuF_O7v_5.AppDetailsSection,
+    ._38t1mljBjmJfqjpVzMT1CG.Highlight,
+    .S2Fu9HxHCA5MaCLGrN2ib.AppActivityDay,
+    ._3QS6OBHpvI5bXsSQA2zQuW.CommunityItem,
+    ._1ul9ZRBfhF0vyj-hrit6nU.AuthorSection,
+    ._2DUDvAhXoEOSsd8GTIsKLY.CardContainer,
+    ._2B8NkDc3EmF3XM6hl1qpQ8.Thumbnail,
+    ._1JlC29Ic6L-QvL-39X_d-X.PostTextEntryArea,
+    ._1HS4twEHtDJ_8MWgJT4VBd.InCollection):not(#a):not(#b) {
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, .9) !important;
+}
+
+/* Frosted glass on the translucent panels (real blur over whatever moves
+   behind them). Both bars are static at opacity 1, so CEF keeps the blur
+   painted; nothing here fades in. */
+:is(._3Y87YQY56ZCOqhgcZFaDc5.InnerContainer,
+    ._25oBZpa3dUcMw8QAsa2u67.AppGameInfoContainer,
+    ._31ptFGGMZrSQc5BCX1e5lm.AppDetailsSectionContainer,
+    ._3LE-6w1ItIAB4CKJFCa3Od.ReviewContainer,
+    ._2r4TK4BAuU-J4FuF_O7v_5.AppDetailsSection,
+    ._38t1mljBjmJfqjpVzMT1CG.Highlight,
+    .S2Fu9HxHCA5MaCLGrN2ib.AppActivityDay,
+    ._3QS6OBHpvI5bXsSQA2zQuW.CommunityItem,
+    ._1ul9ZRBfhF0vyj-hrit6nU.AuthorSection,
+    ._1JlC29Ic6L-QvL-39X_d-X.PostTextEntryArea):not(#a):not(#b) {
+    -webkit-backdrop-filter: blur(14px) saturate(1.15) !important;
+    backdrop-filter: blur(14px) saturate(1.15) !important;
+}
+
+/* Activity day cards: one box, not three stacked fills. The headline row
+   keeps a single hairline divider above the body. */
+:is(.QCKBqF2k_sRLcXJ5qQIEl.EventHeadline,
+    .NEMXhMlqXOCJwfgWlHXhT.EventBody):not(#a):not(#b) {
+    background: none !important;
+    box-shadow: none !important;
+}
+.QCKBqF2k_sRLcXJ5qQIEl.EventHeadline:not(#a):not(#b) {
+    box-shadow: inset 0 -1px 0 rgba(69, 71, 90, .55) !important;
+}
+
+/* Achievement tiles were square grey blocks. */
+._2aVnDeExEHiUFX0zwr_BTO.AdditionalItem:not(#a):not(#b) {
+    border-radius: 10px !important;
+    background: rgba(30, 30, 46, .85) !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, .9) !important;
+    overflow: hidden !important;
+}
+
+/* The "?" info badges were 17% white. */
+._34I5HgBL6QP2CcuI4emtaM.MoreInfoIcon:not(#a):not(#b) {
+    background: rgba(49, 50, 68, .9) !important;
+    color: rgb(147, 153, 178) !important;
+    box-shadow: inset 0 0 0 1px rgba(69, 71, 90, .9) !important;
+}
+._34I5HgBL6QP2CcuI4emtaM.MoreInfoIcon:not(#a):not(#b) * { color: inherit !important; }
+
+/* The client-update banner was Steam's bright blue strip. */
+._2iJsgdTIX9Tj23rWnB7Q-c.Alert:not(#a):not(#b) {
+    background: rgba(30, 30, 46, .92) !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, .9) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(1.15) !important;
+    backdrop-filter: blur(20px) saturate(1.15) !important;
+    color: rgb(205, 214, 244) !important;
+}
+
+/* Interactive boxes that missed round 10: the comment emoticon button, the
+   Post button (was a 2px-radius block), Load More Activity, the update
+   banner buttons and the community vote pills. */
+:is(.bACIuqv-b_9TztCczFK19.EmoticonButton,
+    ._2JSyABqFEh-v_dwaTnBydR.PostButton,
+    ._39ZurKJQex6v69aXzvc_nj.FetchMoreContainer,
+    ._2ohOQgahhMYnIEfAQmv9B8.AlertButton,
+    ._1GfHtX6GRZ_5BukahmkQp4.Control):not(#a):not(#b) {
+    position: relative !important;
+    background: rgba(30, 30, 46, .72) !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, .9) !important;
+    border: none !important;
+    border-radius: 16px !important;
+    color: rgb(186, 194, 222) !important;
+    transition: background-color .15s, color .15s !important;
+}
+
+/* Clickable cards join the ring family: community guide cards and trading
+   cards brighten to the blue-to-mauve ring on hover. */
+:is(._3QS6OBHpvI5bXsSQA2zQuW.CommunityItem,
+    ._2DUDvAhXoEOSsd8GTIsKLY.CardContainer,
+    .bACIuqv-b_9TztCczFK19.EmoticonButton,
+    ._2JSyABqFEh-v_dwaTnBydR.PostButton,
+    ._39ZurKJQex6v69aXzvc_nj.FetchMoreContainer,
+    ._2ohOQgahhMYnIEfAQmv9B8.AlertButton,
+    ._1GfHtX6GRZ_5BukahmkQp4.Control):not(#a):not(#b)::after {
+    content: "" !important;
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 3 !important;
+    padding: 2px !important;
+    border-radius: inherit !important;
+    background: linear-gradient(135deg, rgb(137, 180, 250), rgb(203, 166, 247)) !important;
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0) !important;
+    -webkit-mask-composite: xor !important;
+    mask-composite: exclude !important;
+    opacity: 0 !important;
+    transition: opacity .15s !important;
+    pointer-events: none !important;
+}
+:is(._3QS6OBHpvI5bXsSQA2zQuW.CommunityItem,
+    ._2DUDvAhXoEOSsd8GTIsKLY.CardContainer,
+    .bACIuqv-b_9TztCczFK19.EmoticonButton,
+    ._2JSyABqFEh-v_dwaTnBydR.PostButton,
+    ._39ZurKJQex6v69aXzvc_nj.FetchMoreContainer,
+    ._2ohOQgahhMYnIEfAQmv9B8.AlertButton,
+    ._1GfHtX6GRZ_5BukahmkQp4.Control):not(#a):not(#b):hover {
+    background: rgba(17, 17, 27, .85) !important;
+    color: rgb(205, 214, 244) !important;
+}
+:is(._3QS6OBHpvI5bXsSQA2zQuW.CommunityItem,
+    ._2DUDvAhXoEOSsd8GTIsKLY.CardContainer,
+    .bACIuqv-b_9TztCczFK19.EmoticonButton,
+    ._2JSyABqFEh-v_dwaTnBydR.PostButton,
+    ._39ZurKJQex6v69aXzvc_nj.FetchMoreContainer,
+    ._2ohOQgahhMYnIEfAQmv9B8.AlertButton,
+    ._1GfHtX6GRZ_5BukahmkQp4.Control):not(#a):not(#b):hover::after { opacity: 1 !important; }
+
+/* Community cards keep their content readable on the darker hover. */
+._3QS6OBHpvI5bXsSQA2zQuW.CommunityItem:not(#a):not(#b):hover :is(img, svg, video) { filter: none !important; }
+
+/* Comment box: Mocha focus ring instead of the stock outline. */
+._1JlC29Ic6L-QvL-39X_d-X.PostTextEntryArea:not(#a):not(#b):focus {
+    outline: none !important;
+    box-shadow: inset 0 0 0 2px rgb(137, 180, 250) !important;
+}
+
+/* Scroll To Top: its label becomes the standard pill (the row around it stays
+   the full-width click area). */
+._1J21tLst5SEhBPkVRT53UV:not(#a):not(#b) > div {
+    position: relative !important;
+    background: rgba(30, 30, 46, .72) !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, .9) !important;
+    border: none !important;
+    border-radius: 16px !important;
+    -webkit-backdrop-filter: blur(14px) saturate(1.15) !important;
+    backdrop-filter: blur(14px) saturate(1.15) !important;
+    transition: background-color .15s !important;
+}
+/* The text label gets slim pill padding; the floating icon-only version keeps
+   its square 12px padding. */
+._1J21tLst5SEhBPkVRT53UV:not(._28ZR8gHitOrJaSLxcIAl2p):not(#a):not(#b) > div { padding: 3px 14px !important; }
+._1J21tLst5SEhBPkVRT53UV:not(#a):not(#b) > div::after {
+    content: "" !important;
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 3 !important;
+    padding: 2px !important;
+    border-radius: inherit !important;
+    background: linear-gradient(135deg, rgb(137, 180, 250), rgb(203, 166, 247)) !important;
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0) !important;
+    -webkit-mask-composite: xor !important;
+    mask-composite: exclude !important;
+    opacity: 0 !important;
+    transition: opacity .15s !important;
+    pointer-events: none !important;
+}
+._1J21tLst5SEhBPkVRT53UV:not(#a):not(#b):hover > div {
+    background: rgba(17, 17, 27, .85) !important;
+}
+._1J21tLst5SEhBPkVRT53UV:not(#a):not(#b):hover > div::after { opacity: 1 !important; }
+
+/* The sticky play bar sat at z-index 2, so pills and text below it with their
+   own z-index (the hover rings use 3) painted on top of it while scrolling. */
+._3Yf8b2v5oOD8Wqsxu04ar._1U7LKpx70kEsz3jJwAFOi-._3SSPIdErMyF10Bul9E0qhX:not(#a) { z-index: 50 !important; }
+._3Yf8b2v5oOD8Wqsxu04ar._1U7LKpx70kEsz3jJwAFOi-._3SSPIdErMyF10Bul9E0qhX .InnerContainer:not(#a):not(#b) {
+    background-color: rgba(24, 24, 37, .97) !important;
+}
+/* Section headings sit inside an edged panel, so they carry no box of their
+   own; every section panel is rounded like the rest (three were square). */
+._3A_c3YHYd4YIjA8Y-olnPl.Reset:is(h2, h4):not(#a):not(#b) { box-shadow: none !important; }
+._2r4TK4BAuU-J4FuF_O7v_5.AppDetailsSection:not(#a):not(#b) { border-radius: 16px !important; }
