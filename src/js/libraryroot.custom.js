@@ -148,23 +148,11 @@ async function setupGamesHovers() {
             return;
         }
 
+        const value = `${overflow}px`;
+        if (item.style.getPropertyValue('--st-game-overflow') === value) return;
         const duration = Math.max(minDurationSec, overflow / pxPerSec);
-        item.style.setProperty('--st-game-overflow', `${overflow}px`);
+        item.style.setProperty('--st-game-overflow', value);
         item.style.setProperty('--st-game-hover-duration', `${duration}s`);
-    };
-
-    const getOverflowWidth = (item, itemText, separator) => {
-        if (!separator) {
-            return itemText.scrollWidth - itemText.clientWidth + navTextOffset;
-        }
-
-        itemText.style.setProperty('padding-right', `${separator.offsetWidth + 4}px`);
-        const widthContainer = item.querySelector(widthContainerSelector);
-        if (!widthContainer) {
-            return itemText.scrollWidth - itemText.clientWidth + navTextOffset;
-        }
-
-        return widthContainer.scrollWidth - widthContainer.clientWidth;
     };
 
     const handleGamesHover = () => {
@@ -173,24 +161,31 @@ async function setupGamesHovers() {
             return;
         }
 
-        const gameItems = gamesContainer.querySelectorAll(itemSelector);
-
-        gameItems.forEach(item => {
+        // Reads and writes are batched: writing padding and then reading a
+        // width in the same loop forced one full layout per visible row.
+        const rows = [];
+        for (const item of gamesContainer.querySelectorAll(itemSelector)) {
             const itemText = item.querySelector('span:not(.pdb-dot)');
-            if (!itemText) return;
-
+            if (!itemText) continue;
             const separator = itemText.querySelector(separatorSelector);
-
             if (!itemText.dataset.stHoverText) {
-                let text = itemText.innerText;
-                if (separator) text += ` ${separator.textContent}`;
-                itemText.dataset.stHoverText = text;
+                const text = itemText.innerText;
+                itemText.dataset.stHoverText = separator ? `${text} ${separator.textContent}` : text;
             }
-
-            const widthDiff = getOverflowWidth(item, itemText, separator);
-            const overflow = Math.max(0, Math.ceil(widthDiff));
-            setHoverVariables(item, overflow);
-        });
+            rows.push({ item, itemText, separator, sepWidth: separator ? separator.offsetWidth : 0 });
+        }
+        for (const r of rows) {
+            if (!r.separator) continue;
+            const pad = `${r.sepWidth + 4}px`;
+            if (r.itemText.style.paddingRight !== pad) r.itemText.style.setProperty('padding-right', pad);
+        }
+        for (const r of rows) {
+            const widthContainer = r.separator && r.item.querySelector(widthContainerSelector);
+            r.overflow = Math.max(0, Math.ceil(widthContainer
+                ? widthContainer.scrollWidth - widthContainer.clientWidth
+                : r.itemText.scrollWidth - r.itemText.clientWidth + navTextOffset));
+        }
+        for (const r of rows) setHoverVariables(r.item, r.overflow);
     };
 
     const scheduleHoverUpdate = () => {
@@ -288,10 +283,16 @@ function syncUserPanelWidth() {
         setWidth();
     };
 
+    // Called on every DOM change: rebind (and read the computed width, which
+    // forces a style + layout pass) only when one of the three elements changed.
     const setupElements = () => {
-        sourceEl = document.querySelector(sourceClass);
-        userPanelEl = document.querySelector(userPanelSelector);
-        downloadBarEl = document.querySelector(downloadBarSelector);
+        const nextSource = document.querySelector(sourceClass);
+        const nextUserPanel = document.querySelector(userPanelSelector);
+        const nextDownloadBar = document.querySelector(downloadBarSelector);
+        if (nextSource === sourceEl && nextUserPanel === userPanelEl && nextDownloadBar === downloadBarEl) return;
+        sourceEl = nextSource;
+        userPanelEl = nextUserPanel;
+        downloadBarEl = nextDownloadBar;
 
         if (sourceEl && (userPanelEl || downloadBarEl)) {
             bindObservers();

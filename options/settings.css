@@ -29,7 +29,7 @@
 .MillenniumDesktopSidebar:not(#a):not(#b) .Toggle,
 .MillenniumDesktopSidebar:not(#a):not(#b) .st-preset-chip,
 .MillenniumDesktopSidebar:not(#a):not(#b) .st-custom-font-apply,
-body:has(.MillenniumDesktopSidebar) .DialogDropDownMenu:not(#a):not(#b) .DialogDropDownMenu_Item {
+body.st-has-millennium-sidebar .DialogDropDownMenu:not(#a):not(#b) .DialogDropDownMenu_Item {
     position: relative !important;
 }
 
@@ -38,7 +38,7 @@ body:has(.MillenniumDesktopSidebar) .DialogDropDownMenu:not(#a):not(#b) .DialogD
 .MillenniumDesktopSidebar:not(#a):not(#b) .Toggle::after,
 .MillenniumDesktopSidebar:not(#a):not(#b) .st-preset-chip::after,
 .MillenniumDesktopSidebar:not(#a):not(#b) .st-custom-font-apply::after,
-body:has(.MillenniumDesktopSidebar) .DialogDropDownMenu:not(#a):not(#b) .DialogDropDownMenu_Item::after {
+body.st-has-millennium-sidebar .DialogDropDownMenu:not(#a):not(#b) .DialogDropDownMenu_Item::after {
     content: "" !important;
     display: block !important;
     position: absolute !important;
@@ -63,7 +63,7 @@ body:has(.MillenniumDesktopSidebar) .DialogDropDownMenu:not(#a):not(#b) .DialogD
 .MillenniumDesktopSidebar:not(#a):not(#b) .Toggle:is(:hover, :focus-visible)::after,
 .MillenniumDesktopSidebar:not(#a):not(#b) .st-preset-chip:is(:hover, :focus-visible)::after,
 .MillenniumDesktopSidebar:not(#a):not(#b) .st-custom-font-apply:is(:hover, :focus-visible)::after,
-body:has(.MillenniumDesktopSidebar) .DialogDropDownMenu:not(#a):not(#b) .DialogDropDownMenu_Item:hover::after {
+body.st-has-millennium-sidebar .DialogDropDownMenu:not(#a):not(#b) .DialogDropDownMenu_Item:hover::after {
     opacity: 1 !important;
 }
 
@@ -123,14 +123,14 @@ body:has(.MillenniumDesktopSidebar) .DialogDropDownMenu:not(#a):not(#b) .DialogD
 & Glass panel with one edge; every item a box with a resting edge, a ring on hover,
 & and the current choice as a selected box (class st-current, set by settings-helper.js).
 */
-body:has(.MillenniumDesktopSidebar) .DialogDropDownMenu:not(#a):not(#b) {
+body.st-has-millennium-sidebar .DialogDropDownMenu:not(#a):not(#b) {
     background: rgba(24, 24, 37, 0.74) !important;
     backdrop-filter: blur(30px) saturate(1.4) !important;
     border: 0 !important;
     box-shadow: inset 0 0 0 2px var(--st-dlg-edge), 0 12px 32px rgba(17, 17, 27, 0.55) !important;
     padding: 8px !important;
 }
-body:has(.MillenniumDesktopSidebar) .DialogDropDownMenu:not(#a):not(#b) .DialogDropDownMenu_Item {
+body.st-has-millennium-sidebar .DialogDropDownMenu:not(#a):not(#b) .DialogDropDownMenu_Item {
     color: var(--st-dlg-text) !important;
     background: rgba(49, 50, 68, 0.55) !important;
     box-shadow: inset 0 0 0 2px var(--st-dlg-edge) !important;
@@ -141,21 +141,21 @@ body:has(.MillenniumDesktopSidebar) .DialogDropDownMenu:not(#a):not(#b) .DialogD
     font-weight: 500;
     text-decoration: none !important;
 }
-body:has(.MillenniumDesktopSidebar) .DialogDropDownMenu:not(#a):not(#b) .DialogDropDownMenu_Item:last-child {
+body.st-has-millennium-sidebar .DialogDropDownMenu:not(#a):not(#b) .DialogDropDownMenu_Item:last-child {
     margin-bottom: 0 !important;
 }
-body:has(.MillenniumDesktopSidebar) .DialogDropDownMenu:not(#a):not(#b) .DialogDropDownMenu_Item:is(:hover, :focus, .gpfocus) {
+body.st-has-millennium-sidebar .DialogDropDownMenu:not(#a):not(#b) .DialogDropDownMenu_Item:is(:hover, :focus, .gpfocus) {
     color: #ffffff !important;
     background: rgba(69, 71, 90, 0.75) !important;
     outline: none !important;
 }
-body:has(.MillenniumDesktopSidebar) .DialogDropDownMenu:not(#a):not(#b) .DialogDropDownMenu_Item.st-current {
+body.st-has-millennium-sidebar .DialogDropDownMenu:not(#a):not(#b) .DialogDropDownMenu_Item.st-current {
     color: #ffffff !important;
     font-weight: 600;
     background: linear-gradient(135deg, rgba(137, 180, 250, 0.24), rgba(203, 166, 247, 0.24)) !important;
     box-shadow: inset 0 0 0 2px rgba(137, 180, 250, 0.6) !important;
 }
-body:has(.MillenniumDesktopSidebar) .DialogDropDownMenu:not(#a):not(#b) .DialogDropDownMenu_Item::before {
+body.st-has-millennium-sidebar .DialogDropDownMenu:not(#a):not(#b) .DialogDropDownMenu_Item::before {
     display: none !important;
 }
 

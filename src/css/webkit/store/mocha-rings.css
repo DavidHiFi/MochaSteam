@@ -672,15 +672,15 @@ body .popup_block_new .popup_body :is(hr, .popup_menu_separator, .hr):not(#a) {
 }
 [id^="searchSuggestions"] [class*="Jl3kvOjNABk"]::before,
 [id^="searchSuggestions"] [class*="Jl3kvOjNABk"]::after { display: none !important; }
-[id^="searchSuggestions"] [class~="cchAfQhDUvE-"] {
+[id^="searchSuggestions"] .cchAfQhDUvE- {
     min-width: 0 !important; padding: 6px 10px !important; box-sizing: border-box;
     flex: 1 1 0 !important;
 }
-[id^="searchSuggestions"] [class~="FY3FS-llgYw-"] {
+[id^="searchSuggestions"] .FY3FS-llgYw- {
     display: flex !important; flex-wrap: wrap; margin-top: 5px !important;
     min-width: 0 !important; max-width: 100% !important;
 }
-[id^="searchSuggestions"] :is([class~="Jl3kvOjNABk-"], [class~="dkW-v-f4lTw-"]):not(#a):not(#b):not(#c) {
+[id^="searchSuggestions"] :is(.Jl3kvOjNABk-, .dkW-v-f4lTw-):not(#a):not(#b):not(#c) {
     background: #313244 !important; color: rgb(var(--st-text-strong, 205, 214, 244)) !important;
     clip-path: none !important; border-radius: 8px !important;
     box-sizing: border-box !important; max-width: 100% !important;
@@ -689,13 +689,13 @@ body .popup_block_new .popup_body :is(hr, .popup_menu_separator, .hr):not(#a) {
     white-space: normal !important; overflow: hidden !important;
     box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9) !important;
 }
-[id^="searchSuggestions"] [class~="Jl3kvOjNABk-"] *,
+[id^="searchSuggestions"] .Jl3kvOjNABk- *,
 [id^="searchSuggestions"] .Jl3kvOjNABk- .JBijjejcvmo-:not(#a):not(#b):not(#c):not(#d) {
     background: transparent !important; color: rgb(var(--st-text-strong, 205, 214, 244)) !important;
     clip-path: none !important; box-shadow: none !important; padding: 0 !important;
 }
-[id^="searchSuggestions"] [class~="pnC74wQYjms-"] { color: #a6e3a1 !important; margin-right: 6px; }
-[id^="searchSuggestions"] [class~="Cnw9IXSgr7I-"] { color: rgb(var(--st-text-dim, 166, 173, 200)) !important; }
+[id^="searchSuggestions"] .pnC74wQYjms- { color: #a6e3a1 !important; margin-right: 6px; }
+[id^="searchSuggestions"] .Cnw9IXSgr7I- { color: rgb(var(--st-text-dim, 166, 173, 200)) !important; }
 
 /* Rows in every dropdown above: resting edge, clean contrast, ring on hover
    or keyboard selection. */

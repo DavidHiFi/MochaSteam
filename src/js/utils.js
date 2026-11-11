@@ -2,6 +2,7 @@
     const el = parent.querySelector(selector);
     if (el) {
         resolve(el);
+        return;
     }
 
     const observer = new MutationObserver(() => {

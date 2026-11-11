@@ -3,7 +3,7 @@
 */
 
 ._3FmxxjyWNHU1PrBGnBe6tm._2l416KfEtI4CL0mCUEmOBw {
-    overflow-y: overlay;
+    overflow-y: scroll; /* Steam's own value; "overlay" is "auto" now and relayouts the page on every change */
     padding: 16px 0 16px 16px;
     background-image: none;
     background-color: rgb(var(--st-color-1));
@@ -1672,3 +1672,14 @@ div:has(>._1J21tLst5SEhBPkVRT53UV._28ZR8gHitOrJaSLxcIAl2p) {
    own; every section panel is rounded like the rest (three were square). */
 ._3A_c3YHYd4YIjA8Y-olnPl.Reset:is(h2, h4):not(#a):not(#b) { box-shadow: none !important; }
 ._2r4TK4BAuU-J4FuF_O7v_5.AppDetailsSection:not(#a):not(#b) { border-radius: 16px !important; }
+
+/* Performance (2026-11-12): one frosted layer per panel. Boxes inside an
+   already-blurred section kept their own backdrop blur, so each community card
+   was three blurs deep (219 of 249 blurs on a game page). An inner blur only
+   re-blurs the panel's own frosted fill, so dropping it looks the same and
+   saves a GPU pass per box. Fills and edges stay. */
+._2r4TK4BAuU-J4FuF_O7v_5.AppDetailsSection :is(._31ptFGGMZrSQc5BCX1e5lm, ._3QS6OBHpvI5bXsSQA2zQuW, ._1ul9ZRBfhF0vyj-hrit6nU, ._38t1mljBjmJfqjpVzMT1CG, .S2Fu9HxHCA5MaCLGrN2ib, ._1JlC29Ic6L-QvL-39X_d-X):not(#a):not(#b):not(#c),
+._2iJsgdTIX9Tj23rWnB7Q-c.Alert ._2ohOQgahhMYnIEfAQmv9B8.AlertButton:not(#a):not(#b):not(#c) {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+}

@@ -241,13 +241,13 @@
     border-radius: 0 0 var(--st-border-radius) var(--st-border-radius);
     background-color: rgb(var(--st-color-2));
 }
-body.QsvsRVwbsApgKt1MhM0fz:has(._3E5iVG630BkOHTaJJaMEMw) ._1ijTaXJJA5YWl_fW2IxcaT {
+body.QsvsRVwbsApgKt1MhM0fz.st-has-3e5i ._1ijTaXJJA5YWl_fW2IxcaT {
     margin-bottom: calc(90px + 6px + 44px);
 }
-body.QsvsRVwbsApgKt1MhM0fz:has(._1_yS5UP7el0aN4vntx3dx .wi0pDywRgOCxhG7OqQNaA):has(._3E5iVG630BkOHTaJJaMEMw) ._1ijTaXJJA5YWl_fW2IxcaT {
+body.QsvsRVwbsApgKt1MhM0fz.st-has-download-active.st-has-3e5i ._1ijTaXJJA5YWl_fW2IxcaT {
     margin-bottom: calc(90px + 6px + 49px + 44px + 6px);
 }
-body.QsvsRVwbsApgKt1MhM0fz:has(._1_yS5UP7el0aN4vntx3dx .wi0pDywRgOCxhG7OqQNaA) ._1ijTaXJJA5YWl_fW2IxcaT {
+body.QsvsRVwbsApgKt1MhM0fz.st-has-download-active ._1ijTaXJJA5YWl_fW2IxcaT {
     margin-bottom: calc(90px + 6px + 49px);
 }
 
@@ -449,7 +449,7 @@ highlight (square bottom edge, 2026-10-05).
 /*
 & Download bar
 */
-body:not(:has(._1ijTaXJJA5YWl_fW2IxcaT)) ._1_yS5UP7el0aN4vntx3dx,
+body:not(.st-has-game-list) ._1_yS5UP7el0aN4vntx3dx,
 ._1_yS5UP7el0aN4vntx3dx:not(:has(.wi0pDywRgOCxhG7OqQNaA)) {
     height: 0 !important;
 }
@@ -460,12 +460,12 @@ body:not(:has(._1ijTaXJJA5YWl_fW2IxcaT)) ._1_yS5UP7el0aN4vntx3dx,
     left: 16px;
     height: 49px;
 }
-body:has(._3E5iVG630BkOHTaJJaMEMw) ._1_yS5UP7el0aN4vntx3dx {
+body.st-has-3e5i ._1_yS5UP7el0aN4vntx3dx {
     bottom: calc(90px + 44px + 6px);
 }
 
 
-body:not(:has(._1ijTaXJJA5YWl_fW2IxcaT)) ._1_yS5UP7el0aN4vntx3dx ._3vCzSrrXZzZjVJFZNg9SGu,
+body:not(.st-has-game-list) ._1_yS5UP7el0aN4vntx3dx ._3vCzSrrXZzZjVJFZNg9SGu,
 ._1_yS5UP7el0aN4vntx3dx:not(:has(.wi0pDywRgOCxhG7OqQNaA)) ._3vCzSrrXZzZjVJFZNg9SGu {
     visibility: hidden !important;
     height: 0 !important;
@@ -572,7 +572,7 @@ div[style*="height: 0px;"]:has(> ._2iJsgdTIX9Tj23rWnB7Q-c) {
 /*
 & Userpanel
 */
-body:not(:has(._1ijTaXJJA5YWl_fW2IxcaT)) ._3cykd-VfN_xBxf3Qxriccm {
+body:not(.st-has-game-list) ._3cykd-VfN_xBxf3Qxriccm {
     visibility: hidden;
 }
 ._3cykd-VfN_xBxf3Qxriccm {
@@ -821,15 +821,15 @@ body:not(:has(._1ijTaXJJA5YWl_fW2IxcaT)) ._3cykd-VfN_xBxf3Qxriccm {
 & on top with the same 6px gap, so the two read as one stack instead of the
 & download bar floating wider than the user panel.
 */
-body:has(._3x1HklzyDs4TEjACrRO2tB) ._1_yS5UP7el0aN4vntx3dx {
+body.st-has-library ._1_yS5UP7el0aN4vntx3dx {
     left: calc(16px + 6px) !important;
     width: calc(var(--st-fixed-sidebar-width, 400px) - 12px) !important;
     bottom: 106px !important;
 }
-body:has(._3x1HklzyDs4TEjACrRO2tB):not(:has(._1_yS5UP7el0aN4vntx3dx .wi0pDywRgOCxhG7OqQNaA)) ._1_yS5UP7el0aN4vntx3dx {
+body.st-has-library:not(.st-has-download-active) ._1_yS5UP7el0aN4vntx3dx {
     height: 44px !important;
 }
-body:has(._3x1HklzyDs4TEjACrRO2tB):has(._3E5iVG630BkOHTaJJaMEMw) ._1_yS5UP7el0aN4vntx3dx {
+body.st-has-library.st-has-3e5i ._1_yS5UP7el0aN4vntx3dx {
     bottom: 156px !important;
 }
 
@@ -881,10 +881,10 @@ body:has(._3x1HklzyDs4TEjACrRO2tB):has(._3E5iVG630BkOHTaJJaMEMw) ._1_yS5UP7el0aN
 ._3cykd-VfN_xBxf3Qxriccm {
     bottom: 16px !important;
 }
-body:has(._3x1HklzyDs4TEjACrRO2tB) ._1_yS5UP7el0aN4vntx3dx {
+body.st-has-library ._1_yS5UP7el0aN4vntx3dx {
     bottom: 106px !important;
 }
-body:has(._3x1HklzyDs4TEjACrRO2tB):has(._3E5iVG630BkOHTaJJaMEMw) ._1_yS5UP7el0aN4vntx3dx {
+body.st-has-library.st-has-3e5i ._1_yS5UP7el0aN4vntx3dx {
     bottom: 156px !important;
 }
 
@@ -912,7 +912,7 @@ body:has(._3x1HklzyDs4TEjACrRO2tB):has(._3E5iVG630BkOHTaJJaMEMw) ._1_yS5UP7el0aN
 /*
 & URL bar above store pages: same hairline as every other card
 */
-[class~="URLBar"] {
+.URLBar {
     box-shadow: inset 0 0 0 2px var(--st-edge) !important;
 }
 

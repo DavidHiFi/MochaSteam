@@ -103,14 +103,14 @@
     body #hltb-for-millennium {
         bottom: calc(16px + 70px + 6px) !important;
     }
-    body:has(.z8GYwNt_nbBZrf7OVjs-s) #hltb-for-millennium {
+    body.st-has-z8gy #hltb-for-millennium {
         bottom: calc(16px + 70px + 46px + 6px) !important;
     }
 
     body .NarrowRightPanel #hltb-for-millennium {
         bottom: calc(16px + 56px + 6px) !important;
     }
-    body:has(.z8GYwNt_nbBZrf7OVjs-s) .NarrowRightPanel #hltb-for-millennium {
+    body.st-has-z8gy .NarrowRightPanel #hltb-for-millennium {
         bottom: calc(16px + 56px + 46px + 6px) !important;
     }
 }

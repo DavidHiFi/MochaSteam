@@ -69,7 +69,7 @@
 & Mocha edge that separates them. "Add shelf" floats over the library content
 & and keeps a solid-enough fill plus the same edge.
 */
-body:has(._3x1HklzyDs4TEjACrRO2tB) [class~="BottomBar"] {
+body.st-has-library .BottomBar {
     background-color: rgb(var(--st-color-3)) !important;
     box-shadow: inset 0 0 0 2px var(--st-edge, rgba(69, 71, 90, 0.9)) !important;
     color: rgb(var(--st-text-soft)) !important;
@@ -77,7 +77,7 @@ body:has(._3x1HklzyDs4TEjACrRO2tB) [class~="BottomBar"] {
 
 /* The user panel carries no fill of its own: its account row and icon pills
    already paint the same chip, so filling it too would stack a second layer. */
-body:has(._3x1HklzyDs4TEjACrRO2tB) [class~="TitleBarControls"] {
+body.st-has-library .TitleBarControls {
     background-color: transparent !important;
     box-shadow: none !important;
     color: rgb(var(--st-text-soft)) !important;
@@ -87,7 +87,7 @@ body:has(._3x1HklzyDs4TEjACrRO2tB) [class~="TitleBarControls"] {
     color: rgb(var(--st-text-soft)) !important;
 }
 
-[class~="AddShowcase"] {
+.AddShowcase {
     background-color: rgba(var(--st-panel), var(--st-panel-opacity)) !important;
     box-shadow: inset 0 0 0 2px var(--st-edge, rgba(69, 71, 90, 0.9)) !important;
     color: rgb(var(--st-text-soft)) !important;
@@ -95,7 +95,7 @@ body:has(._3x1HklzyDs4TEjACrRO2tB) [class~="TitleBarControls"] {
     backdrop-filter: blur(12px) saturate(1.25);
 }
 
-[class~="AddShowcase"]:hover,
+.AddShowcase:hover,
 [class*="AddGameButton"]:hover {
     background-color: rgba(var(--st-panel-hover), var(--st-panel-opacity)) !important;
     color: rgb(var(--st-text-strong)) !important;
@@ -106,7 +106,7 @@ body:has(._3x1HklzyDs4TEjACrRO2tB) [class~="TitleBarControls"] {
    their own. DownloadStatus and DownloadStatusContent are 15px strips: a 16px
    radius turned them into pill shapes whose rounded ends, plus overflow
    hidden, clipped the first letter of the downloading label. */
-body:has(._3x1HklzyDs4TEjACrRO2tB) ._1_yS5UP7el0aN4vntx3dx ._3vCzSrrXZzZjVJFZNg9SGu:hover {
+body.st-has-library ._1_yS5UP7el0aN4vntx3dx ._3vCzSrrXZzZjVJFZNg9SGu:hover {
     background-color: rgba(var(--st-panel-hover), var(--st-panel-opacity)) !important;
 }
 ._1_yS5UP7el0aN4vntx3dx [class*="DownloadStat"] {
@@ -115,7 +115,7 @@ body:has(._3x1HklzyDs4TEjACrRO2tB) ._1_yS5UP7el0aN4vntx3dx ._3vCzSrrXZzZjVJFZNg9
     overflow: visible !important;
 }
 
-[class~="AddShowcase"]:hover {
+.AddShowcase:hover {
     box-shadow: inset 0 0 0 2px var(--st-edge, rgba(69, 71, 90, 0.9)) !important;
 }
 
@@ -181,8 +181,8 @@ body .ShowcaseHeader .Collapser:hover polyline {
 /* Account row and the icon pills under it light up on hover like the
    downloads chip. Their own hover colour equals their resting colour under
    the mica tokens, so nothing changed before. */
-body:has(._3x1HklzyDs4TEjACrRO2tB) ._3cykd-VfN_xBxf3Qxriccm ._2Lu3d-5qLmW4i19ysTt2jT ._3yD46y5pd3zOGR7CzKs0mC:hover,
-body:has(._3x1HklzyDs4TEjACrRO2tB) ._3cykd-VfN_xBxf3Qxriccm :is(._2Szzh5sKyGgnLUR870zbDE, ._1TdaAqMFadi0UTqilrkelR):hover {
+body.st-has-library ._3cykd-VfN_xBxf3Qxriccm ._2Lu3d-5qLmW4i19ysTt2jT ._3yD46y5pd3zOGR7CzKs0mC:hover,
+body.st-has-library ._3cykd-VfN_xBxf3Qxriccm :is(._2Szzh5sKyGgnLUR870zbDE, ._1TdaAqMFadi0UTqilrkelR):hover {
     background-color: rgba(var(--st-panel-hover), var(--st-panel-opacity)) !important;
 }
 
@@ -195,7 +195,7 @@ body:has(._3x1HklzyDs4TEjACrRO2tB) ._3cykd-VfN_xBxf3Qxriccm :is(._2Szzh5sKyGgnLU
 & painted darker and its edge showed as a hard vertical line - and nothing
 & looked see-through. Inner surfaces are transparent now.
 */
-[class~="ShowcaseOuter"],
+.ShowcaseOuter,
 ._3VQUewWB8g6Z5qB4C7dGFr,
 ._1ijTaXJJA5YWl_fW2IxcaT {
     background-color: transparent !important;
@@ -294,16 +294,16 @@ html.MillenniumWindow_MainSteamWindow ._2sNr7PFYcJZWNkEMCDVVPR {
 & #464d58 hover) that ignores the theme entirely. Paint it with the panel
 & tokens and the theme radius. Same control appears across settings dialogs.
 */
-body [class~="SettingsDialogButton"] {
+body .SettingsDialogButton {
     border-radius: var(--st-border-radius) !important;
     background-color: rgba(var(--st-panel), var(--st-panel-opacity)) !important;
     box-shadow: inset 0 0 0 1px rgba(var(--st-hairline), 0.7) !important;
     color: rgb(var(--st-text-soft)) !important;
 }
 
-body [class~="SettingsDialogButton"]:hover,
-body [class~="SettingsDialogButton"]:focus,
-body [class~="SettingsDialogButton"].gpfocus {
+body .SettingsDialogButton:hover,
+body .SettingsDialogButton:focus,
+body .SettingsDialogButton.gpfocus {
     background-color: rgba(var(--st-panel-hover), var(--st-panel-opacity)) !important;
     color: rgb(var(--st-text-strong)) !important;
 }
@@ -311,20 +311,20 @@ body [class~="SettingsDialogButton"].gpfocus {
 /*
 & Backup Game Files modal: the read-only folder box and its Browse... button.
 */
-body [class~="BackupAppsBrowse"] {
+body .BackupAppsBrowse {
     border-radius: var(--st-border-radius) !important;
     background-color: rgba(var(--st-panel), var(--st-panel-opacity)) !important;
     box-shadow: inset 0 0 0 1px rgba(var(--st-hairline), 0.7) !important;
     color: rgb(var(--st-text-soft)) !important;
 }
 
-body [class~="BackupAppsBrowse"]:hover,
-body [class~="BackupAppsBrowse"]:focus {
+body .BackupAppsBrowse:hover,
+body .BackupAppsBrowse:focus {
     background-color: rgba(var(--st-panel-hover), var(--st-panel-opacity)) !important;
     color: rgb(var(--st-text-strong)) !important;
 }
 
-body [class~="BackupAppInput"] input {
+body .BackupAppInput input {
     border-radius: var(--st-border-radius) !important;
     background-color: rgba(var(--st-panel), var(--st-panel-opacity)) !important;
     box-shadow: inset 0 0 0 1px rgba(var(--st-hairline), 0.7) !important;
@@ -334,7 +334,7 @@ body [class~="BackupAppInput"] input {
 /*
 & Hairline separators between the Installed Files rows.
 */
-body [class~="SectionTopLine"] {
+body .SectionTopLine {
     border-color: rgba(var(--st-hairline), 0.55) !important;
 }
 
@@ -342,17 +342,17 @@ body [class~="SectionTopLine"] {
 & Properties-window tab strip: same chip look the settings dialog got, as a
 & global fallback. Scoped .MillenniumSettings rules keep winning where present.
 */
-body [class~="PagedSettingsDialog_PageListItem"] {
+body .PagedSettingsDialog_PageListItem {
     color: rgb(var(--st-text-soft)) !important;
     box-shadow: inset 0 0 0 1px rgba(var(--st-hairline), 0.45) !important;
     transition: background-color 0.12s ease, box-shadow 0.12s ease;
 }
 
-body [class~="PagedSettingsDialog_PageListItem"]:hover {
+body .PagedSettingsDialog_PageListItem:hover {
     background-color: rgba(var(--st-panel-hover), 0.35) !important;
 }
 
-body [class~="PagedSettingsDialog_PageListItem"].Active {
+body .PagedSettingsDialog_PageListItem.Active {
     background-color: rgba(var(--st-panel-hover), 0.55) !important;
     box-shadow: inset 0 0 0 1px rgba(var(--st-accent-1), 0.85) !important;
     color: rgb(var(--st-text-strong)) !important;

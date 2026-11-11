@@ -19,7 +19,7 @@
     background-image: none;
 }
 ._2AUVZlzQq67qe3yhLZsPPB {
-    overflow-y: overlay;
+    overflow-y: scroll; /* see gamepage.css: auto relayouts on every change */
 }
 ._2AUVZlzQq67qe3yhLZsPPB::-webkit-scrollbar {
     background: transparent;
