@@ -1392,3 +1392,87 @@ div:has(>._1J21tLst5SEhBPkVRT53UV._28ZR8gHitOrJaSLxcIAl2p) {
 ._1J21tLst5SEhBPkVRT53UV {
     color: rgb(var(--st-accent-1));
 }
+
+/*
+! Library game page controls: standard Mocha pill (2026-11-11)
+  Dark fill, resting 2px edge, blue-to-mauve ring on hover, readable text.
+*/
+:is(._3ydigb6zZAjJ0JCDgHwSYA._2AzIX5kl9k6JnxLfR5H4kX,
+    ._2AzIX5kl9k6JnxLfR5H4kX._2q-gZ3XJzlvSGHSF-GvSmi,
+    ._3qDWQGB0rtwM3qpXTb11Q-.MenuButton,
+    .DY4_wSF8h9T5o46hO5I9V ._1b6LYWVijW-9E4YV0keDWZ,
+    ._1kCN0pAntrcGCSmcc-vYdk):not(#a):not(#b) {
+    position: relative !important;
+    background: rgba(30, 30, 46, .72) !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, .9) !important;
+    border: none !important;
+    border-radius: 16px !important;
+    color: rgb(186, 194, 222) !important;
+    transition: background-color .15s, color .15s !important;
+}
+:is(._3ydigb6zZAjJ0JCDgHwSYA._2AzIX5kl9k6JnxLfR5H4kX,
+    ._2AzIX5kl9k6JnxLfR5H4kX._2q-gZ3XJzlvSGHSF-GvSmi,
+    ._3qDWQGB0rtwM3qpXTb11Q-.MenuButton,
+    .DY4_wSF8h9T5o46hO5I9V ._1b6LYWVijW-9E4YV0keDWZ,
+    ._1kCN0pAntrcGCSmcc-vYdk):not(#a):not(#b)::after {
+    content: "" !important;
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 3 !important;
+    padding: 2px !important;
+    border-radius: inherit !important;
+    background: linear-gradient(135deg, rgb(137, 180, 250), rgb(203, 166, 247)) !important;
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0) !important;
+    -webkit-mask-composite: xor !important;
+    mask-composite: exclude !important;
+    opacity: 0 !important;
+    transition: opacity .15s !important;
+    pointer-events: none !important;
+}
+:is(._3ydigb6zZAjJ0JCDgHwSYA._2AzIX5kl9k6JnxLfR5H4kX,
+    ._2AzIX5kl9k6JnxLfR5H4kX._2q-gZ3XJzlvSGHSF-GvSmi,
+    ._3qDWQGB0rtwM3qpXTb11Q-.MenuButton,
+    .DY4_wSF8h9T5o46hO5I9V ._1b6LYWVijW-9E4YV0keDWZ,
+    ._1kCN0pAntrcGCSmcc-vYdk):not(#a):not(#b):hover {
+    background: rgba(17, 17, 27, .85) !important;
+    color: rgb(205, 214, 244) !important;
+}
+:is(._3ydigb6zZAjJ0JCDgHwSYA._2AzIX5kl9k6JnxLfR5H4kX,
+    ._2AzIX5kl9k6JnxLfR5H4kX._2q-gZ3XJzlvSGHSF-GvSmi,
+    ._3qDWQGB0rtwM3qpXTb11Q-.MenuButton,
+    .DY4_wSF8h9T5o46hO5I9V ._1b6LYWVijW-9E4YV0keDWZ,
+    ._1kCN0pAntrcGCSmcc-vYdk):not(#a):not(#b):hover::after { opacity: 1 !important; }
+
+/* Play keeps its meaning in the word and icon colour: green to play, blue for
+   install/update/stop, red for uninstall. */
+._1FnJ6dPuknQFQ2RTpKTI16:not(#a):not(#b) :is(._3ydigb6zZAjJ0JCDgHwSYA._2AzIX5kl9k6JnxLfR5H4kX, ._2q-gZ3XJzlvSGHSF-GvSmi),
+._1FnJ6dPuknQFQ2RTpKTI16:not(#a):not(#b) :is(._3ydigb6zZAjJ0JCDgHwSYA._2AzIX5kl9k6JnxLfR5H4kX, ._2q-gZ3XJzlvSGHSF-GvSmi) :is(svg, ._33cnXIqTRgRr49_FNXIHj6) {
+    color: rgb(137, 180, 250) !important;
+    fill: currentColor !important;
+    font-weight: 600 !important;
+}
+._1FnJ6dPuknQFQ2RTpKTI16:has(.SVGIcon_Play):not(#a):not(#b) :is(._3ydigb6zZAjJ0JCDgHwSYA._2AzIX5kl9k6JnxLfR5H4kX, ._2q-gZ3XJzlvSGHSF-GvSmi),
+._1FnJ6dPuknQFQ2RTpKTI16:has(.SVGIcon_Play):not(#a):not(#b) :is(._3ydigb6zZAjJ0JCDgHwSYA._2AzIX5kl9k6JnxLfR5H4kX, ._2q-gZ3XJzlvSGHSF-GvSmi) :is(svg, ._33cnXIqTRgRr49_FNXIHj6) {
+    color: rgb(166, 227, 161) !important;
+}
+._1FnJ6dPuknQFQ2RTpKTI16:has(.SVGIcon_Trash):not(#a):not(#b) :is(._3ydigb6zZAjJ0JCDgHwSYA._2AzIX5kl9k6JnxLfR5H4kX, ._2q-gZ3XJzlvSGHSF-GvSmi),
+._1FnJ6dPuknQFQ2RTpKTI16:has(.SVGIcon_Trash):not(#a):not(#b) :is(._3ydigb6zZAjJ0JCDgHwSYA._2AzIX5kl9k6JnxLfR5H4kX, ._2q-gZ3XJzlvSGHSF-GvSmi) :is(svg, ._33cnXIqTRgRr49_FNXIHj6) {
+    color: rgb(243, 139, 168) !important;
+}
+
+/* Icon buttons: icons in soft text, brighter on hover. */
+._3qDWQGB0rtwM3qpXTb11Q-.MenuButton:not(#a):not(#b) :is(svg, path) { color: inherit !important; }
+
+/* Tab links: readable text instead of 32% white. */
+.DY4_wSF8h9T5o46hO5I9V ._1b6LYWVijW-9E4YV0keDWZ:not(#a):not(#b) ._2sNDjgK9EWiPLdNGkjun-w {
+    color: inherit !important;
+    opacity: 1 !important;
+}
+
+/* Review buttons: icons and words follow the pill text. */
+._1kCN0pAntrcGCSmcc-vYdk:not(#a):not(#b) :is(span, svg) { color: inherit !important; }
+
+/* The Play icon is a font glyph on ::before, inked dark for the old green fill. */
+._1FnJ6dPuknQFQ2RTpKTI16:not(#a):not(#b) ._3ydigb6zZAjJ0JCDgHwSYA._2AzIX5kl9k6JnxLfR5H4kX::before { color: rgb(137, 180, 250) !important; }
+._1FnJ6dPuknQFQ2RTpKTI16:has(.SVGIcon_Play):not(#a):not(#b) ._3ydigb6zZAjJ0JCDgHwSYA._2AzIX5kl9k6JnxLfR5H4kX::before { color: rgb(166, 227, 161) !important; }
+._1FnJ6dPuknQFQ2RTpKTI16:has(.SVGIcon_Trash):not(#a):not(#b) ._3ydigb6zZAjJ0JCDgHwSYA._2AzIX5kl9k6JnxLfR5H4kX::before { color: rgb(243, 139, 168) !important; }

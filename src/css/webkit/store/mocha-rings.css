@@ -1,0 +1,1208 @@
+/*
+& Store rings and contrast pass, 2026-11-09
+& Loads after polish.css. Gradient ring = mask-composite ::after, the same
+& pattern as hover-rings.css on the client (blue #89b4fa -> mauve #cba6f7),
+& 2px, fading in over 150ms. Each host is checked live: no existing ::after,
+& and position: relative does not re-anchor an escaping absolute child.
+*/
+
+/*
+& Header glass
+& The search card used to carry its own backdrop-filter. That made it the
+& backdrop root for the suggestions list inside it, so the list blurred an
+& empty layer and the page read straight through. The card's glass now lives
+& on a ::before (z-index -1, painted in the bar's stacking context under the
+& card's content), and the card itself has no filter.
+*/
+.Panel.Focusable:has(> div form[role="search"]):not(:has(> .Panel form[role="search"])) {
+    position: relative !important;
+    background-color: transparent !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+}
+.Panel.Focusable:has(> div form[role="search"]):not(:has(> .Panel form[role="search"]))::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background-color: rgba(24, 24, 37, 0.82);
+    -webkit-backdrop-filter: blur(24px) saturate(1.4);
+    backdrop-filter: blur(24px) saturate(1.4);
+    box-shadow: 0 6px 24px rgba(17, 17, 27, 0.45), inset 0 0 0 2px rgba(69, 71, 90, 0.9);
+    pointer-events: none;
+}
+
+/* Dropdowns (Browse, Recommendations, Categories...) and suggestions:
+   denser glass and a heavier blur so text behind them reads as texture. */
+.Panel.Focusable:has(> .Panel.Focusable form[role="search"]) > div:not(.Panel) > div > .Panel.Focusable,
+[id^="searchSuggestions"] {
+    background-color: rgba(24, 24, 37, 0.88) !important;
+    -webkit-backdrop-filter: blur(28px) saturate(1.4) !important;
+    backdrop-filter: blur(28px) saturate(1.4) !important;
+    box-shadow: 0 12px 36px rgba(17, 17, 27, 0.6), inset 0 0 0 2px rgba(69, 71, 90, 0.9) !important;
+}
+/* Nothing between a dropdown and the page may hold a filter of its own. */
+.Panel.Focusable:has(> .Panel.Focusable form[role="search"]) > div:not(.Panel),
+.Panel.Focusable:has(> .Panel.Focusable form[role="search"]) > div:not(.Panel) > div,
+.Panel.Focusable:has(> [id^="searchSuggestions"]) {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    filter: none !important;
+}
+
+/* Dropdown rows and suggestion rows: a quiet resting fill, readable text. */
+.Panel.Focusable:has(> .Panel.Focusable form[role="search"]) > div:not(.Panel) > div > .Panel.Focusable a,
+[id^="searchSuggestions"] a {
+    border-radius: 10px !important;
+    color: rgb(var(--st-text-strong, 205, 214, 244)) !important;
+    transition: background-color 0.15s ease-out;
+}
+.Panel.Focusable:has(> .Panel.Focusable form[role="search"]) > div:not(.Panel) > div > .Panel.Focusable a:hover,
+[id^="searchSuggestions"] a:hover,
+[id^="searchSuggestions"] a:focus-visible {
+    background-color: rgba(49, 50, 68, 0.85) !important;
+    color: rgb(255, 255, 255) !important;
+}
+/* Sale price box inside a suggestion row: stock light blue under near-white
+   text was 1.6:1. Surface fill, green discount, white price. */
+[id^="searchSuggestions"] [class*="Jl3kvOjNABk"],
+.Panel.Focusable:has(> .Panel.Focusable form[role="search"]) [class*="Jl3kvOjNABk"] {
+    border-radius: 6px !important;
+    background: rgb(49, 50, 68) !important;
+    color: rgb(var(--st-text-strong, 205, 214, 244)) !important;
+}
+[id^="searchSuggestions"] [class*="Jl3kvOjNABk"] *,
+.Panel.Focusable:has(> .Panel.Focusable form[role="search"]) [class*="Jl3kvOjNABk"] * {
+    background: transparent !important;
+    color: rgb(var(--st-text-strong, 205, 214, 244)) !important;
+}
+
+
+/*
+& Ring hosts
+*/
+.Panel.Focusable:has(> div form[role="search"]):not(:has(> .Panel form[role="search"])) [role="button"],
+.Panel.Focusable:has(> div form[role="search"]):not(:has(> .Panel form[role="search"])) a.Focusable,
+.Panel.Focusable:has(> .Panel.Focusable form[role="search"]) > div:not(.Panel) > div > .Panel.Focusable a,
+[id^="searchSuggestions"] a,
+form[role="search"],
+.home_page_body_ctn .home_tab_button,
+.home_page_body_ctn .tab_row_item,
+.home_page_body_ctn .tab_preview,
+.home_page_body_ctn .see_more_link:not(.home_section_button),
+body .btnv6_white_transparent,
+a.znS2DqGQQHM-,
+.luatools-header-button,
+.home_page_body_ctn .home_gift_card_link,
+.sale_capsule .discount_block,
+.home_page_body_ctn .carousel_thumbs {
+    position: relative !important;
+}
+
+.Panel.Focusable:has(> div form[role="search"]):not(:has(> .Panel form[role="search"])) [role="button"]::after,
+.Panel.Focusable:has(> div form[role="search"]):not(:has(> .Panel form[role="search"])) a.Focusable::after,
+.Panel.Focusable:has(> .Panel.Focusable form[role="search"]) > div:not(.Panel) > div > .Panel.Focusable a::after,
+[id^="searchSuggestions"] a::after,
+form[role="search"]::after,
+.home_page_body_ctn .home_tab_button::after,
+.home_page_body_ctn .tab_row_item::after,
+.home_page_body_ctn .tab_preview::after,
+.home_page_body_ctn .see_more_link:not(.home_section_button)::after,
+body .btnv6_white_transparent::after,
+a.znS2DqGQQHM-::after,
+.luatools-header-button::after,
+.home_page_body_ctn .home_gift_card_link::after,
+.sale_capsule .discount_block::after,
+.home_page_body_ctn .carousel_thumbs::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    border-radius: inherit;
+    padding: 2px;
+    background: linear-gradient(135deg, rgb(137, 180, 250), rgb(203, 166, 247));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.15s ease-out;
+    pointer-events: none;
+}
+
+.Panel.Focusable:has(> div form[role="search"]):not(:has(> .Panel form[role="search"])) [role="button"]:hover::after,
+.Panel.Focusable:has(> div form[role="search"]):not(:has(> .Panel form[role="search"])) [role="button"][aria-expanded="true"]::after,
+.Panel.Focusable:has(> div form[role="search"]):not(:has(> .Panel form[role="search"])) a.Focusable:hover::after,
+.Panel.Focusable:has(> .Panel.Focusable form[role="search"]) > div:not(.Panel) > div > .Panel.Focusable a:hover::after,
+[id^="searchSuggestions"] a:hover::after,
+form[role="search"]:hover::after,
+form[role="search"]:focus-within::after,
+.home_page_body_ctn .home_tab_button:hover::after,
+.home_page_body_ctn .tab_row_item:hover::after,
+.home_page_body_ctn .tab_preview:hover::after,
+.home_page_body_ctn .see_more_link:not(.home_section_button):hover::after,
+body .btnv6_white_transparent:hover::after,
+a.znS2DqGQQHM-:hover::after,
+.luatools-header-button:hover::after,
+.home_page_body_ctn .home_gift_card_link:hover::after,
+.sale_capsule:hover .discount_block::after,
+.home_page_body_ctn .carousel_thumbs:hover::after {
+    opacity: 1;
+}
+/* The focus ring on the search pill is the gradient now, not a flat line. */
+form[role="search"]:focus-within {
+    box-shadow: inset 0 0 0 2px var(--st-edge) !important;
+}
+@media (prefers-reduced-motion: reduce) {
+    .home_page_body_ctn .tab_row_item::after,
+    .home_page_body_ctn .home_tab_button::after,
+    [id^="searchSuggestions"] a::after {
+        transition: none;
+    }
+}
+
+
+/*
+& Price pills under the carousel capsules
+& The tag box was 77px with tags at 8/41/74, so a 3px sliver of a third tag
+& row peeked out and the pill sat flush against it. Clip at two rows and
+& give the pill air.
+*/
+.home_page_content .sale_capsule .deep_dive_key_tags,
+.sale_capsule_carousel .sale_capsule .deep_dive_key_tags,
+.deep_dive_block .sale_capsule .deep_dive_key_tags {
+    max-height: 66px !important;
+}
+.home_page_content .sale_capsule > .discount_block,
+.sale_capsule_carousel .sale_capsule > .discount_block,
+.deep_dive_block .sale_capsule > .discount_block {
+    margin-top: 10px !important;
+}
+
+
+/*
+& Home tabs (Popular New Releases, Top Sellers, Upcoming, Specials, Free)
+& Every card gets a resting surface2 edge so rows separate from the page,
+& and a brighter fill on hover.
+*/
+.home_page_body_ctn .home_tab_bg_ctn .tabs_menu_ctn {
+    background: rgba(24, 24, 37, 0.85) !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9) !important;
+}
+.home_page_body_ctn .home_tab_button {
+    background: rgba(49, 50, 68, 0.6) !important;
+    color: rgb(var(--st-text-soft, 186, 194, 222)) !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.7) !important;
+    transition: background-color 0.15s ease-out, color 0.15s ease-out;
+}
+.home_page_body_ctn .home_tab_button:hover {
+    background: rgba(69, 71, 90, 0.85) !important;
+    color: rgb(var(--st-text-strong, 205, 214, 244)) !important;
+}
+.home_page_body_ctn .home_tab_button.active {
+    background: linear-gradient(135deg, rgba(137, 180, 250, 0.22), rgba(203, 166, 247, 0.22)), rgb(30, 30, 46) !important;
+    color: rgb(255, 255, 255) !important;
+    box-shadow: inset 0 0 0 2px rgba(137, 180, 250, 0.55) !important;
+}
+
+.home_page_body_ctn .tab_row_item {
+    margin-bottom: 8px !important;
+    border-radius: 12px !important;
+    background: rgba(30, 30, 46, 0.9) !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.85) !important;
+    transition: background-color 0.15s ease-out;
+}
+.home_page_body_ctn .tab_row_item:hover,
+.home_page_body_ctn .tab_row_item.focus {
+    background: rgba(49, 50, 68, 0.95) !important;
+}
+.home_page_body_ctn .tab_row_item .tab_item_cap {
+    border-radius: 8px !important;
+    overflow: hidden !important;
+}
+.home_page_body_ctn .tab_row_item .tab_item_name {
+    color: rgb(var(--st-text-strong, 205, 214, 244)) !important;
+}
+.home_page_body_ctn .tab_row_item .tab_item_details,
+.home_page_body_ctn .tab_row_item .top_tag {
+    color: rgb(var(--st-text-dim, 166, 173, 200)) !important;
+}
+
+.home_page_body_ctn .tab_preview {
+    border-radius: 16px !important;
+    background: rgba(30, 30, 46, 0.92) !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.85) !important;
+}
+.home_page_body_ctn .tab_preview h2 {
+    color: rgb(var(--st-text-strong, 205, 214, 244)) !important;
+}
+.home_page_body_ctn .tab_preview .screenshot {
+    border-radius: 8px !important;
+}
+
+.home_page_body_ctn .see_more_link:not(.home_section_button) {
+    background: rgba(30, 30, 46, 0.9) !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.85) !important;
+}
+.home_page_body_ctn .see_more_link:not(.home_section_button) a {
+    color: rgb(137, 180, 250) !important;
+}
+
+
+/*
+& Buttons and badges with stock colours
+*/
+/* "Explore more" style buttons: the label span inherited black (1.7:1). */
+body .btnv6_white_transparent,
+body .btnv6_white_transparent > span {
+    color: rgb(var(--st-text-strong, 205, 214, 244)) !important;
+}
+body .btnv6_white_transparent {
+    background: rgb(49, 50, 68) !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9) !important;
+}
+body .btnv6_white_transparent:hover {
+    background: rgb(69, 71, 90) !important;
+}
+body .btnv6_white_transparent > span {
+    background: transparent !important;
+}
+
+/* Special Offers "See More": was grey #ccc under sky-blue text (1.2:1). */
+a.znS2DqGQQHM- {
+    display: inline-flex !important;
+    align-items: center !important;
+    height: 28px !important;
+    padding: 0 14px !important;
+    border-radius: 999px !important;
+    background: rgb(49, 50, 68) !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9) !important;
+    color: rgb(var(--st-text-strong, 205, 214, 244)) !important;
+    font-weight: 500 !important;
+    text-decoration: none !important;
+    transition: background-color 0.15s ease-out;
+}
+a.znS2DqGQQHM-:hover {
+    background: rgb(69, 71, 90) !important;
+    color: rgb(255, 255, 255) !important;
+}
+
+/* "NEW" badge: Steam blue to mauve. */
+span.x8jWPgfdVoI- {
+    background: rgb(203, 166, 247) !important;
+    color: rgb(17, 17, 27) !important;
+    border-radius: 6px !important;
+}
+
+/* "+1 More" tag chip: navy to surface. */
+a.rsPEubiF9HI- {
+    background: rgb(49, 50, 68) !important;
+    color: rgb(var(--st-text-strong, 205, 214, 244)) !important;
+    box-shadow: inset 0 0 0 1px rgba(88, 91, 112, 0.9) !important;
+}
+
+/*
+& Section "See more" wrappers that only hold a pill button: the button has
+& its own fill and ring, so the 580px strip behind it stays clear.
+*/
+.home_page_body_ctn .see_more_link:has(> .btnv6_white_transparent) {
+    background: transparent !important;
+    box-shadow: none !important;
+}
+.home_page_body_ctn .see_more_link:has(> .btnv6_white_transparent)::after {
+    content: none !important;
+}
+
+
+/*
+& Price pills and the carousel page dots: a resting edge like every other
+& control, the gradient ring on hover (ring hosts above).
+*/
+body.v6 .sale_capsule .discount_block {
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9) !important;
+}
+.home_page_body_ctn .carousel_thumbs {
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9) !important;
+}
+
+
+/*
+& Send a Gift Card: Steam's hover glow is 24px tall and the carousel above
+& clips everything past 8px, so the glow is cut flat. A tighter glow that
+& fits the gap, plus the gradient ring.
+*/
+.home_page_body_ctn .home_gift_card_link:hover {
+    transform: none !important;
+    box-shadow: 0 4px 12px -5px rgba(137, 180, 250, 0.55) !important;
+}
+
+/*
+& Game hover card (the flyout over a price or capsule). Real glass: the
+& fill stays light enough for the blur to show, and #global_hover itself
+& carries no filter, so it is not a backdrop root.
+*/
+#global_hover {
+    /* Steam fades this in with jQuery fadeTo (inline opacity). While opacity is
+       below 1 the wrapper is a backdrop root, and CEF never repaints the blur
+       after the fade ends (stripe test 2026-11-09): the card stays see-through
+       until something restyles it. Pinning opacity makes it appear at once,
+       with real blur. */
+    opacity: 1 !important;
+    background: transparent !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+}
+#global_hover .game_hover_box:not(#a):not(#b) {
+    position: relative;
+    width: 306px;
+    border-radius: 16px !important;
+    isolation: isolate;
+    background: transparent !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    box-shadow: 0 12px 32px -8px rgba(17, 17, 27, 0.8) !important;
+    color: rgb(var(--st-text-soft, 186, 194, 222)) !important;
+}
+/* Measured 2026-11-09 (stripe test): backdrop-filter on the box itself renders
+   nothing in Steam's CEF, while the same blur on a ::before layer does. */
+#global_hover .game_hover_box:not(#a):not(#b)::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    border-radius: inherit;
+    background: rgba(24, 24, 37, 0.78);
+    -webkit-backdrop-filter: blur(36px) saturate(1.4);
+    backdrop-filter: blur(36px) saturate(1.4);
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9);
+}
+#global_hover .game_hover_box h4.hover_title {
+    color: rgb(var(--st-text-strong, 205, 214, 244)) !important;
+}
+#global_hover .hover_release,
+#global_hover .hover_top_area,
+#global_hover .tags_title {
+    color: rgb(var(--st-text-dim, 166, 173, 200)) !important;
+}
+#global_hover .hover_review_summary {
+    border-radius: 10px !important;
+    background: rgba(49, 50, 68, 0.7) !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9) !important;
+    color: rgb(var(--st-text-soft, 186, 194, 222)) !important;
+}
+#global_hover .hover_review_summary .title {
+    color: rgb(var(--st-text-dim, 166, 173, 200)) !important;
+}
+#global_hover .game_review_summary.positive { color: rgb(137, 180, 250) !important; }
+#global_hover .game_review_summary.mixed { color: rgb(249, 226, 175) !important; }
+#global_hover .game_review_summary.negative { color: rgb(243, 139, 168) !important; }
+#global_hover .app_tag {
+    border-radius: 8px !important;
+    background: rgba(49, 50, 68, 0.9) !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9) !important;
+    color: rgb(var(--st-text-soft, 186, 194, 222)) !important;
+}
+#global_hover .hover_screenshots,
+#global_hover .hover_screenshots .screenshot {
+    border-radius: 10px !important;
+    overflow: hidden;
+}
+/* Stock arrows are pale blue PNGs that point at the capsule. */
+#global_hover .hover_arrow_left,
+#global_hover .hover_arrow_right {
+    display: none !important;
+}
+
+
+/*
+& Page frame and scrollbar. The fixed frame covers the layout viewport
+& (left of the scrollbar) with its right side open; the scrollbar strip
+& paints the frame's right side and corners in its own background, so the
+& thumb runs inside the frame, like the library scrollbar.
+*/
+html:not(#a) {
+    overflow-x: hidden !important;
+    overflow-y: scroll !important;
+}
+html::before,
+html::after {
+    content: "";
+    position: fixed;
+    inset: 0 !important;
+    width: auto !important;
+    height: auto !important;
+    box-sizing: border-box;
+    z-index: 2147483646;
+    border-radius: 16px 0 0 16px !important;
+    pointer-events: none;
+}
+html::before {
+    border: 2px solid rgba(88, 91, 112, 0.9);
+    border-right: 0;
+    box-shadow: none;
+}
+html::after {
+    z-index: 2147483647;
+    padding: 2px 0 2px 2px;
+    background: linear-gradient(135deg, rgb(137, 180, 250), rgb(203, 166, 247));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.2s ease-out;
+}
+html:hover::after {
+    opacity: 1;
+}
+/* Page fill: the same box as the frame (webkit.css sets 100vw, which would
+   run under the scrollbar). */
+html body::before {
+    inset: 0 !important;
+    width: auto !important;
+    height: auto !important;
+    border-radius: 16px 0 0 16px !important;
+}
+/* 16px strip, as in the library. Layers, top first: top corner arc, bottom
+   corner arc, right line, then the fill under the thumb. */
+html:not(#a)::-webkit-scrollbar,
+html body:not(#a)::-webkit-scrollbar {
+    display: block !important;
+    width: 16px !important;
+    height: 16px !important;
+    border-radius: 0 !important;
+    background:
+        radial-gradient(circle at 0 100%, transparent 13.5px, rgba(88, 91, 112, 0.9) 14px, rgba(88, 91, 112, 0.9) 15.6px, transparent 16.1px) right top / 16px 16px no-repeat,
+        radial-gradient(circle at 0 0, transparent 13.5px, rgba(88, 91, 112, 0.9) 14px, rgba(88, 91, 112, 0.9) 15.6px, transparent 16.1px) right bottom / 16px 16px no-repeat,
+        linear-gradient(rgba(88, 91, 112, 0.9), rgba(88, 91, 112, 0.9)) right center / 2px calc(100% - 32px) no-repeat,
+        radial-gradient(circle at 0 100%, rgba(24, 24, 37, 0.55) 14px, transparent 14.5px) right top / 16px 16px no-repeat,
+        radial-gradient(circle at 0 0, rgba(24, 24, 37, 0.55) 14px, transparent 14.5px) right bottom / 16px 16px no-repeat,
+        linear-gradient(rgba(24, 24, 37, 0.55), rgba(24, 24, 37, 0.55)) left center / 14px calc(100% - 32px) no-repeat !important;
+}
+html:not(#a):hover::-webkit-scrollbar,
+html:hover body:not(#a)::-webkit-scrollbar {
+    background:
+        radial-gradient(circle at 0 100%, transparent 13.5px, rgb(170, 173, 249) 14px, rgb(170, 173, 249) 15.6px, transparent 16.1px) right top / 16px 16px no-repeat,
+        radial-gradient(circle at 0 0, transparent 13.5px, rgb(203, 166, 247) 14px, rgb(203, 166, 247) 15.6px, transparent 16.1px) right bottom / 16px 16px no-repeat,
+        linear-gradient(rgb(170, 173, 249), rgb(203, 166, 247)) right center / 2px calc(100% - 32px) no-repeat,
+        radial-gradient(circle at 0 100%, rgba(24, 24, 37, 0.55) 14px, transparent 14.5px) right top / 16px 16px no-repeat,
+        radial-gradient(circle at 0 0, rgba(24, 24, 37, 0.55) 14px, transparent 14.5px) right bottom / 16px 16px no-repeat,
+        linear-gradient(rgba(24, 24, 37, 0.55), rgba(24, 24, 37, 0.55)) left center / 14px calc(100% - 32px) no-repeat !important;
+}
+html:not(#a)::-webkit-scrollbar-track,
+html body:not(#a)::-webkit-scrollbar-track,
+html:not(#a)::-webkit-scrollbar-track-piece,
+html body:not(#a)::-webkit-scrollbar-track-piece {
+    margin-block: 16px !important;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+}
+html:not(#a)::-webkit-scrollbar-corner,
+html body:not(#a)::-webkit-scrollbar-corner {
+    background: transparent !important;
+}
+/* Thumb: 6px visible (8px on hover), at x 5-11 of the strip, clear of the
+   frame line at x 14-16. */
+html:not(#a)::-webkit-scrollbar-thumb,
+html body:not(#a)::-webkit-scrollbar-thumb {
+    min-height: 40px;
+    border: 5px solid transparent !important;
+    border-radius: 16px !important;
+    background: linear-gradient(180deg, #89b4fa, #cba6f7) content-box !important;
+    box-shadow: none !important;
+}
+html:not(#a)::-webkit-scrollbar-thumb:hover,
+html body:not(#a)::-webkit-scrollbar-thumb:hover {
+    border-width: 4px !important;
+}
+
+
+/*
+& Search page controls: one resting edge each, gradient ring on hover.
+*/
+#additional_search_options .tab_filter_control_row,
+.searchbar_left,
+.search_result_row,
+.st-btn,
+.settings_tab,
+#sort_by_dselect_container {
+    position: relative;
+    border-radius: 12px;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9);
+}
+#additional_search_options .tab_filter_control_row::after,
+.searchbar_left::after,
+.search_result_row::after,
+.st-btn::after,
+.settings_tab::after,
+#sort_by_dselect_container::after,
+body #additional_search_options .block_content::after {
+    content: ""; position: absolute; inset: 0; border-radius: inherit;
+    padding: 2px; pointer-events: none; z-index: 3;
+    background: linear-gradient(135deg, #89b4fa, #cba6f7);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor; mask-composite: exclude;
+    opacity: 0; transition: opacity .15s ease-out;
+}
+#additional_search_options .tab_filter_control_row:hover::after,
+.searchbar_left:hover::after,
+.searchbar_left:focus-within::after,
+.search_result_row:hover::after,
+.st-btn:hover::after,
+.settings_tab:hover::after,
+#sort_by_dselect_container:hover::after,
+body #additional_search_options .block_content:hover::after { opacity: 1; }
+/* A filter panel's ring yields to the row or input under the cursor. */
+body #additional_search_options .block_content:has(:is(.tab_filter_control_row, input):hover)::after {
+    opacity: 0;
+}
+/* Each filter content surface keeps one complete inset edge; the outer
+   .block is a plain wrapper. */
+body #additional_search_options .block_content {
+    position: relative;
+    padding: 8px !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9) !important;
+    border-radius: 12px !important;
+}
+#additional_search_options input[type="text"] {
+    box-sizing: border-box; max-width: calc(100% - 8px); margin: 4px;
+    border: 2px solid rgba(69, 71, 90, 0.9) !important; border-radius: 10px !important;
+    background: #181825 !important; color: rgb(var(--st-text-strong, 205, 214, 244)) !important;
+    box-shadow: none !important; outline: none !important;
+}
+#additional_search_options input[type="text"]:is(:hover, :focus) {
+    border-color: transparent !important;
+    background: linear-gradient(#181825, #181825) padding-box,
+                linear-gradient(135deg, #89b4fa, #cba6f7) border-box !important;
+}
+/* Keep the warning's gold frame; no extra dock around it. */
+body .search_results_filtered_warning {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: 0 !important;
+}
+body .search_results_filtered_warning::after { content: none !important; }
+
+/* Search box: full width from the start, no size jump, one edge (the
+   container's), gradient ring on hover and focus. The input and the button
+   draw nothing of their own. */
+body .searchbar_left:not(#a) {
+    overflow: visible !important;
+    border-radius: 16px !important;
+    background: rgba(30, 30, 46, 0.55) !important;
+}
+body .searchbar_left:not(#a):not(#b) #term {
+    flex: 0 1 400px !important;
+    width: 400px !important;
+    max-width: 100%;
+    transition: none !important;
+}
+body .searchbar_left:not(#a):not(#b) :is(input, button),
+body .searchbar_left:not(#a):not(#b) :is(input, button):is(:hover, :focus, :focus-visible) {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: 0 !important;
+    outline: none !important;
+}
+
+
+/*
+& Dropdowns and flyouts: glass surface, each row with a resting edge and a
+& gradient ring, separators edge to edge, stacked above page rings.
+*/
+/* Legacy autocomplete under the search page box. */
+body .searchbar_left #term_options:not(#a) {
+    z-index: 60 !important;
+    box-sizing: border-box;
+    margin-top: 8px;
+    padding: 6px !important;
+    border: 0 !important;
+    border-radius: 16px !important;
+    background: rgba(24, 24, 37, 0.72) !important;
+    -webkit-backdrop-filter: blur(36px) saturate(1.4) !important;
+    backdrop-filter: blur(36px) saturate(1.4) !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9), 0 12px 32px -8px rgba(17, 17, 27, 0.8) !important;
+    color: rgb(var(--st-text-strong, 205, 214, 244)) !important;
+}
+/* Sort-by list. */
+body .dselect_container #sort_by_droplist:not(#a) {
+    z-index: 60 !important;
+    margin-top: 8px;
+    padding: 6px !important;
+    border: 0 !important;
+    border-radius: 16px !important;
+    background: rgba(24, 24, 37, 0.72) !important;
+    -webkit-backdrop-filter: blur(36px) saturate(1.4) !important;
+    backdrop-filter: blur(36px) saturate(1.4) !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9), 0 12px 32px -8px rgba(17, 17, 27, 0.8) !important;
+}
+/* Legacy Steam popup menus (account, language, other dropdowns). */
+body .popup_block_new .popup_body:not(#a) {
+    padding: 6px !important;
+    border: 0 !important;
+    border-radius: 16px !important;
+    background: rgba(24, 24, 37, 0.72) !important;
+    -webkit-backdrop-filter: blur(36px) saturate(1.4) !important;
+    backdrop-filter: blur(36px) saturate(1.4) !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9), 0 12px 32px -8px rgba(17, 17, 27, 0.8) !important;
+}
+body .popup_block_new .popup_body :is(hr, .popup_menu_separator, .hr):not(#a) {
+    height: 2px !important;
+    margin: 6px -6px !important;
+    border: 0 !important;
+    background: rgba(69, 71, 90, 0.9) !important;
+}
+/* Header search suggestions (React). */
+[id^="searchSuggestions"]:not(#a):not(#b) {
+    padding: 6px !important;
+    border-radius: 16px !important;
+    background: rgba(24, 24, 37, 0.72) !important;
+    -webkit-backdrop-filter: blur(36px) saturate(1.4) !important;
+    backdrop-filter: blur(36px) saturate(1.4) !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9), 0 12px 32px -8px rgba(17, 17, 27, 0.8) !important;
+}
+[id^="searchSuggestions"] ._6udfJIcyaRc- {
+    height: auto !important; max-height: 360px !important; overflow-y: auto !important;
+}
+[id^="searchSuggestions"] .Lvs2qQJx5Ug- {
+    color: rgb(var(--st-text-dim, 166, 173, 200)) !important;
+}
+[id^="searchSuggestions"] [class*="Jl3kvOjNABk"]::before,
+[id^="searchSuggestions"] [class*="Jl3kvOjNABk"]::after { display: none !important; }
+[id^="searchSuggestions"] [class~="cchAfQhDUvE-"] {
+    min-width: 0 !important; padding: 6px 10px !important; box-sizing: border-box;
+    flex: 1 1 0 !important;
+}
+[id^="searchSuggestions"] [class~="FY3FS-llgYw-"] {
+    display: flex !important; flex-wrap: wrap; margin-top: 5px !important;
+    min-width: 0 !important; max-width: 100% !important;
+}
+[id^="searchSuggestions"] :is([class~="Jl3kvOjNABk-"], [class~="dkW-v-f4lTw-"]):not(#a):not(#b):not(#c) {
+    background: #313244 !important; color: rgb(var(--st-text-strong, 205, 214, 244)) !important;
+    clip-path: none !important; border-radius: 8px !important;
+    box-sizing: border-box !important; max-width: 100% !important;
+    height: auto !important; min-height: 24px !important;
+    padding: 3px 6px !important; line-height: 18px !important;
+    white-space: normal !important; overflow: hidden !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9) !important;
+}
+[id^="searchSuggestions"] [class~="Jl3kvOjNABk-"] *,
+[id^="searchSuggestions"] .Jl3kvOjNABk- .JBijjejcvmo-:not(#a):not(#b):not(#c):not(#d) {
+    background: transparent !important; color: rgb(var(--st-text-strong, 205, 214, 244)) !important;
+    clip-path: none !important; box-shadow: none !important; padding: 0 !important;
+}
+[id^="searchSuggestions"] [class~="pnC74wQYjms-"] { color: #a6e3a1 !important; margin-right: 6px; }
+[id^="searchSuggestions"] [class~="Cnw9IXSgr7I-"] { color: rgb(var(--st-text-dim, 166, 173, 200)) !important; }
+
+/* Rows in every dropdown above: resting edge, clean contrast, ring on hover
+   or keyboard selection. */
+body .searchbar_left #term_options li,
+body .dselect_container #sort_by_droplist a,
+body .popup_block_new .popup_body a.popup_menu_item,
+[id^="searchSuggestions"] a.QHiQcR8jG10-,
+[id^="searchSuggestions"] a.JhiIqI-S0Js-,
+[id^="searchSuggestions"] a.KKRHY2AccFo- {
+    position: relative !important;
+    display: block;
+    margin: 0 0 4px !important;
+    padding: 7px 10px !important;
+    border: 0 !important;
+    border-radius: 10px !important;
+    background: rgba(49, 50, 68, 0.6) !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9) !important;
+    color: rgb(var(--st-text-strong, 205, 214, 244)) !important;
+    text-shadow: none !important;
+}
+[id^="searchSuggestions"] a.QHiQcR8jG10- {
+    display: flex; min-height: 78px !important; height: auto !important;
+    padding: 0 !important; overflow: hidden !important;
+}
+[id^="searchSuggestions"] a.JhiIqI-S0Js- { display: flex; align-items: center; min-height: 32px !important; margin: 0 !important; }
+[id^="searchSuggestions"] a.KKRHY2AccFo- { display: inline-block; margin: 2px 0 !important; padding: 2px 8px !important; }
+body .searchbar_left #term_options li:last-child,
+body .dselect_container #sort_by_droplist a:last-child,
+body .popup_block_new .popup_body a.popup_menu_item:last-child { margin-bottom: 0 !important; }
+body .searchbar_left #term_options li::after,
+body .dselect_container #sort_by_droplist a::after,
+body .popup_block_new .popup_body a.popup_menu_item::after,
+[id^="searchSuggestions"] a.QHiQcR8jG10-::after,
+[id^="searchSuggestions"] a.JhiIqI-S0Js-::after,
+[id^="searchSuggestions"] a.KKRHY2AccFo-::after {
+    content: ""; position: absolute; inset: 0; border-radius: inherit;
+    padding: 2px; pointer-events: none; z-index: 3;
+    background: linear-gradient(135deg, #89b4fa, #cba6f7);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor; mask-composite: exclude;
+    opacity: 0; transition: opacity .15s ease-out;
+}
+body .searchbar_left #term_options li:is(:hover, .selected)::after,
+body .dselect_container #sort_by_droplist a:is(:hover, .highlighted_selection)::after,
+body .popup_block_new .popup_body a.popup_menu_item:hover::after,
+[id^="searchSuggestions"] :is(a.QHiQcR8jG10-, a.JhiIqI-S0Js-, a.KKRHY2AccFo-):is(:hover, :focus-visible, [aria-selected="true"])::after {
+    opacity: 1;
+}
+body .searchbar_left #term_options li:is(:hover, .selected),
+body .dselect_container #sort_by_droplist a:is(:hover, .highlighted_selection),
+body .popup_block_new .popup_body a.popup_menu_item:hover,
+[id^="searchSuggestions"] :is(a.QHiQcR8jG10-, a.JhiIqI-S0Js-, a.KKRHY2AccFo-):hover {
+    background: rgba(69, 71, 90, 0.7) !important;
+    color: #ffffff !important;
+}
+
+
+/*
+& Store navigation bar and its mega menus. The stock bar paints a navy
+& gradient and blur(10px) on itself, which makes it a backdrop root for
+& everything inside it (menus, suggestions). The glass moves to ::before and
+& the bar is lifted above page rings so menus never collide with them.
+*/
+.uKlZfaGB3Rs-:not(#a):not(#b) {
+    z-index: 900 !important;
+}
+.XLbP8xOkCYw-:not(#a):not(#b) {
+    position: relative;
+    isolation: isolate;
+    border-radius: 16px 0 0 0;
+    background: transparent !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    box-shadow: inset 0 -2px 0 rgba(69, 71, 90, 0.9), 0 10px 28px -12px rgba(17, 17, 27, 0.8) !important;
+}
+.XLbP8xOkCYw-:not(#a):not(#b)::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    border-radius: inherit;
+    background: rgba(24, 24, 37, 0.72);
+    -webkit-backdrop-filter: blur(36px) saturate(1.4);
+    backdrop-filter: blur(36px) saturate(1.4);
+}
+/* Edge-to-edge separator between the tab row and an open menu. */
+.XLbP8xOkCYw- .WHV9yn7TELM- {
+    box-shadow: inset 0 2px 0 rgba(69, 71, 90, 0.9);
+}
+.XLbP8xOkCYw- .WHV9yn7TELM- hr {
+    height: 2px !important;
+    border: 0 !important;
+    background: rgba(69, 71, 90, 0.9) !important;
+}
+/* Panels behind the rows: a quiet fill, no edge (the rows carry it). */
+.XLbP8xOkCYw- .WHV9yn7TELM- :is(.dUvJZktS6bk-, .jYoDYbgCCU0-, .YEIG5t1R8UY-):not(#a) {
+    border-radius: 12px !important;
+    background: rgba(49, 50, 68, 0.28) !important;
+}
+/* Rows draw their own edge, so the stock hairlines between them go. */
+.XLbP8xOkCYw- .WHV9yn7TELM- .U67bdWLTNEo- {
+    border-bottom: 0 !important;
+}
+.XLbP8xOkCYw- .WHV9yn7TELM- .cYQ47CXd3vU- { color: rgb(var(--st-text-strong, 205, 214, 244)) !important; }
+.XLbP8xOkCYw- .WHV9yn7TELM- .dHREWQDYPkI- { color: rgb(var(--st-text-dim, 166, 173, 200)) !important; }
+/* Image cards paint full-bleed children, so every item's resting edge is an
+   outline (drawn above children); the ring is ::after. */
+.XLbP8xOkCYw- .WHV9yn7TELM- :is(a, button).Focusable:not(#a) {
+    position: relative;
+    border-radius: 12px !important;
+    outline: 2px solid rgba(69, 71, 90, 0.9);
+    outline-offset: -2px;
+}
+.XLbP8xOkCYw- .WHV9yn7TELM- a.PcE8-n5Eb6Y-:not(#a) {
+    margin: 2px 4px 4px;
+    background: rgba(49, 50, 68, 0.45) !important;
+}
+.XLbP8xOkCYw- .WHV9yn7TELM- button.eRszG1u51Rs-:not(#a) {
+    background: rgba(49, 50, 68, 0.6) !important;
+    color: rgb(var(--st-text-strong, 205, 214, 244)) !important;
+}
+.XLbP8xOkCYw- .WHV9yn7TELM- :is(a, button).Focusable::after {
+    content: ""; position: absolute; inset: 0; border-radius: inherit;
+    padding: 2px; pointer-events: none; z-index: 3;
+    background: linear-gradient(135deg, #89b4fa, #cba6f7);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor; mask-composite: exclude;
+    opacity: 0; transition: opacity .15s ease-out;
+}
+.XLbP8xOkCYw- .WHV9yn7TELM- :is(a, button).Focusable:is(:hover, :focus-visible)::after {
+    opacity: 1;
+}
+/* Header tab pills: resting edge here; the hover ring comes from the
+   header ring hosts near the top of this file. */
+.XLbP8xOkCYw- button._2U8ldyeSqVI-:not(#a) {
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9);
+}
+/* Search page top bar and the sort button: one edge each, same radius. */
+.search_page .searchbar:not(#a) {
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9);
+}
+#sort_by_dselect_container:not(#a) {
+    border-radius: 16px;
+}
+
+
+/*
+& Front page boxes the edge audit found without a resting edge.
+*/
+body a.home_gift_card_link:not(#a) {
+    background: rgba(49, 50, 68, 0.55) !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9) !important;
+}
+/* The main capsule's children are full-bleed images, so the edge is an
+   outline (painted above them); the ring is ::after. */
+body a.store_main_capsule:not(#a) {
+    outline: 2px solid rgba(69, 71, 90, 0.9);
+    outline-offset: -2px;
+}
+body .ds_options > div:not(#a) {
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9), 0 4px 8px rgba(30, 30, 46, 0.5) !important;
+}
+/* Tag chips sit inside capsules that already ring, so they get an edge only. */
+body .store_main_capsule .tags span:not(#a),
+body .tab_preview .tags a:not(#a),
+body .deep_dive_tag:not(#a) {
+    border-radius: 8px !important;
+    background: rgba(49, 50, 68, 0.7) !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9) !important;
+    color: rgb(var(--st-text-strong, 205, 214, 244)) !important;
+}
+body a.store_main_capsule::after {
+    content: ""; position: absolute; inset: 0; border-radius: inherit;
+    padding: 2px; pointer-events: none; z-index: 3;
+    background: linear-gradient(135deg, #89b4fa, #cba6f7);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor; mask-composite: exclude;
+    opacity: 0; transition: opacity .15s ease-out;
+}
+body a.store_main_capsule:hover::after { opacity: 1; }
+
+
+/*
+& Owner 2026-11-09: the full-width bar behind the nav row also goes. No fill,
+& line, shadow or glass layer at rest; it stays a non-backdrop-root so open
+& menus keep their own blur.
+*/
+.XLbP8xOkCYw-:not(#a):not(#b) {
+    box-shadow: none !important;
+}
+.XLbP8xOkCYw-:not(#a):not(#b)::before {
+    display: none !important;
+}
+/*
+& Owner 2026-11-09: the nav row dock stays (resting edge from its ::before)
+& and gets the same blue-to-mauve hover ring as every other box.
+*/
+.Panel.Focusable:has(> div form[role="search"]):not(:has(> .Panel form[role="search"]))::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    border-radius: inherit;
+    padding: 2px;
+    background: linear-gradient(135deg, rgb(137, 180, 250), rgb(203, 166, 247));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.15s ease-out;
+    pointer-events: none;
+}
+.Panel.Focusable:has(> div form[role="search"]):not(:has(> .Panel form[role="search"])):hover::after {
+    opacity: 1;
+}
+/*
+& Owner 2026-11-09: every store floating surface gets real glass. Measured
+& with a stripe test: backdrop-filter on the surface itself renders nothing in
+& Steam's CEF (the game hover card was fully see-through while its computed
+& style said blur(36px)); the same blur on a ::before layer renders. So each
+& surface is transparent and its glass lives on ::before.
+*/
+.Panel.Focusable:has(> .Panel.Focusable form[role="search"]) > div:not(.Panel) > div > .Panel.Focusable:not(#a):not(#b):not(#c),
+[id^="searchSuggestions"]:not(#a):not(#b):not(#c),
+body .searchbar_left #term_options:not(#a):not(#b):not(#c),
+body .dselect_container #sort_by_droplist:not(#a):not(#b):not(#c),
+body .popup_block_new .popup_body:not(#a):not(#b):not(#c),
+html body.v6 .ds_options_tooltip:not(#a):not(#b):not(#c) {
+    isolation: isolate;
+    background: transparent !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    box-shadow: 0 12px 36px rgba(17, 17, 27, 0.6) !important;
+}
+.Panel.Focusable:has(> .Panel.Focusable form[role="search"]) > div:not(.Panel) > div > .Panel.Focusable:not(#a):not(#b):not(#c),
+[id^="searchSuggestions"]:not(#a):not(#b):not(#c) {
+    position: relative !important;
+}
+.Panel.Focusable:has(> .Panel.Focusable form[role="search"]) > div:not(.Panel) > div > .Panel.Focusable:not(#a):not(#b):not(#c)::before,
+[id^="searchSuggestions"]:not(#a):not(#b):not(#c)::before,
+body .searchbar_left #term_options:not(#a):not(#b):not(#c)::before,
+body .dselect_container #sort_by_droplist:not(#a):not(#b):not(#c)::before,
+body .popup_block_new .popup_body:not(#a):not(#b):not(#c)::before,
+html body.v6 .ds_options_tooltip:not(#a):not(#b):not(#c)::before {
+    content: "" !important;
+    display: block !important;
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: -1 !important;
+    pointer-events: none !important;
+    border-radius: inherit !important;
+    background: rgba(24, 24, 37, 0.8) !important;
+    -webkit-backdrop-filter: blur(32px) saturate(1.4) !important;
+    backdrop-filter: blur(32px) saturate(1.4) !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9) !important;
+}
+/* Steam's ShowMenu and the other legacy popups fade in through opacity on the
+   wrapper too; pinned for the same reason as #global_hover. */
+body .popup_block_new,
+body .searchbar_left #term_options,
+body .dselect_container .dropcontainer,
+html body.v6 .ds_options_tooltip {
+    opacity: 1 !important;
+}
+
+/*
+& Round 9 (11-10): app page buttons, docks, header row, strip scrollbar,
+& nav menu line and link padding.
+*/
+/* Nav: no underline under the open tab, no full-width line under the row. */
+button._2U8ldyeSqVI- .y9M1Pq24Trk-:not(#a) { display: none !important; }
+.XLbP8xOkCYw- .WHV9yn7TELM-:not(#a) { box-shadow: none !important; border: 0 !important; }
+.XLbP8xOkCYw- .WHV9yn7TELM- hr:not(#a) { display: none !important; }
+
+/* Menu link pills: every one gets the edge, side columns get room for text. */
+a.PcE8-n5Eb6Y-:not(#a):not(#b) {
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9) !important;
+}
+.GBdgvsYSvII- a.PcE8-n5Eb6Y-:not(#a):not(#b) {
+    height: auto !important;
+    min-height: 26px;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+    padding: 4px 12px !important;
+    display: flex !important;
+    align-items: center;
+}
+
+/* Header row: Community Hub, LuaTools pills and the four icon buttons share one look. */
+body .apphub_HeaderStandardTop .apphub_OtherSiteInfo a.btnv6_blue_hoverfade:not(#a):not(#b),
+body .queue_overflow_ctn .queue_actions_ctn .btnv6_blue_hoverfade:not(#a):not(#b),
+body .queue_overflow_ctn .queue_actions_ctn .queue_menu_arrow:not(#a):not(#b),
+body a.S0TPsOpik3c-:not(#a):not(#b),
+body .game_purchase_action .btn_blue_steamui:not(#a):not(#b),
+body .game_purchase_action .btn_green_steamui:not(#a):not(#b),
+body .game_description_column a[href*="protondb.com"]:not(#a):not(#b) {
+    position: relative;
+    border: 0 !important;
+    border-radius: 999px !important;
+    background: rgba(30, 30, 46, 0.72) !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9) !important;
+    color: rgb(var(--st-text-strong, 205, 214, 244)) !important;
+    text-shadow: none !important;
+}
+body .apphub_HeaderStandardTop .apphub_OtherSiteInfo a.btnv6_blue_hoverfade:not(#a):not(#b):hover,
+body .queue_overflow_ctn .queue_actions_ctn .btnv6_blue_hoverfade:not(#a):not(#b):hover,
+body .queue_overflow_ctn .queue_actions_ctn .queue_menu_arrow:not(#a):not(#b):hover,
+body a.S0TPsOpik3c-:not(#a):not(#b):hover,
+body .game_purchase_action .btn_blue_steamui:not(#a):not(#b):hover,
+body .game_purchase_action .btn_green_steamui:not(#a):not(#b):hover,
+body .game_description_column a[href*="protondb.com"]:not(#a):not(#b):hover {
+    background: rgba(17, 17, 27, 0.85) !important;
+    color: rgb(var(--st-text-strong, 205, 214, 244)) !important;
+}
+/* Cart buttons keep a green word so the buy action still reads first. */
+body .game_purchase_action .btn_green_steamui:not(#a):not(#b),
+body .game_purchase_action .btn_green_steamui:not(#a):not(#b) > span {
+    color: rgb(166, 227, 161) !important;
+    font-weight: 600;
+}
+body .game_purchase_action .btn_blue_steamui:not(#a):not(#b),
+body .game_purchase_action .btn_blue_steamui:not(#a):not(#b) > span {
+    color: rgb(180, 190, 254) !important;
+}
+body .apphub_HeaderStandardTop .btnv6_blue_hoverfade:not(#a) > span,
+body .game_purchase_action .btn_blue_steamui:not(#a) > span,
+body .game_purchase_action .btn_green_steamui:not(#a) > span {
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: inherit !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+}
+
+/* Accessibility Features summary: same row as the feature rows above it. */
+body summary._918ET1T3Q44- .LtwI-MuOmiI-:not(#a):not(#b) {
+    position: relative;
+    border-radius: 10px !important;
+    background: rgba(49, 50, 68, 0.45) !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9) !important;
+    color: rgb(var(--st-text-strong, 205, 214, 244)) !important;
+}
+
+/* App page docks: one resting edge each. */
+body .game_area_purchase_game:not(#a):not(#b),
+body a.game_area_details_specs_ctn:not(#a):not(#b),
+body a.game_area_dlc_row:not(#a):not(#b),
+body .block.responsive_apppage_details_right:not(#a):not(#b),
+body .game_description_column > div:has(a[href*="protondb.com"]):not(#a):not(#b) {
+    position: relative;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9) !important;
+}
+/* The franchise banner is a full-bleed image, so its edge is an outline. */
+body a.franchise_notice:not(#a):not(#b) {
+    outline: 2px solid rgba(69, 71, 90, 0.9);
+    outline-offset: -2px;
+    border-radius: 16px !important;
+}
+
+/* The hover ring for every control and dock above. */
+body .apphub_HeaderStandardTop .apphub_OtherSiteInfo a.btnv6_blue_hoverfade::after,
+body .queue_overflow_ctn .queue_actions_ctn .btnv6_blue_hoverfade::after,
+body .queue_overflow_ctn .queue_actions_ctn .queue_menu_arrow::after,
+body a.S0TPsOpik3c-::after,
+body .game_purchase_action .btn_blue_steamui::after,
+body .game_purchase_action .btn_green_steamui::after,
+body .game_description_column a[href*="protondb.com"]::after,
+body summary._918ET1T3Q44- .LtwI-MuOmiI-::after,
+body .game_area_purchase_game::after,
+body a.game_area_details_specs_ctn::after,
+body a.game_area_dlc_row::after,
+body .block.responsive_apppage_details_right::after,
+body .game_description_column > div:has(a[href*="protondb.com"])::after,
+body a.franchise_notice::after,
+body .dhoOKL-yTAw- ._1WAcs3o8Lg4-::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    border-radius: inherit;
+    padding: 2px;
+    pointer-events: none;
+    background: linear-gradient(135deg, rgb(137, 180, 250), rgb(203, 166, 247));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity .15s ease-out;
+}
+body .apphub_HeaderStandardTop .apphub_OtherSiteInfo a.btnv6_blue_hoverfade:hover::after,
+body .queue_overflow_ctn .queue_actions_ctn .btnv6_blue_hoverfade:hover::after,
+body .queue_overflow_ctn .queue_actions_ctn .queue_menu_arrow:hover::after,
+body a.S0TPsOpik3c-:hover::after,
+body .game_purchase_action .btn_blue_steamui:hover::after,
+body .game_purchase_action .btn_green_steamui:hover::after,
+body .game_description_column a[href*="protondb.com"]:hover::after,
+body summary._918ET1T3Q44-:hover .LtwI-MuOmiI-::after,
+body .game_area_purchase_game:hover::after,
+body a.game_area_details_specs_ctn:hover::after,
+body a.game_area_dlc_row:hover::after,
+body .block.responsive_apppage_details_right:hover::after,
+body .game_description_column > div:has(a[href*="protondb.com"]):hover::after,
+body a.franchise_notice:hover::after,
+body .dhoOKL-yTAw- ._1WAcs3o8Lg4-:hover::after {
+    opacity: 1;
+}
+/* One ring at a time: a dock does not ring while a button inside it does. */
+body .game_area_purchase_game:has(.game_purchase_action a:hover)::after,
+body .game_description_column > div:has(a[href*="protondb.com"]:hover)::after,
+body a.game_area_dlc_row:has(.ds_options > div:hover)::after {
+    opacity: 0;
+}
+
+/* The discount block stood on the title's underline; the line now stops short of it. */
+body .game_area_purchase_game:has(.discount_block) > h2.title:not(#a) {
+    width: auto !important;
+    margin-right: 168px !important;
+}
+
+/* The "..." button: real glass on ::after (::before is its icon). */
+body .ds_options > div:not(#a):not(#b) {
+    isolation: isolate;
+    background: transparent !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    box-shadow: 0 4px 8px rgba(17, 17, 27, 0.5) !important;
+    border-radius: 999px !important;
+}
+body .ds_options > div:not(#a):not(#b)::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    box-sizing: border-box;
+    border-radius: inherit;
+    border: 2px solid transparent;
+    background: linear-gradient(rgba(24, 24, 37, 0.8), rgba(24, 24, 37, 0.8)) padding-box,
+                linear-gradient(rgba(69, 71, 90, 0.9), rgba(69, 71, 90, 0.9)) border-box;
+    -webkit-backdrop-filter: blur(16px) saturate(1.4);
+    backdrop-filter: blur(16px) saturate(1.4);
+}
+body .ds_options > div:not(#a):not(#b):hover::after {
+    background: linear-gradient(rgba(24, 24, 37, 0.8), rgba(24, 24, 37, 0.8)) padding-box,
+                linear-gradient(135deg, rgb(137, 180, 250), rgb(203, 166, 247)) border-box;
+}
+body .ds_options > div:not(#a):not(#b)::before { color: rgb(var(--st-text-soft, 186, 194, 222)) !important; }
+body .ds_options > div:not(#a):not(#b):hover::before { color: rgb(var(--st-text-strong, 205, 214, 244)) !important; }
+
+/* Screenshot strip scrollbar under the video. */
+body .dhoOKL-yTAw- .xfzmpLIv9nQ-:not(#a) {
+    border-radius: 999px !important;
+    background: rgba(30, 30, 46, 0.55) !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9) !important;
+}
+body .dhoOKL-yTAw- .JIdk89M-jjc-:not(#a) {
+    box-sizing: border-box !important;
+    border: 4px solid transparent !important;
+    border-radius: 999px !important;
+    background: linear-gradient(90deg, rgb(137, 180, 250), rgb(203, 166, 247)) padding-box !important;
+}
+body .dhoOKL-yTAw- ._1WAcs3o8Lg4-:not(#a) {
+    position: relative;
+    border-radius: 999px !important;
+    background: rgba(30, 30, 46, 0.72) !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9) !important;
+    color: rgb(var(--st-text-soft, 186, 194, 222)) !important;
+}
+body .dhoOKL-yTAw- ._1WAcs3o8Lg4- svg:not(#a),
+body .dhoOKL-yTAw- ._1WAcs3o8Lg4- svg path:not(#a) { fill: currentColor !important; }
+/* Video progress bar in the player. */
+body .GsDewiltMCM-:not(#a) { border-radius: 999px !important; overflow: hidden; background: rgba(49, 50, 68, 0.7) !important; }
+body .GsDewiltMCM- .aejFKWIp7Dg-:not(#a) { background: rgba(108, 112, 134, 0.45) !important; }
+body .GsDewiltMCM- .eBjRkRA8NpA-:not(#a) { background: linear-gradient(90deg, rgb(137, 180, 250), rgb(203, 166, 247)) !important; }
+
+/* Title row icons: one glyph colour, one size, the same pill as the text buttons. */
+body .queue_overflow_ctn .queue_actions_ctn .btnv6_blue_hoverfade:not(#a)::before,
+body .queue_overflow_ctn .queue_actions_ctn .queue_menu_arrow:not(#a)::before,
+body .queue_overflow_ctn #queue_btn_ignore_menu .btn_medium:not(#a)::before {
+    color: rgb(var(--st-text-soft, 186, 194, 222)) !important;
+}
+body .queue_overflow_ctn .queue_actions_ctn .btnv6_blue_hoverfade:not(#a):hover::before,
+body .queue_overflow_ctn .queue_actions_ctn .queue_menu_arrow:not(#a):hover::before,
+body .queue_overflow_ctn #queue_btn_ignore_menu .btn_medium:not(#a):hover::before {
+    color: rgb(var(--st-text-strong, 205, 214, 244)) !important;
+}
+body .queue_overflow_ctn .queue_actions_ctn .queue_menu_arrow:not(#a):not(#b) {
+    width: 46px !important;
+    height: 32px !important;
+    padding: 0 !important;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+}
+body .queue_overflow_ctn #queue_btn_ignore_menu .btn_medium:not(#a)::before { padding: 0 !important; }
+
+/* Side columns keep their old height so the menu does not clip its last row. */
+.GBdgvsYSvII-:not(#a):not(#b) { gap: 6px !important; }
+
+/* Menu text links (genres, side lists): text sits inside its pill, not on the edge. */
+.rFhmVK3-faw- a.PcE8-n5Eb6Y-:not(#a):not(#b) {
+    box-sizing: border-box !important;
+    height: auto !important;
+    margin: 1px 0 2px !important;
+    padding: 1px 7px !important;
+    border-radius: 12px !important;
+}
+.rFhmVK3-faw-._2JKZMFPkgU0-:not(#a):not(#b) { gap: 5px !important; }

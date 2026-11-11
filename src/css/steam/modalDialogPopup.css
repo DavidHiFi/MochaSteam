@@ -284,5 +284,5 @@ body.DialogContent_InnerWidth ._2Se5JD_UkWeIyaZiXXmxDD .DialogBodyText {
 & pages) was Steam's #969696.
 */
 body ._2rjVTGz8aLvqOdz5v2gq5C {
-    color: rgb(166, 173, 200);
+    color: rgb(var(--st-text-dim, 166, 173, 200));
 }

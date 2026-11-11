@@ -244,7 +244,51 @@
                 },
                 "Ubuntu": {
                     "TargetCss": { "affects": [".*"], "src": "options/fonts/ubuntu.css" }
+                },
+                "Custom": {
+                    "TargetCss": { "affects": [".*"], "src": "options/fonts/custom.css" }
                 }
+            }
+        },
+        "Custom font name": {
+            "description": "Hidden. Holds the font typed in the Custom font box (set by src/js/settings-helper.js).",
+            "default": "\"Be Vietnam Pro\"",
+            "slider": { "cssVariable": "--st-custom-font", "min": 0, "max": 0, "step": 1 }
+        },
+        "Font weight": {
+            "description": "Thickness of all text. Regular keeps Steam's own mix of weights.",
+            "default": "Regular (default)",
+            "tab": "General",
+            "section": "Other",
+            "values": {
+                "Light": { "TargetCss": { "affects": [".*"], "src": "options/fonts/weight/light.css" } },
+                "Regular (default)": {},
+                "Medium": { "TargetCss": { "affects": [".*"], "src": "options/fonts/weight/medium.css" } },
+                "Semi-bold": { "TargetCss": { "affects": [".*"], "src": "options/fonts/weight/semibold.css" } },
+                "Bold": { "TargetCss": { "affects": [".*"], "src": "options/fonts/weight/bold.css" } },
+                "Heavy": { "TargetCss": { "affects": [".*"], "src": "options/fonts/weight/heavy.css" } }
+            }
+        },
+        "Italic": {
+            "description": "Slant all text.",
+            "default": "no",
+            "tab": "General",
+            "section": "Other",
+            "values": {
+                "no": {},
+                "yes": { "TargetCss": { "affects": [".*"], "src": "options/fonts/italic.css" } }
+            }
+        },
+        "Letter spacing": {
+            "description": "Space between letters.",
+            "default": "Normal (default)",
+            "tab": "General",
+            "section": "Other",
+            "values": {
+                "Tight": { "TargetCss": { "affects": [".*"], "src": "options/fonts/spacing/tight.css" } },
+                "Normal (default)": {},
+                "Wide": { "TargetCss": { "affects": [".*"], "src": "options/fonts/spacing/wide.css" } },
+                "Wider": { "TargetCss": { "affects": [".*"], "src": "options/fonts/spacing/wider.css" } }
             }
         },
         "Border radius": {
@@ -731,6 +775,18 @@
                     "TargetCss": { "affects": ["https://steamcommunity\\.com(/.*)?"], "src": "options/community/profilePagesHeader.css" }
                 }
             }
+        },
+        "Colour preset": {
+            "description": "Hidden. Picked from the Presets row on the Colors page (src/js/settings-helper.js). Custom keeps the colour pickers.",
+            "default": "Custom",
+            "values": {
+                "Custom": {},
+                "Steam default": { "TargetCss": { "affects": [".*"], "src": "options/colors/steam.css" } },
+                "Catppuccin Mocha": { "TargetCss": { "affects": [".*"], "src": "options/colors/mocha.css" } },
+                "Catppuccin Frappe": { "TargetCss": { "affects": [".*"], "src": "options/colors/frappe.css" } },
+                "Catppuccin Latte": { "TargetCss": { "affects": [".*"], "src": "options/colors/latte.css" } },
+                "Catppuccin Macchiato": { "TargetCss": { "affects": [".*"], "src": "options/colors/macchiato.css" } }
+            }
         }
     },
     "RootColors": "./src/css/root.css",
@@ -796,6 +852,11 @@
         {
             "MatchRegexString": ".Rp8QOGJ2DypeDniMnRBhr",
             "TargetCss": "src/css/startupLogin.custom.css"
+        },
+        {
+            "MatchRegexString": "^Steam$",
+            "TargetCss": "options/settings.css",
+            "TargetJs": "src/js/settings-helper.js"
         }
     ]
 }

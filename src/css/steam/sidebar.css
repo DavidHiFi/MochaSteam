@@ -1,4 +1,4 @@
-﻿._3x1HklzyDs4TEjACrRO2tB {
+._3x1HklzyDs4TEjACrRO2tB {
     background-image: none;
 }
 
@@ -90,12 +90,11 @@
     height: auto;
     margin: 4px;
     padding: 4px;
-    border: 2px solid rgb(var(--st-color-2));
+    /* One edge per control (2026-11-09): the button keeps its resting edge
+       and hover ring; the grid inside has no second rounded border. */
+    border: 2px solid transparent;
     border-radius: 6px;
     transition: all 0.2s ease-in-out;
-}
-._3x1HklzyDs4TEjACrRO2tB .xeuK3OqQYpIbPs1mCIS0k:hover .nC-pL16iUnIRcaj1UVnwq {
-    border: 2px solid rgb(var(--st-color-5));
 }
 
 /*^ Squares */
@@ -289,7 +288,7 @@ body.QsvsRVwbsApgKt1MhM0fz:has(._1_yS5UP7el0aN4vntx3dx .wi0pDywRgOCxhG7OqQNaA) .
 /* The 20px svg overflowed the 16px box and painted white (Steam default);
    theme it to the header's subtext1 and let the 16px box centre it. */
 ._3x1HklzyDs4TEjACrRO2tB ._2sYIghGVXJr6tsQVvcryy8 .SVGIcon_PlusCircle {
-    fill: rgb(186, 194, 222) !important;
+    fill: rgb(var(--st-text-soft, 186, 194, 222)) !important;
     stroke: rgba(186, 194, 222, 0.55) !important;
 }
 
@@ -353,7 +352,7 @@ body.QsvsRVwbsApgKt1MhM0fz:has(._1_yS5UP7el0aN4vntx3dx .wi0pDywRgOCxhG7OqQNaA) .
     overflow: hidden;
     white-space: nowrap;
     min-width: 0;
-    color: rgb(166, 173, 200);
+    color: rgb(var(--st-text-dim, 166, 173, 200));
     position: relative;
 }
 
@@ -367,13 +366,13 @@ body.QsvsRVwbsApgKt1MhM0fz:has(._1_yS5UP7el0aN4vntx3dx .wi0pDywRgOCxhG7OqQNaA) .
     color: rgb(var(--st-accent-1));
 }
 ._3x1HklzyDs4TEjACrRO2tB ._2-O4ZG0KrnSrzISHBKctFQ._2ws8DONH9fxQjPXEmRpujE span:not(.pdb-dot):not([data-st-hover-text]) {
-    color: rgb(205, 214, 244);
+    color: rgb(var(--st-text-strong, 205, 214, 244));
 }
 
 ._3x1HklzyDs4TEjACrRO2tB ._2-O4ZG0KrnSrzISHBKctFQ span:not(.pdb-dot)::before {
     content: attr(data-st-hover-text);
     display: block;
-    color: rgb(166, 173, 200);
+    color: rgb(var(--st-text-dim, 166, 173, 200));
     will-change: transform;
     transform: translate3d(0, -50%, 0);
     backface-visibility: hidden;
@@ -387,7 +386,7 @@ body.QsvsRVwbsApgKt1MhM0fz:has(._1_yS5UP7el0aN4vntx3dx .wi0pDywRgOCxhG7OqQNaA) .
 }
 
 ._3x1HklzyDs4TEjACrRO2tB ._2-O4ZG0KrnSrzISHBKctFQ._2ws8DONH9fxQjPXEmRpujE span:not(.pdb-dot)::before {
-    color: rgb(205, 214, 244);
+    color: rgb(var(--st-text-strong, 205, 214, 244));
 }
 
 ._3x1HklzyDs4TEjACrRO2tB ._2-O4ZG0KrnSrzISHBKctFQ:hover span:not(.pdb-dot)::before {
@@ -838,14 +837,12 @@ body:has(._3x1HklzyDs4TEjACrRO2tB):has(._3E5iVG630BkOHTaJJaMEMw) ._1_yS5UP7el0aN
 & The collections grid icon used the same Mocha fill as the button behind it,
 & so it disappeared into a flat blob. Lift the squares onto surface1/2.
 */
-._3x1HklzyDs4TEjACrRO2tB .nC-pL16iUnIRcaj1UVnwq {
-    border-color: rgba(var(--st-surface-1, 69, 71, 90), 0.6) !important;
+._3x1HklzyDs4TEjACrRO2tB .nC-pL16iUnIRcaj1UVnwq,
+._3x1HklzyDs4TEjACrRO2tB .xeuK3OqQYpIbPs1mCIS0k:hover .nC-pL16iUnIRcaj1UVnwq {
+    border-color: transparent !important;
 }
 ._3x1HklzyDs4TEjACrRO2tB .nC-pL16iUnIRcaj1UVnwq ._2tyaVs9BpqcW068aaOrO56 {
     background-color: rgb(var(--st-surface-1, 69, 71, 90)) !important;
-}
-._3x1HklzyDs4TEjACrRO2tB .xeuK3OqQYpIbPs1mCIS0k:hover .nC-pL16iUnIRcaj1UVnwq {
-    border-color: rgb(var(--st-surface-2, 88, 91, 112)) !important;
 }
 ._3x1HklzyDs4TEjACrRO2tB .xeuK3OqQYpIbPs1mCIS0k:hover .nC-pL16iUnIRcaj1UVnwq ._2tyaVs9BpqcW068aaOrO56 {
     background-color: rgb(var(--st-surface-2, 88, 91, 112)) !important;
@@ -898,12 +895,12 @@ body:has(._3x1HklzyDs4TEjACrRO2tB):has(._3E5iVG630BkOHTaJJaMEMw) ._1_yS5UP7el0aN
 /* Collection headers (Lua Tools, Soundtracks...): #cae4fb to subtext1 */
 ._3x1HklzyDs4TEjACrRO2tB ._3cV3O8FnPQqpJO5kIMUlLX,
 ._3x1HklzyDs4TEjACrRO2tB ._3cV3O8FnPQqpJO5kIMUlLX .SectionName {
-    color: rgb(186, 194, 222);
+    color: rgb(var(--st-text-soft, 186, 194, 222));
 }
 /* View picker label and the Downloads line: #aeaeaf and #8b929a to subtext0 */
 ._3x1HklzyDs4TEjACrRO2tB .ViewName,
 ._1_yS5UP7el0aN4vntx3dx .ip-YZhijAMZcuRoXBGiye ._3wJnTtcTLEp0R7eQj_mK8Y {
-    color: rgb(166, 173, 200);
+    color: rgb(var(--st-text-dim, 166, 173, 200));
 }
 /* Signed-out account name: Steam's #515151 read at 2.2:1; overlay1 keeps the
    "offline grey" meaning at about 4.7:1 */
@@ -917,4 +914,11 @@ body:has(._3x1HklzyDs4TEjACrRO2tB):has(._3E5iVG630BkOHTaJJaMEMw) ._1_yS5UP7el0aN
 */
 [class~="URLBar"] {
     box-shadow: inset 0 0 0 2px var(--st-edge) !important;
+}
+
+/* ProtonDB "unknown" dot (tools, workshop rows): the plugin draws a 4px gradient dot with no
+   ring. Give it the same 6px fill and 1px ring as every other tier dot. */
+._3x1HklzyDs4TEjACrRO2tB ._1vO6BoiVslZgs1kqDGdUs8[data-pdb-tier="unknown"]::before {
+    background: rgb(0, 0, 0) !important;
+    box-shadow: rgba(0, 0, 0, 0.45) 0 0 0 1px !important;
 }

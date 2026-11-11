@@ -1,256 +1,360 @@
 /*
-& General
+& MochaSteam settings dialog (Millennium quick-access sidebar in the main Steam window).
+& Loaded last on ^Steam$ (skin.json Patches), together with src/js/settings-helper.js.
+&
+& Rules: one edge per control. Resting edge = inset 2px surface1 (rgba(69,71,90,.9)),
+& no border on top of it. Hover = blue -> mauve ring on ::after over that edge.
+& Inputs (no ::after) use a transparent border with a padding-box / border-box gradient.
+& :not(#a):not(#b) lifts these above Steam's and millenniumSettings.css' !important rules.
 */
 
-/*
-! Titlebar
-*/
-.MillenniumDesktopSidebar_Content .Window.Controls::before {
-    content: "Titlebar";
-    color: #8b929a;
-    font-size: 15px;
-    font-weight: 500;
-    letter-spacing: .5px;
-    line-height: 36px;
-    text-transform: uppercase;
-    user-select: none;
-    margin-right: 26px;
+:root {
+    --st-dlg-edge: rgba(69, 71, 90, 0.9);
+    --st-dlg-fill: rgb(49, 50, 68);
+    --st-dlg-fill-hover: rgb(69, 71, 90);
+    --st-dlg-text: #cdd6f4;
+    --st-dlg-sub: #bac2de;
+    --st-dlg-ring: var(--st-ring, linear-gradient(135deg, #89b4fa, #cba6f7));
+    --st-dlg-radius: var(--st-border-radius, 16px);
 }
 
 
 /*
-! Sidebar
+& Ring hosts: back arrow and other title icon buttons, Reset buttons, toggles,
+& dropdown menu items (tabs and option lists), preset chips, Apply button.
+& Dropdown buttons already get their ring from hover-rings.css.
 */
-.MillenniumDesktopSidebar_Content .Always.show.sidebar::before {
-    content: "Sidebar";
-    color: #8b929a;
-    font-size: 15px;
-    font-weight: 500;
-    letter-spacing: .5px;
-    line-height: 36px;
-    text-transform: uppercase;
-    user-select: none;
-    margin-right: 26px;
+.MillenniumDesktopSidebar:not(#a):not(#b) .MillenniumDesktopSidebar_Title .MillenniumIconButton,
+.MillenniumDesktopSidebar:not(#a):not(#b) .DialogBody .FieldChildrenInner > .DialogButton,
+.MillenniumDesktopSidebar:not(#a):not(#b) .Toggle,
+.MillenniumDesktopSidebar:not(#a):not(#b) .st-preset-chip,
+.MillenniumDesktopSidebar:not(#a):not(#b) .st-custom-font-apply,
+body:has(.MillenniumDesktopSidebar) .DialogDropDownMenu:not(#a):not(#b) .DialogDropDownMenu_Item {
+    position: relative !important;
+}
+
+.MillenniumDesktopSidebar:not(#a):not(#b) .MillenniumDesktopSidebar_Title .MillenniumIconButton::after,
+.MillenniumDesktopSidebar:not(#a):not(#b) .DialogBody .FieldChildrenInner > .DialogButton::after,
+.MillenniumDesktopSidebar:not(#a):not(#b) .Toggle::after,
+.MillenniumDesktopSidebar:not(#a):not(#b) .st-preset-chip::after,
+.MillenniumDesktopSidebar:not(#a):not(#b) .st-custom-font-apply::after,
+body:has(.MillenniumDesktopSidebar) .DialogDropDownMenu:not(#a):not(#b) .DialogDropDownMenu_Item::after {
+    content: "" !important;
+    display: block !important;
+    position: absolute !important;
+    inset: 0 !important;
+    border-radius: inherit !important;
+    padding: 2px !important;
+    background: var(--st-dlg-ring) !important;
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0) !important;
+    -webkit-mask-composite: xor !important;
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0) !important;
+    mask-composite: exclude !important;
+    opacity: 0 !important;
+    transition: opacity 0.15s ease-out !important;
+    pointer-events: none !important;
+    z-index: 3 !important;
+    box-shadow: none !important;
+    border: 0 !important;
+}
+
+.MillenniumDesktopSidebar:not(#a):not(#b) .MillenniumDesktopSidebar_Title .MillenniumIconButton:is(:hover, :focus-visible)::after,
+.MillenniumDesktopSidebar:not(#a):not(#b) .DialogBody .FieldChildrenInner > .DialogButton:is(:hover, :focus-visible)::after,
+.MillenniumDesktopSidebar:not(#a):not(#b) .Toggle:is(:hover, :focus-visible)::after,
+.MillenniumDesktopSidebar:not(#a):not(#b) .st-preset-chip:is(:hover, :focus-visible)::after,
+.MillenniumDesktopSidebar:not(#a):not(#b) .st-custom-font-apply:is(:hover, :focus-visible)::after,
+body:has(.MillenniumDesktopSidebar) .DialogDropDownMenu:not(#a):not(#b) .DialogDropDownMenu_Item:hover::after {
+    opacity: 1 !important;
 }
 
 
 /*
-! Userpannel
+& 8. Back arrow: one resting edge, and on hover only the gradient ring.
+& Before: 2px border + 2px inset edge at rest (two circles), and on hover a lighter
+& fill plus Steam's ::before drop shadow under the ring.
 */
-.MillenniumDesktopSidebar_Content .General.\-.Wallet.balance::before {
-    content: "Userpannel";
-    color: #8b929a;
-    font-size: 15px;
-    font-weight: 500;
-    letter-spacing: .5px;
-    line-height: 36px;
-    text-transform: uppercase;
-    user-select: none;
-    margin-right: 26px;
+.MillenniumDesktopSidebar:not(#a):not(#b) .MillenniumDesktopSidebar_Title .MillenniumIconButton {
+    border: 0 !important;
+    outline: none !important;
+    background: var(--st-dlg-fill) !important;
+    box-shadow: inset 0 0 0 2px var(--st-dlg-edge) !important;
+    color: var(--st-dlg-text) !important;
+    transform: none !important;
+}
+.MillenniumDesktopSidebar:not(#a):not(#b) .MillenniumDesktopSidebar_Title .MillenniumIconButton:is(:hover, :focus, :focus-visible, :active) {
+    border: 0 !important;
+    background: var(--st-dlg-fill) !important;
+    box-shadow: none !important;
+    filter: none !important;
+}
+.MillenniumDesktopSidebar:not(#a):not(#b) .MillenniumDesktopSidebar_Title .MillenniumIconButton::before {
+    display: none !important;
+}
+.MillenniumDesktopSidebar:not(#a):not(#b) .MillenniumDesktopSidebar_Title .MillenniumIconButton svg {
+    background: none !important;
+    box-shadow: none !important;
+    border: 0 !important;
 }
 
 
 /*
-! Other
+& Tab selector (the dropdown under the title) and every dropdown in the rows:
+& surface0 fill, one resting edge. The ring comes from hover-rings.css.
 */
-.MillenniumDesktopSidebar_Content .General.\-.Font::before {
-    content: "Other";
-    color: #8b929a;
-    font-size: 15px;
-    font-weight: 500;
-    letter-spacing: .5px;
-    line-height: 36px;
-    text-transform: uppercase;
-    user-select: none;
-    margin-right: 26px;
+.MillenniumDesktopSidebar:not(#a):not(#b) .DialogDropDown {
+    border: 0 !important;
+    background: var(--st-dlg-fill) !important;
+    box-shadow: inset 0 0 0 2px var(--st-dlg-edge) !important;
+    color: var(--st-dlg-text) !important;
+}
+.MillenniumDesktopSidebar:not(#a):not(#b) .DialogDropDown:hover {
+    background: var(--st-dlg-fill-hover) !important;
+}
+.MillenniumDesktopSidebar:not(#a):not(#b) .DialogDropDown .DialogDropDown_CurrentDisplay {
+    color: var(--st-dlg-text) !important;
+}
+.MillenniumDesktopSidebar:not(#a):not(#b) .DialogDropDown .DialogDropDown_Arrow svg {
+    fill: var(--st-dlg-sub) !important;
 }
 
 
 /*
-! Experimental
+& 7 + 8. Dropdown menus (tab list and option lists) while the dialog is open.
+& Glass panel with one edge; every item a box with a resting edge, a ring on hover,
+& and the current choice as a selected box (class st-current, set by settings-helper.js).
 */
-.MillenniumDesktopSidebar_Content .General.\-.Userpannel::before {
-    content: "Experimental";
-    color: #8b929a;
-    font-size: 15px;
-    font-weight: 500;
-    letter-spacing: .5px;
-    line-height: 36px;
-    text-transform: uppercase;
-    user-select: none;
-    margin-right: 26px;
+body:has(.MillenniumDesktopSidebar) .DialogDropDownMenu:not(#a):not(#b) {
+    background: rgba(24, 24, 37, 0.74) !important;
+    backdrop-filter: blur(30px) saturate(1.4) !important;
+    border: 0 !important;
+    box-shadow: inset 0 0 0 2px var(--st-dlg-edge), 0 12px 32px rgba(17, 17, 27, 0.55) !important;
+    padding: 8px !important;
 }
-
-
-
-/*
-& Store
-*/
-
-/*
-! Home
-*/
-.MillenniumDesktopSidebar_Content .Store.\-.SteamDeck.Giftcard::before {
-    content: "Home";
-    color: #8b929a;
-    font-size: 15px;
+body:has(.MillenniumDesktopSidebar) .DialogDropDownMenu:not(#a):not(#b) .DialogDropDownMenu_Item {
+    color: var(--st-dlg-text) !important;
+    background: rgba(49, 50, 68, 0.55) !important;
+    box-shadow: inset 0 0 0 2px var(--st-dlg-edge) !important;
+    border: 0 !important;
+    border-radius: var(--st-dlg-radius) !important;
+    padding: 8px 14px !important;
+    margin: 0 0 6px !important;
     font-weight: 500;
-    letter-spacing: .5px;
-    line-height: 36px;
-    text-transform: uppercase;
-    user-select: none;
-    margin-right: 26px;
+    text-decoration: none !important;
 }
-
-
-/*
-! Gamepage
-*/
-.MillenniumDesktopSidebar_Content .Store.\-.Broadcast::before {
-    content: "Gamepage";
-    color: #8b929a;
-    font-size: 15px;
-    font-weight: 500;
-    letter-spacing: .5px;
-    line-height: 36px;
-    text-transform: uppercase;
-    user-select: none;
-    margin-right: 26px;
+body:has(.MillenniumDesktopSidebar) .DialogDropDownMenu:not(#a):not(#b) .DialogDropDownMenu_Item:last-child {
+    margin-bottom: 0 !important;
+}
+body:has(.MillenniumDesktopSidebar) .DialogDropDownMenu:not(#a):not(#b) .DialogDropDownMenu_Item:is(:hover, :focus, .gpfocus) {
+    color: #ffffff !important;
+    background: rgba(69, 71, 90, 0.75) !important;
+    outline: none !important;
+}
+body:has(.MillenniumDesktopSidebar) .DialogDropDownMenu:not(#a):not(#b) .DialogDropDownMenu_Item.st-current {
+    color: #ffffff !important;
+    font-weight: 600;
+    background: linear-gradient(135deg, rgba(137, 180, 250, 0.24), rgba(203, 166, 247, 0.24)) !important;
+    box-shadow: inset 0 0 0 2px rgba(137, 180, 250, 0.6) !important;
+}
+body:has(.MillenniumDesktopSidebar) .DialogDropDownMenu:not(#a):not(#b) .DialogDropDownMenu_Item::before {
+    display: none !important;
 }
 
 
 /*
-! Cart
+& Rows: one resting edge (surface1), readable label and description.
 */
-.MillenniumDesktopSidebar_Content .Store.\-.Recommendations::before {
-    content: "Cart";
-    color: #8b929a;
-    font-size: 15px;
-    font-weight: 500;
-    letter-spacing: .5px;
-    line-height: 36px;
-    text-transform: uppercase;
-    user-select: none;
-    margin-right: 26px;
+.MillenniumDesktopSidebar:not(#a):not(#b) .DialogBody .Field.Panel {
+    box-shadow: inset 0 0 0 2px var(--st-dlg-edge) !important;
+    color: var(--st-dlg-sub) !important;
+}
+.MillenniumDesktopSidebar:not(#a):not(#b) .DialogBody .FieldLabel {
+    color: var(--st-dlg-text) !important;
+}
+.MillenniumDesktopSidebar:not(#a):not(#b) .DialogBody .FieldDescription {
+    color: rgb(var(--st-text-dim, 166, 173, 200)) !important;
+}
+.MillenniumDesktopSidebar:not(#a):not(#b) .DialogBody .SettingsDialogSubHeader {
+    color: var(--st-dlg-text) !important;
 }
 
 
 /*
-! Points Shop
+& Toggles and sliders.
 */
-.MillenniumDesktopSidebar_Content .Store.\-.Landing.Header::before {
-    content: "Points Shop";
-    color: #8b929a;
-    font-size: 15px;
-    font-weight: 500;
-    letter-spacing: .5px;
-    line-height: 36px;
-    text-transform: uppercase;
-    user-select: none;
-    margin-right: 26px;
+.MillenniumDesktopSidebar:not(#a):not(#b) .Toggle {
+    border-radius: 9001px !important;
+}
+.MillenniumDesktopSidebar:not(#a):not(#b) .ToggleRail {
+    box-shadow: inset 0 0 0 2px var(--st-dlg-edge) !important;
+}
+.MillenniumDesktopSidebar:not(#a):not(#b) .ToggleSwitch {
+    background: var(--st-dlg-sub) !important;
+}
+.MillenniumDesktopSidebar:not(#a):not(#b) .Toggle[aria-checked="true"] .ToggleSwitch {
+    background: #ffffff !important;
+}
+.MillenniumDesktopSidebar:not(#a):not(#b) .SliderTrack {
+    background: rgb(49, 50, 68) !important;
+    box-shadow: inset 0 0 0 1px var(--st-dlg-edge) !important;
+}
+.MillenniumDesktopSidebar:not(#a):not(#b) .SliderHandle {
+    background: var(--st-dlg-text) !important;
+    box-shadow: 0 0 0 2px var(--st-dlg-edge) !important;
+    transition: background 0.15s ease-out, box-shadow 0.15s ease-out !important;
+}
+.MillenniumDesktopSidebar:not(#a):not(#b) .SliderControlPanelGroup:hover .SliderHandle,
+.MillenniumDesktopSidebar:not(#a):not(#b) .SliderControlPanelGroup:focus-within .SliderHandle {
+    background: var(--st-dlg-ring) !important;
+    box-shadow: 0 0 0 2px rgba(203, 166, 247, 0.45) !important;
 }
 
 
 /*
-! Other
+& 11. Colors page: space between Reset and the swatch, and every control with an edge.
 */
-.MillenniumDesktopSidebar_Content .Store.\-.URL.bar::before {
-    content: "Other";
-    color: #8b929a;
-    font-size: 15px;
-    font-weight: 500;
-    letter-spacing: .5px;
-    line-height: 36px;
-    text-transform: uppercase;
-    user-select: none;
-    margin-right: 26px;
+.MillenniumDesktopSidebar:not(#a):not(#b) .DialogBody .FieldChildrenInner:has(> .MillenniumColorPicker) {
+    display: flex !important;
+    align-items: center !important;
+    gap: 14px !important;
+    width: auto !important;
+}
+.MillenniumDesktopSidebar:not(#a):not(#b) .DialogBody .FieldChildrenInner > .DialogButton {
+    border: 0 !important;
+    outline: none !important;
+    background: var(--st-dlg-fill) !important;
+    box-shadow: inset 0 0 0 2px var(--st-dlg-edge) !important;
+    color: var(--st-dlg-text) !important;
+    min-width: 76px !important;
+    height: 30px !important;
+    padding: 0 14px !important;
+    transform: none !important;
+}
+.MillenniumDesktopSidebar:not(#a):not(#b) .DialogBody .FieldChildrenInner > .DialogButton:is(:hover, :focus, :focus-visible) {
+    background: var(--st-dlg-fill-hover) !important;
+    box-shadow: none !important;
+    color: #ffffff !important;
+}
+.MillenniumDesktopSidebar:not(#a):not(#b) .DialogBody .FieldChildrenInner > .DialogButton::before {
+    display: none !important;
 }
 
-
-
-/*
-& Library
-*/
-
-/*
-! Pinned
-*/
-.MillenniumDesktopSidebar_Content .Library.\-.Steam-Custom-Artworks.Support::before {
-    content: "Pinned";
-    color: #8b929a;
-    font-size: 15px;
-    font-weight: 500;
-    letter-spacing: .5px;
-    line-height: 36px;
-    text-transform: uppercase;
-    user-select: none;
-    margin-right: 26px;
+.MillenniumDesktopSidebar:not(#a):not(#b) .MillenniumColorPicker {
+    box-sizing: border-box !important;
+    width: 60px !important;
+    height: 30px !important;
+    padding: 0 !important;
+    border: 2px solid var(--st-dlg-edge) !important;
+    border-radius: var(--st-dlg-radius) !important;
+    background: var(--st-dlg-fill) !important;
+    cursor: pointer;
+    transition: border-color 0.15s ease-out !important;
 }
-
-/*
-! Home
-*/
-.MillenniumDesktopSidebar_Content .Library.\-.What\'s.New::before {
-    content: "Home";
-    color: #8b929a;
-    font-size: 15px;
-    font-weight: 500;
-    letter-spacing: .5px;
-    line-height: 36px;
-    text-transform: uppercase;
-    user-select: none;
-    margin-right: 26px;
+.MillenniumDesktopSidebar:not(#a):not(#b) .MillenniumColorPicker:is(:hover, :focus, :focus-visible) {
+    border-color: transparent !important;
+    background: linear-gradient(var(--st-dlg-fill), var(--st-dlg-fill)) padding-box, var(--st-dlg-ring) border-box !important;
+    outline: none !important;
 }
-
-
-/*
-! Gamepage
-*/
-.MillenniumDesktopSidebar_Content .Library.\-.Banner.position::before {
-    content: "Gamepage";
-    color: #8b929a;
-    font-size: 15px;
-    font-weight: 500;
-    letter-spacing: .5px;
-    line-height: 36px;
-    text-transform: uppercase;
-    user-select: none;
-    margin-right: 26px;
+.MillenniumDesktopSidebar:not(#a):not(#b) .MillenniumColorPicker::-webkit-color-swatch-wrapper {
+    padding: 2px !important;
 }
-
-
-
-/*
-& Community
-*/
-
-/*
-! Profile
-*/
-.MillenniumDesktopSidebar_Content .Community.\-.VAC-Ban.visibility::before {
-    content: "Profile";
-    color: #8b929a;
-    font-size: 15px;
-    font-weight: 500;
-    letter-spacing: .5px;
-    line-height: 36px;
-    text-transform: uppercase;
-    user-select: none;
-    margin-right: 26px;
+.MillenniumDesktopSidebar:not(#a):not(#b) .MillenniumColorPicker::-webkit-color-swatch {
+    border: 0 !important;
+    border-radius: calc(var(--st-dlg-radius) - 4px) !important;
 }
 
 
 /*
-! Other
+& 10. Presets row (added at the top of the Colors page by settings-helper.js).
 */
-.MillenniumDesktopSidebar_Content .Community.\-.Profile.pages.header::before {
-    content: "Other";
-    color: #8b929a;
-    font-size: 15px;
-    font-weight: 500;
-    letter-spacing: .5px;
-    line-height: 36px;
-    text-transform: uppercase;
-    user-select: none;
-    margin-right: 26px;
+.MillenniumDesktopSidebar:not(#a):not(#b) .st-presets-row,
+.MillenniumDesktopSidebar:not(#a):not(#b) .st-custom-font-row {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+    margin: 0 0 14px !important;
+    padding: 12px 14px !important;
+    border-radius: var(--st-dlg-radius) !important;
+    background: rgba(49, 50, 68, 0.35) !important;
+    box-shadow: inset 0 0 0 2px var(--st-dlg-edge) !important;
+    color: var(--st-dlg-sub) !important;
+}
+.MillenniumDesktopSidebar:not(#a):not(#b) .st-custom-font-row {
+    margin: -2px 0 8px !important;
+}
+.MillenniumDesktopSidebar:not(#a):not(#b) :is(.st-presets-label, .st-custom-font-label) {
+    color: var(--st-dlg-text) !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+}
+.MillenniumDesktopSidebar:not(#a):not(#b) :is(.st-presets-hint, .st-custom-font-hint) {
+    color: rgb(var(--st-text-dim, 166, 173, 200)) !important;
+    font-size: 12px !important;
+}
+.MillenniumDesktopSidebar:not(#a):not(#b) .st-presets-chips {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+}
+.MillenniumDesktopSidebar:not(#a):not(#b) :is(.st-preset-chip, .st-custom-font-apply) {
+    appearance: none !important;
+    border: 0 !important;
+    outline: none !important;
+    margin: 0 !important;
+    min-width: 0 !important;
+    width: auto !important;
+    padding: 7px 14px !important;
+    border-radius: var(--st-dlg-radius) !important;
+    background: var(--st-dlg-fill) !important;
+    box-shadow: inset 0 0 0 2px var(--st-dlg-edge) !important;
+    color: var(--st-dlg-text) !important;
+    font: inherit;
+    font-size: 13px !important;
+    line-height: 16px !important;
+    cursor: pointer;
+}
+.MillenniumDesktopSidebar:not(#a):not(#b) :is(.st-preset-chip, .st-custom-font-apply):hover {
+    background: var(--st-dlg-fill-hover) !important;
+    box-shadow: none !important;
+}
+.MillenniumDesktopSidebar:not(#a):not(#b) .st-preset-chip.st-selected {
+    color: #ffffff !important;
+    font-weight: 600;
+    background: linear-gradient(135deg, rgba(137, 180, 250, 0.26), rgba(203, 166, 247, 0.26)) !important;
+    box-shadow: inset 0 0 0 2px rgba(137, 180, 250, 0.6) !important;
+}
+.MillenniumDesktopSidebar:not(#a):not(#b) .st-custom-font-apply::before,
+.MillenniumDesktopSidebar:not(#a):not(#b) .st-preset-chip::before {
+    display: none !important;
+}
+
+
+/*
+& 9a. Custom font text box (under the Font row when Font = Custom).
+*/
+.MillenniumDesktopSidebar:not(#a):not(#b) .st-custom-font-controls {
+    display: flex !important;
+    gap: 10px !important;
+    align-items: center !important;
+}
+.MillenniumDesktopSidebar:not(#a):not(#b) .st-custom-font-input {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    height: 34px !important;
+    box-sizing: border-box !important;
+    padding: 0 12px !important;
+    border: 2px solid var(--st-dlg-edge) !important;
+    border-radius: var(--st-dlg-radius) !important;
+    background: var(--st-dlg-fill) !important;
+    color: var(--st-dlg-text) !important;
+    font: inherit;
+    font-size: 14px !important;
+    outline: none !important;
+    transition: border-color 0.15s ease-out !important;
+}
+.MillenniumDesktopSidebar:not(#a):not(#b) .st-custom-font-input::placeholder {
+    color: #7f849c !important;
+}
+.MillenniumDesktopSidebar:not(#a):not(#b) .st-custom-font-input:is(:hover, :focus) {
+    border-color: transparent !important;
+    background: linear-gradient(var(--st-dlg-fill), var(--st-dlg-fill)) padding-box, var(--st-dlg-ring) border-box !important;
 }

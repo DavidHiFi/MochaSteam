@@ -4,8 +4,8 @@
     color: transparent !important;
 }
 ._1Ky59qmywxOUtNcI1cgmkX:hover ._2Lu3d-5qLmW4i19ysTt2jT:not(:nth-of-type(1)) {
-    color: rgb(166, 173, 200) !important;
+    color: rgb(var(--st-text-dim, 166, 173, 200)) !important;
 }
 ._1Ky59qmywxOUtNcI1cgmkX ._2Lu3d-5qLmW4i19ysTt2jT:not(:nth-of-type(1)):hover {
-    color: rgb(205, 214, 244) !important;
+    color: rgb(var(--st-text-strong, 205, 214, 244)) !important;
 }

@@ -1,4 +1,4 @@
-﻿/** Store */
+/** Store */
 @import url("./webkit/store/agecheck.css");
 @import url("./webkit/store/bundleInfo.css");
 @import url("./webkit/store/cart.css");
@@ -38,6 +38,7 @@
 
 /*^ Mocha polish (loads last so it wins) */
 @import url("./webkit/store/polish.css");
+@import url("./webkit/store/mocha-rings.css");
 
 
 
@@ -1058,9 +1059,18 @@ html body.responsive_page #footer .rule:nth-child(1) {
 .btnv6_white_transparent {
     border-radius: var(--st-border-radius);
     background: rgb(49, 50, 68);
-    color: rgb(205, 214, 244);
+    color: rgb(var(--st-text-strong, 205, 214, 244));
 }
 .btnv6_white_transparent:hover {
     background: rgb(69, 71, 90);
-    color: rgb(205, 214, 244);
+    color: rgb(var(--st-text-strong, 205, 214, 244));
+}
+
+/* Extendium re-shows the legacy web header (inline display:block) and adds a
+   fixed "Show Header" button (inline z-index 9000). The client has its own
+   navigation, so both stay hidden. */
+html body #global_header,
+html body > button[style*="z-index: 9000"][style*="position: fixed"],
+html body button[style*="z-index: 9000"][style*="position: fixed"] {
+    display: none !important;
 }

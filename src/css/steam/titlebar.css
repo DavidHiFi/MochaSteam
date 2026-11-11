@@ -1,4 +1,4 @@
-﻿/* On Focus blue line */
+/* On Focus blue line */
 ._3pXasCUulX4jjqO79s4q_F._2MkHZqf7MrgW3f8qGHiI8Z {
     display: none;
 }
@@ -57,29 +57,66 @@
 ! Menu
 */
 ._1Ky59qmywxOUtNcI1cgmkX {
-    gap: unset;
+    gap: 2px;
     margin-top: 0 !important;
     padding-left: 16px;
 }
 
 /* Item. Always visible; the "Auto-hide menu" option
    (options/general/menuAutoHide.css) hides them until hover.
-   8px pill radius so the hover ring (hover-rings.css) rounds correctly. */
-._1Ky59qmywxOUtNcI1cgmkX ._2Lu3d-5qLmW4i19ysTt2jT {
-    padding: 6px 7px;
-    color: rgb(166, 173, 200);
-    border-radius: 8px;
-    transition: background-color 0.15s ease-out;
-}
+   2026-11-09: the wrapper is what Steam anchors the menu popup to, so it now
+   runs from the dock's top edge to 4px below its bottom edge; every popup
+   opens below the dock instead of over its edge. The visible hover box is
+   the inner div (27px pill, fill + one gradient ring). The Steam logo uses
+   the same box as View / Friends / Games / Help. */
+._1Ky59qmywxOUtNcI1cgmkX ._2Lu3d-5qLmW4i19ysTt2jT,
 ._1Ky59qmywxOUtNcI1cgmkX ._2Lu3d-5qLmW4i19ysTt2jT:nth-of-type(1) {
-    z-index: 99999;
-    padding: 0 6px 0 0;
+    z-index: 2;
+    display: flex;
+    align-self: stretch !important;
+    align-items: center;
+    margin-bottom: -4px;
+    padding: 0 0 4px !important;
+    color: rgb(var(--st-text-dim, 166, 173, 200));
+    border-radius: 0;
+    background: none !important;
 }
-
-/* Item on hover: mantle fill behind the label, like the taskbar dock hover */
+._1Ky59qmywxOUtNcI1cgmkX ._2Lu3d-5qLmW4i19ysTt2jT > div {
+    position: relative;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    height: 27px;
+    padding: 0 8px;
+    border-radius: 8px;
+    transition: background-color 0.15s ease-out, color 0.15s ease-out;
+}
 ._1Ky59qmywxOUtNcI1cgmkX ._2Lu3d-5qLmW4i19ysTt2jT:hover {
-    color: rgb(205, 214, 244);
-    background-color: rgb(var(--st-color-1));
+    color: rgb(var(--st-text-strong, 205, 214, 244));
+}
+._1Ky59qmywxOUtNcI1cgmkX ._2Lu3d-5qLmW4i19ysTt2jT:hover > div {
+    color: rgb(var(--st-text-strong, 205, 214, 244));
+    background-color: rgba(49, 50, 68, 0.9);
+}
+/* Menu item ring, on the visible inner box */
+._1Ky59qmywxOUtNcI1cgmkX ._2Lu3d-5qLmW4i19ysTt2jT > div::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 2px;
+    background: var(--st-ring, linear-gradient(135deg, #89b4fa, #cba6f7));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.15s ease-out;
+    pointer-events: none;
+    z-index: 3;
+}
+._1Ky59qmywxOUtNcI1cgmkX ._2Lu3d-5qLmW4i19ysTt2jT:hover > div::after {
+    opacity: 1;
 }
 
 /* Text Logo - "SpaceTheme" label removed in-theme (was Quick CSS) */
@@ -104,11 +141,19 @@
     margin: 0 !important;
 }
 
-/* Steam icon slightly larger (was Quick CSS) */
+/* Steam icon slightly larger (was Quick CSS). 2026-11-09: the glyph is
+   filled with the blue -> mauve gradient, masked by its own outline. */
 .bSKGlAJG2UVWTsntEJY2v .GG9wVQz6PLlhGHlJyZh4E {
+    display: block;
     width: 23px !important;
     height: 23px !important;
     margin-top: 0 !important;
+    background: linear-gradient(135deg, #89b4fa, #cba6f7);
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 36'%3E%3Cpath d='M17.974 3C10.0808 3 3.61438 9.07573 3 16.7967L11.0534 20.121C11.7357 19.6551 12.56 19.383 13.447 19.383C13.5265 19.383 13.6056 19.3849 13.684 19.3892L17.2658 14.2073C17.2658 14.1826 17.2652 14.1585 17.2652 14.1342C17.2652 11.0149 19.807 8.47686 22.9319 8.47686C26.0568 8.47686 28.5987 11.0149 28.5987 14.1342C28.5987 17.2532 26.0568 19.7915 22.9319 19.7915C22.8887 19.7915 22.8463 19.7903 22.8035 19.7889L17.6954 23.4276C17.6981 23.4944 17.7004 23.5615 17.7004 23.6287C17.7004 25.9704 15.7923 27.8749 13.447 27.8749C11.3885 27.8749 9.66695 26.4079 9.27686 24.4652L3.51756 22.0881C5.30075 28.3844 11.0953 33 17.974 33C26.2726 33 33 26.2842 33 18.0001C32.9999 9.71534 26.2725 3 17.974 3Z'/%3E%3Cpath d='M12.4163 25.7599L10.5704 24.9989C10.8977 25.6791 11.4633 26.2478 12.2149 26.5608C13.8388 27.2363 15.7116 26.4665 16.3884 24.8446C16.7162 24.0596 16.7186 23.193 16.3933 22.4064C16.0691 21.6196 15.457 21.0054 14.6698 20.6778C13.889 20.3538 13.0526 20.3656 12.317 20.6422L14.2241 21.4296C15.4222 21.928 15.9884 23.3013 15.4894 24.497C14.9906 25.6931 13.6143 26.2586 12.4163 25.7599Z'/%3E%3Cpath d='M26.7079 14.1338C26.7079 12.0555 25.0142 10.3645 22.9321 10.3645C20.8502 10.3645 19.1559 12.0554 19.1559 14.1338C19.1559 16.2122 20.8501 17.9027 22.9321 17.9027C25.0141 17.9027 26.7079 16.2122 26.7079 14.1338ZM20.1018 14.1273C20.1018 12.5634 21.372 11.296 22.9384 11.296C24.505 11.296 25.7749 12.5634 25.7749 14.1273C25.7749 15.6912 24.5051 16.9586 22.9384 16.9586C21.372 16.9585 20.1018 15.6912 20.1018 14.1273Z'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 36'%3E%3Cpath d='M17.974 3C10.0808 3 3.61438 9.07573 3 16.7967L11.0534 20.121C11.7357 19.6551 12.56 19.383 13.447 19.383C13.5265 19.383 13.6056 19.3849 13.684 19.3892L17.2658 14.2073C17.2658 14.1826 17.2652 14.1585 17.2652 14.1342C17.2652 11.0149 19.807 8.47686 22.9319 8.47686C26.0568 8.47686 28.5987 11.0149 28.5987 14.1342C28.5987 17.2532 26.0568 19.7915 22.9319 19.7915C22.8887 19.7915 22.8463 19.7903 22.8035 19.7889L17.6954 23.4276C17.6981 23.4944 17.7004 23.5615 17.7004 23.6287C17.7004 25.9704 15.7923 27.8749 13.447 27.8749C11.3885 27.8749 9.66695 26.4079 9.27686 24.4652L3.51756 22.0881C5.30075 28.3844 11.0953 33 17.974 33C26.2726 33 33 26.2842 33 18.0001C32.9999 9.71534 26.2725 3 17.974 3Z'/%3E%3Cpath d='M12.4163 25.7599L10.5704 24.9989C10.8977 25.6791 11.4633 26.2478 12.2149 26.5608C13.8388 27.2363 15.7116 26.4665 16.3884 24.8446C16.7162 24.0596 16.7186 23.193 16.3933 22.4064C16.0691 21.6196 15.457 21.0054 14.6698 20.6778C13.889 20.3538 13.0526 20.3656 12.317 20.6422L14.2241 21.4296C15.4222 21.928 15.9884 23.3013 15.4894 24.497C14.9906 25.6931 13.6143 26.2586 12.4163 25.7599Z'/%3E%3Cpath d='M26.7079 14.1338C26.7079 12.0555 25.0142 10.3645 22.9321 10.3645C20.8502 10.3645 19.1559 12.0554 19.1559 14.1338C19.1559 16.2122 20.8501 17.9027 22.9321 17.9027C25.0141 17.9027 26.7079 16.2122 26.7079 14.1338ZM20.1018 14.1273C20.1018 12.5634 21.372 11.296 22.9384 11.296C24.505 11.296 25.7749 12.5634 25.7749 14.1273C25.7749 15.6912 24.5051 16.9586 22.9384 16.9586C21.372 16.9585 20.1018 15.6912 20.1018 14.1273Z'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+}
+.bSKGlAJG2UVWTsntEJY2v .GG9wVQz6PLlhGHlJyZh4E path {
+    fill: transparent !important;
 }
 
 
@@ -125,9 +170,34 @@
     transform: translate(-50%, -50%);
 }
 
-/* Back & Forward */
-._3Z3ohQ8-1NKnCZkbS6fvy ._2D64jIEK7wpUR_NlObDW76 svg {
-    padding: 0 12px;
+/* Back & Forward. 2026-11-09: one box per arrow, same 26px height as the
+   tabs; on hover a surface0 fill with a single 2px gradient border. */
+._3Z3ohQ8-1NKnCZkbS6fvy ._2D64jIEK7wpUR_NlObDW76 svg._25lBLzuVeYAUG279up4xP8 {
+    box-sizing: content-box;
+    flex: 0 0 auto;
+    width: 16px;
+    min-width: 16px;
+    height: 16px;
+    min-height: 16px;
+    margin: 0 2px;
+    padding: 3px 9px !important;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    background: none;
+    box-shadow: none;
+    outline: none;
+    transition: color 0.15s ease-out, background-color 0.15s ease-out;
+}
+._3Z3ohQ8-1NKnCZkbS6fvy ._2D64jIEK7wpUR_NlObDW76 svg._25lBLzuVeYAUG279up4xP8._1LYTHQzcI1u6tcxbbcc5V3 {
+    color: rgb(var(--st-text-dim, 166, 173, 200));
+}
+._3Z3ohQ8-1NKnCZkbS6fvy ._2D64jIEK7wpUR_NlObDW76 svg._25lBLzuVeYAUG279up4xP8._2cO0HdvLEGAdhosLekWsmo {
+    color: rgb(88, 91, 112);
+}
+._3Z3ohQ8-1NKnCZkbS6fvy ._2D64jIEK7wpUR_NlObDW76 svg._25lBLzuVeYAUG279up4xP8._1LYTHQzcI1u6tcxbbcc5V3:hover {
+    color: rgb(var(--st-text-strong, 205, 214, 244));
+    background: linear-gradient(rgb(49, 50, 68), rgb(49, 50, 68)) padding-box,
+                var(--st-ring, linear-gradient(135deg, #89b4fa, #cba6f7)) border-box;
 }
 ._3Z3ohQ8-1NKnCZkbS6fvy ._2D64jIEK7wpUR_NlObDW76 svg:nth-child(2) {
     order: 2;
@@ -138,12 +208,8 @@
     font-size: unset;
 }
 ._7AlhCx3XGzBeIrQaCneUD._1gqEjB5QsKT_NftD1dEsdZ:not(._2cO0HdvLEGAdhosLekWsmo) ._19axKcqYRuaJ8vdYKYmtTQ {
-    color: rgb(var(--st-accent-1));
+    color: rgb(var(--st-text-strong, 205, 214, 244));
     text-shadow: none;
-}
-._7AlhCx3XGzBeIrQaCneUD._1gqEjB5QsKT_NftD1dEsdZ:not(._2cO0HdvLEGAdhosLekWsmo) ._19axKcqYRuaJ8vdYKYmtTQ::after {
-    height: 3.2px;
-    background: rgb(var(--st-accent-1));
 }
 
 
@@ -163,13 +229,13 @@ body ._2iJsgdTIX9Tj23rWnB7Q-c:not(._2T8739wyg0K9mokTXWytuZ) ._3om6pVKUdxdBkypYpS
     text-decoration: underline !important;
 }
 body ._2iJsgdTIX9Tj23rWnB7Q-c ._2ohOQgahhMYnIEfAQmv9B8 {
-    color: #cdd6f4 !important;
+    color: rgb(var(--st-text-strong, 205, 214, 244)) !important;
     background-color: #313244 !important;
     text-shadow: none !important;
 }
 body ._2iJsgdTIX9Tj23rWnB7Q-c ._2ohOQgahhMYnIEfAQmv9B8:not(._TY57LlvVVnWqjaCz0EWr):hover,
 body ._2iJsgdTIX9Tj23rWnB7Q-c ._2ohOQgahhMYnIEfAQmv9B8:focus-visible {
-    color: #cdd6f4 !important;
+    color: rgb(var(--st-text-strong, 205, 214, 244)) !important;
     background-color: #45475a !important;
 }
 
@@ -210,18 +276,74 @@ body ._2iJsgdTIX9Tj23rWnB7Q-c ._2ohOQgahhMYnIEfAQmv9B8:focus-visible {
 & tab keeps the accent through its more specific rule above.
 */
 ._3Z3ohQ8-1NKnCZkbS6fvy ._19axKcqYRuaJ8vdYKYmtTQ {
-    color: rgb(205, 214, 244);
+    color: rgb(var(--st-text-strong, 205, 214, 244));
 }
 ._3Z3ohQ8-1NKnCZkbS6fvy ._19axKcqYRuaJ8vdYKYmtTQ:hover {
     color: #fff;
 }
-/* Nav tab wrapper: mantle hover fill + pill radius for the hover ring */
-._3Z3ohQ8-1NKnCZkbS6fvy ._2Lu3d-5qLmW4i19ysTt2jT {
-    border-radius: 8px;
-    transition: background-color 0.15s ease-out;
+/* Nav tabs (2026-11-09). Like the menu items, the wrapper is the popup
+   anchor and reaches 4px below the dock, so the Store / Library / Community /
+   profile flyouts open below the dock. The label is the visible 26px pill:
+   surface0 fill + gradient ring on hover. The current tab is a selected
+   pill (surface1 fill + 2px gradient ring), never an underline. */
+._3Z3ohQ8-1NKnCZkbS6fvy ._2D64jIEK7wpUR_NlObDW76 {
+    gap: 2px;
 }
-._3Z3ohQ8-1NKnCZkbS6fvy ._2Lu3d-5qLmW4i19ysTt2jT:hover {
-    background-color: rgb(var(--st-color-1));
+._3Z3ohQ8-1NKnCZkbS6fvy ._2Lu3d-5qLmW4i19ysTt2jT {
+    display: flex;
+    align-self: stretch !important;
+    align-items: center;
+    height: auto !important;
+    margin-bottom: -4px;
+    padding: 0 0 4px !important;
+    border-radius: 0;
+    background: none !important;
+}
+._3Z3ohQ8-1NKnCZkbS6fvy ._2D64jIEK7wpUR_NlObDW76 ._2Lu3d-5qLmW4i19ysTt2jT._7AlhCx3XGzBeIrQaCneUD > ._19axKcqYRuaJ8vdYKYmtTQ {
+    position: relative;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    height: 26px !important;
+    padding: 0 10px !important;
+    border-radius: 8px;
+    text-shadow: none;
+    transition: background-color 0.15s ease-out, color 0.15s ease-out;
+}
+._3Z3ohQ8-1NKnCZkbS6fvy ._2D64jIEK7wpUR_NlObDW76 ._2Lu3d-5qLmW4i19ysTt2jT._7AlhCx3XGzBeIrQaCneUD:hover > ._19axKcqYRuaJ8vdYKYmtTQ {
+    color: rgb(var(--st-text-strong, 205, 214, 244));
+    background-color: rgba(49, 50, 68, 0.9);
+}
+._3Z3ohQ8-1NKnCZkbS6fvy ._2D64jIEK7wpUR_NlObDW76 ._2Lu3d-5qLmW4i19ysTt2jT._7AlhCx3XGzBeIrQaCneUD._1gqEjB5QsKT_NftD1dEsdZ > ._19axKcqYRuaJ8vdYKYmtTQ {
+    color: rgb(var(--st-text-strong, 205, 214, 244)) !important;
+    background-color: rgba(69, 71, 90, 0.85) !important;
+}
+/* Ring; it also replaces Steam's selected-tab underline on the same ::after */
+._3Z3ohQ8-1NKnCZkbS6fvy ._2D64jIEK7wpUR_NlObDW76 ._2Lu3d-5qLmW4i19ysTt2jT._7AlhCx3XGzBeIrQaCneUD > ._19axKcqYRuaJ8vdYKYmtTQ::after {
+    content: "" !important;
+    display: block !important;
+    position: absolute !important;
+    inset: 0 !important;
+    width: auto !important;
+    height: auto !important;
+    margin: 0 !important;
+    border-radius: inherit;
+    padding: 2px;
+    box-sizing: border-box;
+    background: var(--st-ring, linear-gradient(135deg, #89b4fa, #cba6f7)) !important;
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    opacity: 0;
+    transform: none !important;
+    transition: opacity 0.15s ease-out;
+    pointer-events: none;
+    z-index: 3;
+}
+._3Z3ohQ8-1NKnCZkbS6fvy ._2D64jIEK7wpUR_NlObDW76 ._2Lu3d-5qLmW4i19ysTt2jT._7AlhCx3XGzBeIrQaCneUD:hover > ._19axKcqYRuaJ8vdYKYmtTQ::after,
+._3Z3ohQ8-1NKnCZkbS6fvy ._2D64jIEK7wpUR_NlObDW76 ._2Lu3d-5qLmW4i19ysTt2jT._7AlhCx3XGzBeIrQaCneUD._1gqEjB5QsKT_NftD1dEsdZ > ._19axKcqYRuaJ8vdYKYmtTQ::after {
+    opacity: 1;
 }
 
 /*
@@ -239,7 +361,8 @@ body ._2iJsgdTIX9Tj23rWnB7Q-c ._2ohOQgahhMYnIEfAQmv9B8:focus-visible {
     align-items: center !important;
     border-radius: 999px;
     background-color: rgb(var(--st-color-2));
-    box-shadow: inset 0 0 0 2px var(--st-edge);
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9);
+    position: relative;
 }
 ._1Ky59qmywxOUtNcI1cgmkX ._2Lu3d-5qLmW4i19ysTt2jT {
     height: auto !important;
@@ -253,7 +376,27 @@ body ._2iJsgdTIX9Tj23rWnB7Q-c ._2ohOQgahhMYnIEfAQmv9B8:focus-visible {
         align-items: center;
         border-radius: 999px;
         background-color: rgb(var(--st-color-2));
-        box-shadow: inset 0 0 0 2px var(--st-edge);
+        box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9);
+    }
+    /* Whole centre dock ring on hover (2026-11-09) */
+    ._3Z3ohQ8-1NKnCZkbS6fvy::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        padding: 2px;
+        background: var(--st-ring, linear-gradient(135deg, #89b4fa, #cba6f7));
+        -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+        -webkit-mask-composite: xor;
+        mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+        mask-composite: exclude;
+        opacity: 0;
+        transition: opacity 0.15s ease-out;
+        pointer-events: none;
+        z-index: 3;
+}
+    ._3Z3ohQ8-1NKnCZkbS6fvy:hover::after {
+        opacity: 1;
     }
     ._3Z3ohQ8-1NKnCZkbS6fvy ._2D64jIEK7wpUR_NlObDW76 {
         height: 100%;
@@ -262,11 +405,50 @@ body ._2iJsgdTIX9Tj23rWnB7Q-c ._2ohOQgahhMYnIEfAQmv9B8:focus-visible {
 }
 
 /*
-& Store and community pages: the browser view gets the same card edge as the
-& sidebar so the page reads as a panel. The web view paints over its own box,
-& so the hairline goes just outside it.
+& Store and community pages: the web view paints over its own box and hid
+& the right and bottom of an edge drawn here, so the frame now lives inside
+& the page (webkit/store/mocha-rings.css, html::before/::after).
 */
 ._1bGewp3tfzqAF6fVTFFUOz ._29p1jfvZ-VdlXK24_7UGsK {
     border-radius: var(--st-border-radius);
-    box-shadow: 0 0 0 2px var(--st-edge-strong);
+    box-shadow: none;
+}
+
+body .URLBar,
+body .URLBarText {
+    position: relative;
+    border-radius: 12px;
+    box-shadow: inset 0 0 0 2px rgba(69,71,90,.9);
+}
+body .URLBar::after,
+body .URLBarText::after {
+    content: ""; position: absolute; inset: 0; border-radius: inherit;
+    padding: 2px; pointer-events: none;
+    background: linear-gradient(135deg,#89b4fa,#cba6f7);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor; mask-composite: exclude;
+    opacity: 0; transition: opacity .15s ease-out;
+}
+body .URLBar:hover::after,
+body .URLBarText:hover::after { opacity: 1; }
+
+/* Whole top-left dock ring on hover (2026-11-09), in addition to the item ring */
+._1Ky59qmywxOUtNcI1cgmkX::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 2px;
+    background: var(--st-ring, linear-gradient(135deg, #89b4fa, #cba6f7));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.15s ease-out;
+    pointer-events: none;
+    z-index: 3;
+}
+._1Ky59qmywxOUtNcI1cgmkX:hover::after {
+    opacity: 1;
 }

@@ -20,8 +20,6 @@
    and panel list rows plus the lib-home cards, same static pattern.
    Friends-list rows are NOT ringed: Steam virtualizes that list and the
    rows may be absolutely positioned. */
-._1Ky59qmywxOUtNcI1cgmkX ._2Lu3d-5qLmW4i19ysTt2jT,
-._3Z3ohQ8-1NKnCZkbS6fvy ._2Lu3d-5qLmW4i19ysTt2jT,
 body.DesktopUI ._1n7Wloe5jZ6fSuvV18NNWI,
 body.DesktopUI ._1BAKXmqQdWRWmWX9_CbhuY,
 body.DesktopUI ._2EstNjFIIZm_WUSKm5Wt7n ._3sTMvhkGXqBzwhsP2-IA5P :is(.QFW0BtI4l77AFmv1xLAkx, ._3B8wRA4H7e_oSksYNqpSPv, ._2NdiftmP-B3C4LPWnNGTCB, ._25gii5r23MmAqXvLZj24tK, ._3k90ug209sE23xAMqcM74s),
@@ -67,8 +65,6 @@ body .TitleBarControls .st-steam-settings > div {
     position: relative;
 }
 
-._1Ky59qmywxOUtNcI1cgmkX ._2Lu3d-5qLmW4i19ysTt2jT::after,
-._3Z3ohQ8-1NKnCZkbS6fvy ._2Lu3d-5qLmW4i19ysTt2jT::after,
 body.DesktopUI ._1n7Wloe5jZ6fSuvV18NNWI::after,
 body.DesktopUI ._1BAKXmqQdWRWmWX9_CbhuY::after,
 body.DesktopUI ._2EstNjFIIZm_WUSKm5Wt7n ._3sTMvhkGXqBzwhsP2-IA5P :is(.QFW0BtI4l77AFmv1xLAkx, ._3B8wRA4H7e_oSksYNqpSPv, ._2NdiftmP-B3C4LPWnNGTCB, ._25gii5r23MmAqXvLZj24tK, ._3k90ug209sE23xAMqcM74s)::after,
@@ -126,8 +122,6 @@ body .TitleBarControls .st-steam-settings > div::after {
     pointer-events: none;
 }
 
-._1Ky59qmywxOUtNcI1cgmkX ._2Lu3d-5qLmW4i19ysTt2jT:hover::after,
-._3Z3ohQ8-1NKnCZkbS6fvy ._2Lu3d-5qLmW4i19ysTt2jT:hover::after,
 body.DesktopUI ._1n7Wloe5jZ6fSuvV18NNWI:hover::after,
 body.DesktopUI ._1BAKXmqQdWRWmWX9_CbhuY:hover::after,
 body.DesktopUI ._2EstNjFIIZm_WUSKm5Wt7n ._3sTMvhkGXqBzwhsP2-IA5P :is(.QFW0BtI4l77AFmv1xLAkx, ._3B8wRA4H7e_oSksYNqpSPv, ._2NdiftmP-B3C4LPWnNGTCB, ._25gii5r23MmAqXvLZj24tK, ._3k90ug209sE23xAMqcM74s):hover::after,
@@ -192,3 +186,89 @@ body .MillenniumSettings .DialogControlsSection:has(:is(.DialogDropDown, input, 
         transition: none;
     }
 }
+
+/* Library sidebar dock (2026-11-09): the whole dock gets the ring on hover.
+   Drawn on the sizable wrapper, which is already position: relative and has
+   the dock's exact box, so the dock itself stays static. */
+._9sPoVBFyE_vE87mnZJ5aB.LeftListSizableContainer::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    border-radius: var(--st-border-radius, 16px);
+    padding: 2px;
+    background: var(--st-ring, linear-gradient(135deg, rgb(137, 180, 250), rgb(203, 166, 247)));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.15s ease-out;
+    pointer-events: none;
+}
+._9sPoVBFyE_vE87mnZJ5aB.LeftListSizableContainer:hover::after {
+    opacity: 1;
+}
+
+/* URL bar over store pages (2026-11-09 round 6): the whole bar is a dock and
+   gets the ring on hover; the address inside is a pill with its own resting
+   edge, a surface fill on hover and its own ring. Both hosts are already
+   relative or have no absolute children. */
+body .UkR3sY319PuaUNuUWks2K.URLBar::after,
+body .UkR3sY319PuaUNuUWks2K.URLBar ._2m_orETo6AghzAnc0sISCt.URLBarText::after,
+body .UkR3sY319PuaUNuUWks2K.URLBar .StatusIcon::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    border-radius: inherit;
+    padding: 2px;
+    background: var(--st-ring, linear-gradient(135deg, rgb(137, 180, 250), rgb(203, 166, 247)));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.15s ease-out;
+    pointer-events: none;
+}
+body .UkR3sY319PuaUNuUWks2K.URLBar:hover::after,
+body .UkR3sY319PuaUNuUWks2K.URLBar ._2m_orETo6AghzAnc0sISCt.URLBarText:hover::after,
+body .UkR3sY319PuaUNuUWks2K.URLBar .StatusIcon:hover::after {
+    opacity: 1;
+}
+body .UkR3sY319PuaUNuUWks2K.URLBar ._2m_orETo6AghzAnc0sISCt.URLBarText,
+body .UkR3sY319PuaUNuUWks2K.URLBar .StatusIcon {
+    position: relative !important;
+    border-radius: 999px !important;
+    background: rgba(49, 50, 68, 0.55) !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9) !important;
+    transition: background-color 0.15s ease-out;
+}
+body .UkR3sY319PuaUNuUWks2K.URLBar ._2m_orETo6AghzAnc0sISCt.URLBarText {
+    padding-left: 10px !important;
+    padding-right: 12px !important;
+    color: rgb(var(--st-text-soft, 186, 194, 222)) !important;
+}
+body .UkR3sY319PuaUNuUWks2K.URLBar ._2m_orETo6AghzAnc0sISCt.URLBarText:hover,
+body .UkR3sY319PuaUNuUWks2K.URLBar .StatusIcon:hover {
+    background: rgba(69, 71, 90, 0.85) !important;
+    color: rgb(var(--st-text-strong, 205, 214, 244)) !important;
+}
+body .UkR3sY319PuaUNuUWks2K.URLBar ._2m_orETo6AghzAnc0sISCt.URLBarText .URL {
+    color: inherit !important;
+}
+
+body .URLBar :is(.URLBarText,.StatusIcon),
+body .URLBar :is(.URLBarText,.StatusIcon):hover {
+    background: transparent !important; box-shadow: none !important;
+    border: 0 !important; border-radius: 0 !important;
+}
+body .URLBar :is(.URLBarText,.StatusIcon)::after { content: none !important; }
+
+body .URLBar:not(#a):not(#b) :is(.URLBarText,.StatusIcon),
+body .URLBar:not(#a):not(#b) :is(.URLBarText,.StatusIcon):hover {
+    background: transparent !important; box-shadow: none !important;
+    border: 0 !important; border-radius: 0 !important;
+}
+body .URLBar:not(#a):not(#b) :is(.URLBarText,.StatusIcon)::after { content: none !important; }

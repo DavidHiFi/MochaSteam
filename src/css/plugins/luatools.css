@@ -1,45 +1,419 @@
-﻿/* LuaTools paints its dialogs and buttons with inline Steam-blue styles.
-   Inline style attributes only yield to !important. */
-:is(.luatools-overlay, .luatools-settings-overlay, .luatools-loadedapps-overlay) > div {
-    border: 2px solid var(--st-edge, rgba(88, 91, 112, 0.7)) !important;
-    border-radius: var(--st-border-radius) !important;
-    background: rgb(var(--st-mantle, 24, 24, 37)) !important;
-    box-shadow: 0 8px 32px rgba(17, 17, 27, 0.6) !important;
-    color: rgb(205, 214, 244) !important;
+/* LuaTools paints its dialogs and buttons with inline Steam-blue styles.
+   Inline style attributes only yield to !important. Mocha palette:
+   crust 17,17,27  mantle 24,24,37  base 30,30,46  surface0 49,50,68
+   surface1 69,71,90  text 205,214,244  subtext1 186,194,222
+   blue 137,180,250  mauve 203,166,247  green 166,227,161  red 243,139,168
+   yellow 249,226,175 */
+
+/* Icons: the font option sets every element to one family with !important,
+   which also hit Font Awesome. The cloud icon then drew from the Nerd Font,
+   overflowed its box and ran into the dialog title. */
+i:is(.fa-solid, .fas, .fa-regular, .far) {
+    font-family: "Font Awesome 6 Free" !important;
+}
+i:is(.fa-solid, .fas) {
+    font-weight: 900 !important;
+}
+i:is(.fa-regular, .far) {
+    font-weight: 400 !important;
+}
+i:is(.fa-brands, .fab) {
+    font-family: "Font Awesome 6 Brands" !important;
+    font-weight: 400 !important;
 }
 
-/* Title: gradient text with a blue glow. */
-:is(.luatools-overlay, .luatools-settings-overlay, .luatools-loadedapps-overlay) > div > div:first-child {
+/*
+& Backdrops and the dialog card
+*/
+/* A tint only. A filter here makes the overlay the backdrop root of the
+   card, and the card's glass blurs an empty layer while the page reads
+   through. LuaTools injects its own <style id="luatools-styles"> after this
+   file with `backdrop-filter: blur(8px) !important` at the same
+   specificity, so the :not(#a):not(#b) boost is what lets this win. */
+:is(.luatools-overlay, .luatools-settings-overlay, .luatools-loadedapps-overlay, .luatools-alert-overlay, .luatools-confirm-overlay):not(#a):not(#b) {
+    background: rgba(17, 17, 27, 0.45) !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    filter: none !important;
+    will-change: auto !important;
+}
+:is(.luatools-overlay, .luatools-settings-overlay, .luatools-loadedapps-overlay, .luatools-alert-overlay, .luatools-confirm-overlay) > div {
+    border: 2px solid rgba(69, 71, 90, 0.9) !important;
+    border-radius: var(--st-border-radius, 16px) !important;
+    background: linear-gradient(160deg, rgba(137, 180, 250, 0.08), rgba(203, 166, 247, 0.08)), rgba(24, 24, 37, 0.72) !important;
+    -webkit-backdrop-filter: blur(36px) saturate(1.5) !important;
+    backdrop-filter: blur(36px) saturate(1.5) !important;
+    box-shadow: 0 24px 64px rgba(17, 17, 27, 0.7) !important;
+    color: rgb(var(--st-text-strong, 205, 214, 244)) !important;
+    overflow: visible !important;
+}
+/* The whole card gets the gradient ring while the pointer is over it. */
+:is(.luatools-overlay, .luatools-settings-overlay, .luatools-loadedapps-overlay, .luatools-alert-overlay, .luatools-confirm-overlay) > div::after {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    z-index: 5;
+    border-radius: var(--st-border-radius, 16px);
+    padding: 2px;
+    background: linear-gradient(135deg, rgb(137, 180, 250), rgb(203, 166, 247));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.2s ease-out;
+    pointer-events: none;
+}
+:is(.luatools-overlay, .luatools-settings-overlay, .luatools-loadedapps-overlay, .luatools-alert-overlay, .luatools-confirm-overlay) > div:hover::after {
+    opacity: 1;
+}
+
+/* Title row: icon and words on one baseline with room between them. */
+.luatools-title {
+    gap: 12px !important;
+    padding-left: 2px !important;
     background: none !important;
     -webkit-text-fill-color: currentColor !important;
-    color: rgb(var(--st-accent-1)) !important;
+    color: rgb(var(--st-text-strong, 205, 214, 244)) !important;
     text-shadow: none !important;
+    line-height: 1.2 !important;
+}
+.luatools-title > i {
+    flex: 0 0 auto !important;
+    width: 1.3em !important;
+    text-align: center !important;
+    color: rgb(137, 180, 250) !important;
+}
+.luatools-title > span {
+    min-width: 0 !important;
+}
+/* Settings and loaded-apps header (first row of the card). */
+:is(.luatools-settings-overlay, .luatools-loadedapps-overlay) > div > div:first-child {
+    border-bottom-color: rgba(69, 71, 90, 0.9) !important;
+    color: rgb(var(--st-text-strong, 205, 214, 244)) !important;
+}
+:is(.luatools-settings-overlay, .luatools-loadedapps-overlay) > div > div:first-child > div:first-child {
+    color: rgb(var(--st-text-strong, 205, 214, 244)) !important;
+    gap: 12px !important;
 }
 
-/* Scrolling list well and its rows. */
+/* Text that LuaTools tints with its Steam-blue accent or grey-blue. */
+:is(.luatools-overlay, .luatools-settings-overlay, .luatools-loadedapps-overlay, .luatools-alert-overlay, .luatools-confirm-overlay) [style*="color: rgb(102, 192, 244)"] {
+    color: rgb(137, 180, 250) !important;
+}
+:is(.luatools-overlay, .luatools-settings-overlay, .luatools-loadedapps-overlay, .luatools-alert-overlay, .luatools-confirm-overlay) [style*="color: rgb(199, 213, 224)"] {
+    color: rgb(var(--st-text-soft, 186, 194, 222)) !important;
+}
+/* Source status colours to their Mocha equivalents. */
+.luatools-overlay [style*="color: rgb(92, 184, 92)"] {
+    color: rgb(166, 227, 161) !important;
+}
+.luatools-overlay [style*="color: rgb(255, 107, 107)"] {
+    color: rgb(243, 139, 168) !important;
+}
+.luatools-overlay [style*="color: rgb(255, 193, 7)"] {
+    color: rgb(249, 226, 175) !important;
+}
+.luatools-status {
+    color: rgb(var(--st-text-dim, 166, 173, 200)) !important;
+}
+
+/*
+& Scrolling wells
+*/
 :is(.luatools-overlay, .luatools-settings-overlay, .luatools-loadedapps-overlay) > div > div[style*="overflow"] {
-    border: 2px solid var(--st-edge, rgba(88, 91, 112, 0.7)) !important;
-    border-radius: calc(var(--st-border-radius) / 2) !important;
-    background: rgba(49, 50, 68, 0.5) !important;
-}
-:is(.luatools-overlay, .luatools-settings-overlay, .luatools-loadedapps-overlay) a:not(.luatools-btn) {
-    border-color: rgba(var(--st-accent-1), 0.2) !important;
-    border-radius: calc(var(--st-border-radius) / 2) !important;
-    background: rgba(var(--st-accent-1), 0.08) !important;
-    color: rgb(205, 214, 244) !important;
-}
-:is(.luatools-overlay, .luatools-settings-overlay, .luatools-loadedapps-overlay) a:not(.luatools-btn):hover {
-    background: rgba(var(--st-accent-1), 0.18) !important;
+    border: 2px solid rgba(69, 71, 90, 0.9) !important;
+    border-radius: 12px !important;
+    background: rgba(17, 17, 27, 0.45) !important;
 }
 
-.luatools-btn,
-.luatools-header-button {
-    border: 2px solid var(--st-edge, rgba(88, 91, 112, 0.7)) !important;
+/*
+& Rows, cards and icon buttons: one surface, a surface1 edge at rest, the
+& blue-to-mauve ring on hover.
+*/
+.luatools-api-item,
+:is(.luatools-overlay, .luatools-settings-overlay, .luatools-loadedapps-overlay, .luatools-alert-overlay, .luatools-confirm-overlay) a:not(.luatools-btn) {
+    position: relative !important;
+    border: 2px solid rgba(69, 71, 90, 0.9) !important;
+    border-radius: 12px !important;
+    background: rgba(49, 50, 68, 0.5) !important;
+    color: rgb(var(--st-text-strong, 205, 214, 244)) !important;
+    box-shadow: none !important;
+    transform: none !important;
+    transition: background-color 0.15s ease-out !important;
+}
+.luatools-api-item > div:first-child {
+    color: rgb(var(--st-text-strong, 205, 214, 244)) !important;
+}
+.luatools-api-item[style*="pointer"]:hover,
+:is(.luatools-overlay, .luatools-settings-overlay, .luatools-loadedapps-overlay, .luatools-alert-overlay, .luatools-confirm-overlay) a:not(.luatools-btn):hover {
+    background: rgba(69, 71, 90, 0.75) !important;
+    color: rgb(255, 255, 255) !important;
+}
+
+/*
+& Buttons
+*/
+.luatools-btn {
+    position: relative !important;
+    border: 2px solid rgba(69, 71, 90, 0.9) !important;
+    border-radius: 12px !important;
     background: rgb(49, 50, 68) !important;
     box-shadow: none !important;
-    color: rgb(205, 214, 244) !important;
+    color: rgb(var(--st-text-strong, 205, 214, 244)) !important;
+    text-shadow: none !important;
+    transform: none !important;
+    transition: background-color 0.15s ease-out !important;
 }
-.luatools-btn:hover,
-.luatools-header-button:hover {
+.luatools-btn:hover:not([data-disabled="1"]) {
     background: rgb(69, 71, 90) !important;
+    color: rgb(255, 255, 255) !important;
+    transform: none !important;
+    box-shadow: none !important;
+}
+.luatools-btn.primary {
+    border-color: transparent !important;
+    background: linear-gradient(135deg, rgb(137, 180, 250), rgb(203, 166, 247)) !important;
+    color: rgb(17, 17, 27) !important;
+}
+.luatools-btn.primary:hover:not([data-disabled="1"]) {
+    background: linear-gradient(135deg, rgb(160, 196, 252), rgb(214, 186, 249)) !important;
+    color: rgb(17, 17, 27) !important;
+}
+.luatools-btn[data-disabled="1"] {
+    opacity: 0.5 !important;
+}
+
+/* Ring: same mask-composite pattern as the client hover rings. */
+.luatools-api-item::after,
+.luatools-btn::after,
+:is(.luatools-overlay, .luatools-settings-overlay, .luatools-loadedapps-overlay, .luatools-alert-overlay, .luatools-confirm-overlay) a:not(.luatools-btn)::after {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    z-index: 2;
+    border-radius: 12px;
+    padding: 2px;
+    background: linear-gradient(135deg, rgb(137, 180, 250), rgb(203, 166, 247));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.15s ease-out;
+    pointer-events: none;
+}
+.luatools-api-item[style*="pointer"]:hover::after,
+.luatools-btn:hover:not([data-disabled="1"])::after,
+:is(.luatools-overlay, .luatools-settings-overlay, .luatools-loadedapps-overlay, .luatools-alert-overlay, .luatools-confirm-overlay) a:not(.luatools-btn):hover::after {
+    opacity: 1;
+}
+.luatools-btn.primary::after {
+    display: none;
+}
+
+/*
+& Form controls
+*/
+:is(.luatools-overlay, .luatools-settings-overlay, .luatools-loadedapps-overlay) :is(select, input[type="text"], input[type="search"], input[type="number"], input[type="password"], textarea) {
+    border: 2px solid rgba(69, 71, 90, 0.9) !important;
+    border-radius: 10px !important;
+    background-color: rgb(49, 50, 68) !important;
+    color: rgb(var(--st-text-strong, 205, 214, 244)) !important;
+    box-shadow: none !important;
+}
+:is(.luatools-overlay, .luatools-settings-overlay, .luatools-loadedapps-overlay) :is(select, input, textarea):hover {
+    border-color: rgba(88, 91, 112, 1) !important;
+}
+:is(.luatools-overlay, .luatools-settings-overlay, .luatools-loadedapps-overlay) :is(select, input, textarea):focus {
+    border-color: rgb(137, 180, 250) !important;
+    box-shadow: 0 0 0 3px rgba(137, 180, 250, 0.2) !important;
+    outline: none !important;
+}
+:is(.luatools-overlay, .luatools-settings-overlay, .luatools-loadedapps-overlay) select option {
+    background-color: rgb(30, 30, 46) !important;
+    color: rgb(var(--st-text-strong, 205, 214, 244)) !important;
+}
+:is(.luatools-overlay, .luatools-settings-overlay, .luatools-loadedapps-overlay) select option:checked {
+    background: rgb(69, 71, 90) !important;
+}
+
+.luatools-slider {
+    border: 1px solid rgba(88, 91, 112, 0.9) !important;
+    background-color: rgb(49, 50, 68) !important;
+}
+.luatools-slider:before {
+    background-color: rgb(205, 214, 244) !important;
+}
+input:checked + .luatools-slider {
+    border-color: transparent !important;
+    background: linear-gradient(135deg, rgb(137, 180, 250), rgb(203, 166, 247)) !important;
+}
+input:checked + .luatools-slider:before {
+    background-color: rgb(17, 17, 27) !important;
+}
+.luatools-slider:hover {
+    border-color: rgb(137, 180, 250) !important;
+}
+
+/* Download progress */
+.luatools-progress-wrap {
+    height: 12px !important;
+    border: 1px solid rgba(69, 71, 90, 0.9) !important;
+    border-radius: 999px !important;
+    background: rgb(17, 17, 27) !important;
+}
+.luatools-progress-bar {
+    border-radius: 999px !important;
+    background: linear-gradient(90deg, rgb(137, 180, 250), rgb(203, 166, 247)) !important;
+    box-shadow: none !important;
+}
+.luatools-progress-info,
+.luatools-percent {
+    color: rgb(var(--st-text-dim, 166, 173, 200)) !important;
+}
+
+/*
+& Store bar button (restored by the shim in js/webkit.js): a mauve circle
+& that sits with the nav pills.
+*/
+button.luatools-header-button {
+    position: relative !important;
+    width: 34px !important;
+    height: 34px !important;
+    margin: 0 2px 0 6px !important;
+    padding: 0 !important;
+    border: none !important;
+    border-radius: 999px !important;
+    background: rgba(49, 50, 68, 0.6) !important;
+    box-shadow: inset 0 0 0 2px rgba(88, 91, 112, 0.9) !important;
+    color: rgb(203, 166, 247) !important;
+    transform: none !important;
+    transition: background-color 0.15s ease-out, box-shadow 0.15s ease-out !important;
+}
+/* The LuaTools mark redrawn as a Mocha blue to mauve glyph; the stock purple
+   PNG is hidden but kept in place so LuaTools' own code still finds it. */
+button.luatools-header-button::before {
+    content: "" !important;
+    position: absolute !important;
+    inset: 6px !important;
+    background: linear-gradient(135deg, rgb(137, 180, 250), rgb(203, 166, 247)) !important;
+    -webkit-mask: url("data:image/png;base64,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") center / contain no-repeat !important;
+    mask: url("data:image/png;base64,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") center / contain no-repeat !important;
+    filter: drop-shadow(0 0 0 rgba(203, 166, 247, 0)) !important;
+    transition: filter 0.15s ease-out !important;
+    pointer-events: none !important;
+}
+button.luatools-header-button:hover {
+    background: rgba(69, 71, 90, 0.85) !important;
+    box-shadow: inset 0 0 0 2px rgba(88, 91, 112, 0.9), 0 4px 14px -6px rgba(203, 166, 247, 0.6) !important;
+    transform: none !important;
+}
+button.luatools-header-button:hover::before {
+    filter: drop-shadow(0 0 4px rgba(203, 166, 247, 0.55)) !important;
+}
+button.luatools-header-button:focus-visible {
+    outline: none !important;
+}
+button.luatools-header-button:focus-visible::after {
+    opacity: 1 !important;
+}
+button.luatools-header-button img,
+button.luatools-header-button svg {
+    width: 18px !important;
+    height: 18px !important;
+    opacity: 0 !important;
+}
+
+/* "Add via LuaTools" and restart on the app page */
+.apphub_OtherSiteInfo a.luatools-button,
+.apphub_OtherSiteInfo a.luatools-restart-button {
+    border-radius: 999px !important;
+    background: rgba(203, 166, 247, 0.16) !important;
+    box-shadow: inset 0 0 0 2px rgba(203, 166, 247, 0.55) !important;
+    color: rgb(var(--st-text-strong, 205, 214, 244)) !important;
+}
+.apphub_OtherSiteInfo a.luatools-button > span,
+.apphub_OtherSiteInfo a.luatools-restart-button > span {
+    background: transparent !important;
+    color: inherit !important;
+}
+.apphub_OtherSiteInfo a.luatools-button:hover,
+.apphub_OtherSiteInfo a.luatools-restart-button:hover {
+    background: rgba(203, 166, 247, 0.3) !important;
+}
+
+/*
+& Menu header and actions (round 6). LuaTools tints these with inline
+& rgba(102, 192, 244, ...) Steam blue; every one is remapped here.
+*/
+/* Title mark: the stock purple PNG swapped for the blue to mauve glyph. */
+:is(.luatools-overlay, .luatools-settings-overlay, .luatools-loadedapps-overlay, .luatools-alert-overlay, .luatools-confirm-overlay) img[style*="width: 24px"] {
+    content: url("data:image/png;base64,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") !important;
+    /* Docked like the store bar button: a 34px surface circle with a
+       surface2 edge, the 22px glyph inside it. */
+    box-sizing: border-box !important;
+    flex: 0 0 34px !important;
+    width: 34px !important;
+    height: 34px !important;
+    padding: 6px !important;
+    object-fit: contain !important;
+    border-radius: 999px !important;
+    background: rgba(49, 50, 68, 0.6) !important;
+    box-shadow: inset 0 0 0 2px rgba(88, 91, 112, 0.9) !important;
+    filter: none !important;
+}
+:is(.luatools-settings-overlay, .luatools-loadedapps-overlay) > div > div:first-child > div:first-child span {
+    background: linear-gradient(135deg, rgb(205, 214, 244), rgb(203, 166, 247)) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    font-weight: 700 !important;
+}
+/* Divider lines under the header and between sections. */
+:is(.luatools-overlay, .luatools-settings-overlay, .luatools-loadedapps-overlay, .luatools-alert-overlay, .luatools-confirm-overlay) [style*="border-bottom: 1px solid rgba(102, 192, 244"],
+:is(.luatools-overlay, .luatools-settings-overlay, .luatools-loadedapps-overlay, .luatools-alert-overlay, .luatools-confirm-overlay) [style*="border-top: 1px solid rgba(102, 192, 244"] {
+    border-color: rgba(69, 71, 90, 0.9) !important;
+}
+/* Header icon buttons (Discord, settings, close): a blue to mauve tint, a
+   resting edge, the icon in blue; brighter tint and mauve icon on hover. */
+:is(.luatools-overlay, .luatools-settings-overlay, .luatools-loadedapps-overlay) > div > div:first-child a {
+    border-color: rgba(88, 91, 112, 0.9) !important;
+    border-radius: 12px !important;
+    background: linear-gradient(135deg, rgba(137, 180, 250, 0.14), rgba(203, 166, 247, 0.14)), rgba(30, 30, 46, 0.6) !important;
+}
+:is(.luatools-overlay, .luatools-settings-overlay, .luatools-loadedapps-overlay) > div > div:first-child a i {
+    color: rgb(137, 180, 250) !important;
+    transition: color 0.15s ease-out !important;
+}
+:is(.luatools-overlay, .luatools-settings-overlay, .luatools-loadedapps-overlay) > div > div:first-child a:hover {
+    background: linear-gradient(135deg, rgba(137, 180, 250, 0.28), rgba(203, 166, 247, 0.28)), rgba(30, 30, 46, 0.7) !important;
+}
+:is(.luatools-overlay, .luatools-settings-overlay, .luatools-loadedapps-overlay) > div > div:first-child a:hover i {
+    color: rgb(203, 166, 247) !important;
+}
+:is(.luatools-overlay, .luatools-settings-overlay, .luatools-loadedapps-overlay) > div > div:first-child a:hover i.fa-xmark {
+    color: rgb(243, 139, 168) !important;
+}
+/* Body actions (Check For Updates, Remove via LuaTools, Loaded apps...). */
+:is(.luatools-overlay, .luatools-settings-overlay, .luatools-loadedapps-overlay) > div > div:not(:first-child) a:not(.luatools-btn) {
+    background: linear-gradient(135deg, rgba(137, 180, 250, 0.1), rgba(203, 166, 247, 0.1)), rgba(30, 30, 46, 0.55) !important;
+    border-color: rgba(88, 91, 112, 0.9) !important;
+}
+:is(.luatools-overlay, .luatools-settings-overlay, .luatools-loadedapps-overlay) > div > div:not(:first-child) a:not(.luatools-btn):hover {
+    background: linear-gradient(135deg, rgba(137, 180, 250, 0.22), rgba(203, 166, 247, 0.22)), rgba(30, 30, 46, 0.65) !important;
+}
+:is(.luatools-overlay, .luatools-settings-overlay, .luatools-loadedapps-overlay) > div > div:not(:first-child) a:not(.luatools-btn) i {
+    color: rgb(137, 180, 250) !important;
+}
+:is(.luatools-overlay, .luatools-settings-overlay, .luatools-loadedapps-overlay) > div > div:not(:first-child) a:not(.luatools-btn):hover i {
+    color: rgb(203, 166, 247) !important;
+}
+/* Anything else still carrying an inline Steam-blue fill or edge. */
+:is(.luatools-overlay, .luatools-settings-overlay, .luatools-loadedapps-overlay, .luatools-alert-overlay, .luatools-confirm-overlay) div[style*="background: rgba(102, 192, 244"] {
+    background: rgba(49, 50, 68, 0.5) !important;
+}
+:is(.luatools-overlay, .luatools-settings-overlay, .luatools-loadedapps-overlay, .luatools-alert-overlay, .luatools-confirm-overlay) [style*="border: 1px solid rgba(102, 192, 244"],
+:is(.luatools-overlay, .luatools-settings-overlay, .luatools-loadedapps-overlay, .luatools-alert-overlay, .luatools-confirm-overlay) [style*="border: 1px solid rgb(102, 192, 244"] {
+    border-color: rgba(88, 91, 112, 0.9) !important;
 }

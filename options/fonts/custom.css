@@ -1,0 +1,5 @@
+/* Custom font: the name comes from --st-custom-font, typed in the settings dialog
+   (src/js/settings-helper.js stores it in the hidden "Custom font name" condition). */
+* {
+    font-family: var(--st-custom-font, "Be Vietnam Pro"), "Be Vietnam Pro", sans-serif !important;
+}

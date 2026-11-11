@@ -80,5 +80,5 @@
 /* Steam's default text grey (#acb2b8) is the one colour most of the client
    inherits; Mocha Subtext 0 keeps it on the palette. */
 body.DesktopUI {
-    color: rgb(166, 173, 200);
+    color: rgb(var(--st-text-dim, 166, 173, 200));
 }

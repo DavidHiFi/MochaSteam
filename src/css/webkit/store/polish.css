@@ -1,4 +1,4 @@
-﻿/*
+/*
 & Mocha polish, 2026-11-01
 & The 2026 store dropped the class names most of game.css targets, so these
 & rules key on stable ids, data-featuretarget and role attributes where they
@@ -97,7 +97,7 @@ form[role="search"] input[name="term"] {
     color: rgb(var(--st-text-strong)) !important;
 }
 form[role="search"] input[name="term"]::placeholder {
-    color: rgb(166, 173, 200) !important;
+    color: rgb(var(--st-text-dim, 166, 173, 200)) !important;
     font-style: normal !important;
 }
 form[role="search"] button[type="submit"] {
