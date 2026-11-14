@@ -1504,3 +1504,121 @@ html body .FFdVb5PNBwQ- h1:not(#a):not(#b), html body .FFdVb5PNBwQ- h2:not(#a):n
 html body #protondb-badge [style*="background: rgb(255, 68, 68)"]:not(#a) { background: #f38ba8 !important; color: #11111b !important; }
 html body #protondb-badge [style*="rgba(255, 68, 68"]:not(#a) { background: rgba(243, 139, 168, 0.12) !important; border-color: rgba(243, 139, 168, 0.45) !important; }
 html body #protondb-badge [style*="color: rgb(255, 68, 68)"]:not(#a) { color: #f38ba8 !important; border-color: #f38ba8 !important; }
+
+/*
+& Round 16 (11-14): search page sort bar is a full rounded card, with a gap
+& before the "results excluded" notice instead of touching it.
+*/
+html body .leftcol .searchbar:not(#a):not(#b) { border-radius: 16px !important; }
+html body #search_results_filtered_warning_persistent:not(#a):not(#b) {
+    margin-top: 10px !important;
+    border-radius: 16px !important;
+    padding: 0 !important;
+    background: transparent !important;
+}
+html body #search_results_filtered_warning_persistent:not(#a):not(#b) > div { margin: 0 !important; }
+
+/* Round 16: wishlist, cart and points shop leftovers. */
+html body .mpKocPQdcN4-:not(#a):not(#b),
+html body .cFn3BDbAK-g-:not(#a):not(#b) {
+    background: linear-gradient(#89b4fa 5%, #74c7ec 95%) !important;
+}
+html body .inqz7Zdx9Xg-:not(#a):not(#b) {
+    background: #89b4fa !important;
+    color: #11111b !important;
+    border-radius: 12px !important;
+}
+html body .inqz7Zdx9Xg-:not(#a):not(#b):hover { background: #b4befe !important; }
+html body .GRnRr6m2Ebs-:not(#a):not(#b) {
+    background: radial-gradient(64% 1024px at 50% 200px, #313244 0%, #181825 70%) !important;
+}
+html body .iC89KZRmD3g-:not(#a):not(#b) { color: #89b4fa !important; }
+html body .w6UtE24wq8w-:not(#a):not(#b) {
+    background: linear-gradient(144deg, rgba(180, 190, 254, 0) 68%, rgba(180, 190, 254, 0.16) 100%) !important;
+}
+
+/*
+& Round 16b: the newer store header (cart, wishlist). It had no dock fill or
+& edge, its search box was squashed to a 6px sliver, and the wishlist button
+& icon sat off centre.
+*/
+html body .WCG-2-OYepA-:not(#a):not(#b) {
+    position: relative !important;
+    isolation: isolate !important;
+    background: transparent !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    border-radius: 16px !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9), 0 8px 24px rgba(17, 17, 27, 0.45) !important;
+}
+html body .WCG-2-OYepA-:not(#a):not(#b)::before {
+    content: "" !important;
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: -1 !important;
+    border-radius: inherit !important;
+    pointer-events: none !important;
+    background: rgba(24, 24, 37, 0.55) !important;
+    -webkit-backdrop-filter: blur(32px) saturate(1.8) !important;
+    backdrop-filter: blur(32px) saturate(1.8) !important;
+}
+html body .WCG-2-OYepA- ._9FBQzVV7laY-:not(#a):not(#b),
+html body .WCG-2-OYepA- .Arq9lUyXVpM-:not(#a):not(#b) { align-items: center !important; gap: 6px !important; }
+html body .WCG-2-OYepA- button.EYF1OQwj3TE-:not(#a):not(#b) {
+    height: 30px !important;
+    padding: 0 12px !important;
+    border-radius: 15px !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9) !important;
+}
+html body .WCG-2-OYepA- .TU-7RxpTpy4-:not(#a):not(#b) { align-items: center !important; }
+html body .WCG-2-OYepA- form._5fxF1NcznNc-:not(#a):not(#b) {
+    flex: 1 1 auto !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    height: 34px !important;
+    box-sizing: border-box !important;
+}
+html body .WCG-2-OYepA- form._5fxF1NcznNc- .-hkvZFcHSmg-:not(#a):not(#b) { flex: 1 1 auto !important; min-width: 0 !important; }
+html body .WCG-2-OYepA- ._5LVptMyFAZw-:not(#a):not(#b) { align-items: center !important; }
+html body .WCG-2-OYepA- a.u5g6D3cfJ40-:not(#a):not(#b) {
+    box-sizing: border-box !important;
+    width: auto !important;
+    height: 30px !important;
+    padding: 0 14px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    font-size: 13px !important;
+    line-height: 30px !important;
+    color: #cdd6f4 !important;
+    white-space: nowrap !important;
+    border-radius: 15px !important;
+    background: transparent !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9) !important;
+}
+html body .WCG-2-OYepA- a.u5g6D3cfJ40-:not(#a):not(#b)::before,
+html body .WCG-2-OYepA- a.u5g6D3cfJ40-:not(#a):not(#b)::after { content: none !important; display: none !important; }
+html body .WCG-2-OYepA- a.u5g6D3cfJ40-:not(#a):not(#b) > svg { width: 12px !important; height: 12px !important; margin: 0 !important; flex: none !important; color: #cdd6f4 !important; }
+html body .WCG-2-OYepA- a.u5g6D3cfJ40-:not(#a):not(#b):hover { background: rgba(69, 71, 90, 0.55) !important; }
+
+/* Round 16c: points shop sidebar and section banners, wishlist avatar. */
+html body .d7He2hxHNDQ-:not(#a):not(#b) {
+    background: rgba(24, 24, 37, 0.65) !important;
+    border-radius: 16px !important;
+    box-shadow: inset 0 0 0 2px rgba(49, 50, 68, 0.9) !important;
+    overflow: hidden !important;
+}
+html body .y7wLLLq2IME-:not(#a):not(#b),
+html body .AWlvgEVBunk-:not(#a):not(#b) { border-radius: 16px !important; overflow: hidden !important; }
+html body .yu4-si75KQE-:not(#a):not(#b) {
+    border-radius: 16px !important;
+    background-image: linear-gradient(rgba(24, 24, 37, 0.86) 0%, rgba(17, 17, 27, 0.35) 100%) !important;
+}
+html body .mpKocPQdcN4-:not(#a):not(#b) { border-radius: 14px !important; padding: 2px !important; }
+html body .cFn3BDbAK-g-:not(#a):not(#b),
+html body .cFn3BDbAK-g- img:not(#a):not(#b) { border-radius: 12px !important; }
+html body .GRnRr6m2Ebs-:not(#a):not(#b) { border-radius: 16px !important; overflow: clip !important; }
+html body ._3z-SJMDRMwU-:not(#a):not(#b) { background-image: linear-gradient(130deg, #89b4fa, #cba6f7) !important; }
+html body .jaUFLgHnJNs-:not(#a):not(#b) { border-radius: 14px !important; overflow: hidden !important; }
+html body .jaUFLgHnJNs-:not(#a):not(#b) * { border-radius: 14px !important; }
