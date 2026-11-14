@@ -357,7 +357,8 @@ body.v6 .sale_capsule .discount_block {
     position: relative;
     width: 306px;
     border-radius: 16px !important;
-    isolation: isolate;
+    isolation: auto;
+    z-index: 0;
     background: transparent !important;
     -webkit-backdrop-filter: none !important;
     backdrop-filter: none !important;
@@ -370,13 +371,17 @@ body.v6 .sale_capsule .discount_block {
     content: "";
     position: absolute;
     inset: 0;
-    z-index: -1;
+    z-index: 0;
     pointer-events: none;
     border-radius: inherit;
-    background: rgba(24, 24, 37, 0.78);
-    -webkit-backdrop-filter: blur(36px) saturate(1.4);
-    backdrop-filter: blur(36px) saturate(1.4);
-    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9);
+    background: rgba(24, 24, 37, 0.88);
+    -webkit-backdrop-filter: blur(48px) saturate(1.4);
+    backdrop-filter: blur(48px) saturate(1.4);
+    box-shadow: inset 0 0 0 3px rgba(69, 71, 90, 0.9);
+}
+#global_hover .game_hover_box > .content {
+    position: relative;
+    z-index: 1;
 }
 #global_hover .game_hover_box h4.hover_title {
     color: rgb(var(--st-text-strong, 205, 214, 244)) !important;
@@ -853,8 +858,19 @@ body a.home_gift_card_link:not(#a) {
 /* The main capsule's children are full-bleed images, so the edge is an
    outline (painted above them); the ring is ::after. */
 body a.store_main_capsule:not(#a) {
-    outline: 2px solid rgba(69, 71, 90, 0.9);
-    outline-offset: -2px;
+    outline: 3px solid rgba(69, 71, 90, 0.9);
+    outline-offset: -3px;
+}
+html body.v6 a.store_main_capsule .ds_options {
+    top: 12px !important;
+    right: 12px !important;
+    width: 26px;
+    height: 26px;
+    padding: 0;
+}
+html body.v6 a.store_main_capsule .ds_options > div {
+    top: 0 !important;
+    right: 0 !important;
 }
 body .ds_options > div:not(#a) {
     box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9), 0 4px 8px rgba(30, 30, 46, 0.5) !important;
@@ -870,7 +886,7 @@ body .deep_dive_tag:not(#a) {
 }
 body a.store_main_capsule::after {
     content: ""; position: absolute; inset: 0; border-radius: inherit;
-    padding: 2px; pointer-events: none; z-index: 3;
+    padding: 3px; pointer-events: none; z-index: 3;
     background: linear-gradient(135deg, #89b4fa, #cba6f7);
     -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
     -webkit-mask-composite: xor; mask-composite: exclude;
@@ -1206,3 +1222,120 @@ body .queue_overflow_ctn #queue_btn_ignore_menu .btn_medium:not(#a)::before { pa
     border-radius: 12px !important;
 }
 .rFhmVK3-faw-._2JKZMFPkgU0-:not(#a):not(#b) { gap: 5px !important; }
+
+
+/*
+& Round 12 (11-14): owner's store front audit. Search drop-down frost,
+& Recently viewed chips, carousel capsules, Discounts & Events panel,
+& Personal Calendar days, paging dots.
+*/
+/* Search drop-down: the host stops being an isolated group (the same change
+   that made the game hover card's frost render), and the frost is heavier so
+   bright page text behind it never reads through. */
+[id^="searchSuggestions"]:not(#a):not(#b):not(#c):not(#d) {
+    isolation: auto;
+    z-index: 0;
+}
+.Panel.Focusable:has(> .Panel.Focusable form[role="search"]) > div:not(.Panel) > div > .Panel.Focusable:not(#a):not(#b):not(#c)::before,
+[id^="searchSuggestions"]:not(#a):not(#b):not(#c)::before {
+    background: rgba(24, 24, 37, 0.88) !important;
+    -webkit-backdrop-filter: blur(48px) saturate(1.4) !important;
+    backdrop-filter: blur(48px) saturate(1.4) !important;
+}
+
+/* Recently viewed: chips in a wrapping row, text centred in its pill, and
+   Steam's loose commas between the links hidden (font-size 0 on the row). */
+[id^="searchSuggestions"] .YmtQkHMBLzw-:not(#a) {
+    display: flex !important;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    font-size: 0 !important;
+}
+[id^="searchSuggestions"] .YmtQkHMBLzw- > .Lvs2qQJx5Ug- {
+    flex: 0 0 100%;
+    font-size: 12px !important;
+}
+[id^="searchSuggestions"] .YmtQkHMBLzw- a.KKRHY2AccFo-:not(#a):not(#b) {
+    display: inline-flex !important;
+    align-items: center;
+    box-sizing: border-box !important;
+    height: auto !important;
+    min-height: 28px !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 4px 12px !important;
+    border-radius: 14px !important;
+    font-size: 12px !important;
+    line-height: 18px !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Featured carousel: the big capsule and the faded side capsules get the
+   live corner, the info panel is clipped into it and drops Steam's navy. */
+body a.store_main_capsule:not(#a) {
+    border-radius: 16px !important;
+    overflow: hidden !important;
+}
+body .store_main_capsule .info:not(#a) {
+    background: linear-gradient(0deg, rgba(24, 24, 37, 0.86) 5%, rgba(49, 50, 68, 0.8) 100%) !important;
+    box-shadow: none !important;
+}
+
+/* Discounts & Events: Steam's square navy box behind the cards. */
+.DiscountsAndEventsReady .horizontalSlider___281Ls:not(#a) {
+    border-radius: 16px !important;
+    background: rgba(49, 50, 68, 0.45) !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9) !important;
+}
+
+/* Personal Calendar: each day column is a rounded Mocha card. */
+.maxz19gKOQc-:not(#a) {
+    margin: 0 3px;
+    border-radius: 16px !important;
+    background: rgba(49, 50, 68, 0.45) !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9) !important;
+}
+.maxz19gKOQc- .CAnATFwmik4-:not(#a) {
+    color: rgb(var(--st-text-strong, 205, 214, 244)) !important;
+}
+.maxz19gKOQc- .CAnATFwmik4- .bLQQ-syFWHg-:not(#a) {
+    color: rgb(var(--st-text-dim, 166, 173, 200)) !important;
+}
+.maxz19gKOQc- img:not(#a) {
+    border-radius: 10px;
+}
+.maxz19gKOQc- .MDx-yf8h-Ww-:not(#a) {
+    border-radius: 10px !important;
+    background: rgba(30, 30, 46, 0.6) !important;
+    color: rgb(var(--st-text-dim, 166, 173, 200)) !important;
+}
+.maxz19gKOQc- .MDx-yf8h-Ww- a:not(#a) {
+    color: #89b4fa !important;
+}
+/* "+1 More": a full pill with room for its text. */
+body a.rsPEubiF9HI-:not(#a) {
+    box-sizing: border-box;
+    height: auto !important;
+    min-height: 22px;
+    padding: 2px 10px !important;
+    border-radius: 11px !important;
+    line-height: 18px !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9) !important;
+}
+body a.rsPEubiF9HI-:not(#a):hover {
+    background: rgb(69, 71, 90) !important;
+}
+
+/* React carousel paging dots (Discounts, Calendar, Recommended): Mocha
+   surface at rest, blue when selected. */
+.I8j65FBXdOY- button.carousel__dot svg rect {
+    fill: rgb(88, 91, 112) !important;
+    rx: 4px;
+}
+.I8j65FBXdOY- button.carousel__dot--selected svg rect,
+.I8j65FBXdOY- button.carousel__dot:hover svg rect {
+    fill: #89b4fa !important;
+}

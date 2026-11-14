@@ -1074,3 +1074,10 @@ html body > button[style*="z-index: 9000"][style*="position: fixed"],
 html body button[style*="z-index: 9000"][style*="position: fixed"] {
     display: none !important;
 }
+
+/* Owner 2026-11-14: selected text is Mocha blue on every store and community page. */
+::selection, :root ::selection {
+    background: #89b4fa !important;
+    color: #11111b !important;
+    text-shadow: none !important;
+}
