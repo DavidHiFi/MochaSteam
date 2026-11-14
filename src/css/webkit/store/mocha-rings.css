@@ -1339,3 +1339,35 @@ body a.rsPEubiF9HI-:not(#a):hover {
 .I8j65FBXdOY- button.carousel__dot:hover svg rect {
     fill: #89b4fa !important;
 }
+
+/*
+& Round 13 (11-14): real glass on every floating store surface.
+& Measured with real window captures: the blur rendered, but the store page
+& itself was transparent, so the blurred copy was only partly opaque and the
+& sharp page text under it read straight through (owner: "not glassy"). The
+& page now gets a solid base in the exact colour the client window showed
+& behind it (#181825), and the glass drops to a light Mocha tint so the
+& colours behind glow through blurred while text behind stays unreadable.
+*/
+html:root:has(> body.v6):not(#a):not(#b),
+html:root:not(#a):not(#b) > body.v6:not(#a):not(#b) {
+    background-color: #181825 !important;
+}
+html body .Panel.Focusable:has(> .Panel.Focusable form[role="search"]) > div:not(.Panel) > div > .Panel.Focusable:not(#a):not(#b):not(#c):not(#d):not(#e)::before,
+html body [id^="searchSuggestions"]:not(#a):not(#b):not(#c):not(#d):not(#e)::before,
+html body .searchbar_left #term_options:not(#a):not(#b):not(#c):not(#d):not(#e)::before,
+html body .dselect_container #sort_by_droplist:not(#a):not(#b):not(#c):not(#d):not(#e)::before,
+html body .popup_block_new .popup_body:not(#a):not(#b):not(#c):not(#d):not(#e)::before,
+html body.v6 .ds_options_tooltip:not(#a):not(#b):not(#c):not(#d):not(#e)::before,
+html body #global_hover .game_hover_box:not(#a):not(#b):not(#c):not(#d):not(#e)::before {
+    background: rgba(24, 24, 37, 0.6) !important;
+    -webkit-backdrop-filter: blur(40px) saturate(1.8) !important;
+    backdrop-filter: blur(40px) saturate(1.8) !important;
+}
+/* The header bar is a dock: lighter tint, same blur. */
+html body .XLbP8xOkCYw-:not(#a):not(#b):not(#c):not(#d)::before,
+html body .Panel.Focusable:has(> div form[role="search"]):not(:has(> .Panel form[role="search"])):not(#a):not(#b):not(#c)::before {
+    background: rgba(24, 24, 37, 0.55) !important;
+    -webkit-backdrop-filter: blur(32px) saturate(1.8) !important;
+    backdrop-filter: blur(32px) saturate(1.8) !important;
+}
