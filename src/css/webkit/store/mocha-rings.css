@@ -1441,3 +1441,66 @@ html body a.lfJfTM-2a4M-:not(#a):not(#b) {
     height: 24px !important; line-height: 24px !important; padding: 0 12px !important;
     border-radius: 12px !important; background: rgba(49, 50, 68, 0.45) !important; white-space: nowrap !important;
 }
+
+/*
+& Round 15 (11-14): store-wide audit. Steam greens and blues left on the front
+& page, game pages, search and category pages become Mocha.
+*/
+/* Discount badges everywhere: Mocha green on crust. */
+html body .StoreSaleDiscountBox:not(#a):not(#b),
+html body .nw-DtQ670Sc-:not(#a):not(#b),
+html body .TSCZ-XXe31E-:not(#a):not(#b),
+html body .kjiBcsaqA8o-:not(#a):not(#b),
+html body .discount_block .discount_pct:not(#a):not(#b),
+html body .bundle_base_discount:not(#a):not(#b) {
+    background: #a6e3a1 !important;
+    color: #11111b !important;
+}
+/* Green highlight words. */
+html body .home_page_content strong:not(#a):not(#b),
+html body .topseller_title:not(#a):not(#b),
+html body .kMCVIwCpXwE-:not(#a):not(#b),
+html body .prepurchase_tag:not(#a):not(#b) {
+    color: #a6e3a1 !important;
+}
+/* Blue panels with Steam's radial and linear gradients. */
+html body .deep_dive_key_tags:not(#a):not(#b),
+html body .creator_capsule_ctn:not(#a):not(#b),
+html body .home_discount_games_ctn:not(#a):not(#b) {
+    background: linear-gradient(160deg, rgba(49, 50, 68, 0.55), rgba(24, 24, 37, 0.65)) !important;
+    border-radius: 16px !important;
+}
+/* Online friend avatar frames: Mocha blue instead of Steam blue. */
+html body .friend_block_avatar:not(#a):not(#b),
+html body .friend_block_avatar img:not(#a):not(#b),
+html body .tB4PMZSfdbY-:not(#a):not(#b),
+html body .zOONzPWYOt8-:not(#a):not(#b) {
+    background: linear-gradient(#89b4fa 5%, #74c7ec 95%) !important;
+}
+/* Small badges and scores. */
+html body .dlc_highlight_reason:not(#a):not(#b) {
+    background: #89b4fa !important;
+    color: #11111b !important;
+    border-radius: 6px !important;
+}
+html body .score.high:not(#a):not(#b) { background: #a6e3a1 !important; color: #11111b !important; border-radius: 10px !important; }
+html body .score.medium:not(#a):not(#b) { background: #f9e2af !important; color: #11111b !important; border-radius: 10px !important; }
+html body .score.low:not(#a):not(#b) { background: #f38ba8 !important; color: #11111b !important; border-radius: 10px !important; }
+/* Game description headings and category page bits. */
+html body .game_area_description h1:not(#a):not(#b),
+html body .game_area_description h2:not(#a):not(#b),
+html body .bb_tag:not(#a):not(#b) {
+    color: #89b4fa !important;
+}
+html body .IfKYdvlkwj4-:not(#a):not(#b) { color: #89b4fa !important; }
+html body .KoUJweWUwjY-:not(#a):not(#b) {
+    background: #89b4fa !important;
+    color: #11111b !important;
+}
+html body .KoUJweWUwjY-:not(#a):not(#b):hover { background: #b4befe !important; }
+html body .reason strong:not(#a):not(#b) { color: #a6e3a1 !important; }
+html body .FFdVb5PNBwQ- h1:not(#a):not(#b), html body .FFdVb5PNBwQ- h2:not(#a):not(#b) { color: #89b4fa !important; }
+/* ProtonDB add-on badge: its Borked red becomes Mocha red. */
+html body #protondb-badge [style*="background: rgb(255, 68, 68)"]:not(#a) { background: #f38ba8 !important; color: #11111b !important; }
+html body #protondb-badge [style*="rgba(255, 68, 68"]:not(#a) { background: rgba(243, 139, 168, 0.12) !important; border-color: rgba(243, 139, 168, 0.45) !important; }
+html body #protondb-badge [style*="color: rgb(255, 68, 68)"]:not(#a) { color: #f38ba8 !important; border-color: #f38ba8 !important; }
