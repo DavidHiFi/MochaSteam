@@ -82,3 +82,21 @@
 body.DesktopUI {
     color: rgb(var(--st-text-dim, 166, 173, 200));
 }
+
+/*
+! Library filters pane (2026-11-18): it floats over the game grid, so it gets
+! its own frost and a real Mocha fill, the round dock edge and Mocha headings.
+! Stock was a flat grey slate (63,64,71) with 4px corners and Steam-blue labels.
+*/
+body .AdvancedSearchPane {
+    border-radius: 16px !important;
+    background: rgba(30, 30, 46, 0.9) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(1.35) !important;
+    backdrop-filter: blur(24px) saturate(1.35) !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9), 0 12px 32px rgba(17, 17, 27, 0.55) !important;
+}
+body .AdvancedSearchPane .DialogHeader { color: #cdd6f4 !important; }
+body .AdvancedSearchPane .FilterBucketLabel { color: #89b4fa !important; }
+body .AdvancedSearchPane .DialogCheckbox_Container span,
+body .AdvancedSearchPane label span { color: #cdd6f4 !important; }
+body .AdvancedSearchPane .DialogButton.Primary.Disabled { opacity: 0.55 !important; }

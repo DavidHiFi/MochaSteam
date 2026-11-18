@@ -189,3 +189,29 @@
 ._3mZ2rKd2RECK4q4ufmsDYX.pHDI1ddoKXceD5KL7W-4z {
     background: linear-gradient(to right, rgb(var(--st-accent-1)) 0%, rgb(var(--st-blue)) 100%);
 }
+
+/*
+! Round 2026-11-19: the graph panel was a square box inside the round page,
+! and the finished and scheduled times broke onto two or three lines.
+*/
+._3Mbhnlk1Go2j8yCdjthzc7._2KB3yVOsiRCK9qK6mwKl9c:not(#a) {
+    border-radius: 16px !important;
+    overflow: hidden !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, .9) !important;
+}
+._1SyggnJY6qbRSmbZpkK3-H.SectionItemStatus:not(#a) {
+    flex: 0 1 auto !important;
+    width: auto !important;
+    min-width: 150px !important;
+    text-align: right !important;
+}
+/* Long game names wrap onto a second line instead of being cut mid-word. */
+._1Er4SotWhGIid50maW3Lfv.DownloadItemName ._35eOQ6EeVHNV5HGBrJ1-Vu.Name:not(#a) { height: auto !important; white-space: normal !important; }
+._1Er4SotWhGIid50maW3Lfv.DownloadItemName ._35eOQ6EeVHNV5HGBrJ1-Vu.Name > span:not(#a) {
+    white-space: normal !important;
+    display: -webkit-box !important;
+    -webkit-box-orient: vertical !important;
+    -webkit-line-clamp: 2 !important;
+    overflow: hidden !important;
+    min-width: 0 !important;
+}

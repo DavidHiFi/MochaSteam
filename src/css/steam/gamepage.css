@@ -1683,3 +1683,26 @@ div:has(>._1J21tLst5SEhBPkVRT53UV._28ZR8gHitOrJaSLxcIAl2p) {
     -webkit-backdrop-filter: none !important;
     backdrop-filter: none !important;
 }
+
+/* Round 2026-11-19. The links bar was a dock inside a dock: the outer section
+   drew its own edge around the inner bar's margins, so a grey band showed and
+   its bottom edge butted into the panel below. The inner bar keeps the edge. */
+._2r4TK4BAuU-J4FuF_O7v_5.AppDetailsSection._3-V8vjmrwuJM6Ws3tsjFJj:not(#a):not(#b) {
+    box-shadow: none !important;
+    background: none !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+}
+/* The framerate data prompt was stock: square, Steam-blue line, grey glow. */
+.FramerateReportingBanner:not(#a):not(#b) {
+    border: none !important;
+    border-radius: 16px !important;
+    background: rgba(30, 30, 46, .72) !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, .9) !important;
+    -webkit-backdrop-filter: blur(14px) saturate(1.15) !important;
+    backdrop-filter: blur(14px) saturate(1.15) !important;
+}
+.FramerateReportingBanner .Title:not(#a) { color: rgb(205, 214, 244) !important; }
+.FramerateReportingBanner .Question:not(#a) { color: rgb(166, 173, 200) !important; }
+/* Friend names in the activity feed were near-black grey (81,81,81). */
+.AppActivityDay span.playerName:not(#a), span.playerName:not(#a) { color: rgb(166, 173, 200) !important; }
