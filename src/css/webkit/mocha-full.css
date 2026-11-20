@@ -1,0 +1,1693 @@
+/*
+& Mocha full theme, pass 1 (2026-11-14). Community, account, help and the
+& leftover stock surfaces the store sheets never reached: edit profile,
+& privacy, account details, Steam Guard, purchase history, licences,
+& preferences, the help site, notifications, inventory, workshop,
+& discussions and screenshots. Loads after mocha-rings.css so it wins.
+& One edge owner per surface: a 2px inset edge at rest, the blue to mauve
+& ring on hover (on ::after, so stock ::before layers are left alone).
+*/
+
+html {
+    color-scheme: dark;
+}
+html input[type="checkbox"],
+html input[type="radio"],
+html input[type="range"],
+html progress {
+    accent-color: rgb(137, 180, 250);
+}
+
+/* Community pages left html and body see-through over a 55% fill, so the
+   client's light grey surface washed every page. The page fill is solid
+   mantle now, like the store. Profile backgrounds paint above it. */
+html body:not(#a)::before {
+    background-color: rgb(24, 24, 37) !important;
+}
+
+/* Narrow-width side menu */
+html .responsive_page_menu:not(#a) {
+    background: rgba(24, 24, 37, 0.92) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(1.2);
+    backdrop-filter: blur(24px) saturate(1.2);
+    box-shadow: inset -2px 0 0 rgba(69, 71, 90, 0.9) !important;
+}
+html .responsive_local_menu_tab.active:not(#a) {
+    background: rgba(137, 180, 250, 0.2) !important;
+    color: rgb(205, 214, 244) !important;
+}
+html .profile_small_header_texture:not(#a) {
+    box-shadow: inset 0 0 0 2px var(--st-edge) !important;
+}
+
+
+/*
+! Shared shapes
+*/
+/* Cards */
+html .account_setting_block:not(#a),
+html .account_setting_block_short:not(#a),
+html .payment_method_box:not(#a),
+html .deauthorize_box:not(#a),
+html .agegate_age_validation:not(#a),
+html .rightbox:not(#a),
+html .browseApps:not(#a),
+html .primary_panel_border:not(#a),
+html #BG_top_sharedfiles:not(#a),
+html #tabcontent_inventory:not(#a),
+html .apphub_CardContentGuideTitle:not(#a),
+html .VmFWf-nBpKU-:not(#a),
+html ._3GiOMfMgSIk-:not(#a) {
+    border: none !important;
+    border-radius: 16px !important;
+    background: rgba(49, 50, 68, 0.35) !important;
+    background-image: none !important;
+    box-shadow: inset 0 0 0 2px var(--st-edge) !important;
+    color: rgb(205, 214, 244);
+}
+html ._3GiOMfMgSIk-:not(#a) {
+    border-radius: 12px !important;
+}
+/* Unread notification */
+html ._3GiOMfMgSIk-._78CF9aUvUeY-:not(#a) {
+    background: rgba(69, 71, 90, 0.55) !important;
+    box-shadow: inset 0 0 0 2px rgba(137, 180, 250, 0.55) !important;
+}
+html .BIeyjH0P840-.rreXhb5OR24-:not(#a) {
+    border-radius: 999px !important;
+    background: rgba(49, 50, 68, 0.6) !important;
+}
+html ._6i8VFSSq3gQ-:not(#a) {
+    border-color: rgba(69, 71, 90, 0.9) !important;
+}
+html .YhW9H-T-Hto-:not(#a) {
+    color: rgb(166, 173, 200) !important;
+}
+
+/* Pills and buttons */
+html .btn_blue_white_innerfade:not(#a),
+html .btn_darkblue_white_innerfade:not(#a),
+html .btn_grey_white_innerfade:not(#a),
+html .btn_grey_black:not(#a),
+html .btn_grey_grey:not(#a),
+html .btn_black:not(#a),
+html .btn_profile_action:not(#a),
+html .help_site_button:not(#a),
+html a.account_manage_link:not(#a),
+html .mLQTg1nAnzM-:not(#a),
+html .trjttlcEZl4-:not(#a),
+html #inventory_more_trigger:not(#a),
+html .pagebtn:not(#a),
+html #ScreenshotManagementToggle:not(#a) {
+    position: relative;
+    border: none !important;
+    border-radius: 999px !important;
+    background: rgba(49, 50, 68, 0.6) !important;
+    background-image: none !important;
+    box-shadow: inset 0 0 0 2px var(--st-edge) !important;
+    color: rgb(205, 214, 244) !important;
+    text-shadow: none !important;
+}
+html .btn_blue_white_innerfade:not(#a) > span,
+html .btn_darkblue_white_innerfade:not(#a) > span,
+html .btn_grey_white_innerfade:not(#a) > span,
+html .btn_grey_black:not(#a) > span,
+html .btn_grey_grey:not(#a) > span,
+html .btn_black:not(#a) > span,
+html .btn_profile_action:not(#a) > span,
+html .help_site_button:not(#a) > span,
+html .btn_green_white_innerfade:not(#a) > span {
+    border: none !important;
+    border-radius: inherit !important;
+    background: none !important;
+    background-image: none !important;
+    color: inherit !important;
+    text-shadow: none !important;
+}
+html .btn_blue_white_innerfade:not(#a):hover,
+html .btn_darkblue_white_innerfade:not(#a):hover,
+html .btn_grey_white_innerfade:not(#a):hover,
+html .btn_grey_black:not(#a):hover,
+html .btn_grey_grey:not(#a):hover,
+html .btn_black:not(#a):hover,
+html .btn_profile_action:not(#a):hover,
+html .help_site_button:not(#a):hover,
+html a.account_manage_link:not(#a):hover,
+html .mLQTg1nAnzM-:not(#a):hover,
+html .trjttlcEZl4-:not(#a):hover,
+html #inventory_more_trigger:not(#a):hover,
+html .pagebtn:not(#a):hover,
+html #ScreenshotManagementToggle:not(#a):hover {
+    background: rgba(69, 71, 90, 0.7) !important;
+}
+/* Green actions keep their meaning, in Mocha green */
+html .btn_green_white_innerfade:not(#a) {
+    position: relative;
+    border: none !important;
+    border-radius: 999px !important;
+    background: rgba(166, 227, 161, 0.16) !important;
+    background-image: none !important;
+    box-shadow: inset 0 0 0 2px rgba(166, 227, 161, 0.45) !important;
+    color: rgb(166, 227, 161) !important;
+    text-shadow: none !important;
+}
+
+/* Pill-shaped nav items and big help cards */
+html a.nav_item:not(#a),
+html .vTcFSSwtmjE-:not(#a),
+html a.help_wizard_button:not(#a) {
+    position: relative;
+    border: none !important;
+    border-radius: 12px !important;
+    background: rgba(49, 50, 68, 0.35) !important;
+    background-image: none !important;
+    box-shadow: inset 0 0 0 2px var(--st-edge) !important;
+    color: rgb(205, 214, 244) !important;
+    text-decoration: none !important;
+}
+html a.help_wizard_button:not(#a) {
+    border-radius: 16px !important;
+}
+html a.nav_item:not(#a):hover,
+html .vTcFSSwtmjE-:not(#a):hover,
+html a.help_wizard_button:not(#a):hover {
+    background: rgba(69, 71, 90, 0.6) !important;
+}
+html a.nav_item.active:not(#a),
+html .vTcFSSwtmjE-.active:not(#a) {
+    background: rgba(69, 71, 90, 0.7) !important;
+    color: rgb(137, 180, 250) !important;
+}
+
+/* One ring for every host above: hidden at rest, on for hover; the
+   current page's nav item keeps it on. */
+html .btn_blue_white_innerfade:not(#a)::after,
+html .btn_darkblue_white_innerfade:not(#a)::after,
+html .btn_grey_white_innerfade:not(#a)::after,
+html .btn_grey_black:not(#a)::after,
+html .btn_grey_grey:not(#a)::after,
+html .btn_black:not(#a)::after,
+html .btn_profile_action:not(#a)::after,
+html .help_site_button:not(#a)::after,
+html .btn_green_white_innerfade:not(#a)::after,
+html a.account_manage_link:not(#a)::after,
+html .mLQTg1nAnzM-:not(#a)::after,
+html .trjttlcEZl4-:not(#a)::after,
+html #inventory_more_trigger:not(#a)::after,
+html .pagebtn:not(#a)::after,
+html #ScreenshotManagementToggle:not(#a)::after,
+html a.nav_item:not(#a)::after,
+html .vTcFSSwtmjE-:not(#a)::after,
+html a.help_wizard_button:not(#a)::after {
+    content: "" !important;
+    position: absolute !important;
+    inset: 0 !important;
+    width: auto !important;
+    height: auto !important;
+    margin: 0 !important;
+    z-index: 2;
+    box-sizing: border-box;
+    border: none !important;
+    border-radius: inherit !important;
+    padding: 2px !important;
+    background: linear-gradient(135deg, rgb(137, 180, 250), rgb(203, 166, 247)) !important;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.15s ease-out;
+    pointer-events: none;
+}
+html .btn_blue_white_innerfade:not(#a):hover::after,
+html .btn_darkblue_white_innerfade:not(#a):hover::after,
+html .btn_grey_white_innerfade:not(#a):hover::after,
+html .btn_grey_black:not(#a):hover::after,
+html .btn_grey_grey:not(#a):hover::after,
+html .btn_black:not(#a):hover::after,
+html .btn_profile_action:not(#a):hover::after,
+html .help_site_button:not(#a):hover::after,
+html .btn_green_white_innerfade:not(#a):hover::after,
+html a.account_manage_link:not(#a):hover::after,
+html .mLQTg1nAnzM-:not(#a):hover::after,
+html .trjttlcEZl4-:not(#a):hover::after,
+html #inventory_more_trigger:not(#a):hover::after,
+html .pagebtn:not(#a):hover::after,
+html #ScreenshotManagementToggle:not(#a):hover::after,
+html a.nav_item:not(#a):hover::after,
+html .vTcFSSwtmjE-:not(#a):hover::after,
+html a.help_wizard_button:not(#a):hover::after,
+html a.nav_item.active:not(#a)::after,
+html .vTcFSSwtmjE-.active:not(#a)::after {
+    opacity: 1;
+}
+
+/* Text fields */
+html input.DialogInput:not(#a),
+html .DialogTextInputBase:not(#a),
+html textarea.QtUPaJi8HDw-:not(#a),
+html .filter_search_box:not(#a),
+html #help_search_support_input:not(#a),
+html .community_home_search_apps input:not(#a),
+html .community_home_search_apps:not(#a) {
+    border: none !important;
+    border-radius: 12px !important;
+    background: rgba(24, 24, 37, 0.7) !important;
+    background-image: none !important;
+    box-shadow: inset 0 0 0 2px var(--st-edge) !important;
+    color: rgb(205, 214, 244) !important;
+    outline: none !important;
+}
+html .community_home_search_apps input:not(#a) {
+    box-shadow: none !important;
+    background: transparent !important;
+}
+html input.DialogInput:not(#a):focus,
+html .DialogTextInputBase:not(#a):focus,
+html textarea.QtUPaJi8HDw-:not(#a):focus,
+html .filter_search_box:not(#a):focus,
+html #help_search_support_input:not(#a):focus,
+html .community_home_search_apps:not(#a):focus-within {
+    box-shadow: inset 0 0 0 2px rgb(137, 180, 250) !important;
+}
+html input.DialogInput::placeholder,
+html .filter_search_box::placeholder,
+html #help_search_support_input::placeholder {
+    color: rgb(127, 132, 156) !important;
+}
+html .DialogCheckbox:not(#a) {
+    border-radius: 6px !important;
+    background: rgba(49, 50, 68, 0.6) !important;
+    box-shadow: inset 0 0 0 2px var(--st-edge) !important;
+}
+
+
+/*
+! Edit profile and privacy
+*/
+html .DialogHeader:not(#a),
+html h2.pageheader:not(#a),
+html h2.large_title:not(#a),
+html .pageheader:not(#a) {
+    color: rgb(205, 214, 244) !important;
+}
+html .DialogLabelExplainer:not(#a) {
+    color: rgb(166, 173, 200) !important;
+}
+html .ProfilePrivacyHeader:not(#a),
+html .twofactor_settings_radiobtn_header:not(#a),
+html .accountLabel:not(#a),
+html .help_intro_text:not(#a),
+html a.help_header:not(#a) {
+    color: rgb(137, 180, 250) !important;
+}
+html .ProfilePrivacyDropDown:not(#a),
+html .account_data_field:not(#a) {
+    color: rgb(205, 214, 244) !important;
+}
+html #profile_edit_main_content a:not(#a) {
+    text-decoration: none !important;
+}
+html .profile_customization_header:not(#a) {
+    border-radius: 12px 12px 0 0 !important;
+    background: rgba(49, 50, 68, 0.55) !important;
+    background-image: none !important;
+    color: rgb(205, 214, 244) !important;
+}
+html .game_info_achievement.plus_more:not(#a) {
+    border-radius: 6px !important;
+    background: rgba(49, 50, 68, 0.7) !important;
+    color: rgb(205, 214, 244) !important;
+}
+
+
+/*
+! Account pages
+*/
+html .page_header_ctn:not(#a) {
+    background: transparent !important;
+    background-image: none !important;
+    border: none !important;
+}
+html .breadcrumbs:not(#a) {
+    color: rgb(127, 132, 156) !important;
+}
+html .breadcrumbs a:not(#a) {
+    color: rgb(137, 180, 250) !important;
+}
+html .account_header_line:not(#a) {
+    border-color: rgba(69, 71, 90, 0.9) !important;
+    background: rgba(69, 71, 90, 0.9) !important;
+    background-image: none !important;
+}
+html .wallet_history_click_hint:not(#a),
+html a.license_paginator_next:not(#a),
+html a.license_paginator_prev:not(#a) {
+    color: rgb(137, 180, 250) !important;
+}
+html .account_setting_sub_block h3:not(#a),
+html .page_content h3:not(#a) {
+    color: rgb(205, 214, 244) !important;
+}
+
+/* Tables (purchase history, licences) */
+html .wallet_history_table:not(#a),
+html .account_table:not(#a) {
+    border: none !important;
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+    border-radius: 12px !important;
+    overflow: hidden;
+    box-shadow: inset 0 0 0 2px var(--st-edge) !important;
+}
+html .wallet_history_table th:not(#a),
+html .account_table th:not(#a) {
+    border: none !important;
+    background: rgba(49, 50, 68, 0.8) !important;
+    color: rgb(205, 214, 244) !important;
+}
+html .wallet_history_table td:not(#a),
+html .account_table td:not(#a) {
+    border-color: rgba(69, 71, 90, 0.6) !important;
+}
+html .wht_discount_pct:not(#a) {
+    border-radius: 6px !important;
+    background: rgba(166, 227, 161, 0.18) !important;
+    color: rgb(166, 227, 161) !important;
+}
+
+
+/*
+! Help site
+*/
+html .LoadingThrobber .Bar:not(#a) {
+    background-color: rgb(137, 180, 250) !important;
+}
+html .error_bg:not(#a) {
+    background: transparent !important;
+    background-image: none !important;
+}
+
+
+/*
+! Inventory
+*/
+html .responsive_tab_control:not(#a) {
+    border: none !important;
+    border-radius: 12px !important;
+    background: rgba(49, 50, 68, 0.6) !important;
+    box-shadow: inset 0 0 0 2px var(--st-edge) !important;
+    color: rgb(205, 214, 244) !important;
+}
+html .trade_item_box:not(#a) {
+    border: none !important;
+    border-radius: 12px !important;
+    background: rgba(24, 24, 37, 0.7) !important;
+    box-shadow: inset 0 0 0 2px var(--st-edge) !important;
+}
+html .itemHolder:not(#a) {
+    border-radius: 8px !important;
+    background: rgba(49, 50, 68, 0.45) !important;
+}
+/* .item keeps its rarity border colour from Steam's inline style */
+html .inventory_page .item:not(#a) {
+    border-radius: 8px !important;
+    background-color: rgb(30, 30, 46) !important;
+}
+html button.filter_tag_button:not(#a) {
+    border: none !important;
+    border-radius: 999px !important;
+    background: rgba(49, 50, 68, 0.6) !important;
+    box-shadow: inset 0 0 0 2px var(--st-edge) !important;
+    color: rgb(205, 214, 244) !important;
+}
+html button.filter_tag_button:not(#a):hover {
+    background: rgba(69, 71, 90, 0.7) !important;
+}
+
+
+/*
+! Pass 1 fixes after the first recheck
+*/
+/* Section bars on account pages: rounded, one edge */
+html .account_header_line:not(#a) {
+    border-radius: 12px !important;
+    background: rgba(49, 50, 68, 0.6) !important;
+    box-shadow: inset 0 0 0 2px var(--st-edge) !important;
+}
+/* Long labels wrap at narrow widths, so these pills round less */
+html a.account_manage_link:not(#a) {
+    border-radius: 14px !important;
+}
+html a.license_paginator_next:not(#a),
+html a.license_paginator_prev:not(#a),
+html a#ScreenshotUploadLink:not(#a) {
+    border: none !important;
+    border-radius: 999px !important;
+    background: rgba(49, 50, 68, 0.6) !important;
+    background-image: none !important;
+    box-shadow: inset 0 0 0 2px var(--st-edge) !important;
+    color: rgb(205, 214, 244) !important;
+}
+html .community_home_search_players:not(#a) {
+    border: none !important;
+    border-radius: 12px !important;
+    background: rgba(24, 24, 37, 0.7) !important;
+    box-shadow: inset 0 0 0 2px var(--st-edge) !important;
+}
+/* Fades into the page colour instead of navy */
+html div.gradient:not(#a) {
+    background-image: linear-gradient(rgba(24, 24, 37, 0) 5%, rgb(24, 24, 37) 95%) !important;
+}
+html .commentthread_header:not(#a) {
+    border-radius: 12px 12px 0 0 !important;
+    background: rgba(49, 50, 68, 0.6) !important;
+    background-image: none !important;
+}
+html .segment.base:not(#a) {
+    background-color: rgba(137, 180, 250, 0.45) !important;
+}
+
+/* Text: headings in Mocha text, small print in subtext, links and section
+   titles in blue. Status colours (online, in game, rarity) are left alone. */
+html .RVEYrzm4mGo-:not(#a),
+html .community_home_title:not(#a),
+html .actual_persona_name:not(#a),
+html a.persona_name_text_content:not(#a),
+html .F38eJWs9QdA-:not(#a),
+html .uxNRiRH0W-8-:not(#a),
+html .lUi7liv2ag8-:not(#a),
+html .recent_game_discussion_name:not(#a),
+html .apphub_CardContentTitle:not(#a),
+html .community_home_content .title:not(#a),
+html .workshop_home_section .title:not(#a),
+html #sharedfiles_filterselect_app_activeoption:not(#a),
+html .favoritesRadioText:not(#a),
+html .xp:not(#a),
+html #responsive_inventory_select_trigger:not(#a) {
+    color: rgb(205, 214, 244) !important;
+}
+html .community_home_sort_buttons:not(#a),
+html .apphub_CardTextContent:not(#a),
+html .apphub_CardRating:not(#a),
+html .community_home_app_shortcuts_list_header:not(#a),
+html .date_posted:not(#a),
+html .community_home_subtitle:not(#a),
+html .recent_game_discussion_count:not(#a),
+html .discussions_forumlist_topiccount:not(#a),
+html .rightbox_content_header:not(#a),
+html .profile_small_header_arrow:not(#a),
+html .XxvfleuvczA-:not(#a),
+html .wht_date:not(#a),
+html .wht_original_price:not(#a),
+html .ts49d7c2wyQ-:not(#a),
+html .YKUMDMMkYew-:not(#a),
+html .infoBreak:not(#a),
+html .separatorArrows:not(#a),
+html .ScreenshotManagementLabel:not(#a),
+html .game_info_details:not(#a),
+html .profile_count_link_total:not(#a),
+html .commentthread_comment_timestamp:not(#a),
+html .workshop_apps_paging_summary:not(#a),
+html .byline:not(#a),
+html .subtitle:not(#a),
+html .mainSectionHeader:not(#a),
+html #profile_edit_main_content div:not([class]):not(#a) {
+    color: rgb(166, 173, 200) !important;
+}
+html .wallet_history_table td:not(#a),
+html .wallet_history_table td div:not(#a),
+html .account_table td:not(#a),
+html .account_table td span:not(#a),
+html .cached_payment_method_name:not(#a),
+html .twofactor_settings_choice_description:not(#a),
+html .account_manage_checkbox:not(#a),
+html .page_content p:not(#a),
+html .page_content_ctn p:not(#a),
+html .bb_paragraph:not(#a),
+html .discussions_forumlist p:not(#a),
+html .discussions_forumlist b:not(#a) {
+    color: rgb(186, 194, 222) !important;
+}
+html .review_award_aggregated:not(#a),
+html .twofactor_deauthorize_header:not(#a),
+html .help_section_text:not(#a),
+html .bb_h2:not(#a),
+html .queue_customize:not(#a),
+html .commentthread_subscribe_hint_q:not(#a),
+html #rightContents h2:not(#a),
+html .forum_list_ctn h2:not(#a),
+html .page_content a:not([class]):not(#a) span,
+html a.whiteLink:hover {
+    color: rgb(137, 180, 250) !important;
+}
+html .wht_discounted_price:not(#a) {
+    color: rgb(166, 227, 161) !important;
+}
+
+/*
+! Pass 1, narrow window: Steam's small-width layout has no side margin, so text
+! and cards ran into the window edge. A 12px gutter keeps them off it.
+*/
+@media (max-width: 910px) {
+    html.responsive #responsive_page_template_content:not(#a) {
+        box-sizing: border-box;
+        padding-left: 12px !important;
+        padding-right: 12px !important;
+    }
+}
+
+/*
+! Pass 2 clean sweep (2026-11-14, 18:07). Pages pass 1 never reached or only half
+! reached: notification settings, cookies, language, friends, activity feed,
+! discussions, market, add funds, edit profile buttons, badges, inventory tabs.
+! Same rules: one 2px inset edge at rest, the blue to mauve ring on hover.
+! Classes the store game pages share (purchase box, green buttons, block headers)
+! are scoped to the account and community pages so the store keeps its own look.
+*/
+
+/* Stock header bands (navy glow images) */
+html .friends_header_bg:not(#a),
+html .RfRd5Or3ySA-:not(#a),
+html .group_content.bottomless:not(#a) {
+    background-image: none !important;
+}
+html .friends_header_bg:not(#a) {
+    background-color: rgba(49, 50, 68, 0.35) !important;
+    box-shadow: inset 0 0 0 2px var(--st-edge) !important;
+}
+
+/* Cards and panels */
+html .account_settings_container:not(#a),
+html .z1njKeA8Oh4-:not(#a),
+html .blotter_block:not(#a),
+html .friends_link_block.box:not(#a),
+html .friends_add_block:not(#a),
+html .profile_link_block.box:not(#a),
+html .forum_list_right:not(#a),
+html .market_search_sidebar_contents:not(#a),
+html .market_listing_table_message:not(#a),
+html .BKFlxpkJD9Y-:not(#a),
+html .commentthread_entry:not(#a),
+html .KRR6D4MqfmI-:not(#a),
+html .dAbDU2dWSc8-:not(#a) {
+    border: none !important;
+    border-radius: 16px !important;
+    background: rgba(49, 50, 68, 0.35) !important;
+    background-image: none !important;
+    box-shadow: inset 0 0 0 2px var(--st-edge) !important;
+}
+html .KRR6D4MqfmI-:not(#a),
+html .dAbDU2dWSc8-:not(#a),
+html .friends_link_block.box:not(#a),
+html .friends_add_block:not(#a),
+html .profile_link_block.box:not(#a),
+html .market_listing_table_message:not(#a) {
+    border-radius: 12px !important;
+}
+html .friends_link_block.box:not(#a),
+html .friends_add_block:not(#a),
+html .profile_link_block.box:not(#a) {
+    margin-bottom: 8px !important;
+}
+html .friends_launch_area.panel:not(#a) {
+    background: transparent !important;
+    background-image: none !important;
+}
+html .blotter_daily_rollup:not(#a),
+html .blotter_author_block:not(#a),
+html .blotter_gamepurchase:not(#a),
+html .accountInfoBlock .block_content_inner:not(#a) {
+    background: transparent !important;
+    background-image: none !important;
+    border-radius: inherit !important;
+}
+html .HxxypIoo01A-:not(#a) {
+    border-radius: 12px !important;
+    overflow: hidden !important;
+}
+
+/* Section bars and card headers. A header filled to the card's edge would
+   cover the card's own edge, so it is clear with a divider instead. */
+html .vsk-F3yQRy4-:not(#a),
+html .profile_friends.title_bar:not(#a) {
+    border: none !important;
+    border-radius: 12px !important;
+    background: rgba(49, 50, 68, 0.6) !important;
+    background-image: none !important;
+    box-shadow: inset 0 0 0 2px var(--st-edge) !important;
+    color: rgb(205, 214, 244) !important;
+}
+html .kqfN8u76kyo-:not(#a),
+html .accountInfoBlock > .block_header:not(#a) {
+    background: transparent !important;
+    background-image: none !important;
+    border: none !important;
+    border-bottom: 2px solid rgba(49, 50, 68, 0.9) !important;
+    color: rgb(205, 214, 244) !important;
+}
+html .accountInfoBlock:not(#a) {
+    border-radius: 16px !important;
+    background: rgba(49, 50, 68, 0.35) !important;
+    box-shadow: inset 0 0 0 2px var(--st-edge) !important;
+    overflow: hidden;
+}
+html .RQHfvQfws98-:not(#a) {
+    background: transparent !important;
+}
+html .RQHfvQfws98-:nth-child(even):not(#a) {
+    background: rgba(49, 50, 68, 0.3) !important;
+}
+
+/* Rows that open something: cards with the ring */
+html a.recent_game_discussion:not(#a),
+html .discussions_forum_row:not(#a),
+html .friend_block_v2:not(#a),
+html a.games_list_tab:not(#a),
+html a.icon_item:not(#a),
+html .PCL0HJzDkR8-:not(#a),
+html .market_search_game_button_group a.game_button:not(#a) {
+    position: relative;
+    border: none !important;
+    border-radius: 12px !important;
+    background: rgba(49, 50, 68, 0.35) !important;
+    background-image: none !important;
+    box-shadow: inset 0 0 0 2px var(--st-edge) !important;
+}
+html .friend_block_v2:not(#a) {
+    border-radius: 10px !important;
+    overflow: hidden !important;
+}
+html .discussions_forum_row:not(#a) {
+    margin-bottom: 6px !important;
+}
+html a.icon_item:not(#a) {
+    background: transparent !important;
+    box-shadow: none !important;
+    color: rgb(205, 214, 244) !important;
+}
+html .PCL0HJzDkR8-:not(#a) {
+    display: block;
+    margin-bottom: 6px !important;
+    color: rgb(205, 214, 244) !important;
+}
+html .market_search_game_button_group a.game_button:not(#a) span.game_button_contents,
+html a.games_list_tab:not(#a) > * {
+    background: transparent !important;
+    background-image: none !important;
+    border: none !important;
+}
+html a.recent_game_discussion:not(#a):hover,
+html .discussions_forum_row:not(#a):hover,
+html .friend_block_v2:not(#a):hover,
+html a.games_list_tab:not(#a):hover,
+html a.icon_item:not(#a):hover,
+html .PCL0HJzDkR8-:not(#a):hover,
+html .market_search_game_button_group a.game_button:not(#a):hover {
+    background: rgba(69, 71, 90, 0.6) !important;
+}
+html a.games_list_tab.active:not(#a),
+html a.icon_item.active:not(#a),
+html .PCL0HJzDkR8-.qQNvrDnd2aM-:not(#a) {
+    background: rgba(69, 71, 90, 0.7) !important;
+    background-image: none !important;
+    color: rgb(137, 180, 250) !important;
+}
+html a.icon_item.active:not(#a) span.title,
+html a.games_list_tab.active:not(#a) .games_list_tab_name {
+    color: rgb(137, 180, 250) !important;
+}
+
+/* Pills */
+html a.group_tab:not(#a),
+html .blotter_appselect:not(#a),
+html .friends_container .btnv6_blue_hoverfade:not(#a),
+html body.account_preferences .btnv6_blue_hoverfade:not(#a),
+html .btnv6_grey_black:not(#a),
+html .btn_grey_grey_outer_bevel:not(#a),
+html .VK34WouHuaw-:not(#a),
+html .EYF1OQwj3TE-:not(#a),
+html a.addfunds_linkbar:not(#a),
+html .market_tab_well_tab:not(#a) {
+    position: relative;
+    border: none !important;
+    border-radius: 999px !important;
+    background: rgba(49, 50, 68, 0.6) !important;
+    background-image: none !important;
+    box-shadow: inset 0 0 0 2px var(--st-edge) !important;
+    color: rgb(205, 214, 244) !important;
+    text-shadow: none !important;
+}
+html a.addfunds_linkbar:not(#a) {
+    border-radius: 12px !important;
+    color: rgb(137, 180, 250) !important;
+}
+html a.group_tab:not(#a) > span,
+html .friends_container .btnv6_blue_hoverfade:not(#a) > span,
+html body.account_preferences .btnv6_blue_hoverfade:not(#a) > span,
+html .btnv6_grey_black:not(#a) > span,
+html .btn_grey_grey_outer_bevel:not(#a) > span,
+html .friends_container .btn_green_steamui:not(#a) > span,
+html .addfunds_purchase_action .btnv6_green_white_innerfade:not(#a) > span,
+html .market_tab_well_tab:not(#a) > span {
+    border: none !important;
+    border-radius: inherit !important;
+    background: transparent !important;
+    background-image: none !important;
+    color: inherit !important;
+    text-shadow: none !important;
+}
+html .blotter_appselect_activeoption:not(#a) {
+    background: transparent !important;
+    color: rgb(205, 214, 244) !important;
+}
+html a.group_tab:not(#a):hover,
+html .blotter_appselect:not(#a):hover,
+html .friends_container .btnv6_blue_hoverfade:not(#a):hover,
+html body.account_preferences .btnv6_blue_hoverfade:not(#a):hover,
+html .btnv6_grey_black:not(#a):hover,
+html .btn_grey_grey_outer_bevel:not(#a):hover,
+html .VK34WouHuaw-:not(#a):hover,
+html .EYF1OQwj3TE-:not(#a):hover,
+html a.addfunds_linkbar:not(#a):hover,
+html .market_tab_well_tab:not(#a):hover {
+    background: rgba(69, 71, 90, 0.7) !important;
+}
+html a.group_tab.active:not(#a),
+html .market_tab_well_tab.market_tab_well_tab_active:not(#a) {
+    background: rgba(69, 71, 90, 0.7) !important;
+    color: rgb(137, 180, 250) !important;
+}
+/* Blue and green actions keep their meaning */
+html .VK34WouHuaw-._5poRwjVM2xA-:not(#a) {
+    background: rgba(137, 180, 250, 0.2) !important;
+    box-shadow: inset 0 0 0 2px rgba(137, 180, 250, 0.55) !important;
+    color: rgb(137, 180, 250) !important;
+}
+html .friends_container .btn_green_steamui:not(#a),
+html .addfunds_purchase_action .btnv6_green_white_innerfade:not(#a) {
+    position: relative;
+    border: none !important;
+    border-radius: 999px !important;
+    background: rgba(166, 227, 161, 0.16) !important;
+    background-image: none !important;
+    box-shadow: inset 0 0 0 2px rgba(166, 227, 161, 0.45) !important;
+    color: rgb(166, 227, 161) !important;
+    text-shadow: none !important;
+}
+html .friends_container .btn_green_steamui:not(#a):hover,
+html .addfunds_purchase_action .btnv6_green_white_innerfade:not(#a):hover {
+    background: rgba(166, 227, 161, 0.26) !important;
+}
+/* Add funds price box: one dark pill holding the price and the button */
+html .addfunds_purchase_action .game_purchase_action_bg:not(#a) {
+    border-radius: 999px !important;
+    background: rgba(17, 17, 27, 0.85) !important;
+    background-image: none !important;
+    box-shadow: inset 0 0 0 2px var(--st-edge) !important;
+    padding: 2px !important;
+}
+html .addfunds_purchase_action .game_purchase_price:not(#a) {
+    background: transparent !important;
+    color: rgb(205, 214, 244) !important;
+}
+
+/* Dialog buttons on the edit profile and store account pages. The 2px stock
+   border pushed Upload past its column, which cut its right side off. */
+html body.profile_edit_page button.DialogButton:not(#a),
+html body.account_preferences button.DialogButton:not(#a) {
+    position: relative;
+    box-sizing: border-box !important;
+    max-width: 100%;
+    border: none !important;
+    border-radius: 999px !important;
+    background: rgba(49, 50, 68, 0.6) !important;
+    background-image: none !important;
+    box-shadow: inset 0 0 0 2px var(--st-edge) !important;
+    color: rgb(205, 214, 244) !important;
+    text-shadow: none !important;
+}
+html body.profile_edit_page button.DialogButton.Primary:not(#a),
+html body.account_preferences button.DialogButton.Primary:not(#a) {
+    background: rgba(137, 180, 250, 0.2) !important;
+    box-shadow: inset 0 0 0 2px rgba(137, 180, 250, 0.55) !important;
+    color: rgb(137, 180, 250) !important;
+}
+html body.profile_edit_page button.DialogButton:not(#a):hover,
+html body.account_preferences button.DialogButton:not(#a):hover {
+    background: rgba(69, 71, 90, 0.7) !important;
+}
+
+/* Text fields */
+html .gray_bevel:not(#a),
+html .profileFriendSearchBox:not(#a),
+html #headerSearch.friend_activity_header_search:not(#a),
+html .commentthread_entry_quotebox:not(#a),
+html .discussionSearchTextContainer:not(#a),
+html input#search_text_box:not(#a) {
+    border: none !important;
+    border-radius: 12px !important;
+    background-color: rgba(24, 24, 37, 0.7) !important;
+    background-image: none !important;
+    box-shadow: inset 0 0 0 2px var(--st-edge) !important;
+    color: rgb(205, 214, 244) !important;
+}
+html .gray_bevel:not(#a) input,
+html .profileFriendSearchBox:not(#a) input,
+html #headerSearch:not(#a) input,
+html .discussionSearchTextContainer:not(#a) input {
+    background-color: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    color: rgb(205, 214, 244) !important;
+}
+html input#SearchPlayers:not(#a) {
+    border: none !important;
+    border-radius: 12px !important;
+    background-color: rgba(24, 24, 37, 0.7) !important;
+    box-shadow: inset 0 0 0 2px var(--st-edge) !important;
+    color: rgb(205, 214, 244) !important;
+}
+html .gray_bevel:not(#a):focus-within,
+html .profileFriendSearchBox:not(#a):focus-within,
+html #headerSearch:not(#a):focus-within,
+html .discussionSearchTextContainer:not(#a):focus-within,
+html input#search_text_box:not(#a):focus,
+html input#SearchPlayers:not(#a):focus {
+    box-shadow: inset 0 0 0 2px rgb(137, 180, 250) !important;
+}
+/* Notification settings pickers */
+html .PwGZnF9BFA8-._0Yp9qPJ4rvQ-:not(#a),
+html .BfBoDdNJ2hc-:not(#a) {
+    position: relative;
+    border: none !important;
+    border-radius: 10px !important;
+    background: rgba(24, 24, 37, 0.8) !important;
+    background-image: none !important;
+    box-shadow: inset 0 0 0 2px var(--st-edge) !important;
+    color: rgb(205, 214, 244) !important;
+}
+
+/* Cookie switches: the same switch as the Settings window */
+html .DialogToggleField._DialogInputContainer:not(#a) {
+    border-radius: 12px !important;
+    background: rgba(49, 50, 68, 0.35) !important;
+    box-shadow: inset 0 0 0 2px var(--st-edge) !important;
+}
+html .DialogToggleField_Control:not(#a) {
+    border-radius: 999px !important;
+    background: rgba(17, 17, 27, 0.85) !important;
+    box-shadow: inset 0 0 0 2px var(--st-edge) !important;
+    padding: 2px !important;
+    overflow: hidden;
+}
+html .DialogToggleField_Option:not(#a) {
+    border-radius: 999px !important;
+    background: transparent !important;
+    color: rgb(127, 132, 156) !important;
+}
+html .DialogToggleField_Option.Off.Active:not(#a) {
+    background: rgba(69, 71, 90, 0.9) !important;
+    color: rgb(205, 214, 244) !important;
+}
+html .DialogToggleField_Option.On.Active:not(#a) {
+    background: linear-gradient(135deg, rgb(137, 180, 250), rgb(203, 166, 247)) !important;
+    color: rgb(17, 17, 27) !important;
+    font-weight: 700;
+}
+
+/* Small marks */
+html .badge_empty_circle:not(#a) {
+    border-color: rgb(88, 91, 112) !important;
+}
+html .profile_xp_block_remaining_bar:not(#a),
+html .achievement_progress_bar_ctn:not(#a) {
+    border: none !important;
+    border-radius: 999px !important;
+    background: rgba(17, 17, 27, 0.85) !important;
+    overflow: hidden;
+}
+html .profile_xp_block_remaining_bar_progress:not(#a) {
+    border-radius: 999px !important;
+    background: linear-gradient(90deg, rgb(137, 180, 250), rgb(203, 166, 247)) !important;
+}
+html .game_info_achievement.plus_more:not(#a) {
+    border: none !important;
+    box-shadow: inset 0 0 0 2px var(--st-edge) !important;
+}
+html .commentthread_subscribe_checkbox:not(#a) {
+    border: 2px solid rgb(88, 91, 112) !important;
+    border-radius: 4px !important;
+}
+html .account_table_ctn:not(#a) {
+    border: none !important;
+    background: transparent !important;
+}
+html .not_interested_container:not(#a) {
+    border-color: rgba(49, 50, 68, 0.9) !important;
+}
+html .apphub_CardContentAuthorBlock:not(#a) {
+    border-top: 2px solid rgba(49, 50, 68, 0.9) !important;
+}
+html span.language_beta:not(#a) {
+    border-radius: 6px !important;
+    padding: 0 6px;
+    background: rgba(250, 179, 135, 0.18) !important;
+    color: rgb(250, 179, 135) !important;
+}
+html .blotter_day_header:not(#a) {
+    border-color: rgba(49, 50, 68, 0.9) !important;
+}
+
+/* Online, in game and offline in Mocha: sapphire, green and overlay */
+html .playerAvatar.online:not(#a),
+html .playerAvatar.online:not(#a) img,
+html .appHubIconHolder.online:not(#a),
+html .appHubIconHolder.online:not(#a) img {
+    background: linear-gradient(rgb(116, 199, 236) 5%, rgb(137, 180, 250) 95%) !important;
+}
+html .playerAvatar.in-game:not(#a),
+html .playerAvatar.in-game:not(#a) img,
+html .appHubIconHolder.in-game:not(#a),
+html .appHubIconHolder.in-game:not(#a) img {
+    background: linear-gradient(rgb(166, 227, 161) 5%, rgb(148, 226, 213) 95%) !important;
+}
+html .playerAvatar.offline:not(#a),
+html .playerAvatar.offline:not(#a) img,
+html .appHubIconHolder.offline:not(#a),
+html .appHubIconHolder.offline:not(#a) img {
+    background: linear-gradient(rgb(108, 112, 134) 5%, rgb(88, 91, 112) 95%) !important;
+}
+html .blotter_playerAvatarSmall.online:not(#a) {
+    background: rgb(116, 199, 236) !important;
+}
+html .blotter_playerAvatarSmall.in-game:not(#a) {
+    background: rgb(166, 227, 161) !important;
+}
+html .blotter_playerAvatarSmall.offline:not(#a) {
+    background: rgb(108, 112, 134) !important;
+}
+html .persona.online:not(#a),
+html .persona.online:not(#a) .friend_block_content,
+html .persona.online:not(#a) .friend_small_text {
+    color: rgb(116, 199, 236) !important;
+}
+html .persona.in-game:not(#a),
+html .persona.in-game:not(#a) .friend_block_content,
+html .persona.in-game:not(#a) .friend_small_text,
+html .persona.in-game:not(#a) .friend_game_link {
+    color: rgb(166, 227, 161) !important;
+}
+html .persona.offline:not(#a),
+html .persona.offline:not(#a) .friend_block_content,
+html .persona.offline:not(#a) .friend_small_text,
+html .friend_last_online_text:not(#a) {
+    color: rgb(147, 153, 178) !important;
+}
+
+/* Text left in stock white and greys */
+html h2.pageheader:not(#a),
+html .addfunds_area_purchase_game h1:not(#a),
+html .account_settings_container h2:not(#a),
+html .qExaNoIADSU-:not(#a),
+html h2.addfunds_pageheader:not(#a),
+html .badge_title:not(#a),
+html .badge_info_title:not(#a),
+html .qsRUnPGkCV8-:not(#a),
+html .XjqMC1cYnuc-:not(#a),
+html .h9k0m4mdzeY-:not(#a),
+html .ianSd3EEgC4-:not(#a),
+html .zgXBEH3YPKg-:not(#a),
+html .apphub_CardContentType:not(#a),
+html .normal_price:not(#a),
+html .market_title_text:not(#a),
+html .market_tab_well_tab_contents:not(#a),
+html .games_list_tab_name:not(#a),
+html .games_list_tab_number:not(#a),
+html .account_manage_subtitle:not(#a),
+html #primary_language_trigger:not(#a),
+html .commentthread_header_label:not(#a),
+html .commentthread_comment_text:not(#a),
+html .discussions_forumlist_forumname:not(#a),
+html .account_settings_container label:not(#a),
+html a.icon_item span.title:not(#a),
+html .profile_menu_text:not(#a),
+html a.whiteLink:not(#a),
+html .marketBetaNoteText:not(#a),
+html .forum_list_right b:not(#a),
+html .profile_friends.title:not(#a) {
+    color: rgb(205, 214, 244) !important;
+}
+html .badge_empty_name:not(#a),
+html .badge_progress_info:not(#a),
+html .badge_title_stats_playtime:not(#a),
+html .badge_info_unlocked:not(#a),
+html .profile_xp_block_xp:not(#a),
+html .DialogBodyText:not(#a),
+html .DialogLabel:not(#a),
+html .DialogToggle_Description:not(#a),
+html .GNihUgwOi5E-:not(#a),
+html .NWgTAn1-iiQ-:not(#a),
+html .OcgtiSjfJhw-:not(#a),
+html .z1njKeA8Oh4- p:not(#a),
+html .apphub_CardContentGuideDesc:not(#a),
+html .discussions_forumlist_lastpost:not(#a),
+html .market_listing_num_listings_qty:not(#a),
+html .blotter_block span:not([class]):not(#a),
+html .account_settings_container p:not(#a) {
+    color: rgb(166, 173, 200) !important;
+}
+html .market_listing_game_name:not(#a),
+html .apphub_CardCommentCount:not(#a) {
+    color: rgb(147, 153, 178) !important;
+}
+html .blotter_day_header_date:not(#a),
+html .new_items_num:not(#a),
+html .new_items_text:not(#a),
+html #menu_friends_ct:not(#a),
+html .friends_nav h4:not(#a) {
+    color: rgb(137, 180, 250) !important;
+}
+
+/* One ring for every pass 2 host */
+html a.recent_game_discussion:not(#a)::after,
+html .discussions_forum_row:not(#a)::after,
+html .friend_block_v2:not(#a)::after,
+html a.games_list_tab:not(#a)::after,
+html a.icon_item:not(#a)::after,
+html .PCL0HJzDkR8-:not(#a)::after,
+html .market_search_game_button_group a.game_button:not(#a)::after,
+html a.group_tab:not(#a)::after,
+html .blotter_appselect:not(#a)::after,
+html .friends_container .btnv6_blue_hoverfade:not(#a)::after,
+html body.account_preferences .btnv6_blue_hoverfade:not(#a)::after,
+html .btnv6_grey_black:not(#a)::after,
+html .btn_grey_grey_outer_bevel:not(#a)::after,
+html .friends_container .btn_green_steamui:not(#a)::after,
+html .addfunds_purchase_action .btnv6_green_white_innerfade:not(#a)::after,
+html .VK34WouHuaw-:not(#a)::after,
+html .EYF1OQwj3TE-:not(#a)::after,
+html a.addfunds_linkbar:not(#a)::after,
+html .market_tab_well_tab:not(#a)::after,
+html body.profile_edit_page button.DialogButton:not(#a)::after,
+html body.account_preferences button.DialogButton:not(#a)::after,
+html .PwGZnF9BFA8-._0Yp9qPJ4rvQ-:not(#a)::after,
+html .XLbP8xOkCYw- button._2U8ldyeSqVI-:not(#a)::after,
+html a.item_market_action_button:not(#a)::after,
+html .market_listing_row.market_recent_listing_row:not(#a)::after,
+html #groups_list .group_block:not(#a)::after,
+html .workshopAppsRow .app:not(#a)::after,
+html .market_search_advanced_button:not(#a)::after,
+html .browseOption:not(#a)::after {
+    content: "" !important;
+    position: absolute !important;
+    inset: 0 !important;
+    width: auto !important;
+    height: auto !important;
+    margin: 0 !important;
+    z-index: 2;
+    box-sizing: border-box;
+    border: none !important;
+    border-radius: inherit !important;
+    padding: 2px !important;
+    background: linear-gradient(135deg, rgb(137, 180, 250), rgb(203, 166, 247)) !important;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.15s ease-out;
+    pointer-events: none;
+}
+html .XLbP8xOkCYw- button._2U8ldyeSqVI-:not(#a),
+html a.item_market_action_button:not(#a),
+html .market_listing_row.market_recent_listing_row:not(#a),
+html #groups_list .group_block:not(#a),
+html .workshopAppsRow .app:not(#a),
+html .market_search_advanced_button:not(#a),
+html .browseOption:not(#a) {
+    position: relative !important;
+}
+html a.recent_game_discussion:not(#a):hover::after,
+html .discussions_forum_row:not(#a):hover::after,
+html .friend_block_v2:not(#a):hover::after,
+html a.games_list_tab:not(#a):hover::after,
+html a.icon_item:not(#a):hover::after,
+html .PCL0HJzDkR8-:not(#a):hover::after,
+html .market_search_game_button_group a.game_button:not(#a):hover::after,
+html a.group_tab:not(#a):hover::after,
+html .blotter_appselect:not(#a):hover::after,
+html .friends_container .btnv6_blue_hoverfade:not(#a):hover::after,
+html body.account_preferences .btnv6_blue_hoverfade:not(#a):hover::after,
+html .btnv6_grey_black:not(#a):hover::after,
+html .btn_grey_grey_outer_bevel:not(#a):hover::after,
+html .friends_container .btn_green_steamui:not(#a):hover::after,
+html .addfunds_purchase_action .btnv6_green_white_innerfade:not(#a):hover::after,
+html .VK34WouHuaw-:not(#a):hover::after,
+html .EYF1OQwj3TE-:not(#a):hover::after,
+html a.addfunds_linkbar:not(#a):hover::after,
+html .market_tab_well_tab:not(#a):hover::after,
+html body.profile_edit_page button.DialogButton:not(#a):hover::after,
+html body.profile_edit_page button.DialogButton:not(#a):focus-visible::after,
+html body.account_preferences button.DialogButton:not(#a):hover::after,
+html body.account_preferences button.DialogButton:not(#a):focus-visible::after,
+html .PwGZnF9BFA8-._0Yp9qPJ4rvQ-:not(#a):hover::after,
+html .XLbP8xOkCYw- button._2U8ldyeSqVI-:not(#a):hover::after,
+html a.item_market_action_button:not(#a):hover::after,
+html .market_listing_row.market_recent_listing_row:not(#a):hover::after,
+html #groups_list .group_block:not(#a):hover::after,
+html .workshopAppsRow .app:not(#a):hover::after,
+html .market_search_advanced_button:not(#a):hover::after,
+html .browseOption:not(#a):hover::after,
+html .browseOption.selected:not(#a)::after,
+html a.games_list_tab.active:not(#a)::after,
+html a.icon_item.active:not(#a)::after,
+html .PCL0HJzDkR8-.qQNvrDnd2aM-:not(#a)::after,
+html a.group_tab.active:not(#a)::after,
+html .market_tab_well_tab.market_tab_well_tab_active:not(#a)::after {
+    opacity: 1;
+}
+
+/*
+! Pass 2b (2026-11-14): last stock pieces found by the point probe
+*/
+
+/* Friends: status stripe in Mocha colours */
+html .friend_block_v2 .player_avatar:not(#a) { border-color: rgb(108, 112, 134) !important; }
+html .friend_block_v2.online .player_avatar:not(#a) { border-color: rgb(116, 199, 236) !important; }
+html .friend_block_v2.in-game .player_avatar:not(#a) { border-color: rgb(166, 227, 161) !important; }
+
+/* Groups */
+html .profile_groups.title_bar:not(#a) {
+    background: rgba(49, 50, 68, 0.6) !important;
+    border: none !important;
+    border-radius: 12px !important;
+    box-shadow: inset 0 0 0 2px var(--st-edge) !important;
+}
+html .profile_groups.title:not(#a) { color: rgb(205, 214, 244) !important; }
+html #groups_list .group_block:not(#a) {
+    background: rgba(49, 50, 68, 0.35) !important;
+    border: none !important;
+    border-radius: 12px !important;
+    box-shadow: inset 0 0 0 2px var(--st-edge) !important;
+    margin-bottom: 6px !important;
+}
+html .friends_nav div.hr:not(#a) {
+    background: none !important;
+    border-bottom: 2px solid rgba(69, 71, 90, 0.6) !important;
+}
+
+/* Inventory tabs: no stock strip behind them */
+html .games_list_tabs_ctn:not(#a) {
+    background: transparent !important;
+    border: none !important;
+}
+html .games_list_tab_separator:not(#a),
+html .games_list_tab_row_separator:not(#a) {
+    background: transparent !important;
+    border-color: transparent !important;
+}
+html a.games_list_tab:not(#a) { color: rgb(205, 214, 244) !important; }
+
+/* Account pages: spacing and rows */
+html .account_header_line:not(#a) { margin-bottom: 8px !important; }
+html .preference_row:not(#a) { border-bottom: 2px solid rgba(69, 71, 90, 0.6) !important; }
+html body.account_preferences input[type="checkbox"]:not(#a),
+html body.account_preferences input[type="radio"]:not(#a),
+html .account_settings_container input[type="checkbox"]:not(#a) {
+    accent-color: rgb(137, 180, 250);
+    color-scheme: dark;
+}
+html .two_column.left a.nav_item:not(#a) { margin-bottom: 6px !important; }
+html .two_column.right:not(#a) {
+    padding-left: 12px !important;
+    box-sizing: border-box !important;
+}
+html .accountInfoBlock > .block_header:not(#a) { padding: 0 12px !important; }
+
+/* Language picker */
+html #primary_language_dselect_container.dselect_container:not(#a),
+html .account_settings_container .dselect_container:not(#a) {
+    background: rgba(24, 24, 37, 0.7) !important;
+    border: none !important;
+    border-radius: 12px !important;
+    box-shadow: inset 0 0 0 2px var(--st-edge) !important;
+}
+html #primary_language_dselect_container button.trigger:not(#a),
+html .account_settings_container .dselect_container button.trigger:not(#a) {
+    background: transparent !important;
+    border-radius: 12px !important;
+    color: rgb(205, 214, 244) !important;
+}
+html #primary_language_dselect_container .dropcontainer:not(#a),
+html .account_settings_container .dselect_container .dropcontainer:not(#a) {
+    background: rgb(30, 30, 46) !important;
+    border: none !important;
+    border-radius: 12px !important;
+    box-shadow: inset 0 0 0 2px var(--st-edge), 0 8px 24px rgba(17, 17, 27, 0.6) !important;
+    overflow: hidden !important;
+}
+
+/* Notification settings */
+html .Tcizn-cHysY-:not(#a) { background: rgb(205, 214, 244) !important; }
+html .z1njKeA8Oh4-:not(#a) { overflow: hidden !important; }
+html ._6i8VFSSq3gQ-:not(#a),
+html .not_interested_container:not(#a) { border-width: 2px !important; }
+
+/* Community home */
+html .community_home_search_box:not(#a) {
+    background: rgba(49, 50, 68, 0.35) !important;
+    border-radius: 16px !important;
+    box-shadow: inset 0 0 0 2px var(--st-edge) !important;
+}
+html a.apphub_sectionTab:not(#a),
+html a.apphub_sectionTab span:not(#a) { color: rgb(205, 214, 244) !important; }
+html a.apphub_sectionTab.active:not(#a) { border-bottom-color: rgb(137, 180, 250) !important; }
+html .apphub_CardContentAuthorBlock.tall:not(#a) { border-radius: 0 0 12px 12px !important; }
+html .RQHfvQfws98-:not(#a) { border-radius: 10px !important; }
+
+/* Discussions */
+html .discussions_header:not(#a) { border-bottom: 2px solid rgba(69, 71, 90, 0.9) !important; }
+html #GlobalDiscussionSearchForm button:not(#a),
+html #GlobalDiscussionSearchForm input[type="submit"]:not(#a),
+html #GlobalDiscussionSearchForm .btn_blue_white_innerfade:not(#a) {
+    background: rgba(137, 180, 250, 0.2) !important;
+    border: none !important;
+    border-radius: 999px !important;
+    box-shadow: inset 0 0 0 2px rgba(137, 180, 250, 0.55) !important;
+    color: rgb(137, 180, 250) !important;
+}
+html .steam_discussions_intro p:not(#a) { color: rgb(166, 173, 200) !important; }
+html .steam_discussions_intro b:not(#a) { color: rgb(205, 214, 244) !important; }
+
+/* Activity feed */
+html .blotter_comment_thread:not(#a) {
+    background: transparent !important;
+    border-top: 2px solid rgba(69, 71, 90, 0.6) !important;
+}
+html .blotter_comment_thread .commentthread_area:not(#a) { padding: 0 12px 12px !important; }
+html .blotter_author_block:not(#a) {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+html .blotter_day_header:not(#a):not(#b) {
+    border-color: rgba(69, 71, 90, 0.9) !important;
+    background-image: none !important;
+}
+html .blotter_eventsblock:not(#a) {
+    background: rgba(49, 50, 68, 0.35) !important;
+    border-radius: 12px !important;
+    box-shadow: inset 0 0 0 2px var(--st-edge) !important;
+    padding: 10px !important;
+}
+
+/* Market */
+html #marketBetaNoteCtn:not(#a) {
+    background: rgba(137, 180, 250, 0.12) !important;
+    border: none !important;
+    border-radius: 12px !important;
+    box-shadow: inset 0 0 0 2px rgba(137, 180, 250, 0.35) !important;
+}
+html a.item_market_action_button:not(#a) {
+    background: none !important;
+    border-radius: 999px !important;
+}
+html span.item_market_action_button_contents:not(#a) {
+    background: rgba(166, 227, 161, 0.16) !important;
+    border-radius: 999px !important;
+    box-shadow: inset 0 0 0 2px rgba(166, 227, 161, 0.45) !important;
+    color: rgb(166, 227, 161) !important;
+    padding: 0 14px !important;
+}
+html span.market_tab_well_tab_contents:not(#a) { padding: 0 14px !important; }
+html .market_large_tab_well > img[src*="highlight_bg"]:not(#a) { display: none !important; }
+html .market_tab_well_tabs:not(#a) {
+    background: transparent !important;
+    border-bottom: none !important;
+}
+html .market_search_advanced_button:not(#a) {
+    background: rgba(49, 50, 68, 0.6) !important;
+    border: none !important;
+    border-radius: 999px !important;
+    box-shadow: inset 0 0 0 2px var(--st-edge) !important;
+    color: rgb(205, 214, 244) !important;
+}
+html .market_search_advanced_button:not(#a):hover { background: rgba(69, 71, 90, 0.7) !important; }
+html .market_listing_row:not(#a) {
+    background: rgba(49, 50, 68, 0.35) !important;
+    border: none !important;
+    border-radius: 12px !important;
+    box-shadow: inset 0 0 0 2px var(--st-edge) !important;
+    margin-bottom: 6px !important;
+    overflow: hidden !important;
+}
+html .market_listing_table_header:not(#a) {
+    background: rgba(49, 50, 68, 0.6) !important;
+    border: none !important;
+    border-radius: 12px !important;
+}
+
+/* Workshop */
+html .browseAppsTitleContainer:not(#a) {
+    background: rgba(49, 50, 68, 0.6) !important;
+    border-radius: 16px 16px 0 0 !important;
+}
+html .searchApps:not(#a) {
+    background: rgba(24, 24, 37, 0.7) !important;
+    border-radius: 999px !important;
+    box-shadow: inset 0 0 0 2px var(--st-edge) !important;
+    overflow: hidden !important;
+}
+html .searchApps input:not(.searchAppImage):not(#a) {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    color: rgb(205, 214, 244) !important;
+}
+html input.searchAppImage:not(#a) {
+    background-color: rgba(137, 180, 250, 0.2) !important;
+    border-radius: 999px !important;
+}
+html .browseOption:not(#a) { border-radius: 12px !important; }
+html .browseOption.selected:not(#a) {
+    background: rgba(69, 71, 90, 0.7) !important;
+}
+html .workshopAppsRow:not(#a) {
+    background: none !important;
+    border-bottom: 2px solid rgba(69, 71, 90, 0.6) !important;
+}
+html .workshopAppsRow .app:not(#a) {
+    background-color: rgba(49, 50, 68, 0.35) !important;
+    border-radius: 12px !important;
+    box-shadow: inset 0 0 0 2px var(--st-edge) !important;
+}
+
+html .rightbox_list_selection_background:not(#a) { display: none !important; }
+html .workshopAppsRow .app:not(#a),
+html .workshopAppsRow .appCoverHover:not(#a) { background-image: none !important; }
+html .workshopAppsRow .appCover:not(#a) {
+    inset: 2px !important;
+    width: auto !important;
+    height: auto !important;
+    border-radius: 10px !important;
+    background: linear-gradient(to bottom, transparent 0 88px, rgba(69, 71, 90, 0.9) 88px 90px, rgb(30, 30, 46) 90px) !important;
+}
+html .workshopAppsRow .appItem:not(#a) {
+    top: 13px !important;
+    left: 13px !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+}
+html .workshopAppsRow .appNew:not(#a) { top: 4px !important; left: 13px !important; }
+
+/* Search boxes: one edge, and a round Mocha search button */
+html .BfBoDdNJ2hc- .BfBoDdNJ2hc-:not(#a) {
+    background: transparent !important;
+    box-shadow: none !important;
+}
+html .discussionSearchTextContainer:not(#a)::before {
+    left: 262px !important;
+    width: 46px !important;
+    height: 46px !important;
+    background: rgba(137, 180, 250, 0.2) !important;
+    border-radius: 999px !important;
+    box-shadow: inset 0 0 0 2px rgba(137, 180, 250, 0.55) !important;
+}
+html img.discussionSearchTextSubmitImg:not(#a) { left: 274px !important; }
+
+/* Profile */
+html .recent_game:not(#a),
+html .profile_customization:not(#a) {
+    border-radius: 12px !important;
+    overflow: hidden !important;
+}
+html .recent_game:not(#a) {
+    background: rgba(49, 50, 68, 0.35) !important;
+    box-shadow: inset 0 0 0 2px var(--st-edge) !important;
+}
+html .game_info_stats:not(#a) {
+    background: rgba(17, 17, 27, 0.6) !important;
+    border-radius: 0 0 12px 12px !important;
+}
+
+/* Store game page: the review count no longer runs over its label */
+html .game_bg.application #game_highlights .rightcol .glance_ctn_responsive_left .user_reviews .summary.column:not(#a) {
+    flex-wrap: wrap !important;
+    min-width: 0 !important;
+    column-gap: 6px !important;
+}
+
+/* Leftover stock text */
+html .count_link_label:not(#a),
+html .game_button_game_name:not(#a),
+html .account_header_line > div:not(#a),
+html .account_header_line span:not(#a),
+html .DialogToggle_Label span:not(#a),
+html .blotter_author_block > div:not(#a),
+html .profile_link_block_text_friends:not(#a),
+html .profile_button_text:not(#a),
+html .profile_add_friends_title:not(#a),
+html .community_home_search_title:not(#a),
+html .profile_xp_block_level:not(#a),
+html .profile_badges_header_title:not(#a),
+html .progress_info_bold:not(#a),
+html .AYShSUpazpQ-.ActiveTab:not(#a),
+html .my_market_header_active:not(#a),
+html .giantNumber:not(#a),
+html .reviewInfo .title:not(#a),
+html .discussions_forumlist_header > div:not(#a),
+html .commentthread_author_link bdi:not(#a),
+html .accountData.price:not(#a),
+html .blotter_gamepurchase_details:not(#a) {
+    color: rgb(205, 214, 244) !important;
+}
+html .badge_info_description > div:not(#a),
+html .profile_xp_block_right:not(#a),
+html .profile_xp_block_remaining:not(#a),
+html .workshop_apps_paging_pagelink:not(#a),
+html ._6e5Lw2oBEA8-:not(#a),
+html .account_setting_parenthetical:not(#a),
+html .account_manage_label:not(#a),
+html .youraccount_steamid:not(#a),
+html .phone_header_description:not(#a),
+html .blotter_page_title span:not(#a),
+html .groupMemberStat:not(#a),
+html .dotastats span:not(#a),
+html .eventSubLinks:not(#a),
+html .blotter_eventsblock_title:not(#a),
+html .profile_badges_sortoptions span:not(#a),
+html .badge_description:not(#a),
+html .friend_block_v2 .state_block:not(#a),
+html .friends_nav .count:not(#a),
+html .my_market_header_count:not(#a),
+html .market_subtitle_text:not(#a),
+html .license_paginator_ctn span:not(#a),
+html .giantNumberSubhead:not(#a),
+html .workshopBrowsePagingInfo:not(#a),
+html .reviewInfo .hours:not(#a),
+html .found_helpful:not(#a),
+html .cached_payment_method_description:not(#a) {
+    color: rgb(166, 173, 200) !important;
+}
+html .blotter_page_title h1:not(#a) { color: rgb(137, 180, 250) !important; }
+html .profile_friends_ingame:not(#a),
+html .friend_block_v2.in-game .state_block:not(#a) { color: rgb(166, 227, 161) !important; }
+html .friend_block_v2.online .state_block:not(#a) { color: rgb(116, 199, 236) !important; }
+
+/*
+! Pass 2c (2026-11-14): what the full re-sweep still flagged
+*/
+html .apphub_Card:not(#a) {
+    background: rgba(49, 50, 68, 0.35) !important;
+    box-shadow: inset 0 0 0 2px var(--st-edge) !important;
+    overflow: hidden !important;
+}
+html .community_home_app_shortcuts:not(#a) {
+    background: rgba(49, 50, 68, 0.35) !important;
+    border-radius: 16px !important;
+    box-shadow: inset 0 0 0 2px var(--st-edge) !important;
+}
+html .ix748b4zK34-:not(#a) { background: transparent !important; }
+html .XWjEvL39Yi4-:not(#a) { background: rgb(69, 71, 90) !important; }
+html .not_interested_container:not(#a),
+html .ScreenshotManagementControlsTop:not(#a),
+html #ScreenshotManagementControlsTop:not(#a),
+html .box:not(#a):has(> .productsreviewed, > .header) { border-radius: 12px !important; }
+html .twofactor_box:not(#a),
+html .j6sN-xNfa0w-:not(#a) { border-radius: 16px !important; }
+html .blotter_comment_thread:not(#a) { border-radius: 0 0 12px 12px !important; }
+html .game_info_achievement.plus_more:not(#a) { border-radius: 8px !important; }
+
+/* Text the re-sweep still caught */
+html a.sectionTab span:not(#a),
+html #HeaderUserBreadcrumbs a:not(#a),
+html #mainContents > .title:not(#a),
+html .persona_name.persona_level:not(#a),
+html .store_pref_col:not(#a),
+html .sharedfiles_filterselect_activeoption:not(#a),
+html .ix748b4zK34- p:not(.K0hXO6Sz8fg-):not(#a) {
+    color: rgb(205, 214, 244) !important;
+}
+html .header_real_name bdi:not(#a),
+html .profile_group_membercount:not(#a),
+html .blotter_gamepurchase_text:not(#a),
+html .market_listing_right_cell:not(#a),
+html .K0hXO6Sz8fg-:not(#a),
+html .PzuI-2tNEfQ-:not(#a),
+html .sharedfiles_usercontrols_label:not(#a),
+html .workshopAppsSortTitle:not(#a),
+html .rightSectionTopTitle:not(#a),
+html .dotastats-rank-label:not(#a),
+html .friend_block_v2 .state_block:not(#a) {
+    color: rgb(166, 173, 200) !important;
+}
+html .state_block[id="state_in-game"]:not(#a) { color: rgb(166, 227, 161) !important; }
+html .state_block[id="state_online"]:not(#a) { color: rgb(116, 199, 236) !important; }
+html #popularItemsMore:not(#a),
+html .market_search_sidebar_section_tip_small:not(#a),
+html .market_search_sidebar_section_tip_s:not(#a),
+html .discussions_header_ctn h2:not(#a),
+html .forum_list_left h2:not(#a),
+html h2.forum_list_header:not(#a),
+html ._3zaZGH4YdHc-:not(#a) {
+    color: rgb(137, 180, 250) !important;
+}
+html body.account_preferences span:not(#a):is(.customwords_link, [onclick]) { color: rgb(137, 180, 250) !important; }
+
+/* Hover rings the re-sweep found missing */
+html .apphub_Card.interactable:not(#a)::after,
+html .z1njKeA8Oh4-.Panel:not(#a)::after,
+html ._89CROveBC5M-.DialogButton:not(#a)::after,
+html .qaQSjvc6JDQ-.DialogButton:not(#a)::after,
+html .Aw9bSZZCt3Y-.DialogButton:not(#a)::after,
+html .game_info_achievement.plus_more:not(#a)::after,
+html a.license_paginator_next:not(#a)::after,
+html a.license_paginator_prev:not(#a)::after,
+html a#ScreenshotUploadLink:not(#a)::after,
+html .sharedfiles_filterselect_activeoption:not(#a)::after,
+html .workshop_header a.dropdown:not(#a)::after,
+html .sharedfiles_tabs_ctn a.dropdown:not(#a)::after,
+html a.btnv6_blue_hoverfade:has(#popularItemsMore):not(#a)::after {
+    content: "" !important;
+    position: absolute !important;
+    inset: 0 !important;
+    width: auto !important;
+    height: auto !important;
+    margin: 0 !important;
+    z-index: 2;
+    box-sizing: border-box;
+    border: none !important;
+    border-radius: inherit !important;
+    padding: 2px !important;
+    background: linear-gradient(135deg, rgb(137, 180, 250), rgb(203, 166, 247)) !important;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.15s ease-out;
+    pointer-events: none;
+}
+html .apphub_Card.interactable:not(#a),
+html .z1njKeA8Oh4-.Panel:not(#a),
+html ._89CROveBC5M-.DialogButton:not(#a),
+html .qaQSjvc6JDQ-.DialogButton:not(#a),
+html .Aw9bSZZCt3Y-.DialogButton:not(#a),
+html .game_info_achievement.plus_more:not(#a),
+html a.license_paginator_next:not(#a),
+html a.license_paginator_prev:not(#a),
+html a#ScreenshotUploadLink:not(#a),
+html .sharedfiles_filterselect_activeoption:not(#a),
+html .workshop_header a.dropdown:not(#a),
+html .sharedfiles_tabs_ctn a.dropdown:not(#a),
+html a.btnv6_blue_hoverfade:has(#popularItemsMore):not(#a) {
+    position: relative !important;
+}
+html .apphub_Card.interactable:not(#a):hover::after,
+html .z1njKeA8Oh4-.Panel:not(#a):hover::after,
+html ._89CROveBC5M-.DialogButton:not(#a):hover::after,
+html .qaQSjvc6JDQ-.DialogButton:not(#a):hover::after,
+html .Aw9bSZZCt3Y-.DialogButton:not(#a):hover::after,
+html .game_info_achievement.plus_more:not(#a):hover::after,
+html a.license_paginator_next:not(#a):hover::after,
+html a.license_paginator_prev:not(#a):hover::after,
+html a#ScreenshotUploadLink:not(#a):hover::after,
+html .sharedfiles_filterselect_activeoption:not(#a):hover::after,
+html .workshop_header a.dropdown:not(#a):hover::after,
+html .sharedfiles_tabs_ctn a.dropdown:not(#a):hover::after,
+html a.btnv6_blue_hoverfade:has(#popularItemsMore):not(#a):hover::after {
+    opacity: 1;
+}
+html input.searchAppImage:not(#a):hover { box-shadow: inset 0 0 0 2px rgb(137, 180, 250) !important; }
+
+/* Pass 2d: the final leftovers from sweep 4 */
+html #rightContents > div.box:not(#a) {
+    background: rgba(49, 50, 68, 0.35) !important;
+    border: none !important;
+    border-radius: 12px !important;
+    box-shadow: inset 0 0 0 2px var(--st-edge) !important;
+}
+html #rightContents > div.panel:not(#a),
+html ._6i8VFSSq3gQ-:not(#a) { border-radius: 12px !important; }
+html .discussion_tab_content_area h2:not(#a) { color: rgb(137, 180, 250) !important; }
+html .community_pref_col:not(#a),
+html #rightContents > div.panel a:not(#a) { color: rgb(205, 214, 244) !important; }
+html .market_listing_table_message:not(#a),
+html .market_listing_table_header div:not(#a),
+html .header_location:not(#a) { color: rgb(166, 173, 200) !important; }
+html .state_block[id="state_offline"]:not(#a) { color: rgb(147, 153, 178) !important; }
+html .current_player_workshop_link a.dropdown:not(#a) { position: relative !important; border-radius: 999px !important; }
+html .current_player_workshop_link a.dropdown:not(#a)::after {
+    content: "" !important;
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 2;
+    box-sizing: border-box;
+    border-radius: inherit !important;
+    padding: 2px !important;
+    background: linear-gradient(135deg, rgb(137, 180, 250), rgb(203, 166, 247)) !important;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.15s ease-out;
+    pointer-events: none;
+}
+html .current_player_workshop_link a.dropdown:not(#a):hover::after { opacity: 1; }
+html .sharedfiles_filterselect_activeoption:not(#a) { border-radius: 8px !important; padding: 2px 8px !important; }
+html #mainContents h1:not(#a),
+html .workshopBrowseItems span.highlight:not(#a),
+html span.highlight:not(#a) { color: rgb(205, 214, 244) !important; }
+html .escrow_description_link:not(#a) { color: rgb(137, 180, 250) !important; }
+
+/* Pass 2e: polish found in the screenshots */
+html .community_home_search_players input#SearchPlayers:not(#a) { background: transparent !important; box-shadow: none !important; border: none !important; }
+html .apphub_CardBG:not(#a) { background-image: none !important; }
+html #myMarketTabs:not(#a),
+html #myMarketTabs .market_tab_well_tabs:not(#a) { flex-wrap: wrap !important; overflow: visible !important; row-gap: 6px !important; }
+html .omHaP36p-tQ-.DialogButton:not(#a):not(#b):not(#c) { border-radius: 16px !important; }
+html .AYShSUpazpQ-.ActiveTab:not(#a):not(#b) { border-radius: 8px 8px 0 0 !important; }
+html .j6sN-xNfa0w-:not(#a):not(#b) { background: rgba(49, 50, 68, 0.35) !important; box-shadow: inset 0 0 0 2px var(--st-edge) !important; }
+@media (max-width: 600px) {
+    html .profile_content.has_profile_background:not(#a),
+    html .profile_header_badge:not(#a),
+    html .profile_content_inner:not(#a) { box-sizing: border-box !important; max-width: 100% !important; min-width: 0 !important; }
+    html .market_tab_well_tabs:not(#a) { display: flex !important; flex-wrap: wrap !important; white-space: normal !important; overflow: visible !important; gap: 6px !important; height: auto !important; max-width: 100% !important; }
+    html .recentgame_quicklinks:not(#a) { float: none !important; display: block !important; max-width: 100% !important; white-space: normal !important; }
+    html .profile_content.has_profile_background:not(#a) { flex-wrap: wrap !important; }
+}
+html #profileFriendSearchInputBox:not(#a) { box-sizing: border-box !important; width: 100% !important; padding-right: 30px !important; }
+html .blotter_comment_thread .commentthread_entry:not(#a) { background: transparent !important; box-shadow: none !important; }
+html .apphub_CardContentMain:not(#a) { border-radius: 10px !important; overflow: hidden !important; }
+html img.apphub_CardContentPreviewImage:not(#a) { border-radius: 10px !important; }
+html .market_listing_row .market_listing_their_price:not(#a) { padding-right: 12px !important; }
+html .market_listing_row img.market_listing_item_img:not(#a) { border-radius: 8px !important; }
+html ._6i8VFSSq3gQ-:not(#a):not(#b) { border-radius: 0 !important; padding-top: 8px !important; border-top-color: rgba(69, 71, 90, 0.6) !important; }
+html a.sectionTab.active:not(#a) { border-bottom-color: rgb(137, 180, 250) !important; }
+html #leftContents > h1:not(#a) { border-bottom: 2px solid rgba(69, 71, 90, 0.6) !important; }
+html ._5YxPcG58GcM-.Panel:not(#a) { border-bottom-color: rgba(69, 71, 90, 0.6) !important; }
+html .AYShSUpazpQ-.ActiveTab:not(#a) { border-bottom-color: rgb(137, 180, 250) !important; }
+html .market_page_left a.btnv6_blue_hoverfade.btn_medium:not(#a),
+html #popularItemsTable a.btnv6_blue_hoverfade:not(#a) { background: rgba(137, 180, 250, 0.2) !important; }

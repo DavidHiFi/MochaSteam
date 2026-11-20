@@ -119,12 +119,17 @@ body.DesktopToastContainer ._1OOQPJx0nCNP9ME9toCmV7 :is(._2NdiftmP-B3C4LPWnNGTCB
     border-radius: 8px;
 }
 
-/* In the desktop toast window the card is the whole window, and the
-   mochasteam-material plugin gives that window real Windows acrylic (Mocha
-   tint). A CSS fill on top turned it into flat colour, and backdrop-filter
-   cannot sample the desktop from inside the window, so the card paints none. */
+/* In the desktop toast window the card is the whole window. backdrop-filter
+   cannot sample the desktop from inside its own window, so the card is solid
+   Mocha base until the mochasteam-material plugin confirms real Windows
+   acrylic on this exact window (html.mocha-acrylic). Then the card paints no
+   fill so the native frost shows. Never transparent without that material. */
 body.DesktopToastContainer ._1OOQPJx0nCNP9ME9toCmV7 :is(._2NdiftmP-B3C4LPWnNGTCB, ._3-H47wPl1Ng3lh7xGZOPIg) {
-    background-color: transparent;
-    -webkit-backdrop-filter: none;
-    backdrop-filter: none;
+    background-color: rgb(30, 30, 46) !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    transition: background-color 120ms ease-out;
+}
+html.mocha-acrylic body.DesktopToastContainer ._1OOQPJx0nCNP9ME9toCmV7 :is(._2NdiftmP-B3C4LPWnNGTCB, ._3-H47wPl1Ng3lh7xGZOPIg) {
+    background-color: transparent !important;
 }

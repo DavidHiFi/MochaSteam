@@ -1622,3 +1622,18 @@ html body .GRnRr6m2Ebs-:not(#a):not(#b) { border-radius: 16px !important; overfl
 html body ._3z-SJMDRMwU-:not(#a):not(#b) { background-image: linear-gradient(130deg, #89b4fa, #cba6f7) !important; }
 html body .jaUFLgHnJNs-:not(#a):not(#b) { border-radius: 14px !important; overflow: hidden !important; }
 html body .jaUFLgHnJNs-:not(#a):not(#b) * { border-radius: 14px !important; }
+
+/* Round 17: search button icon. The newer header (wishlist, cart, points shop)
+   drew the magnifier as a font glyph with a 6px right margin, so it sat 3px
+   left of centre in a pale colour. Every search button now shows Steam's own
+   icon, dark on the blue disc, dead centre. */
+html body form[role="search"] button[type="submit"]:not(#a):not(#b)::before,
+html body form[role="search"] button[type="submit"]:not(#a):not(#b)::after { content: none !important; display: none !important; }
+html body form[role="search"] button[type="submit"]:not(#a):not(#b) {
+    display: flex !important; align-items: center !important; justify-content: center !important;
+    width: 28px !important; height: 28px !important; padding: 0 !important; margin: 0 !important;
+    border-radius: 50% !important; background-color: rgb(137, 180, 250) !important; color: rgb(17, 17, 27) !important;
+}
+html body form[role="search"] button[type="submit"]:not(#a):not(#b) > svg {
+    display: block !important; width: 14px !important; height: 14px !important; margin: 0 !important; flex: none !important; color: rgb(17, 17, 27) !important;
+}

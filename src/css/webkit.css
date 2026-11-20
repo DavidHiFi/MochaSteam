@@ -39,6 +39,7 @@
 /*^ Mocha polish (loads last so it wins) */
 @import url("./webkit/store/polish.css");
 @import url("./webkit/store/mocha-rings.css");
+@import url("./webkit/mocha-full.css");
 
 
 

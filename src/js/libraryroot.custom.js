@@ -331,31 +331,27 @@ syncUserPanelWidth();
 
 
 
-// Create userpanel button container and move buttons
-(async () => {
-    await waitForElement(CssClassNames.Library.Container); // wait for game panel to load first
-    // Userpanel
-    const friendButton = await waitForElement(CssClassNames.UserPanel.FriendButton);
-    const familyButton = document.querySelector(CssClassNames.UserPanel.FamilyButton);
-    const parent = await waitForElement(CssClassNames.UserPanel.Container);
-
-    const buttonContainer = document.createElement('div');
-    buttonContainer.className = 'userpanel-buttoncontainer';
-
-    const buttons = parent.querySelectorAll(`div${CssClassNames.UserPanel.Container} > div`);
-    const buttonsToMove = Array.from(buttons).filter((button) => {
-        return button.querySelector(CssClassNames.UserPanel.Button);
-    });
-
-    buttonsToMove.forEach((button) => {
-        buttonContainer.appendChild(button);
-    });
-
-    buttonContainer.appendChild(friendButton);
-    if (familyButton) {
-        buttonContainer.appendChild(familyButton);
-    }
-
+// Steam can replace these React controls after startup or an update.
+(() => {
+    const sync = () => {
+        const parent = document.querySelector(CssClassNames.UserPanel.Container);
+        if (!parent || !document.querySelector(CssClassNames.Library.Container)) return;
+        let buttonContainer = parent.querySelector(':scope > .userpanel-buttoncontainer');
+        if (!buttonContainer) {
+            buttonContainer = document.createElement('div');
+            buttonContainer.className = 'userpanel-buttoncontainer';
+            parent.appendChild(buttonContainer);
+        }
+        for (const wrapper of [...parent.children]) {
+            if (wrapper !== buttonContainer && wrapper.querySelector(CssClassNames.UserPanel.Button)) {
+                buttonContainer.appendChild(wrapper);
+            }
+        }
+        for (const selector of [CssClassNames.UserPanel.FriendButton, CssClassNames.UserPanel.FamilyButton]) {
+            const button = document.querySelector(selector);
+            if (button && button.parentElement !== buttonContainer) buttonContainer.appendChild(button);
+        }
+        if (buttonContainer.querySelector('.st-steam-settings')) return;
     // Create custom settings button
     const settingsButton = document.createElement('div');
     settingsButton.className = 'tool-tip-source Focusable st-steam-settings';
@@ -379,7 +375,17 @@ syncUserPanelWidth();
 
     buttonContainer.appendChild(settingsButton);
 
-    parent.appendChild(buttonContainer);
+    };
+    let pending = false;
+    const observer = new MutationObserver(() => {
+        if (pending) return;
+        pending = true;
+        queueMicrotask(() => { pending = false; sync(); });
+    });
+    window.__stUserPanelObserver?.disconnect();
+    window.__stUserPanelObserver = observer;
+    observer.observe(document.body, { childList: true, subtree: true });
+    sync();
 })();
 
 // Sidebar width

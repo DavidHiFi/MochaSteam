@@ -169,23 +169,28 @@
     display: none;
 }
 
-/* Alert, Userpanel */
-._2Szzh5sKyGgnLUR870zbDE.RtSv39ZoBOySnb8XQ5hJf::before {
-    content: "\f115" !important;
-    font-size: 16px;
-    color: #67707b;
+/* Steam now wraps the animated bell. Use that icon once, without a font glyph. */
+body .TitleBarControls .Button.NotificationsButton::before {
+    content: none !important;
 }
-._2Szzh5sKyGgnLUR870zbDE.RtSv39ZoBOySnb8XQ5hJf._3L1c8C0o_xXzPy26aoLBFd::before {
-    content: "\f11b" !important;
+.NotificationsButton {
+    align-items: center;
+    justify-content: center;
+    color: rgb(var(--st-text-soft));
+}
+.NotificationsButton.HasNew {
     color: rgb(var(--st-accent-1));
 }
-._2Szzh5sKyGgnLUR870zbDE.RtSv39ZoBOySnb8XQ5hJf:hover::before {
-    color: #fff;
+.NotificationsButton > .BellIcon {
+    width: 16px !important;
+    height: 16px !important;
+    flex: 0 0 16px;
 }
-._2Szzh5sKyGgnLUR870zbDE.RtSv39ZoBOySnb8XQ5hJf>svg {
-    display: none;
+.NotificationsButton .BellPart {
+    display: block;
+    width: 16px !important;
+    height: 16px !important;
 }
-
 /* VR, Userpanel */
 ._2Szzh5sKyGgnLUR870zbDE._3lRfTo8Wo3phXfE1DvK6QW::before {
     content: "\f47b" !important;
