@@ -17,6 +17,13 @@
     overflow: unset;
 }
 
+/* sidebar.css clips this frame (stops Steam scrolling the library under the top bar). The folded
+   strip sits in the frame's 16px side margin, so open the side only, keep the top and bottom clipped. */
+._1rDh5rXSFZJOqCa4UpnI4z:has(.RGNMWtyj73_-WdhflrmuY[style*="display: none;"]) {
+    overflow-x: visible !important;
+    overflow-y: clip !important;
+}
+
 
 
 .RGNMWtyj73_-WdhflrmuY[style*="display: none;"] {
