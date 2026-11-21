@@ -25,9 +25,9 @@
     -webkit-backdrop-filter: var(--st-glass-blur, blur(20px) saturate(1.35)) !important;
     backdrop-filter: var(--st-glass-blur, blur(20px) saturate(1.35)) !important;
 }
-@media (max-width: 1188px) {
+@media (max-width: 939px) {
     ._3Z7VQ1IMk4E3HsHvrkLNgo:has(._39oUCO1OuizVPwcnnv88no ._3cykd-VfN_xBxf3Qxriccm)::before {
-        height: 80px;
+        height: 86px;
     }
 }
 ._39oUCO1OuizVPwcnnv88no {
@@ -240,34 +240,43 @@ body ._2iJsgdTIX9Tj23rWnB7Q-c ._2ohOQgahhMYnIEfAQmv9B8:focus-visible {
 }
 
 /*
-! Size
+! Size (2026-11-21)
+& A narrow window used to drop the nav onto a second row that ran under the
+& menu pill, and flattened the drag area and window buttons to 0px.
+& Now: under 1189px the nav pill stays on the top row, centred in the space
+& between the menu pill (ends at 293px) and the window buttons (99px). Only
+& when even that is too tight does it move to its own row below, centred,
+& with the bar 40px taller so nothing overlaps.
 */
-._3Z7VQ1IMk4E3HsHvrkLNgo:has(._39oUCO1OuizVPwcnnv88no ._3cykd-VfN_xBxf3Qxriccm) {
-    @media (max-width: 1188px) {
-        /** Titlebar */
-        ._39oUCO1OuizVPwcnnv88no {
-            height: 80px !important;
-            align-items: flex-start;
-        }
-
-        /*^ Steam Logo / buttons */
-        ._39oUCO1OuizVPwcnnv88no ._1Ky59qmywxOUtNcI1cgmkX {
-            height: 46px;
-        }
-
-        /*^ Navigation */
-        ._3Z3ohQ8-1NKnCZkbS6fvy {
-            position: absolute;
-            top: 36px;
-            left: 0;
-            width: -webkit-fill-available;
-            height: 28px;
-            transform: none;
-        }
-
-        ._3Z3ohQ8-1NKnCZkbS6fvy ._2D64jIEK7wpUR_NlObDW76 {
-            justify-content: center;
-        }
+@media (max-width: 1188px) {
+    ._3Z7VQ1IMk4E3HsHvrkLNgo:has(._39oUCO1OuizVPwcnnv88no ._3cykd-VfN_xBxf3Qxriccm) ._3Z3ohQ8-1NKnCZkbS6fvy {
+        top: 6px;
+        left: 305px;
+        right: 111px;
+        margin: 0 auto;
+        transform: none;
+    }
+}
+@media (max-width: 939px) {
+    ._3Z7VQ1IMk4E3HsHvrkLNgo:has(._39oUCO1OuizVPwcnnv88no ._3cykd-VfN_xBxf3Qxriccm) ._39oUCO1OuizVPwcnnv88no {
+        height: 86px !important;
+        align-items: flex-start;
+    }
+    ._3Z7VQ1IMk4E3HsHvrkLNgo:has(._39oUCO1OuizVPwcnnv88no ._3cykd-VfN_xBxf3Qxriccm) ._39oUCO1OuizVPwcnnv88no ._1Ky59qmywxOUtNcI1cgmkX {
+        align-self: flex-start;
+        margin-top: 6px !important;
+    }
+    ._3Z7VQ1IMk4E3HsHvrkLNgo:has(._39oUCO1OuizVPwcnnv88no ._3cykd-VfN_xBxf3Qxriccm) ._39oUCO1OuizVPwcnnv88no .WindowControls {
+        align-self: flex-start;
+        height: 46px;
+    }
+    ._3Z7VQ1IMk4E3HsHvrkLNgo:has(._39oUCO1OuizVPwcnnv88no ._3cykd-VfN_xBxf3Qxriccm) ._39oUCO1OuizVPwcnnv88no .DragArea {
+        align-self: stretch;
+    }
+    ._3Z7VQ1IMk4E3HsHvrkLNgo:has(._39oUCO1OuizVPwcnnv88no ._3cykd-VfN_xBxf3Qxriccm) ._3Z3ohQ8-1NKnCZkbS6fvy {
+        top: 46px;
+        left: 0;
+        right: 0;
     }
 }
 
@@ -368,7 +377,8 @@ body ._2iJsgdTIX9Tj23rWnB7Q-c ._2ohOQgahhMYnIEfAQmv9B8:focus-visible {
     height: auto !important;
     align-items: center;
 }
-@media (min-width: 1189px) {
+/* The nav pill look holds at every width (was wide windows only). */
+@media all {
     ._3Z3ohQ8-1NKnCZkbS6fvy {
         box-sizing: border-box;
         height: 34px !important;
