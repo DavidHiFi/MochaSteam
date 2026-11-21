@@ -864,3 +864,183 @@
 .friendlist .friendListFooter {
     display: none;
 }
+/* The empty quick-access hint must grow with wrapped text in narrow windows. */
+.friendlist .quickAccessFriends.emptyQuickAccess {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    height: auto;
+    min-height: 96px;
+    flex-shrink: 0;
+    padding: 16px;
+    gap: 8px;
+    overflow: visible;
+}
+.friendlist .emptyQuickAccess .quickAccessFriendsMessage {
+    box-sizing: border-box;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    white-space: normal;
+    line-height: 1.5;
+}
+.friendlist .emptyQuickAccess .quickAccessFriendsMessageDismiss {
+    position: static;
+    align-self: flex-end;
+    display: flex;
+    align-items: center;
+    min-height: 24px;
+}
+.friendlist .emptyQuickAccess .dropTargetBox {
+    inset: 8px;
+    width: auto;
+    height: auto;
+    transform: none;
+    pointer-events: none;
+}
+
+
+/*
+! Friends list round 1 (2026-11-18): every panel gets the same 2px edge as
+! the chat window, tabs sit apart, the quick-access hint and its button
+! lose the stock teal, hover edge is the blue to mauve gradient.
+*/
+.friendlist .currentUserContainer,
+.friendlist .quickAccessFriends,
+.friendlist .friendTab.socialListTab,
+.friendlist .friendlistListContainer,
+.friendlist .friendlistListContainer .friendGroup,
+.friendlist .friendsListSectionTitle,
+.friendlist .chatRoomListContainer,
+.friendlist .chatRoomListContainer .ChatRoomListGroupItem_header {
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9) !important;
+}
+.friendlist .friendTab.socialListTab.rcp-tab-button {
+    margin-left: 8px;
+}
+.friendlist .friendTab.socialListTab:not(.activeTab) {
+    color: #a6adc8 !important;
+}
+
+/* Quick-access hint: Mocha dashes, plain button */
+.friendlist .quickAccessFriendsMessage {
+    border: 2px dashed rgba(137, 180, 250, 0.45) !important;
+    border-radius: 10px !important;
+    color: #a6adc8 !important;
+}
+.friendlist .quickAccessFriendsMessageDismiss {
+    position: relative !important;
+    border-radius: 8px !important;
+    background: #313244 !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9) !important;
+    color: #cdd6f4 !important;
+    padding: 0 10px !important;
+}
+
+/* Status lines under names */
+.friendlist .currentUserContainer .personaStatus,
+.friendlist .friend .richPresenceLabel,
+.friendlist .currentUserContainer .richPresenceLabel {
+    color: #a6adc8 !important;
+}
+.friendlist .friend.ingame .richPresenceLabel,
+.friendlist .friend.ingame .gameName {
+    color: #a6e3a1 !important;
+}
+
+/* Hover edge, same recipe as the chat window */
+.friendlist .friendlistListContainer .friendGroup .friend,
+.friendlist .friendTab.socialListTab,
+.friendlist .quickAccessFriendsMessageDismiss,
+.friendlist .chatRoomListContainer .ChatRoomListGroupItem_header {
+    position: relative;
+}
+.friendlist .friendlistListContainer .friendGroup .friend::after,
+.friendlist .friendTab.socialListTab::after,
+.friendlist .quickAccessFriendsMessageDismiss::after,
+.friendlist .chatRoomListContainer .ChatRoomListGroupItem_header::after {
+    content: "" !important;
+    display: block !important;
+    position: absolute;
+    inset: 0;
+    padding: 2px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, #89b4fa, #cba6f7);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 150ms ease-out;
+    pointer-events: none;
+}
+.friendlist .friendlistListContainer .friendGroup .friend:hover::after,
+.friendlist .friendTab.socialListTab:hover::after,
+.friendlist .quickAccessFriendsMessageDismiss:hover::after,
+.friendlist .chatRoomListContainer .ChatRoomListGroupItem_header:hover::after {
+    opacity: 1;
+}
+
+/* Unread glow: follows the row's round corner, Mocha yellow */
+.friendlist .ChatUnreadMessageIndicator {
+    left: 0 !important;
+    border-radius: 16px 0 0 16px !important;
+    background: radial-gradient(at 0% 50%, rgba(249, 226, 175, 0.55) 0%, rgba(249, 226, 175, 0.12) 45%, transparent 75%) !important;
+}
+.friendlist .ChatUnreadMessageIndicator .chatUnreadCircle {
+    width: 6px !important;
+    height: 6px !important;
+    background: #f9e2af !important;
+}
+
+/*
+! Recent chats tab (recent-chats add-on): toolbar as a dock, round search
+! field, round fallback avatars, Mocha text colours.
+*/
+.friendlist .rcp-toolbar {
+    box-sizing: border-box;
+    min-height: 44px;
+    margin: 0 0 8px !important;
+    padding: 6px 8px 6px 10px !important;
+    border-radius: 16px !important;
+    background: rgba(24, 24, 37, 0.55) !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9) !important;
+    align-items: center;
+}
+.friendlist .rcp-toolbar .rcp-search-container { border-radius: 10px !important; }
+.friendlist .rcp-toolbar input.rcp-search {
+    height: 30px !important;
+    border-radius: 10px !important;
+    background-color: #181825 !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9) !important;
+    color: #cdd6f4 !important;
+    caret-color: #89b4fa;
+    background-position: 8px 50% !important;
+    padding-left: 30px !important;
+    transition: box-shadow 150ms ease-out;
+}
+.friendlist .rcp-toolbar input.rcp-search:focus {
+    box-shadow: inset 0 0 0 2px #89b4fa !important;
+}
+.friendlist .rcp-toolbar input.rcp-search::placeholder { color: #6c7086 !important; }
+.friendlist .rcp-toolbar .rcp-search-container { height: 30px !important; }
+.friendlist .rcp-toolbar .rcp-refresh { color: #a6adc8 !important; transition: color 150ms ease-out; }
+.friendlist .rcp-toolbar .rcp-refresh:hover { color: #89b4fa !important; }
+
+.friendlist .rcp-row .rcp-avatar-holder { border-radius: 50% !important; }
+.friendlist .rcp-row .rcp-avatar-fallback {
+    border: 0 !important;
+    border-radius: 50% !important;
+    background: #313244 !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9) !important;
+    color: #89b4fa !important;
+}
+.friendlist .rcp-row .rcp-snippet,
+.friendlist .rcp-row .rcp-snippet-text { color: #a6adc8 !important; }
+.friendlist .rcp-row .rcp-time { color: #6c7086 !important; }
+.friendlist .rcp-row .rcp-unread {
+    background: rgba(249, 226, 175, 0.18) !important;
+    color: #f9e2af !important;
+    border-radius: 999px !important;
+}

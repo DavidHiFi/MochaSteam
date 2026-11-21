@@ -3,6 +3,22 @@
 }
 
 
+/*
+& Downloads page
+*/
+.RGNMWtyj73_-WdhflrmuY:has(> .st-downloads-sidebar) {
+    flex-direction: row;
+}
+.RGNMWtyj73_-WdhflrmuY:has(> .st-downloads-sidebar) > ._3BFcmjAaMyP6GTPwc0VyWi {
+    min-width: 0;
+}
+
+/** Store page opened from the downloads page */
+.RGNMWtyj73_-WdhflrmuY[style*="display: none;"] > .st-downloads-sidebar {
+    flex-shrink: 1;
+}
+
+
 
 /*
 & Home and Collections
@@ -90,12 +106,11 @@
     height: auto;
     margin: 4px;
     padding: 4px;
-    border: 2px solid rgb(var(--st-color-2));
+    /* One edge per control (2026-11-09): the button keeps its resting edge
+       and hover ring; the grid inside has no second rounded border. */
+    border: 2px solid transparent;
     border-radius: 6px;
     transition: all 0.2s ease-in-out;
-}
-._3x1HklzyDs4TEjACrRO2tB .xeuK3OqQYpIbPs1mCIS0k:hover .nC-pL16iUnIRcaj1UVnwq {
-    border: 2px solid rgb(var(--st-color-5));
 }
 
 /*^ Squares */
@@ -217,6 +232,36 @@
     background-color: rgb(var(--st-color-1)) !important;
 }
 
+/*
+! Search + filter as one joined control (2026-11-22).
+! The wrapper owns the edge: the global input rule (mocha-full.css) drew a second
+! 12px ring inside it, so the corners looked thin and the right end looked round.
+! The button tucks 2px under so the two 2px edges share one line at the joint,
+! and whichever half is hovered or focused sits on top so its ring shows whole.
+*/
+._3x1HklzyDs4TEjACrRO2tB ._20QAC4WMXm8qFE8waUT5oo ._12vo5L1hsNGdao6_ssuirS .DialogTextInputBase:not(#a):not(#b) {
+    border: 0 !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    border-radius: var(--st-border-radius) 0 0 var(--st-border-radius) !important;
+}
+._3x1HklzyDs4TEjACrRO2tB ._20QAC4WMXm8qFE8waUT5oo ._12vo5L1hsNGdao6_ssuirS:not(#a) {
+    position: relative;
+    border-radius: var(--st-border-radius) 0 0 var(--st-border-radius) !important;
+}
+._3x1HklzyDs4TEjACrRO2tB ._20QAC4WMXm8qFE8waUT5oo .vCCmYvn9yQ_V8CpKupllU:not(#a) {
+    position: relative;
+    margin-left: -2px !important;
+    border-radius: 0 var(--st-border-radius) var(--st-border-radius) 0 !important;
+}
+._3x1HklzyDs4TEjACrRO2tB ._20QAC4WMXm8qFE8waUT5oo ._12vo5L1hsNGdao6_ssuirS:is(:hover, :focus-within),
+._3x1HklzyDs4TEjACrRO2tB ._20QAC4WMXm8qFE8waUT5oo .vCCmYvn9yQ_V8CpKupllU:is(:hover, :focus-visible) {
+    z-index: 1;
+}
+._3x1HklzyDs4TEjACrRO2tB ._20QAC4WMXm8qFE8waUT5oo ._12vo5L1hsNGdao6_ssuirS:focus-within:not(#a) {
+    box-shadow: inset 0 0 0 2px rgba(137, 180, 250, 0.85) !important;
+}
+
 
 /*
 ! Divider
@@ -242,13 +287,13 @@
     border-radius: 0 0 var(--st-border-radius) var(--st-border-radius);
     background-color: rgb(var(--st-color-2));
 }
-body.QsvsRVwbsApgKt1MhM0fz:has(._3E5iVG630BkOHTaJJaMEMw) ._1ijTaXJJA5YWl_fW2IxcaT {
+body.QsvsRVwbsApgKt1MhM0fz.st-has-3e5i ._1ijTaXJJA5YWl_fW2IxcaT {
     margin-bottom: calc(90px + 6px + 44px);
 }
-body.QsvsRVwbsApgKt1MhM0fz:has(._1_yS5UP7el0aN4vntx3dx .wi0pDywRgOCxhG7OqQNaA):has(._3E5iVG630BkOHTaJJaMEMw) ._1ijTaXJJA5YWl_fW2IxcaT {
+body.QsvsRVwbsApgKt1MhM0fz.st-has-download-active.st-has-3e5i ._1ijTaXJJA5YWl_fW2IxcaT {
     margin-bottom: calc(90px + 6px + 49px + 44px + 6px);
 }
-body.QsvsRVwbsApgKt1MhM0fz:has(._1_yS5UP7el0aN4vntx3dx .wi0pDywRgOCxhG7OqQNaA) ._1ijTaXJJA5YWl_fW2IxcaT {
+body.QsvsRVwbsApgKt1MhM0fz.st-has-download-active ._1ijTaXJJA5YWl_fW2IxcaT {
     margin-bottom: calc(90px + 6px + 49px);
 }
 
@@ -272,7 +317,7 @@ body.QsvsRVwbsApgKt1MhM0fz:has(._1_yS5UP7el0aN4vntx3dx .wi0pDywRgOCxhG7OqQNaA) .
     border-radius: var(--st-border-radius);
     background: none;
     background-color: rgb(var(--st-color-1));
-    box-shadow: inset 0 0 0 1px var(--st-edge);
+    box-shadow: inset 0 0 0 2px var(--st-edge);
 }
 ._3x1HklzyDs4TEjACrRO2tB ._2sYIghGVXJr6tsQVvcryy8:hover {
     background-color: rgb(var(--st-color-3));
@@ -284,16 +329,32 @@ body.QsvsRVwbsApgKt1MhM0fz:has(._1_yS5UP7el0aN4vntx3dx .wi0pDywRgOCxhG7OqQNaA) .
     height: unset;
     display: flex;
     align-items: center;
-    padding: 0 2px 0 4px;
+    padding: 0 2px;
+}
+/* The 20px svg overflowed the 16px box and painted white (Steam default);
+   theme it to the header's subtext1 and let the 16px box centre it. */
+._3x1HklzyDs4TEjACrRO2tB ._2sYIghGVXJr6tsQVvcryy8 .SVGIcon_PlusCircle {
+    fill: rgb(var(--st-text-soft, 186, 194, 222)) !important;
+    stroke: rgba(186, 194, 222, 0.55) !important;
 }
 
 
-/** Title */
+/** Title and count */
 ._3x1HklzyDs4TEjACrRO2tB ._2sYIghGVXJr6tsQVvcryy8 ._2mZ8LlvoUiyeEUtIWuTri {
     height: unset;
-    /* Fira Code caps sit 3.5px above the line box centre; this centres them in the pill */
+}
+/* Baseline-align the count "(58)" with the title and drop the old 1px shift:
+   the count's 12px box put its ink 4px above the title's ink (measured live
+   2026-11-07). Baselines put both inks on one line; the -1.5px then centres
+   that ink on the 22px pill centre, level with the Â± icon bar (pixel-measured
+   on the 4x capture: ink centre 82 vs pill centre 75.5 at 4x = 1.6px). */
+._3x1HklzyDs4TEjACrRO2tB ._2sYIghGVXJr6tsQVvcryy8 ._3cV3O8FnPQqpJO5kIMUlLX {
+    align-items: baseline;
+}
+._3x1HklzyDs4TEjACrRO2tB ._2sYIghGVXJr6tsQVvcryy8 ._2mZ8LlvoUiyeEUtIWuTri,
+._3x1HklzyDs4TEjACrRO2tB ._2sYIghGVXJr6tsQVvcryy8 ._29uten9Yy8q-n7woDEOXVF {
     position: relative;
-    top: 3.5px;
+    top: -1.5px;
 }
 
 
@@ -337,7 +398,7 @@ body.QsvsRVwbsApgKt1MhM0fz:has(._1_yS5UP7el0aN4vntx3dx .wi0pDywRgOCxhG7OqQNaA) .
     overflow: hidden;
     white-space: nowrap;
     min-width: 0;
-    color: rgb(166, 173, 200);
+    color: rgb(var(--st-text-dim, 166, 173, 200));
     position: relative;
 }
 
@@ -351,13 +412,13 @@ body.QsvsRVwbsApgKt1MhM0fz:has(._1_yS5UP7el0aN4vntx3dx .wi0pDywRgOCxhG7OqQNaA) .
     color: rgb(var(--st-accent-1));
 }
 ._3x1HklzyDs4TEjACrRO2tB ._2-O4ZG0KrnSrzISHBKctFQ._2ws8DONH9fxQjPXEmRpujE span:not(.pdb-dot):not([data-st-hover-text]) {
-    color: rgb(205, 214, 244);
+    color: rgb(var(--st-text-strong, 205, 214, 244));
 }
 
 ._3x1HklzyDs4TEjACrRO2tB ._2-O4ZG0KrnSrzISHBKctFQ span:not(.pdb-dot)::before {
     content: attr(data-st-hover-text);
     display: block;
-    color: rgb(166, 173, 200);
+    color: rgb(var(--st-text-dim, 166, 173, 200));
     will-change: transform;
     transform: translate3d(0, -50%, 0);
     backface-visibility: hidden;
@@ -371,7 +432,7 @@ body.QsvsRVwbsApgKt1MhM0fz:has(._1_yS5UP7el0aN4vntx3dx .wi0pDywRgOCxhG7OqQNaA) .
 }
 
 ._3x1HklzyDs4TEjACrRO2tB ._2-O4ZG0KrnSrzISHBKctFQ._2ws8DONH9fxQjPXEmRpujE span:not(.pdb-dot)::before {
-    color: rgb(205, 214, 244);
+    color: rgb(var(--st-text-strong, 205, 214, 244));
 }
 
 ._3x1HklzyDs4TEjACrRO2tB ._2-O4ZG0KrnSrzISHBKctFQ:hover span:not(.pdb-dot)::before {
@@ -434,7 +495,7 @@ highlight (square bottom edge, 2026-10-05).
 /*
 & Download bar
 */
-body:not(:has(._1ijTaXJJA5YWl_fW2IxcaT)) ._1_yS5UP7el0aN4vntx3dx,
+body:not(.st-has-game-list) ._1_yS5UP7el0aN4vntx3dx,
 ._1_yS5UP7el0aN4vntx3dx:not(:has(.wi0pDywRgOCxhG7OqQNaA)) {
     height: 0 !important;
 }
@@ -445,12 +506,12 @@ body:not(:has(._1ijTaXJJA5YWl_fW2IxcaT)) ._1_yS5UP7el0aN4vntx3dx,
     left: 16px;
     height: 49px;
 }
-body:has(._3E5iVG630BkOHTaJJaMEMw) ._1_yS5UP7el0aN4vntx3dx {
+body.st-has-3e5i ._1_yS5UP7el0aN4vntx3dx {
     bottom: calc(90px + 44px + 6px);
 }
 
 
-body:not(:has(._1ijTaXJJA5YWl_fW2IxcaT)) ._1_yS5UP7el0aN4vntx3dx ._3vCzSrrXZzZjVJFZNg9SGu,
+body:not(.st-has-game-list) ._1_yS5UP7el0aN4vntx3dx ._3vCzSrrXZzZjVJFZNg9SGu,
 ._1_yS5UP7el0aN4vntx3dx:not(:has(.wi0pDywRgOCxhG7OqQNaA)) ._3vCzSrrXZzZjVJFZNg9SGu {
     visibility: hidden !important;
     height: 0 !important;
@@ -557,7 +618,7 @@ div[style*="height: 0px;"]:has(> ._2iJsgdTIX9Tj23rWnB7Q-c) {
 /*
 & Userpanel
 */
-body:not(:has(._1ijTaXJJA5YWl_fW2IxcaT)) ._3cykd-VfN_xBxf3Qxriccm {
+body:not(.st-has-game-list) ._3cykd-VfN_xBxf3Qxriccm {
     visibility: hidden;
 }
 ._3cykd-VfN_xBxf3Qxriccm {
@@ -724,17 +785,43 @@ body:not(:has(._1ijTaXJJA5YWl_fW2IxcaT)) ._3cykd-VfN_xBxf3Qxriccm {
 /*
 & Resize Divider
 */
+/* Library sidebar resize handle: nothing is drawn. The grab strip is the sidebar's own right edge
+   (the 12px divider keeps its 16px footprint; ::before reaches 4px into the sidebar and 4px past it).
+   It shows ew-resize, and the sidebar's own edge lights up blue to mauve on hover and while dragging. */
 ._276E6ijBpjMA2_iTxNhhjc {
-    margin: auto 6px;
-    width: 4px;
-    height: 240px;
-    border-radius: var(--st-border-radius);
-    background-color: rgb(var(--st-accent-1));
-    transition: all 0.2s ease-in-out;
+    position: relative;
+    z-index: 4;
+    flex: none;
+    align-self: stretch;
+    width: 12px;
+    height: auto;
+    margin: 0 2px;
+    border-radius: 0;
+    background: none;
+    cursor: ew-resize;
+    transition: none;
 }
-._276E6ijBpjMA2_iTxNhhjc:hover, ._276E6ijBpjMA2_iTxNhhjc:focus, ._276E6ijBpjMA2_iTxNhhjc:active {
-    height: 280px;
-    background-color: rgb(var(--st-accent-2)) !important;
+._276E6ijBpjMA2_iTxNhhjc::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -6px;
+    right: -2px;
+    width: auto;
+    background: none;
+}
+._276E6ijBpjMA2_iTxNhhjc::after {
+    content: none;
+}
+._276E6ijBpjMA2_iTxNhhjc:hover,
+._276E6ijBpjMA2_iTxNhhjc:focus,
+._276E6ijBpjMA2_iTxNhhjc:active {
+    height: auto;
+    background: none !important;
+}
+._9sPoVBFyE_vE87mnZJ5aB.LeftListSizableContainer:has(+ ._276E6ijBpjMA2_iTxNhhjc:is(:hover, :active))::after {
+    opacity: 1;
 }
 
 
@@ -749,7 +836,7 @@ body:not(:has(._1ijTaXJJA5YWl_fW2IxcaT)) ._3cykd-VfN_xBxf3Qxriccm {
 ._3x1HklzyDs4TEjACrRO2tB {
     background-color: var(--st-sidebar-bg, rgba(24, 24, 37, 0.8)) !important;
     border-radius: var(--st-border-radius);
-    box-shadow: inset 0 0 0 1px var(--st-edge-strong, rgb(108, 112, 134));
+    box-shadow: inset 0 0 0 2px var(--st-edge-strong, rgb(108, 112, 134));
     /* Frost filter, same value as the top strip and the content pane. The fill
        stays at 0.9 on purpose (0.8 is what let a bright app behind the window
        through as a lighter block), so most of the panel is fill and only the
@@ -764,6 +851,13 @@ body:not(:has(._1ijTaXJJA5YWl_fW2IxcaT)) ._3cykd-VfN_xBxf3Qxriccm {
 ._3x1HklzyDs4TEjACrRO2tB ._20QAC4WMXm8qFE8waUT5oo,
 ._3x1HklzyDs4TEjACrRO2tB ._1ijTaXJJA5YWl_fW2IxcaT {
     background-color: transparent !important;
+}
+
+/* The Home row and the filter block share one panel now, so no dead gap
+   between them: the same 6px rhythm as the rows inside. */
+._3x1HklzyDs4TEjACrRO2tB ._2TKEazUUS3TlniZfpc8OOe {
+    margin-bottom: 0;
+    padding-bottom: 0;
 }
 
 /* The hard divider that used to cut the search block off the game list */
@@ -784,7 +878,7 @@ body:not(:has(._1ijTaXJJA5YWl_fW2IxcaT)) ._3cykd-VfN_xBxf3Qxriccm {
 ._3cykd-VfN_xBxf3Qxriccm ._2Szzh5sKyGgnLUR870zbDE,
 ._3cykd-VfN_xBxf3Qxriccm ._1TdaAqMFadi0UTqilrkelR,
 ._3cykd-VfN_xBxf3Qxriccm ._3yD46y5pd3zOGR7CzKs0mC {
-    box-shadow: inset 0 0 0 1px var(--st-edge, rgba(88, 91, 112, 0.7)) !important;
+    box-shadow: inset 0 0 0 2px var(--st-edge, rgba(88, 91, 112, 0.7)) !important;
 }
 
 /*
@@ -799,15 +893,21 @@ body:not(:has(._1ijTaXJJA5YWl_fW2IxcaT)) ._3cykd-VfN_xBxf3Qxriccm {
 & on top with the same 6px gap, so the two read as one stack instead of the
 & download bar floating wider than the user panel.
 */
-body:has(._3x1HklzyDs4TEjACrRO2tB) ._1_yS5UP7el0aN4vntx3dx {
+body.st-has-library ._1_yS5UP7el0aN4vntx3dx {
     left: calc(16px + 6px) !important;
-    width: calc(var(--st-fixed-sidebar-width, 400px) - 12px) !important;
+    width: calc(var(--st-live-sidebar-width, var(--st-fixed-sidebar-width, 400px)) - 12px) !important;
     bottom: 106px !important;
 }
-body:has(._3x1HklzyDs4TEjACrRO2tB):not(:has(._1_yS5UP7el0aN4vntx3dx .wi0pDywRgOCxhG7OqQNaA)) ._1_yS5UP7el0aN4vntx3dx {
+@container style(--st-option-sidebarOnRight: on) {
+    body.st-has-library ._1_yS5UP7el0aN4vntx3dx {
+        left: unset !important;
+        right: calc(16px + 6px) !important;
+    }
+}
+body.st-has-library:not(.st-has-download-active) ._1_yS5UP7el0aN4vntx3dx {
     height: 44px !important;
 }
-body:has(._3x1HklzyDs4TEjACrRO2tB):has(._3E5iVG630BkOHTaJJaMEMw) ._1_yS5UP7el0aN4vntx3dx {
+body.st-has-library.st-has-3e5i ._1_yS5UP7el0aN4vntx3dx {
     bottom: 156px !important;
 }
 
@@ -815,14 +915,12 @@ body:has(._3x1HklzyDs4TEjACrRO2tB):has(._3E5iVG630BkOHTaJJaMEMw) ._1_yS5UP7el0aN
 & The collections grid icon used the same Mocha fill as the button behind it,
 & so it disappeared into a flat blob. Lift the squares onto surface1/2.
 */
-._3x1HklzyDs4TEjACrRO2tB .nC-pL16iUnIRcaj1UVnwq {
-    border-color: rgba(var(--st-surface-1, 69, 71, 90), 0.6) !important;
+._3x1HklzyDs4TEjACrRO2tB .nC-pL16iUnIRcaj1UVnwq,
+._3x1HklzyDs4TEjACrRO2tB .xeuK3OqQYpIbPs1mCIS0k:hover .nC-pL16iUnIRcaj1UVnwq {
+    border-color: transparent !important;
 }
 ._3x1HklzyDs4TEjACrRO2tB .nC-pL16iUnIRcaj1UVnwq ._2tyaVs9BpqcW068aaOrO56 {
     background-color: rgb(var(--st-surface-1, 69, 71, 90)) !important;
-}
-._3x1HklzyDs4TEjACrRO2tB .xeuK3OqQYpIbPs1mCIS0k:hover .nC-pL16iUnIRcaj1UVnwq {
-    border-color: rgb(var(--st-surface-2, 88, 91, 112)) !important;
 }
 ._3x1HklzyDs4TEjACrRO2tB .xeuK3OqQYpIbPs1mCIS0k:hover .nC-pL16iUnIRcaj1UVnwq ._2tyaVs9BpqcW068aaOrO56 {
     background-color: rgb(var(--st-surface-2, 88, 91, 112)) !important;
@@ -861,10 +959,10 @@ body:has(._3x1HklzyDs4TEjACrRO2tB):has(._3E5iVG630BkOHTaJJaMEMw) ._1_yS5UP7el0aN
 ._3cykd-VfN_xBxf3Qxriccm {
     bottom: 16px !important;
 }
-body:has(._3x1HklzyDs4TEjACrRO2tB) ._1_yS5UP7el0aN4vntx3dx {
+body.st-has-library ._1_yS5UP7el0aN4vntx3dx {
     bottom: 106px !important;
 }
-body:has(._3x1HklzyDs4TEjACrRO2tB):has(._3E5iVG630BkOHTaJJaMEMw) ._1_yS5UP7el0aN4vntx3dx {
+body.st-has-library.st-has-3e5i ._1_yS5UP7el0aN4vntx3dx {
     bottom: 156px !important;
 }
 
@@ -875,12 +973,12 @@ body:has(._3x1HklzyDs4TEjACrRO2tB):has(._3E5iVG630BkOHTaJJaMEMw) ._1_yS5UP7el0aN
 /* Collection headers (Lua Tools, Soundtracks...): #cae4fb to subtext1 */
 ._3x1HklzyDs4TEjACrRO2tB ._3cV3O8FnPQqpJO5kIMUlLX,
 ._3x1HklzyDs4TEjACrRO2tB ._3cV3O8FnPQqpJO5kIMUlLX .SectionName {
-    color: rgb(186, 194, 222);
+    color: rgb(var(--st-text-soft, 186, 194, 222));
 }
 /* View picker label and the Downloads line: #aeaeaf and #8b929a to subtext0 */
 ._3x1HklzyDs4TEjACrRO2tB .ViewName,
 ._1_yS5UP7el0aN4vntx3dx .ip-YZhijAMZcuRoXBGiye ._3wJnTtcTLEp0R7eQj_mK8Y {
-    color: rgb(166, 173, 200);
+    color: rgb(var(--st-text-dim, 166, 173, 200));
 }
 /* Signed-out account name: Steam's #515151 read at 2.2:1; overlay1 keeps the
    "offline grey" meaning at about 4.7:1 */
@@ -892,6 +990,13 @@ body:has(._3x1HklzyDs4TEjACrRO2tB):has(._3E5iVG630BkOHTaJJaMEMw) ._1_yS5UP7el0aN
 /*
 & URL bar above store pages: same hairline as every other card
 */
-[class~="URLBar"] {
-    box-shadow: inset 0 0 0 1px var(--st-edge) !important;
+.URLBar {
+    box-shadow: inset 0 0 0 2px var(--st-edge) !important;
+}
+
+/* ProtonDB "unknown" dot (tools, workshop rows): the plugin draws a 4px gradient dot with no
+   ring. Give it the same 6px fill and 1px ring as every other tier dot. */
+._3x1HklzyDs4TEjACrRO2tB ._1vO6BoiVslZgs1kqDGdUs8[data-pdb-tier="unknown"]::before {
+    background: rgb(0, 0, 0) !important;
+    box-shadow: rgba(0, 0, 0, 0.45) 0 0 0 1px !important;
 }

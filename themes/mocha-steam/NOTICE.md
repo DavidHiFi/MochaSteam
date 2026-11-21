@@ -14,6 +14,9 @@ The Catppuccin Mocha palette is from https://github.com/catppuccin/catppuccin,
 MIT licensed. Font and icon assets retain their original names and embedded
 license information.
 
-Native Windows acrylic is provided by a separate patched DWMX plugin by
-ejalxndr. It is Apache-2.0 licensed and distributed with its license in the
-complete Millennium bundle, not in this theme-only repository.
+Later SpaceTheme fixes (the Size on Disk icon and the Downloads page sidebar)
+were ported by hand on 2026-11-21.
+
+Frosted menu windows and desktop pop-ups come from the separate MochaSteam
+Desktop Fixes plugin (MIT, DavidHiFi), shipped in the millennium-stuff bundle,
+not in this theme-only repository.

@@ -1,0 +1,194 @@
+/*
+& Mocha settings, pass 1 (2026-11-14). The last stock pieces of the client
+& Settings window: toggle knobs, slider handles, the storage bar, the game
+& recording intro, the voice meter, the in-game text field, the notification
+& pickers, and a ring that stays on the selected page in the sidebar.
+*/
+
+/* Sidebar: the selected page keeps the blue to mauve ring. hover-rings.css
+   draws it on ::after for hover; this holds it on. */
+body .PagedSettingsDialog_PageListItem.Active:not(#a) {
+    box-shadow: none !important;
+    color: rgb(205, 214, 244) !important;
+}
+body .PagedSettingsDialog_PageListItem.Active:not(#a)::after {
+    opacity: 1 !important;
+}
+body .PagedSettingsDialog_PageListItem_Title:not(#a) {
+    color: inherit;
+}
+
+/* Text tints */
+body .SettingsDialogBodyText:not(#a) {
+    color: rgb(186, 194, 222) !important;
+}
+body .DialogDropDown .Button:not(#a),
+body .DriveUsageNumber:not(#a) {
+    color: rgb(166, 173, 200) !important;
+}
+body .DriveUsageText:not(#a) {
+    color: rgb(205, 214, 244) !important;
+}
+
+/* Toggles: on shows the gradient rail with a dark knob */
+body .Toggle .ToggleSwitch:not(#a) {
+    background: rgb(127, 132, 156) !important;
+}
+body .Toggle.On .ToggleRail:not(#a) {
+    background: linear-gradient(135deg, rgb(137, 180, 250), rgb(203, 166, 247)) !important;
+    box-shadow: none !important;
+}
+body .Toggle.On .ToggleSwitch:not(#a) {
+    background: rgb(17, 17, 27) !important;
+}
+
+/* Sliders */
+body .SliderHandle:not(#a) {
+    background: rgb(205, 214, 244) !important;
+    box-shadow: 0 0 0 2px rgb(137, 180, 250) !important;
+}
+body .SliderControlAndNotches:hover .SliderHandle:not(#a) {
+    box-shadow: 0 0 0 2px rgb(203, 166, 247) !important;
+}
+
+/* Voice meter */
+body .ProgressBar:not(#a) {
+    background: rgba(24, 24, 37, 0.7) !important;
+    box-shadow: inset 0 0 0 2px var(--st-edge) !important;
+}
+body .ProgressBar .Percent:not(#a) {
+    background: linear-gradient(90deg, rgb(137, 180, 250), rgb(203, 166, 247)) !important;
+}
+
+/* Text field (In Game) */
+body input.DialogInput:not(#a) {
+    border-radius: 12px !important;
+    background: rgba(24, 24, 37, 0.7) !important;
+    box-shadow: inset 0 0 0 2px var(--st-edge) !important;
+    color: rgb(205, 214, 244) !important;
+}
+body input.DialogInput:not(#a):focus {
+    box-shadow: inset 0 0 0 2px rgb(137, 180, 250) !important;
+}
+
+/* Notification pickers (new-style control boxes) */
+body .ControlBox.Variant-basic:not(#a) {
+    position: relative;
+    border-radius: 12px !important;
+    background: rgba(49, 50, 68, 0.6) !important;
+    box-shadow: inset 0 0 0 2px var(--st-edge) !important;
+    color: rgb(205, 214, 244) !important;
+}
+body .ControlBox.Variant-basic:not(#a):hover {
+    background: rgba(69, 71, 90, 0.7) !important;
+}
+body .ControlBox.Variant-basic:not(#a)::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    border-radius: inherit;
+    padding: 2px;
+    background: linear-gradient(135deg, rgb(137, 180, 250), rgb(203, 166, 247));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.15s ease-out;
+    pointer-events: none;
+}
+body .ControlBox.Variant-basic:not(#a):hover::after,
+body .ControlBox.Variant-basic:not(#a):focus-visible::after {
+    opacity: 1;
+}
+
+/* Storage bar: one Mocha colour per kind of data */
+body .DriveUsageIndicator:not(#a) {
+    background-image: repeating-linear-gradient(315deg, rgb(49, 50, 68) 0 10px, rgb(41, 41, 58) 10px 20px) !important;
+    box-shadow: inset 0 0 0 2px var(--st-edge) !important;
+}
+body .DriveUsageGames:not(#a) { background-color: rgb(137, 180, 250) !important; }
+body .DriveUsageDLC:not(#a) { background-color: rgb(203, 166, 247) !important; }
+body .DriveUsageWorkshop:not(#a) { background-color: rgb(166, 227, 161) !important; }
+body .DriveUsageUpdates:not(#a) { background-color: rgb(250, 179, 135) !important; }
+body .DriveUsageShader:not(#a) { background-color: rgb(245, 194, 231) !important; }
+body .DriveUsageMedia:not(#a) { background-color: rgb(148, 226, 213) !important; }
+body .DriveUsageOther:not(#a),
+body .DriveUsageOtherDot:not(#a) { background-color: rgb(249, 226, 175) !important; }
+body .DriveUsageFreeSpace:not(#a) { background-color: rgb(69, 71, 90) !important; }
+body .DriveSettingsButton:not(#a) {
+    border: none !important;
+    background: rgba(49, 50, 68, 0.6) !important;
+    box-shadow: inset 0 0 0 2px var(--st-edge) !important;
+}
+body .DriveSettingsButton:not(#a):hover {
+    background: rgba(69, 71, 90, 0.7) !important;
+}
+
+/* Game recording intro */
+body .SinglePageIntro:not(#a) {
+    border-radius: 16px !important;
+    /* Solid: it covers the settings page, which must not read through */
+    background: rgb(24, 24, 37) !important;
+    background-image: radial-gradient(circle at 50% 0%, rgba(137, 180, 250, 0.12), transparent 70%) !important;
+    box-shadow: inset 0 0 0 2px var(--st-edge) !important;
+    color: rgb(186, 194, 222) !important;
+}
+/* The dim layer around the intro. A blur here paints the whole panel black in
+   this window, so it is a solid crust fill: even 4% let the page's edges show. */
+body .IntroContainer:not(#a) {
+    background: rgb(17, 17, 27) !important;
+    border-radius: 16px !important;
+}
+/* The page's top scroll fade also faded the intro's fill, leaving a square
+   step beside the scrollbar gutter. No fade while the intro is open. */
+body .DialogBody:has(> .IntroContainer):not(#a) {
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+}
+body .SinglePageHeading:not(#a) {
+    color: rgb(249, 226, 175) !important;
+}
+body .SinglePageIntro .IconCircle:not(#a) {
+    background-color: rgb(249, 226, 175) !important;
+    color: rgb(17, 17, 27) !important;
+}
+
+
+/*
+! Pass 1 fixes after the first recheck
+*/
+body .DialogContent_InnerWidth .DialogHeader:not(#a),
+body .TextWeight:not(#a),
+body .SinglePageIntro .Tagline:not(#a) {
+    color: rgb(205, 214, 244) !important;
+}
+body .EntryValue:not(#a),
+body .Details:not(#a),
+body .DialogBody .Button:not(#a),
+body .Truncate:not(#a),
+body .AppHeaderValue:not(#a),
+body .SettingsDialogDescriptionText:not(#a),
+body .DialogBody .Body:not(#a),
+body .DialogBody .Header:not(#a) {
+    color: rgb(166, 173, 200) !important;
+}
+body a.LearnMore:not(#a) {
+    color: rgb(137, 180, 250) !important;
+}
+body .SinglePageIntro .Title:not(#a) {
+    color: rgb(249, 226, 175) !important;
+}
+body .Pip:not(#a) {
+    background-color: rgb(205, 214, 244) !important;
+}
+body .DialogCheckbox:not(#a) {
+    border-radius: 6px !important;
+    background-color: rgba(49, 50, 68, 0.6) !important;
+    box-shadow: inset 0 0 0 2px var(--st-edge) !important;
+}
+body .SinglePageIntro .Bullet.Muted .IconCircle:not(#a) {
+    background-color: rgb(88, 91, 112) !important;
+    color: rgb(205, 214, 244) !important;
+}

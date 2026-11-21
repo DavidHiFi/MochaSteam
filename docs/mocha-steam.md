@@ -1,25 +1,28 @@
 # Mocha Steam
 
-DavidHiFi's Catppuccin Mocha fork of SpaceTheme by SpaceEnergy. The dedicated [MochaSteam repository](https://github.com/DavidHiFi/MochaSteam) has a root-level `skin.json`. The bundle keeps its mirror in `themes/mocha-steam` alongside the patched acrylic plugin.
+DavidHiFi's Catppuccin Mocha fork of SpaceTheme by SpaceEnergy. The dedicated [MochaSteam repository](https://github.com/DavidHiFi/MochaSteam) has a root-level `skin.json`. This bundle keeps a mirror in `themes/mocha-steam` next to the MochaSteam Desktop Fixes plugin.
 
 ## Current behavior
 
-Mocha colors, rounded controls and Blue/Lavender accents extend across Library, Store, Console, settings, friends/chat, menus and notifications. The SpaceTheme titlebar label is removed. Options retain the modular upstream structure with an additional FiraCode Nerd Font choice. Fonts must be installed separately.
+Mocha colours, rounded controls and blue to mauve accents cover Library, Store, Console, settings, friends and chat, menus and notifications. Every hover gets the same 2px blue to mauve ring, and resting borders use the dark Mocha edge. The SpaceTheme title bar label is removed. The top bar keeps its nav pill in a narrow window: one row down to 940px wide, then the menu and nav sit centred on two rows. Options keep the modular upstream structure, with extra font choices. Fonts must be installed separately.
 
-Floating cards use a 72% mantle tint and a 20 px CSS backdrop filter. Transparent menu shells avoid square canvas pixels outside rounded cards. Interior dialogs stay transparent to avoid stacked tinted blur layers. Smaller controls and caption strips have lighter filters.
+Floating cards use a Mocha tint with a CSS backdrop blur. Menu shells are clear outside the rounded card, so no square corners show. Inner dialogs stay clear to avoid stacked blur layers.
 
-CSS blur samples content in the same page. Native Windows 11 acrylic from DWMX handles separate Steam popup windows. The backend removes WS_EX_COMPOSITED, caches materials and refreshes hidden pre-created popups once on first display. The frontend handles show, focus, visibility and creation events without polling.
+## Glass
 
-The owner's local options currently use 55% main-window tint and 50% sidebar tint with native acrylic. Existing options are preserved by the installer; new installations use `skin.json` defaults. These tint values do not substitute for blur. Without DWMX, the theme remains a dark theme.
+CSS blur only samples content inside Steam's own page. Two other pieces make the rest of the glass:
 
-Library icons, ProtonDB dots and non-Steam entries use one 6 px indicator slot with a 3 px gap. All 46 measured rendered rows aligned at icon x55 and title x80.
+- **MochaSteam Desktop Fixes** (`plugins/mochasteam-material`) gives Steam's separate menu windows and desktop toasts a real Windows frosted backdrop. It also opens the main window's frame so a title bar mod can show glass behind it, and stops the Friends list from opening at startup.
+- **A see-through main window** on the author's PC also uses a Windhawk title bar mod. Without one, the main window is a solid dark theme. Everything else still works.
+
+The author's options use 55% main window tint with "Mica & Acrylic plugin support" on. That option removes the in-page blur on the main window, because the window itself is the glass. Turn it off if your window is not see-through. Existing options are kept by the installer. New installs use the `skin.json` defaults.
+
+Steam sometimes recreates its main window after an update. The see-through setting is applied only when the window is created, so the glass turns black until Steam is restarted.
 
 ## SpaceTheme integration
 
-Integrated through `ce67165b14dc933bc21f84a51d87f9e020a1ba8d`, with Mocha colors and rounded clipping preserved. This includes hover-sidebar retention over account/download panels, dropdown styling, gift-card visibility, discovery positioning, favorite-friend status backgrounds and hidden-scrollbar hover behavior. `configs/mocha-steam-upstream.json` records the checkpoint.
+Integrated through `ce67165b14dc933bc21f84a51d87f9e020a1ba8d`, with Mocha colours and rounded clipping kept. On 2026-11-21 two later fixes were ported by hand: the Size on Disk icon, and the game sidebar on the Downloads page with its width saved. `configs/mocha-steam-upstream.json` records the checkpoint.
 
 ## Verification limits
 
-In a real Community menu stripe test, interior channel standard deviation fell from 35.47 with native acrylic disabled to 0.49 with it enabled. Red/blue backdrops changed its tint, confirming backdrop sampling. Twelve pre-created menus passed repeated display checks without a second accent application. Idle patch counts remained unchanged.
-
-These tests cover the measured menu and popup lifecycle, not every future Steam version or GPU state. See `dwmx-acrylic-plugin.md` for details.
+The narrow top bar was measured at seven window widths from 1400 to 700px with no overlap. The hover sidebar, Downloads sidebar and glass were checked on the live client on 2026-11-21 and 22. These checks cover one PC and one Steam build, not every future Steam version or graphics card.

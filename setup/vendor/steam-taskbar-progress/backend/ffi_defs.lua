@@ -41,6 +41,7 @@ BOOL    QueryFullProcessImageNameA(void*, DWORD, char*, DWORD*);
 BOOL    CloseHandle(void*);
 BOOL    FlashWindow     (HWND, BOOL);
 HRESULT CoInitializeEx  (LPVOID, DWORD);
+void    CoUninitialize  (void);
 HRESULT CoCreateInstance(const CLSID*, LPUNKNOWN, DWORD, const IID*, LPVOID*);
 int strncmp(const char*, const char*, size_t);
 ]]

@@ -8,25 +8,25 @@
     margin-bottom: calc(90px + 44px + 6px) !important;
 }
 
-body:has(._1_yS5UP7el0aN4vntx3dx .wi0pDywRgOCxhG7OqQNaA) ._3x1HklzyDs4TEjACrRO2tB ._1ijTaXJJA5YWl_fW2IxcaT {
+body.st-has-download-active ._3x1HklzyDs4TEjACrRO2tB ._1ijTaXJJA5YWl_fW2IxcaT {
     margin-bottom: calc(90px + 49px + 6px) !important;
 }
 
-body:has(._3E5iVG630BkOHTaJJaMEMw) ._3x1HklzyDs4TEjACrRO2tB ._1ijTaXJJA5YWl_fW2IxcaT {
+body.st-has-3e5i ._3x1HklzyDs4TEjACrRO2tB ._1ijTaXJJA5YWl_fW2IxcaT {
     margin-bottom: calc(90px + 44px + 6px + 50px) !important;
 }
 
-body:has(._3E5iVG630BkOHTaJJaMEMw):has(._1_yS5UP7el0aN4vntx3dx .wi0pDywRgOCxhG7OqQNaA) ._3x1HklzyDs4TEjACrRO2tB ._1ijTaXJJA5YWl_fW2IxcaT {
+body.st-has-3e5i.st-has-download-active ._3x1HklzyDs4TEjACrRO2tB ._1ijTaXJJA5YWl_fW2IxcaT {
     margin-bottom: calc(90px + 49px + 6px + 50px) !important;
 }
 
 
-body:not(:has(._1ijTaXJJA5YWl_fW2IxcaT)) ._1_yS5UP7el0aN4vntx3dx,
+body:not(.st-has-game-list) ._1_yS5UP7el0aN4vntx3dx,
 body ._1_yS5UP7el0aN4vntx3dx:not(:has(.wi0pDywRgOCxhG7OqQNaA)) {
     height: 49px !important;
 }
 
-body:not(:has(._1ijTaXJJA5YWl_fW2IxcaT)) ._1_yS5UP7el0aN4vntx3dx ._3vCzSrrXZzZjVJFZNg9SGu,
+body:not(.st-has-game-list) ._1_yS5UP7el0aN4vntx3dx ._3vCzSrrXZzZjVJFZNg9SGu,
 body ._1_yS5UP7el0aN4vntx3dx:not(:has(.wi0pDywRgOCxhG7OqQNaA)) ._3vCzSrrXZzZjVJFZNg9SGu {
     visibility: visible !important;
     height: 100% !important;

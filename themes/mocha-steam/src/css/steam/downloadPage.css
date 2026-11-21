@@ -26,6 +26,8 @@
 ._3KDkLoCR8OM8xfdQysKn9t._1ashwbbBZrppDqaals3644 {
     overflow: hidden;
     height: -webkit-fill-available;
+    flex-shrink: 1;
+    min-width: 0;
     margin: 12px 0 12px 12px;
     border-radius: var(--st-border-radius);
 }
@@ -66,7 +68,14 @@
 ! Stats
 */
 ._20JlDJD9-uoCjNLGp_8mY6 {
-    padding: 12px;
+    min-width: max-content;
+    padding: 12px 48px 12px 12px; /* space for the settings icon */
+}
+._20JlDJD9-uoCjNLGp_8mY6 ._2XqX2Zbz7zS2_xq8AksGCu {
+    min-width: max-content;
+}
+._20JlDJD9-uoCjNLGp_8mY6 ._26UBk-6weCeV-VClfXNWJZ {
+    flex-shrink: 0;
 }
 
 
@@ -188,4 +197,30 @@
 }
 ._3mZ2rKd2RECK4q4ufmsDYX.pHDI1ddoKXceD5KL7W-4z {
     background: linear-gradient(to right, rgb(var(--st-accent-1)) 0%, rgb(var(--st-blue)) 100%);
+}
+
+/*
+! Round 2026-11-19: the graph panel was a square box inside the round page,
+! and the finished and scheduled times broke onto two or three lines.
+*/
+._3Mbhnlk1Go2j8yCdjthzc7._2KB3yVOsiRCK9qK6mwKl9c:not(#a) {
+    border-radius: 16px !important;
+    overflow: hidden !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, .9) !important;
+}
+._1SyggnJY6qbRSmbZpkK3-H.SectionItemStatus:not(#a) {
+    flex: 0 1 auto !important;
+    width: auto !important;
+    min-width: 150px !important;
+    text-align: right !important;
+}
+/* Long game names wrap onto a second line instead of being cut mid-word. */
+._1Er4SotWhGIid50maW3Lfv.DownloadItemName ._35eOQ6EeVHNV5HGBrJ1-Vu.Name:not(#a) { height: auto !important; white-space: normal !important; }
+._1Er4SotWhGIid50maW3Lfv.DownloadItemName ._35eOQ6EeVHNV5HGBrJ1-Vu.Name > span:not(#a) {
+    white-space: normal !important;
+    display: -webkit-box !important;
+    -webkit-box-orient: vertical !important;
+    -webkit-line-clamp: 2 !important;
+    overflow: hidden !important;
+    min-width: 0 !important;
 }

@@ -1,0 +1,7 @@
+{
+    "name": "mochasteam-material",
+    "common_name": "MochaSteam Desktop Fixes",
+    "description": "Native notification acrylic and quiet Friends startup.",
+    "version": "1.0.0",
+    "backendType": "lua"
+}

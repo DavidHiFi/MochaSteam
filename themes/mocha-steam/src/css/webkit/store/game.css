@@ -124,6 +124,13 @@
     display: none;
 }
 
+/* LuaTools pills: reserve room for the pinned queue buttons so they do not overlap.
+   Only applies when the pills are present (:has), so stock pages keep their layout. */
+.game_bg.application .page_title_area .apphub_OtherSiteInfo:has(.luatools-button, .luatools-restart-button) {
+    margin-right: 257px;
+}
+
+
 
 /* Sale Event Banner */
 .game_bg.application .saleEventBannerLink {

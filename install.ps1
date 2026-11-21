@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-    Installs Mocha Steam and the patched DWMX acrylic plugin into a Millennium install.
+    Installs Mocha Steam and its desktop fixes plugin (mochasteam-material) into a Millennium install.
 
 .DESCRIPTION
     Read-only audit by default: it prints what exists and what it would replace.
@@ -25,12 +25,13 @@ param(
 $ErrorActionPreference = 'Stop'
 $root = $PSScriptRoot
 $themeSrc = Join-Path $root 'themes\mocha-steam'
-$pluginSrc = Join-Path $root 'plugins\dwmx'
+$pluginSrc = Join-Path $root 'plugins\mochasteam-material'
 $themeDst = Join-Path $SteamPath 'millennium\themes\MochaSteam'
-$pluginDst = Join-Path $SteamPath 'millennium\plugins\dwmx'
+$pluginDst = Join-Path $SteamPath 'millennium\plugins\mochasteam-material'
 $backupRoot = Join-Path $SteamPath 'millennium\_backups'
 $configPath = Join-Path $SteamPath 'millennium\config\config.json'
 $themeId = 'MochaSteam'
+$pluginId = 'mochasteam-material'
 $stamp = (Get-Date -Format 'yyyyMMdd-HHmmss-fff') + '-' + [guid]::NewGuid().ToString('N').Substring(0,8)
 if ($Audit -and $Apply) { throw 'Choose -Audit or -Apply, not both.' }
 
@@ -78,8 +79,8 @@ if ($Configure) {
     $cfg = if (Test-Path -LiteralPath $configPath) { Get-Content -LiteralPath $configPath -Raw | ConvertFrom-Json } else { [pscustomobject]@{} }
     if (-not $cfg.plugins) { $cfg | Add-Member -NotePropertyName plugins -NotePropertyValue ([pscustomobject]@{}) -Force }
     if (-not $cfg.plugins.enabledPlugins) { $cfg.plugins | Add-Member -NotePropertyName enabledPlugins -NotePropertyValue @() -Force }
-    if ($cfg.plugins.enabledPlugins -notcontains 'dwmx') {
-        $cfg.plugins.enabledPlugins = @($cfg.plugins.enabledPlugins) + 'dwmx'
+    if ($cfg.plugins.enabledPlugins -notcontains $pluginId) {
+        $cfg.plugins.enabledPlugins = @($cfg.plugins.enabledPlugins) + $pluginId
     }
     if (-not $cfg.themes) { $cfg | Add-Member -NotePropertyName themes -NotePropertyValue ([pscustomobject]@{}) -Force }
     if (-not $cfg.themes.conditions) { $cfg.themes | Add-Member -NotePropertyName conditions -NotePropertyValue ([pscustomobject]@{}) -Force }
@@ -87,7 +88,7 @@ if ($Configure) {
     $opts = $cfg.themes.conditions.$themeId
     foreach ($condition in $skin.Conditions.PSObject.Properties) {
         if (-not $opts.PSObject.Properties[$condition.Name]) {
-            $value = if ($condition.Name -eq 'Mica & Acrylic plugin support') { 'yes' } else { $condition.Value.default }
+            $value = $condition.Value.default
             $opts | Add-Member -NotePropertyName $condition.Name -NotePropertyValue $value
         }
     }
@@ -97,7 +98,7 @@ if ($Configure) {
 # --- backups -------------------------------------------------------------
 $backup = Join-Path $backupRoot $stamp
 New-Item -ItemType Directory -Path $backup -Force | Out-Null
-foreach ($pair in @(@{ src = $themeDst; name = 'theme-MochaSteam' }, @{ src = $pluginDst; name = 'plugin-dwmx' })) {
+foreach ($pair in @(@{ src = $themeDst; name = 'theme-MochaSteam' }, @{ src = $pluginDst; name = "plugin-$pluginId" })) {
     if (Test-Path -LiteralPath $pair.src) {
         Step "Backup $($pair.src) -> $(Join-Path $backup $pair.name)"
         Copy-Tree $pair.src (Join-Path $backup $pair.name)
@@ -129,5 +130,5 @@ if ($Configure) {
 Write-Host ''
 Write-Host 'Done. Restart Steam, then in Millennium check:'
 Write-Host '  Themes: Mocha Steam enabled (SpaceTheme left as its own separate theme)'
-Write-Host '  Themes > Mocha Steam > General > Mica & Acrylic plugin support: yes'
+Write-Host '  Plugins: MochaSteam Desktop Fixes enabled'
 Write-Host "Restore from: $backup"

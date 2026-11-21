@@ -14,7 +14,7 @@
     Steps:
       1. Install Millennium with its official installer if it is missing (you click through it).
       2. Close Steam, if it is running (steam.exe -shutdown).
-      3. Install the Mocha Steam theme and the DWMX window styler (install.ps1).
+      3. Install the Mocha Steam theme and its desktop fixes plugin (install.ps1).
       4. Install the plugins in setup\manifest.json: release zips from GitHub, vendored copies,
          or a list of manual installs for plugins that publish no license.
       5. Merge setup\config\config.template.json into Millennium's config.json and copy
@@ -33,7 +33,7 @@
     Do not run the Millennium installer, even if Millennium is missing.
 
 .PARAMETER SkipTheme
-    Do not run install.ps1 (theme and DWMX). Used for re-runs and testing.
+    Do not run install.ps1 (theme and desktop fixes plugin). Used for re-runs and testing.
 #>
 [CmdletBinding()]
 param(
@@ -156,7 +156,7 @@ function Install-ReleasePlugin($plugin, [string]$destination) {
     }
 }
 
-$downloadable = @($manifest.plugins | Where-Object { $_.source.type -in 'release', 'vendored' })
+$downloadable = @($manifest.plugins | Where-Object { $_.source.type -in 'release', 'vendored' -or ($_.source.type -eq 'bundled' -and $_.source.path) })
 $manualPlugins = @($manifest.plugins | Where-Object { $_.source.type -eq 'manual' })
 $excludedPlugins = @($manifest.plugins | Where-Object { $_.source.type -eq 'excluded' })
 
@@ -195,7 +195,7 @@ if ($running) {
 }
 
 if (-not $SkipTheme) {
-    Step 'Theme and Window Styler (install.ps1 -Apply)'
+    Step 'Theme and desktop fixes plugin (install.ps1 -Apply)'
     & powershell.exe -NoProfile -ExecutionPolicy Bypass -File (Join-Path $repoRoot 'install.ps1') -Apply -SteamPath $SteamPath
     if ($LASTEXITCODE -ne 0) { throw "install.ps1 failed with exit code $LASTEXITCODE" }
 }
@@ -212,6 +212,12 @@ foreach ($p in $manifest.plugins) {
             Note "$($p.folder) (vendored, $($p.source.license))"
             Copy-PluginFolder (Join-Path $repoRoot $p.source.path) $destination $p
         }
+        'bundled' {
+            if ($p.source.path) {
+                Note "$($p.folder) (bundled)"
+                Copy-PluginFolder (Join-Path $repoRoot $p.source.path) $destination $p
+            }
+        }
         default { }
     }
 }
@@ -224,10 +230,10 @@ foreach ($section in 'general', 'misc', 'notifications') {
 }
 $plugins = Get-Child $cfg 'plugins'
 Set-Prop $plugins 'enabledPlugins' @($template.plugins.enabledPlugins)
-$uwpTemplate = $template.plugins.'__uwp_library_sync__'
-if ($uwpTemplate) {
-    $uwpConfig = Get-Child (Get-Child $plugins '__uwp_library_sync__') 'config'
-    foreach ($prop in $uwpTemplate.config.PSObject.Properties) { Set-Prop $uwpConfig $prop.Name $prop.Value }
+foreach ($block in $template.plugins.PSObject.Properties) {
+    if ($block.Name -eq 'enabledPlugins' -or -not $block.Value.config) { continue }
+    $pluginConfig = Get-Child (Get-Child $plugins $block.Name) 'config'
+    foreach ($prop in $block.Value.config.PSObject.Properties) { Set-Prop $pluginConfig $prop.Name $prop.Value }
 }
 $themes = Get-Child $cfg 'themes'
 Set-Prop $themes 'activeTheme' $template.themes.activeTheme

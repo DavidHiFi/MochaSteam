@@ -1,0 +1,4 @@
+/* Font weight: bold (icon fonts left alone) */
+:where(body, body *):not([class*="Icon"], [class*="icon"], [class*="fluent"], i, svg, svg *) {
+    font-weight: 700 !important;
+}

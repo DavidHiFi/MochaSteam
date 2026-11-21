@@ -20,7 +20,7 @@ body.DesktopUI .PP7LM0Ow1K5qkR8WElLpt {
     min-width: unset !important;
     max-height: 90%;
     padding: 10px !important;
-    border: 1px solid var(--st-edge-strong, rgb(108, 112, 134));
+    border: 2px solid var(--st-edge-strong, rgb(108, 112, 134));
     border-radius: var(--st-border-radius);
     background: unset;
     background-color: rgb(var(--st-mantle, 24, 24, 37));
@@ -35,27 +35,57 @@ html.ContextMenuPopup body.DesktopUI .PP7LM0Ow1K5qkR8WElLpt {
     border-radius: 8px;
 }
 
+/* Real glass (2026-11-22): once the mochasteam-material plugin has put Windows
+   acrylic on this exact menu window (html.mocha-acrylic, tint mantle at 60%),
+   the card and items drop their solid fills so the frost shows through.
+   Without the class the solid Mocha card above stays. */
+html.mocha-acrylic.ContextMenuPopup body.DesktopUI .PP7LM0Ow1K5qkR8WElLpt {
+    background-color: transparent;
+    box-shadow: inset 0 0 0 1px rgba(88, 91, 112, 0.18);
+}
+html.mocha-acrylic.ContextMenuPopup body.DesktopUI :is(._1n7Wloe5jZ6fSuvV18NNWI, ._1BAKXmqQdWRWmWX9_CbhuY) {
+    background-color: rgba(49, 50, 68, 0.22);
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.55);
+}
+html.mocha-acrylic.ContextMenuPopup body.DesktopUI :is(._1n7Wloe5jZ6fSuvV18NNWI, ._1BAKXmqQdWRWmWX9_CbhuY):hover,
+html.mocha-acrylic.ContextMenuPopup body.DesktopUI ._1n7Wloe5jZ6fSuvV18NNWI._18z-3vkWndCBO5WJgFldRK {
+    background-color: rgba(69, 71, 90, 0.5);
+}
+
 body.DesktopUI :has(._1bGewp3tfzqAF6fVTFFUOz:not([style="display: none;"])) .PP7LM0Ow1K5qkR8WElLpt {
     left: calc(16px + 12px) !important;
 }
 
 
-/* Items */
+/* Contents: no side padding, so the dividers below can reach the card's
+   side borders (the card itself keeps its 10px padding). */
+body.DesktopUI ._2EstNjFIIZm_WUSKm5Wt7n {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+/* Items (2026-11-09): resting surface0 fill + surface1 edge and text #cdd6f4
+   for contrast; hover lifts to surface1 and shows the gradient ring
+   (hover-rings.css). */
 body.DesktopUI ._1n7Wloe5jZ6fSuvV18NNWI,
 body.DesktopUI ._1BAKXmqQdWRWmWX9_CbhuY {
+    margin: 2px 0;
     padding: 6px 12px;
     font-weight: 500;
-    border-radius: var(--st-border-radius);
-    color: rgb(166, 173, 200);
+    border-radius: 10px;
+    color: rgb(var(--st-text-strong, 205, 214, 244));
+    background-color: rgba(49, 50, 68, 0.6);
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9);
+    transition: background-color 0.15s ease-out;
 }
 body.DesktopUI ._1n7Wloe5jZ6fSuvV18NNWI:hover,
 body.DesktopUI ._1BAKXmqQdWRWmWX9_CbhuY:hover {
-    color: #fff;
-    background-color: rgb(var(--st-color-2));
+    color: rgb(var(--st-text-strong, 205, 214, 244));
+    background-color: rgba(69, 71, 90, 0.85);
 }
 body.DesktopUI ._1n7Wloe5jZ6fSuvV18NNWI._18z-3vkWndCBO5WJgFldRK {
-    color: rgb(166, 173, 200);
-    background: rgb(var(--st-color-2));
+    color: rgb(var(--st-text-strong, 205, 214, 244));
+    background: rgba(69, 71, 90, 0.85);
 }
 
 
@@ -110,28 +140,31 @@ body.DesktopUI .Z5iAXBkRFGnwpXsO8ANTl._1n7Wloe5jZ6fSuvV18NNWI:has(.SVGIcon_Trash
 }
 
 
-/* Divider */
+/* Divider (2026-11-09): edge to edge. The -10px side margin cancels the
+   card's 10px padding so each line touches the card's 2px side borders.
+   Surface2 at 90%, a little lighter than before so it reads. */
 body.DesktopUI ._2jXHP0742MyApMUVUM8IFn._21GPYlKBCLsHQpTsHw_RL_,
 body.DesktopUI .WUOrULWKkGLl3ZUQdDXg8,
 body.DesktopUI .IjIBR_wDDi2N77Oz4KAT4,
 body.DesktopUI ._2kvdTEDgtIT7T9wZIzanom {
     width: auto;
-    height: 3px;
-    margin: 2px 6px;
+    height: 2px;
+    margin: 4px -10px !important;
     padding: 0;
     border: none;
-    border-radius: var(--st-border-radius);
-    background-color: rgb(var(--st-color-2)) !important;
+    border-radius: 0;
+    background-color: rgba(88, 91, 112, 0.9) !important;
 }
 
 
 /* The easy-restart-reload plugin draws its own divider with an inline
    Steam grey (#67707b); match it to the theme's dividers. */
 body.DesktopUI [data-restart-steam-root-item="separator"] {
-    height: 3px !important;
-    margin: 2px 6px;
-    border-radius: var(--st-border-radius);
-    background: rgb(var(--st-color-2)) !important;
+    width: auto !important;
+    height: 2px !important;
+    margin: 4px -10px !important;
+    border-radius: 0 !important;
+    background: rgba(88, 91, 112, 0.9) !important;
 }
 
 

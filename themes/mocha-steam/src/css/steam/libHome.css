@@ -19,7 +19,7 @@
     background-image: none;
 }
 ._2AUVZlzQq67qe3yhLZsPPB {
-    overflow-y: overlay;
+    overflow-y: scroll; /* see gamepage.css: auto relayouts on every change */
 }
 ._2AUVZlzQq67qe3yhLZsPPB::-webkit-scrollbar {
     background: transparent;
@@ -384,8 +384,51 @@
     border-radius: var(--st-border-radius);
 }
 
+/* Library home / collection cards: 2px Mocha edge at rest, blue to mauve ring on hover */
+.WYgDg9NyCcMIVuMyZ_NBC.LibraryItemBox::before,
+.WYgDg9NyCcMIVuMyZ_NBC.LibraryItemBox::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    /* The card box is content-box, so a 2px padding made the ring 4px wider
+       than the card and its right edge was clipped. border-box keeps all four sides inside. */
+    box-sizing: border-box;
+    width: auto;
+    height: auto;
+    z-index: 3;
+    border-radius: inherit;
+    padding: 2px;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+}
+.WYgDg9NyCcMIVuMyZ_NBC.LibraryItemBox::before {
+    background: var(--st-edge-strong, rgb(69, 71, 90));
+}
+.WYgDg9NyCcMIVuMyZ_NBC.LibraryItemBox::after {
+    background: var(--st-ring, linear-gradient(135deg, rgb(137, 180, 250), rgb(203, 166, 247)));
+    opacity: 0;
+    transition: opacity 0.15s ease-out;
+}
+._1pwP4eeP1zQD7PEgmsep0W:hover .WYgDg9NyCcMIVuMyZ_NBC.LibraryItemBox::after,
+._1pwP4eeP1zQD7PEgmsep0W:hover .LibraryItemBoxSubscript::after {
+    opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+    .WYgDg9NyCcMIVuMyZ_NBC.LibraryItemBox::after { transition: none; }
+}
+
 ._3d_bT685lnWotXxgzKW6am.yDr03475kalWBTwAE-Rnw {
     border-radius: var(--st-border-radius);
+}
+
+/* The cover and the 2px edge shared one curve, so bright covers leaked through the
+   edge's soft outer pixels and the corners looked white and jagged. Tuck the cover
+   1px under the edge, on the edge's own centre line. */
+.WYgDg9NyCcMIVuMyZ_NBC.LibraryItemBox .Container img {
+    clip-path: inset(1px round calc(var(--st-border-radius) - 1px));
 }
 
 /* New to library */

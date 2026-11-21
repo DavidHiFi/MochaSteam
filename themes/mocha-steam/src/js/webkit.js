@@ -1,6 +1,58 @@
 import './webkit/community/friendsThatPlayed.js';
 import { waitForElement } from './utils.js';
 
+// Body flags that replace page-wide `body:has(...)` selectors in the CSS
+// (friendsThatPlay.css, customBackground.css). Same idea as src/js/regular.js:
+// :has on body re-checks the whole page on every DOM change.
+(function() {
+    const friends = document.getElementsByClassName('friends_that_play_content');
+    const onCommunity = location.hostname === 'steamcommunity.com';
+    const update = () => {
+        const cl = document.body?.classList;
+        if (!cl) return;
+        const f = friends.length > 0;
+        if (cl.contains('st-has-friends-that-play') !== f) cl.toggle('st-has-friends-that-play', f);
+        const se = onCommunity && !!document.querySelector('[href*="id/SpaceEnergy/badges"]');
+        if (cl.contains('st-has-spaceenergy-badges') !== se) cl.toggle('st-has-spaceenergy-badges', se);
+    };
+    const start = () => {
+        update();
+        new MutationObserver(update).observe(document.body, { childList: true, subtree: true });
+    };
+    if (document.body) start();
+    else document.addEventListener('DOMContentLoaded', start, { once: true });
+})();
+
+// LuaTools looks for the old store-header class "_1wn1lBlAzl3HMRqS1llwie" to
+// hang its settings button on. Steam renamed that class, so the button stopped
+// appearing. Put the old name back on the Wishlist container in the store bar;
+// LuaTools' own observer then inserts the button. React can rewrite className,
+// so the check repeats on DOM changes (one querySelector, no work when present).
+(function() {
+    const LEGACY = '_1wn1lBlAzl3HMRqS1llwie';
+    const tag = () => {
+        if (document.querySelector('.' + LEGACY)) return;
+        const form = document.querySelector('form[role="search"]');
+        const bar = form && form.closest('.Panel.Focusable:has(> div form[role="search"])');
+        const wish = bar && bar.querySelector('a[href*="/wishlist"]');
+        if (wish && wish.parentElement) wish.parentElement.classList.add(LEGACY);
+    };
+    let queued = false;
+    const observer = new MutationObserver(() => {
+        if (queued) return;
+        queued = true;
+        // setTimeout, not rAF: rAF never fires while the store view is hidden,
+        // which left 'queued' stuck and the tag never applied.
+        setTimeout(() => { queued = false; tag(); }, 100);
+    });
+    const start = () => {
+        tag();
+        observer.observe(document.body, { childList: true, subtree: true });
+    };
+    if (document.body) start();
+    else document.addEventListener('DOMContentLoaded', start, { once: true });
+})();
+
 (async function() {
     // should work only on search page
     if (!window.location.pathname.startsWith('/search')) return;

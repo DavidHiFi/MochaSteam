@@ -1,0 +1,274 @@
+/*
+& Gradient hover rings (2026-11-07 refactor)
+&
+& Every hoverable dock/control gets a 1px blue #89b4fa -> mauve #cba6f7
+& gradient border on hover, drawn by a mask-composite ::after ring so the
+& corner radius is respected (border-image cannot round corners). The ring
+& fades in over 150ms ease-out and paints above the resting grey inset edge.
+&
+& Rules for this file:
+& - Add a selector only after checking it has no conflicting ::after and that
+&   position: relative is safe on it (no absolute descendants that anchor
+&   outside the element; never on ReactVirtualized grid cells themselves).
+& - The resting edge and hover fill stay where they are; this file only adds
+&   the ring. Keep the ring 1px and the fade 150ms - matches the taskbar.
+*/
+
+/* Positioning context for the ring. The user chip is already relative
+   (sidebar.css); the rest are static flex children with no escaping
+   absolute descendants (verified live 2026-11-07). Batch 2: dialog, modal
+   and panel list rows plus the lib-home cards, same static pattern.
+   Friends-list rows are NOT ringed: Steam virtualizes that list and the
+   rows may be absolutely positioned. */
+body.DesktopUI ._1n7Wloe5jZ6fSuvV18NNWI,
+body.DesktopUI ._1BAKXmqQdWRWmWX9_CbhuY,
+body.DesktopUI ._2EstNjFIIZm_WUSKm5Wt7n ._3sTMvhkGXqBzwhsP2-IA5P :is(.QFW0BtI4l77AFmv1xLAkx, ._3B8wRA4H7e_oSksYNqpSPv, ._2NdiftmP-B3C4LPWnNGTCB, ._25gii5r23MmAqXvLZj24tK, ._3k90ug209sE23xAMqcM74s),
+body ._2kwFFHckg8jvnwJfg9-la8 ._18QCu-7MTzd51UpVbYysDy ._1-vlriAtKYDViAEunue4VO,
+body .DialogBody .onPxgvGKxGbKdE7dDWrMx ._2HosnnI_K6IvS1QMGhq46P,
+._240i58XQ0w78YFrd_p-9UY,
+.HruWVPwIDh2FFOOH7OiSs .gioyPMOZttYFcnmgLnsWf .iYW5hWQwg14WYT4PV3xe_,
+._23zCI_59RJTWRvY-_YCFb9 ._1c7FWVusLDkD_Lv6ZB0uTY ._1s3EpCtCwCVJ-7hbeqJeWw ._1Rrhq0ynyX66fxOi1wUNXv ._2c5PPSgndVK0fC-zcQwubR,
+body .PagedSettingsDialog_PageListItem,
+body .MillenniumDesktopSidebar_LibraryItemButton,
+body [class*="MillenniumPlugins_PluginField"],
+body [class*="MillenniumThemes_ThemeItem"],
+.AddShowcase,
+._3YO5BpDmZERh_G8kaWbaSJ,
+._3_xMyCJAh_Dv99KgZ54P3j,
+._8YrRmy_c6O0FCxFT8gjqo,
+._3IWn-2rn7x98o5fDd0rAxb,
+._1HS4twEHtDJ_8MWgJT4VBd,
+._1VNuYHM6BPBOJspC6zPf5r.IbePLaw-vSvhG1GTenYFg,
+._3x1HklzyDs4TEjACrRO2tB ._3pSPluBgf0NeR1kkCLWMhR,
+._3x1HklzyDs4TEjACrRO2tB ._2PF_m-I5yte3WnQhpcz8RC,
+._3x1HklzyDs4TEjACrRO2tB ._3mzKdQXht__YHo6PX1LmB6,
+._3x1HklzyDs4TEjACrRO2tB ._12vo5L1hsNGdao6_ssuirS,
+._3x1HklzyDs4TEjACrRO2tB .vCCmYvn9yQ_V8CpKupllU,
+._3x1HklzyDs4TEjACrRO2tB .uE7Pj4tb2n3_Bx4vjEX0a,
+._3x1HklzyDs4TEjACrRO2tB ._2Szzh5sKyGgnLUR870zbDE,
+._3x1HklzyDs4TEjACrRO2tB ._1TdaAqMFadi0UTqilrkelR,
+._3x1HklzyDs4TEjACrRO2tB ._2sYIghGVXJr6tsQVvcryy8,
+._3x1HklzyDs4TEjACrRO2tB ._2-O4ZG0KrnSrzISHBKctFQ,
+._3x1HklzyDs4TEjACrRO2tB ._3vCzSrrXZzZjVJFZNg9SGu,
+body .LibraryItemBoxSubscript,
+body .DialogDropDown,
+body .MillenniumSettings .DialogControlsSection:not(.MillenniumButtonsSection),
+body .TitleBarControls .AccountMenu,
+body .TitleBarControls .Button,
+body .TitleBarControls .FriendsButton,
+body .BottomBar .AddGameButton,
+body .BottomBar,
+body .ShowcaseHeader .easygrid-button,
+body .ShowcaseHeader .Collapser,
+body .ShowcaseHeader .Rule,
+body .TitleBarControls .st-steam-settings > div {
+    position: relative;
+}
+
+body.DesktopUI ._1n7Wloe5jZ6fSuvV18NNWI::after,
+body.DesktopUI ._1BAKXmqQdWRWmWX9_CbhuY::after,
+body.DesktopUI ._2EstNjFIIZm_WUSKm5Wt7n ._3sTMvhkGXqBzwhsP2-IA5P :is(.QFW0BtI4l77AFmv1xLAkx, ._3B8wRA4H7e_oSksYNqpSPv, ._2NdiftmP-B3C4LPWnNGTCB, ._25gii5r23MmAqXvLZj24tK, ._3k90ug209sE23xAMqcM74s)::after,
+body ._2kwFFHckg8jvnwJfg9-la8 ._18QCu-7MTzd51UpVbYysDy ._1-vlriAtKYDViAEunue4VO::after,
+body .DialogBody .onPxgvGKxGbKdE7dDWrMx ._2HosnnI_K6IvS1QMGhq46P::after,
+._240i58XQ0w78YFrd_p-9UY::after,
+.HruWVPwIDh2FFOOH7OiSs .gioyPMOZttYFcnmgLnsWf .iYW5hWQwg14WYT4PV3xe_::after,
+._23zCI_59RJTWRvY-_YCFb9 ._1c7FWVusLDkD_Lv6ZB0uTY ._1s3EpCtCwCVJ-7hbeqJeWw ._1Rrhq0ynyX66fxOi1wUNXv ._2c5PPSgndVK0fC-zcQwubR::after,
+body .PagedSettingsDialog_PageListItem::after,
+body .MillenniumDesktopSidebar_LibraryItemButton::after,
+body [class*="MillenniumPlugins_PluginField"]::after,
+body [class*="MillenniumThemes_ThemeItem"]::after,
+.AddShowcase::after,
+._3YO5BpDmZERh_G8kaWbaSJ::after,
+._3_xMyCJAh_Dv99KgZ54P3j::after,
+._8YrRmy_c6O0FCxFT8gjqo::after,
+._3IWn-2rn7x98o5fDd0rAxb::after,
+._1HS4twEHtDJ_8MWgJT4VBd::after,
+._1VNuYHM6BPBOJspC6zPf5r.IbePLaw-vSvhG1GTenYFg::after,
+._3x1HklzyDs4TEjACrRO2tB ._3pSPluBgf0NeR1kkCLWMhR::after,
+._3x1HklzyDs4TEjACrRO2tB ._2PF_m-I5yte3WnQhpcz8RC::after,
+._3x1HklzyDs4TEjACrRO2tB ._3mzKdQXht__YHo6PX1LmB6::after,
+._3x1HklzyDs4TEjACrRO2tB ._12vo5L1hsNGdao6_ssuirS::after,
+._3x1HklzyDs4TEjACrRO2tB .vCCmYvn9yQ_V8CpKupllU::after,
+._3x1HklzyDs4TEjACrRO2tB .uE7Pj4tb2n3_Bx4vjEX0a::after,
+._3x1HklzyDs4TEjACrRO2tB ._2Szzh5sKyGgnLUR870zbDE::after,
+._3x1HklzyDs4TEjACrRO2tB ._1TdaAqMFadi0UTqilrkelR::after,
+._3x1HklzyDs4TEjACrRO2tB ._2sYIghGVXJr6tsQVvcryy8::after,
+._3x1HklzyDs4TEjACrRO2tB ._2-O4ZG0KrnSrzISHBKctFQ::after,
+._3x1HklzyDs4TEjACrRO2tB ._3vCzSrrXZzZjVJFZNg9SGu::after,
+body .LibraryItemBoxSubscript::after,
+body .DialogDropDown::after,
+body .MillenniumSettings .DialogControlsSection:not(.MillenniumButtonsSection)::after,
+body .TitleBarControls .AccountMenu::after,
+body .TitleBarControls .Button::after,
+body .TitleBarControls .FriendsButton::after,
+body .BottomBar .AddGameButton::after,
+body .BottomBar::after,
+body .ShowcaseHeader .easygrid-button::after,
+body .ShowcaseHeader .Collapser::after,
+body .ShowcaseHeader .Rule::after,
+body .TitleBarControls .st-steam-settings > div::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 2px;
+    background: var(--st-ring, linear-gradient(135deg, rgb(137, 180, 250), rgb(203, 166, 247)));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.15s ease-out;
+    pointer-events: none;
+}
+
+body.DesktopUI ._1n7Wloe5jZ6fSuvV18NNWI:hover::after,
+body.DesktopUI ._1BAKXmqQdWRWmWX9_CbhuY:hover::after,
+body.DesktopUI ._2EstNjFIIZm_WUSKm5Wt7n ._3sTMvhkGXqBzwhsP2-IA5P :is(.QFW0BtI4l77AFmv1xLAkx, ._3B8wRA4H7e_oSksYNqpSPv, ._2NdiftmP-B3C4LPWnNGTCB, ._25gii5r23MmAqXvLZj24tK, ._3k90ug209sE23xAMqcM74s):hover::after,
+body ._2kwFFHckg8jvnwJfg9-la8 ._18QCu-7MTzd51UpVbYysDy ._1-vlriAtKYDViAEunue4VO:hover:not(._2DpXjzK3WWsOtUWUrcuOG7)::after,
+body .DialogBody .onPxgvGKxGbKdE7dDWrMx ._2HosnnI_K6IvS1QMGhq46P:hover::after,
+._240i58XQ0w78YFrd_p-9UY:hover::after,
+.HruWVPwIDh2FFOOH7OiSs .gioyPMOZttYFcnmgLnsWf .iYW5hWQwg14WYT4PV3xe_:hover::after,
+._23zCI_59RJTWRvY-_YCFb9 ._1c7FWVusLDkD_Lv6ZB0uTY ._1s3EpCtCwCVJ-7hbeqJeWw ._1Rrhq0ynyX66fxOi1wUNXv ._2c5PPSgndVK0fC-zcQwubR:hover::after,
+body .PagedSettingsDialog_PageListItem:hover::after,
+body .MillenniumDesktopSidebar_LibraryItemButton:hover::after,
+body [class*="MillenniumPlugins_PluginField"]:hover::after,
+body [class*="MillenniumThemes_ThemeItem"]:hover::after,
+.AddShowcase:hover::after,
+._3YO5BpDmZERh_G8kaWbaSJ:hover::after,
+._3_xMyCJAh_Dv99KgZ54P3j:hover::after,
+._8YrRmy_c6O0FCxFT8gjqo:hover::after,
+._3IWn-2rn7x98o5fDd0rAxb:hover::after,
+._1HS4twEHtDJ_8MWgJT4VBd:hover::after,
+._1VNuYHM6BPBOJspC6zPf5r.IbePLaw-vSvhG1GTenYFg:hover::after,
+._3x1HklzyDs4TEjACrRO2tB ._3pSPluBgf0NeR1kkCLWMhR:hover::after,
+._3x1HklzyDs4TEjACrRO2tB ._2PF_m-I5yte3WnQhpcz8RC:hover::after,
+._3x1HklzyDs4TEjACrRO2tB ._3mzKdQXht__YHo6PX1LmB6:hover::after,
+._3x1HklzyDs4TEjACrRO2tB ._12vo5L1hsNGdao6_ssuirS:hover::after,
+._3x1HklzyDs4TEjACrRO2tB .vCCmYvn9yQ_V8CpKupllU:hover::after,
+._3x1HklzyDs4TEjACrRO2tB .uE7Pj4tb2n3_Bx4vjEX0a:hover::after,
+._3x1HklzyDs4TEjACrRO2tB ._2Szzh5sKyGgnLUR870zbDE:hover::after,
+._3x1HklzyDs4TEjACrRO2tB ._1TdaAqMFadi0UTqilrkelR:hover::after,
+._3x1HklzyDs4TEjACrRO2tB ._2sYIghGVXJr6tsQVvcryy8:hover::after,
+._3x1HklzyDs4TEjACrRO2tB ._2-O4ZG0KrnSrzISHBKctFQ:hover::after,
+._3x1HklzyDs4TEjACrRO2tB ._3vCzSrrXZzZjVJFZNg9SGu:hover::after,
+body .LibraryItemBoxSubscript:hover::after,
+body .DialogDropDown:hover::after,
+body .MillenniumSettings .DialogControlsSection:not(.MillenniumButtonsSection):hover::after,
+body .TitleBarControls .AccountMenu:hover::after,
+body .TitleBarControls .Button:hover::after,
+body .TitleBarControls .FriendsButton:hover::after,
+body .BottomBar .AddGameButton:hover::after,
+body .BottomBar:hover::after,
+body .ShowcaseHeader .easygrid-button:hover::after,
+body .ShowcaseHeader .Collapser:hover::after,
+body .ShowcaseHeader .Rule:hover::after,
+body .TitleBarControls .st-steam-settings > div:hover::after {
+    opacity: 1;
+}
+
+/* Date labels keep an edge at rest without changing capsule geometry. */
+body .LibraryItemBoxSubscript {
+    box-shadow: inset 0 0 0 2px var(--st-edge, rgba(69, 71, 90, 0.9));
+}
+body .DialogDropDown:focus-within::after,
+body .MillenniumSettings .DialogControlsSection:focus-within::after {
+    opacity: 1;
+}
+/* The focused control owns its frame when the pointer is inside it. */
+body .MillenniumSettings .DialogControlsSection:has(:is(.DialogDropDown, input, button):hover)::after {
+    opacity: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+    body .LibraryItemBoxSubscript::after,
+    body .DialogDropDown::after,
+    body .MillenniumSettings .DialogControlsSection::after {
+        transition: none;
+    }
+}
+
+/* Library sidebar dock (2026-11-09): the whole dock gets the ring on hover.
+   Drawn on the sizable wrapper, which is already position: relative and has
+   the dock's exact box, so the dock itself stays static. */
+._9sPoVBFyE_vE87mnZJ5aB.LeftListSizableContainer::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    border-radius: var(--st-border-radius, 16px);
+    padding: 2px;
+    background: var(--st-ring, linear-gradient(135deg, rgb(137, 180, 250), rgb(203, 166, 247)));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.15s ease-out;
+    pointer-events: none;
+}
+._9sPoVBFyE_vE87mnZJ5aB.LeftListSizableContainer:hover::after {
+    opacity: 1;
+}
+
+/* URL bar over store pages (2026-11-09 round 6): the whole bar is a dock and
+   gets the ring on hover; the address inside is a pill with its own resting
+   edge, a surface fill on hover and its own ring. Both hosts are already
+   relative or have no absolute children. */
+body .UkR3sY319PuaUNuUWks2K.URLBar::after,
+body .UkR3sY319PuaUNuUWks2K.URLBar ._2m_orETo6AghzAnc0sISCt.URLBarText::after,
+body .UkR3sY319PuaUNuUWks2K.URLBar .StatusIcon::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    border-radius: inherit;
+    padding: 2px;
+    background: var(--st-ring, linear-gradient(135deg, rgb(137, 180, 250), rgb(203, 166, 247)));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.15s ease-out;
+    pointer-events: none;
+}
+body .UkR3sY319PuaUNuUWks2K.URLBar:hover::after,
+body .UkR3sY319PuaUNuUWks2K.URLBar ._2m_orETo6AghzAnc0sISCt.URLBarText:hover::after,
+body .UkR3sY319PuaUNuUWks2K.URLBar .StatusIcon:hover::after {
+    opacity: 1;
+}
+body .UkR3sY319PuaUNuUWks2K.URLBar ._2m_orETo6AghzAnc0sISCt.URLBarText,
+body .UkR3sY319PuaUNuUWks2K.URLBar .StatusIcon {
+    position: relative !important;
+    border-radius: 999px !important;
+    background: rgba(49, 50, 68, 0.55) !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9) !important;
+    transition: background-color 0.15s ease-out;
+}
+body .UkR3sY319PuaUNuUWks2K.URLBar ._2m_orETo6AghzAnc0sISCt.URLBarText {
+    padding-left: 10px !important;
+    padding-right: 12px !important;
+    color: rgb(var(--st-text-soft, 186, 194, 222)) !important;
+}
+body .UkR3sY319PuaUNuUWks2K.URLBar ._2m_orETo6AghzAnc0sISCt.URLBarText:hover,
+body .UkR3sY319PuaUNuUWks2K.URLBar .StatusIcon:hover {
+    background: rgba(69, 71, 90, 0.85) !important;
+    color: rgb(var(--st-text-strong, 205, 214, 244)) !important;
+}
+body .UkR3sY319PuaUNuUWks2K.URLBar ._2m_orETo6AghzAnc0sISCt.URLBarText .URL {
+    color: inherit !important;
+}
+
+body .URLBar :is(.URLBarText,.StatusIcon),
+body .URLBar :is(.URLBarText,.StatusIcon):hover {
+    background: transparent !important; box-shadow: none !important;
+    border: 0 !important; border-radius: 0 !important;
+}
+body .URLBar :is(.URLBarText,.StatusIcon)::after { content: none !important; }
+
+body .URLBar:not(#a):not(#b) :is(.URLBarText,.StatusIcon),
+body .URLBar:not(#a):not(#b) :is(.URLBarText,.StatusIcon):hover {
+    background: transparent !important; box-shadow: none !important;
+    border: 0 !important; border-radius: 0 !important;
+}
+body .URLBar:not(#a):not(#b) :is(.URLBarText,.StatusIcon)::after { content: none !important; }

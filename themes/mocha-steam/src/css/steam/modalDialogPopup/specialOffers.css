@@ -1,7 +1,7 @@
 /*
 & Content
 */
-body:has(._1N7O3VXbkpN2z55HsSDZsi)::before {
+body.st-has-special-offers::before {
     border-radius: 0 !important;
 }
 

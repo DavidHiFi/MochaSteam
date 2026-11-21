@@ -1,0 +1,4 @@
+/* Letter spacing: wider */
+:where(body, body *):not([class*="Icon"], [class*="icon"], [class*="fluent"], i, svg, svg *) {
+    letter-spacing: 0.06em !important;
+}

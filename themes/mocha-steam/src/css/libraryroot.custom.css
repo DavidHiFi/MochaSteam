@@ -80,5 +80,127 @@
 /* Steam's default text grey (#acb2b8) is the one colour most of the client
    inherits; Mocha Subtext 0 keeps it on the palette. */
 body.DesktopUI {
-    color: rgb(166, 173, 200);
+    color: rgb(var(--st-text-dim, 166, 173, 200));
 }
+
+/*
+! Library filters pane (2026-11-18): it floats over the game grid, so it gets
+! its own frost and a real Mocha fill, the round dock edge and Mocha headings.
+! Stock was a flat grey slate (63,64,71) with 4px corners and Steam-blue labels.
+*/
+body .AdvancedSearchPane {
+    border-radius: 16px !important;
+    background: rgba(30, 30, 46, 0.65) !important; /* 2026-11-22: was 0.9, read flat */
+    -webkit-backdrop-filter: blur(24px) saturate(1.35) !important;
+    backdrop-filter: blur(24px) saturate(1.35) !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9), 0 12px 32px rgba(17, 17, 27, 0.55) !important;
+}
+body .AdvancedSearchPane .DialogHeader { color: #cdd6f4 !important; }
+body .AdvancedSearchPane .FilterBucketLabel { color: #89b4fa !important; }
+body .AdvancedSearchPane .DialogCheckbox_Container span,
+body .AdvancedSearchPane label span { color: #cdd6f4 !important; }
+
+/*
+! Filters pane pass 2 (2026-11-22, owner report: grey block top left, text past
+! the dropdown edges, weak glass, plain bottom buttons).
+! - Grey block: Steam's stock tab connector (::before on the container, 63,64,71).
+! - Dropdown chips were 18px tall with no padding, so labels ran over the round ends.
+! - Glass: Steam's renderer degrades big blurs on a pane this size: at 24px and up
+!   cover titles came through sharp (tested 12 to 48px over the grid, fill 0.1).
+!   20px frosts fully, so blur stays 20px and the fill does the rest.
+! - Buttons: one height, glass Secondary with the blue to mauve hover ring, a
+!   readable disabled Save, and the collection icon in the text colour.
+*/
+body .AdvancedSearchPaneContainer::before { display: none !important; }
+body .AdvancedSearchPane:not(#a):not(#b) {
+    background: rgba(30, 30, 46, 0.7) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(1.35) !important;
+    backdrop-filter: blur(20px) saturate(1.35) !important;
+}
+body .AdvancedSearchPane .DialogDropDown:not(#a):not(#b) {
+    box-sizing: border-box !important;
+    height: 32px !important;
+    min-height: 32px !important;
+    padding: 0 12px 0 14px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    line-height: normal !important;
+    overflow: hidden !important;
+}
+body .AdvancedSearchPane .DialogDropDown:not(#a):not(#b) > * { min-width: 0; }
+body .AdvancedSearchPane .DialogDropDown_CurrentDisplay {
+    flex: 1 1 auto !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+}
+body .AdvancedSearchPane .DialogDropDown_Arrow { flex: none !important; margin: 0 !important; }
+
+body .AdvancedSearchPane .Buttons .DialogButton:not(#a):not(#b) {
+    box-sizing: border-box !important;
+    height: 40px !important;
+    line-height: 36px !important;
+    padding: 0 16px !important;
+    border-radius: 16px !important;
+    border: 2px solid transparent !important;
+    box-shadow: none !important;
+    white-space: nowrap !important;
+    opacity: 1 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+body .AdvancedSearchPane .Buttons:not(#a):not(#b) { align-items: center !important; }
+body .AdvancedSearchPane .AccessibilityOptionsButton:not(#a):not(#b) {
+    color: #cdd6f4 !important;
+    background: linear-gradient(rgba(49, 50, 68, 0.55), rgba(49, 50, 68, 0.55)) padding-box,
+        linear-gradient(rgba(88, 91, 112, 0.7), rgba(88, 91, 112, 0.7)) border-box !important;
+}
+body .AdvancedSearchPane .AccessibilityOptionsButton:not(#a):not(#b):hover,
+body .AdvancedSearchPane .AccessibilityOptionsButton:not(#a):not(#b):focus-visible,
+body .AdvancedSearchPane .AccessibilityOptionsButton.gpfocus:not(#a):not(#b) {
+    background: linear-gradient(rgba(69, 71, 90, 0.75), rgba(69, 71, 90, 0.75)) padding-box,
+        linear-gradient(135deg, #89b4fa, #cba6f7) border-box !important;
+}
+body .AdvancedSearchPane .SaveButton:not(#a):not(#b) {
+    color: #11111b !important;
+    background: linear-gradient(#89b4fa, #89b4fa) padding-box,
+        linear-gradient(#89b4fa, #89b4fa) border-box !important;
+}
+body .AdvancedSearchPane .SaveButton:not(.Disabled):not(#a):not(#b):hover,
+body .AdvancedSearchPane .SaveButton.gpfocus:not(.Disabled):not(#a):not(#b) {
+    background: linear-gradient(135deg, #89b4fa, #cba6f7) padding-box,
+        linear-gradient(135deg, #89b4fa, #cba6f7) border-box !important;
+}
+body .AdvancedSearchPane .SaveButton.Disabled:not(#a):not(#b) {
+    color: #9399b2 !important;
+    cursor: default !important;
+    background: linear-gradient(rgba(49, 50, 68, 0.3), rgba(49, 50, 68, 0.3)) padding-box,
+        linear-gradient(rgba(69, 71, 90, 0.7), rgba(69, 71, 90, 0.7)) border-box !important;
+}
+/* Owner 2026-11-22: label sat 4px low (inline box on a 36px line) and 6px right. */
+body .AdvancedSearchPane .SaveButton:not(#a):not(#b) {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+body .AdvancedSearchPane .SaveButton > span {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    line-height: normal !important;
+    margin: 0 !important;
+}
+/* An empty ::before on the label took a 6px flex gap and pushed the text right. */
+body .AdvancedSearchPane .SaveButton > span::before { display: none !important; }
+body .AdvancedSearchPane .SaveButton svg.SVGIcon_DynamicCollection {
+    opacity: 1 !important;
+    fill: currentColor !important;
+    width: 18px !important;
+    height: 18px !important;
+    margin: 0 !important;
+    flex: none !important;
+}
+/* Steam draws a faint 20% frame round the bolt; at 18px it reads as a grey smudge. */
+body .AdvancedSearchPane .SaveButton svg.SVGIcon_DynamicCollection polyline { display: none !important; }

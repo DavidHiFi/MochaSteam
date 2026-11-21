@@ -326,3 +326,306 @@
     font-weight: 300;
     background: unset;
 }
+
+
+/*
+! Chat window round 1 (2026-11-17): one 2px edge per box, round buttons with
+! no square box behind them, centred blue caret, date pill clear of the
+! add-friend button. Resting edge surface1, hover edge blue to mauve.
+*/
+.friendsui-container .chatWindow {
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9) !important;
+}
+
+/* Tabs: ring, round avatar with a status ring, no square frame art */
+.friendsui-container .ChatTab {
+    position: relative;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9) !important;
+}
+.friendsui-container .ChatTab .avatarHolder .avatar {
+    border-radius: 50% !important;
+    box-shadow: 0 0 0 2px #89b4fa;
+}
+.friendsui-container .ChatTab .avatarHolder.ingame .avatar { box-shadow: 0 0 0 2px #a6e3a1; }
+.friendsui-container .ChatTab .avatarHolder.awayOrSnooze .avatar { box-shadow: 0 0 0 2px #f9e2af; }
+.friendsui-container .ChatTab .avatarHolder.offline .avatar { box-shadow: 0 0 0 2px #6c7086; }
+.friendsui-container .ChatTab .avatarHolder .avatarStatus,
+.friendsui-container .ChatTab .avatarHolder .avatarFrame {
+    display: none !important;
+}
+.friendsui-container .ChatTab .CloseButton svg { fill: #a6adc8; }
+
+/* Date pill: real edge, and clear of the add-friend button on the right */
+.friendsui-container .msg.timeDivision {
+    margin-right: 44px !important;
+}
+.friendsui-container .msg.timeDivision::after {
+    border-color: rgba(69, 71, 90, 0.9) !important;
+    color: #a6adc8 !important;
+    background: #1e1e2e !important;
+}
+.friendsui-container .msg.timeDivision .preHorizDivider {
+    background-color: rgba(69, 71, 90, 0.9) !important;
+}
+
+/* Add-friend button floats over the history: opaque fill and a ring */
+.friendsui-container .inviteAnotherFriendButton {
+    background: #1e1e2e !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9) !important;
+}
+.friendsui-container .inviteAnotherFriendButton svg { fill: #a6adc8 !important; }
+
+/* Entry row: one dock for the text box, separate round buttons, 8px apart */
+.friendsui-container .chatWindow .chatEntry {
+    background: transparent !important;
+    gap: 8px;
+    align-items: stretch;
+}
+.friendsui-container .chatEntry .chatEntryControls {
+    position: relative;
+    flex: 1 1 auto;
+    background-color: rgb(var(--st-color-2)) !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9) !important;
+    gap: 6px;
+    padding-right: 2px;
+}
+.friendsui-container .chatEntry textarea.chatTextarea {
+    box-sizing: content-box !important;
+    height: 20px;
+    min-height: 20px;
+    max-height: 160px;
+    field-sizing: content;
+    padding: 15px 16px !important;
+    line-height: 20px !important;
+    font-size: 14px !important;
+    color: #cdd6f4 !important;
+    caret-color: #89b4fa !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    border: 0 !important;
+}
+.friendsui-container .chatEntry textarea.chatTextarea::placeholder { color: #6c7086; }
+.friendsui-container .chatEntry textarea.chatTextarea::selection { background: rgba(137, 180, 250, 0.35); }
+
+.friendsui-container .chatEntry .chatEntryActionsContainer {
+    gap: 8px;
+    align-items: center;
+}
+.friendsui-container .chatEntry .chatEntryActionsGroup,
+.friendsui-container .chatEntry .ChatMessageEntryVoice,
+.friendsui-container .chatEntry .ChatMessageEntryVoice .buttonsContainer {
+    display: flex;
+    gap: 8px;
+    margin: 0 !important;
+    background: none !important;
+    box-shadow: none !important;
+    border: 0 !important;
+}
+
+/* Every entry button: same round dock, same edge */
+.friendsui-container .chatEntry .chatSubmitButton,
+.friendsui-container .chatEntry .ChatMessageEntryVoice .VoiceToggle {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px !important;
+    height: 46px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 16px !important;
+    background: rgb(var(--st-color-2)) !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9) !important;
+    cursor: pointer;
+}
+.friendsui-container .chatEntry .chatEntryControls .chatSubmitButton {
+    align-self: center;
+}
+.friendsui-container .chatEntry .chatSubmitButton.disabled { cursor: default; }
+.friendsui-container .chatEntry .chatSubmitButton.disabled svg { opacity: 0.45; }
+.friendsui-container .chatEntry .chatEntryControls .chatSubmitButton:not(.disabled) svg path { fill: #89b4fa !important; }
+.friendsui-container .chatEntry .NewEmoticonCircle { background: #f9e2af !important; }
+
+/* Hover and focus: the same 2px edge turns blue to mauve */
+.friendsui-container .chatEntry .chatEntryControls::after,
+.friendsui-container .chatEntry .chatSubmitButton::after,
+.friendsui-container .chatEntry .ChatMessageEntryVoice .VoiceToggle::after,
+.friendsui-container .ChatTab::after,
+.friendsui-container .inviteAnotherFriendButton::after {
+    content: "" !important;
+    display: block !important;
+    position: absolute;
+    inset: 0;
+    padding: 2px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, #89b4fa, #cba6f7);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 150ms ease-out;
+    pointer-events: none;
+}
+.friendsui-container .chatEntry .chatEntryControls:focus-within::after,
+.friendsui-container .chatEntry .chatSubmitButton:not(.disabled):hover::after,
+.friendsui-container .chatEntry .ChatMessageEntryVoice .VoiceToggle:hover::after,
+.friendsui-container .ChatTab:hover::after,
+.friendsui-container .inviteAnotherFriendButton:hover::after {
+    opacity: 1;
+}
+
+/*
+! Chat window round 2 (2026-11-17): no square shadow strips over the round
+! panel, send button sits flat inside the type box (one edge, not two),
+! outer buttons match the type box height, entry floats off the history.
+*/
+.friendsui-container .chatWindow .FriendListInsetShadowTop,
+.friendsui-container .chatWindow .FriendListInsetShadowBottom {
+    display: none !important;
+}
+.friendsui-container .chatWindow .chatEntry {
+    margin: 12px 12px 24px !important;
+}
+.friendsui-container .chatEntry .chatSubmitButton,
+.friendsui-container .chatEntry .ChatMessageEntryVoice .VoiceToggle {
+    width: 50px !important;
+    height: 50px !important;
+}
+.friendsui-container .chatEntry .chatEntryControls .chatSubmitButton {
+    width: 42px !important;
+    height: 42px !important;
+    margin-right: 2px !important;
+    border-radius: 12px !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    transition: background-color 150ms ease-out;
+}
+.friendsui-container .chatEntry .chatEntryControls .chatSubmitButton::after {
+    display: none !important;
+}
+.friendsui-container .chatEntry .chatEntryControls .chatSubmitButton:not(.disabled):hover {
+    background: rgba(137, 180, 250, 0.14) !important;
+}
+
+/*
+! Chat window round 3 (2026-11-17): type box grows with long messages (up to
+! about 7 lines), buttons stay on the bottom line, send fill keeps a gap from
+! the edge, tab avatar status ring wins over the stock frame.
+*/
+.friendsui-container .chatEntry textarea.chatTextarea {
+    height: auto !important;
+    min-height: 20px !important;
+    max-height: 140px !important;
+    overflow-y: auto !important;
+}
+.friendsui-container .chatEntry textarea.chatTextarea::-webkit-scrollbar { width: 6px; }
+.friendsui-container .chatEntry textarea.chatTextarea::-webkit-scrollbar-thumb { background: rgba(69, 71, 90, 0.9); border-radius: 3px; }
+.friendsui-container .chatEntry textarea.chatTextarea::-webkit-scrollbar-track { background: transparent; margin: 8px 0; }
+.friendsui-container .chatWindow .chatEntry,
+.friendsui-container .chatEntry .chatEntryControls,
+.friendsui-container .chatEntry .chatEntryActionsContainer {
+    align-items: flex-end !important;
+}
+.friendsui-container .chatEntry .chatEntryControls .chatSubmitButton {
+    align-self: flex-end !important;
+    width: 40px !important;
+    height: 40px !important;
+    margin: 0 3px 5px 0 !important;
+}
+.friendsui-container .ChatTab .avatarHolder .avatar { box-shadow: 0 0 0 2px #89b4fa !important; }
+.friendsui-container .ChatTab .avatarHolder.ingame .avatar { box-shadow: 0 0 0 2px #a6e3a1 !important; }
+.friendsui-container .ChatTab .avatarHolder.awayOrSnooze .avatar { box-shadow: 0 0 0 2px #f9e2af !important; }
+.friendsui-container .ChatTab .avatarHolder.offline .avatar { box-shadow: 0 0 0 2px #6c7086 !important; }
+
+/*
+! Chat window round 4 (2026-11-17): date pill clear of the panel top and lined
+! up with the add-friend button, every entry button the same square as the
+! type box (Steam caps the voice button lower), icons dead centre.
+*/
+.friendsui-container .chatWindow .msg.timeDivision:first-child,
+.friendsui-container .chatWindow .chatHistory > .msg.timeDivision:first-of-type {
+    margin-top: 25px !important;
+}
+.friendsui-container .chatEntry .chatEntryControls {
+    min-height: 50px !important;
+    align-items: center !important;
+}
+.friendsui-container .chatEntry .chatSubmitButton,
+.friendsui-container .chatEntry .ChatMessageEntryVoice .VoiceToggle {
+    min-width: 0 !important;
+    min-height: 0 !important;
+    max-width: none !important;
+    max-height: none !important;
+    flex: none !important;
+}
+.friendsui-container .chatEntry .chatEntryControls .chatSubmitButton {
+    align-self: flex-end !important;
+    margin: 0 5px 5px 0 !important;
+}
+.friendsui-container .chatEntry .chatSubmitButton > *,
+.friendsui-container .chatEntry .ChatMessageEntryVoice .VoiceToggle > * {
+    position: static !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    margin: 0 !important;
+    padding: 0 !important;
+    transform: none !important;
+}
+.friendsui-container .chatEntry .chatSubmitButton svg,
+.friendsui-container .chatEntry .ChatMessageEntryVoice .VoiceToggle svg {
+    display: block !important;
+    width: 24px !important;
+    height: 24px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    position: static !important;
+    transform: none !important;
+    flex: none !important;
+}
+.friendsui-container .chatEntry .chatEntryActionsGroup,
+.friendsui-container .chatEntry .ChatMessageEntryVoice,
+.friendsui-container .chatEntry .ChatMessageEntryVoice .buttonsContainer {
+    padding: 0 !important;
+    align-items: center !important;
+}
+.friendsui-container .chatEntry .ChatMessageEntryVoice {
+    width: 50px !important;
+    min-width: 50px !important;
+    max-width: none !important;
+}
+.friendsui-container .chatEntry .chatEntryControls .chatSubmitButton {
+    margin: 0 3px 5px 0 !important;
+}
+
+/*
+! Chat window round 5 (2026-11-17): drag-a-file drop box and the
+! "Scroll to bottom" button were still stock (cyan dashes, grey tab).
+*/
+.friendsui-container .dropTargetBox {
+    border: 2px dashed rgba(137, 180, 250, 0.75) !important;
+    border-radius: 16px !important;
+    background: rgba(30, 30, 46, 0.85) !important;
+    -webkit-backdrop-filter: blur(22px);
+    backdrop-filter: blur(22px);
+    color: #cdd6f4 !important;
+}
+.friendsui-container .ChatTabs .dropTargetBox { border-radius: 16px !important; }
+.friendsui-container .ScrollToBottomButton { padding-bottom: 10px; }
+.friendsui-container .ScrollToBottomButton > * {
+    padding: 6px 16px !important;
+    border-radius: 999px !important;
+    background: #1e1e2e !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9) !important;
+    color: #a6adc8 !important;
+    font-size: 12px;
+    transition: color 150ms ease-out, box-shadow 150ms ease-out;
+}
+.friendsui-container .ScrollToBottomButton:hover > * {
+    color: #89b4fa !important;
+    box-shadow: inset 0 0 0 2px #89b4fa !important;
+}
+.friendsui-container .ChatHistoryContainer { position: relative; }
+.friendsui-container .chatWindow .dropTargetBox,
+.friendsui-container .displayRow > .dropTargetBox { border-radius: 8px !important; }

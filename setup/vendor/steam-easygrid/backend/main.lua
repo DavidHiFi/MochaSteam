@@ -19,7 +19,7 @@ end
 -- INTERFACES
 
 function call_api_backend(a_bearer, b_endpoint)
-    local bearer = a_bearer
+    local bearer = tostring(a_bearer or "")
     local endpoint = "https://www.steamgriddb.com/api/v2/" .. b_endpoint
 
     logger:info("Querying endpoint " .. endpoint)
@@ -44,6 +44,7 @@ function call_api_backend(a_bearer, b_endpoint)
 end
 
 function download_image(a_img_url)
+    a_img_url = tostring(a_img_url or "")
     logger:info("Downloading image " .. a_img_url)
 
     if img_cache[a_img_url] then
