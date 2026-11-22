@@ -1,6 +1,6 @@
 # Mocha Steam
 
-DavidHiFi's Catppuccin Mocha fork of SpaceTheme by SpaceEnergy. The dedicated [MochaSteam repository](https://github.com/DavidHiFi/MochaSteam) has a root-level `skin.json`. This bundle keeps a mirror in `themes/mocha-steam` next to the MochaSteam Desktop Fixes plugin.
+DavidHiFi's Catppuccin Mocha fork of SpaceTheme by SpaceEnergy. The theme lives in `themes/mocha-steam`, with `skin.json` at the top of that folder, next to the MochaSteam Desktop Fixes plugin. It is the only copy since the two repos became one in November 2026.
 
 ## Current behavior
 

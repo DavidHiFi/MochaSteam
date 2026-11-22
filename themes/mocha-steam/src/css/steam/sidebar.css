@@ -997,6 +997,6 @@ body.st-has-library.st-has-3e5i ._1_yS5UP7el0aN4vntx3dx {
 /* ProtonDB "unknown" dot (tools, workshop rows): the plugin draws a 4px gradient dot with no
    ring. Give it the same 6px fill and 1px ring as every other tier dot. */
 ._3x1HklzyDs4TEjACrRO2tB ._1vO6BoiVslZgs1kqDGdUs8[data-pdb-tier="unknown"]::before {
-    background: rgb(0, 0, 0) !important;
+    background: rgb(17, 17, 27) !important;
     box-shadow: rgba(0, 0, 0, 0.45) 0 0 0 1px !important;
 }

@@ -694,3 +694,45 @@ const saveSidebarWidth = (body, width) => {
     });
     await containerTracker.rebind();
 })();
+
+// Extendium's Extensions window opens at a fixed share of the screen height, so
+// with few or no extensions most of it was empty. Size the window height to the
+// page (capped at 85% of the screen, the page scrolls past that), and again when
+// the page changes. Width stays where the owner left it.
+(() => {
+    if (document.title !== 'Extensions') return;
+    const W = window.SteamClient && SteamClient.Window;
+    if (!W || typeof W.ResizeTo !== 'function') return;
+
+    let watched = null;
+    const fit = () => {
+        const page = document.querySelector('.extension-manager-popup');
+        const inner = page && page.closest('.DialogContent_InnerWidth');
+        if (!inner || document.visibilityState !== 'visible') return;
+        const outer = inner.closest('.DialogContent') || inner;
+        const below = parseFloat(getComputedStyle(inner).paddingBottom) + parseFloat(getComputedStyle(outer).marginBottom);
+        const bottom = page.getBoundingClientRect().bottom + inner.scrollTop + below;
+        const want = Math.round(Math.min(screen.availHeight * 0.85, Math.max(160, bottom)));
+        // A saved near full-screen size came back as a wall of empty space; keep the
+        // width to Extendium's own 1280 up to 60% of the screen.
+        const wantW = Math.round(Math.min(innerWidth, Math.max(1280, screen.availWidth * 0.6)));
+        if (Math.abs(want - innerHeight) > 2 || wantW < innerWidth - 2) W.ResizeTo(wantW, want, true);
+    };
+    const ro = new ResizeObserver(() => requestAnimationFrame(fit));
+    const watch = () => {
+        const page = document.querySelector('.extension-manager-popup');
+        if (page && page !== watched) {
+            if (watched) ro.unobserve(watched);
+            ro.observe(page);
+            watched = page;
+        }
+    };
+    new MutationObserver(watch).observe(document.body, { childList: true, subtree: true });
+    document.addEventListener('visibilitychange', fit);
+    // Extendium restores its saved size after load; fit again once that lands.
+    let settle = 0;
+    window.addEventListener('resize', () => { clearTimeout(settle); settle = setTimeout(fit, 250); });
+    watch();
+    setTimeout(fit, 600);
+    setTimeout(fit, 1500);
+})();

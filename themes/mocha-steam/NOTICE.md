@@ -18,5 +18,5 @@ Later SpaceTheme fixes (the Size on Disk icon and the Downloads page sidebar)
 were ported by hand on 2026-11-21.
 
 Frosted menu windows and desktop pop-ups come from the separate MochaSteam
-Desktop Fixes plugin (MIT, DavidHiFi), shipped in the millennium-stuff bundle,
-not in this theme-only repository.
+Desktop Fixes plugin (MIT, DavidHiFi), in `plugins/mochasteam-material` of the
+same repository, not in this theme folder.

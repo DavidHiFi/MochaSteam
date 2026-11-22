@@ -1,6 +1,6 @@
 # Contributing
 
-Thanks for helping millennium-stuff. It ships a Steam theme, its desktop fixes plugin and a set of plugins, so there are several places things can break.
+Thanks for helping Mocha Steam. This repo ships a Steam theme, its desktop fixes plugin and a set of plugins, so there are several places things can break.
 
 ## Ways to help
 
@@ -13,7 +13,7 @@ Thanks for helping millennium-stuff. It ships a Steam theme, its desktop fixes p
 Set up a test environment with the install script from the README:
 
 ```
-irm https://raw.githubusercontent.com/DavidHiFi/millennium-stuff/main/setup/Install-MochaSetup.ps1 | iex
+irm https://raw.githubusercontent.com/DavidHiFi/MochaSteam/main/setup/Install-MochaSetup.ps1 | iex
 ```
 
 It closes Steam, then installs the theme, its desktop fixes plugin and the plugins listed in setup/manifest.json. Then it copies the plugin and theme settings from setup/config/config.template.json.

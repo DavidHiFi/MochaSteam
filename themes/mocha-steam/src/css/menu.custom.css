@@ -28,11 +28,12 @@ body.DesktopUI .PP7LM0Ow1K5qkR8WElLpt {
     overflow: clip !important;
 }
 
-/* The card fills its popup window edge to edge, and dwmx gives that window
-   Windows 11's 8px rounded corners and frame. A larger card radius leaves the
-   window's own frame and acrylic showing outside the card's curve. */
+/* The card fills its popup window edge to edge, so its curve must match the
+   window's own rounded corner. The custom-corner-radius mod rounds every
+   window at 16px (small windows too), so an 8px card had its edge shaved off
+   by the window's curve (owner, 2026-11-22). Change both together. */
 html.ContextMenuPopup body.DesktopUI .PP7LM0Ow1K5qkR8WElLpt {
-    border-radius: 8px;
+    border-radius: 16px;
 }
 
 /* Real glass (2026-11-22): once the mochasteam-material plugin has put Windows
@@ -330,4 +331,21 @@ body.DesktopUI ._11phBiBefcVQdzrnrezkKa {
    nothing to show. */
 body.DesktopUI ._3zfQA8bEKpisPtsyT4SovP:empty {
     display: none;
+}
+
+/* 2026-11-22 library menu sweep: the last stock Steam colours in the menus.
+   Wallet balance was Steam's link blue, the pinned notification and the empty
+   notifications text were Steam greys. */
+body.DesktopUI .WalletBalance {
+    color: rgb(137, 180, 250) !important;
+}
+body.DesktopUI .PinnedBody,
+body.DesktopUI .PinnedBody .Icon {
+    color: rgb(205, 214, 244) !important;
+}
+body.DesktopUI .EmptyNotificationsTitle {
+    color: rgb(205, 214, 244) !important;
+}
+body.DesktopUI .EmptyNotificationsBody {
+    color: rgb(166, 173, 200) !important;
 }

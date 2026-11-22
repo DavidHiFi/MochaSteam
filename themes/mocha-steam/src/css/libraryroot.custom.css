@@ -13,6 +13,7 @@
 /** Plugins */
 @import url("./plugins/hltb.css");
 @import url("./plugins/sizeOnDisk.css");
+@import url("./plugins/extendium-manager.css");
 
 
 
@@ -204,3 +205,21 @@ body .AdvancedSearchPane .SaveButton svg.SVGIcon_DynamicCollection {
 }
 /* Steam draws a faint 20% frame round the bolt; at 18px it reads as a grey smudge. */
 body .AdvancedSearchPane .SaveButton svg.SVGIcon_DynamicCollection polyline { display: none !important; }
+
+/* 2026-11-22: stale sweep. ProtonDB rating dots keep their meaning in Mocha
+   colours: platinum sapphire, gold yellow, silver subtext, bronze peach,
+   borked red. Unknown stays the dark dot (steam/sidebar.css). */
+body ._1vO6BoiVslZgs1kqDGdUs8[data-pdb-tier="platinum"]::before, body .pdb-swatch[data-tier="platinum"] { background: rgb(116, 199, 236) !important; }
+body ._1vO6BoiVslZgs1kqDGdUs8[data-pdb-tier="gold"]::before, body .pdb-swatch[data-tier="gold"] { background: rgb(249, 226, 175) !important; }
+body ._1vO6BoiVslZgs1kqDGdUs8[data-pdb-tier="silver"]::before, body .pdb-swatch[data-tier="silver"] { background: rgb(166, 173, 200) !important; }
+body ._1vO6BoiVslZgs1kqDGdUs8[data-pdb-tier="bronze"]::before, body .pdb-swatch[data-tier="bronze"] { background: rgb(250, 179, 135) !important; }
+body ._1vO6BoiVslZgs1kqDGdUs8[data-pdb-tier="borked"]::before, body .pdb-swatch[data-tier="borked"] { background: rgb(243, 139, 168) !important; }
+body ._1vO6BoiVslZgs1kqDGdUs8[data-pdb-tier="pending"]::before, body .pdb-swatch[data-tier="pending"] { background: transparent !important; box-shadow: inset 0 0 0 1.5px rgb(127, 132, 156) !important; }
+
+/* Home tab label (white when selected) and section counts. */
+body ._3pSPluBgf0NeR1kkCLWMhR.Selected ._3O48LaKWcabKx07xdrt1TH.Label {
+    color: rgb(205, 214, 244) !important;
+}
+body ._29uten9Yy8q-n7woDEOXVF.SectionCount {
+    color: rgb(127, 132, 156) !important;
+}

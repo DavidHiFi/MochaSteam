@@ -24,9 +24,9 @@
        the mica alpha inside --st-color-1, so the declaration dropped and the
        pills were only a 4px blur of the banner behind them. The fill is what
        makes MAIN STORY / MULTIPLAYER / COMPETITIVE readable. */
-    background-color: rgba(var(--st-panel, 24, 24, 37), 0.72) !important;
-    backdrop-filter: blur(6px) !important;
-    -webkit-backdrop-filter: blur(6px) !important;
+    background-color: rgba(var(--st-panel, 24, 24, 37), 0.58) !important;
+    backdrop-filter: blur(24px) saturate(1.4) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(1.4) !important;
     /* Round 11: the resting edge the other game-page pills have. */
     box-shadow: inset 0 0 0 2px rgba(69, 71, 90, .9), 0px 4px 8px 0px rgb(0 0 0 / 50%);
 }

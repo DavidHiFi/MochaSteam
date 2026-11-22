@@ -248,7 +248,7 @@
     display: flex;
     width: 100%;
     height: 100%;
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(24px) saturate(1.4);
 }
 
 /*^ Grid image */

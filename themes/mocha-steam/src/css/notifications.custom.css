@@ -113,10 +113,11 @@ html.Notifications_Menu body.DesktopUI .contextMenu {
     box-shadow: none !important;
 }
 
-/* Match Windows' rounded popup frame so acrylic cannot peek past the card. */
+/* Match the window's rounded frame (16px from the custom-corner-radius mod)
+   so acrylic cannot peek past the card and the card's edge is not shaved. */
 body.DesktopToastContainer ._1OOQPJx0nCNP9ME9toCmV7,
 body.DesktopToastContainer ._1OOQPJx0nCNP9ME9toCmV7 :is(._2NdiftmP-B3C4LPWnNGTCB, ._3-H47wPl1Ng3lh7xGZOPIg) {
-    border-radius: 8px;
+    border-radius: 16px;
 }
 
 /* In the desktop toast window the card is the whole window. backdrop-filter

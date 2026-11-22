@@ -26,7 +26,7 @@
     inset: 0;
     z-index: -1;
     border-radius: inherit;
-    background-color: rgba(24, 24, 37, 0.82);
+    background-color: rgba(24, 24, 37, 0.6);
     -webkit-backdrop-filter: blur(24px) saturate(1.4);
     backdrop-filter: blur(24px) saturate(1.4);
     box-shadow: 0 6px 24px rgba(17, 17, 27, 0.45), inset 0 0 0 2px rgba(69, 71, 90, 0.9);
@@ -37,7 +37,7 @@
    denser glass and a heavier blur so text behind them reads as texture. */
 .Panel.Focusable:has(> .Panel.Focusable form[role="search"]) > div:not(.Panel) > div > .Panel.Focusable,
 [id^="searchSuggestions"] {
-    background-color: rgba(24, 24, 37, 0.88) !important;
+    background-color: rgba(24, 24, 37, 0.6) !important;
     -webkit-backdrop-filter: blur(28px) saturate(1.4) !important;
     backdrop-filter: blur(28px) saturate(1.4) !important;
     box-shadow: 0 12px 36px rgba(17, 17, 27, 0.6), inset 0 0 0 2px rgba(69, 71, 90, 0.9) !important;
@@ -374,7 +374,7 @@ body.v6 .sale_capsule .discount_block {
     z-index: 0;
     pointer-events: none;
     border-radius: inherit;
-    background: rgba(24, 24, 37, 0.88);
+    background: rgba(24, 24, 37, 0.6);
     -webkit-backdrop-filter: blur(48px) saturate(1.4);
     backdrop-filter: blur(48px) saturate(1.4);
     box-shadow: inset 0 0 0 3px rgba(69, 71, 90, 0.9);
@@ -482,9 +482,9 @@ html body:not(#a)::-webkit-scrollbar {
         radial-gradient(circle at 0 100%, transparent 13.5px, rgba(88, 91, 112, 0.9) 14px, rgba(88, 91, 112, 0.9) 15.6px, transparent 16.1px) right top / 16px 16px no-repeat,
         radial-gradient(circle at 0 0, transparent 13.5px, rgba(88, 91, 112, 0.9) 14px, rgba(88, 91, 112, 0.9) 15.6px, transparent 16.1px) right bottom / 16px 16px no-repeat,
         linear-gradient(rgba(88, 91, 112, 0.9), rgba(88, 91, 112, 0.9)) right center / 2px calc(100% - 32px) no-repeat,
-        radial-gradient(circle at 0 100%, rgba(24, 24, 37, 0.55) 14px, transparent 14.5px) right top / 16px 16px no-repeat,
-        radial-gradient(circle at 0 0, rgba(24, 24, 37, 0.55) 14px, transparent 14.5px) right bottom / 16px 16px no-repeat,
-        linear-gradient(rgba(24, 24, 37, 0.55), rgba(24, 24, 37, 0.55)) left center / 14px calc(100% - 32px) no-repeat !important;
+        radial-gradient(circle at 0 100%, rgb(24, 24, 37) 14px, transparent 14.5px) right top / 16px 16px no-repeat,
+        radial-gradient(circle at 0 0, rgb(24, 24, 37) 14px, transparent 14.5px) right bottom / 16px 16px no-repeat,
+        linear-gradient(rgb(24, 24, 37), rgb(24, 24, 37)) left center / 14px calc(100% - 32px) no-repeat !important;
 }
 html:not(#a):hover::-webkit-scrollbar,
 html:hover body:not(#a)::-webkit-scrollbar {
@@ -492,9 +492,9 @@ html:hover body:not(#a)::-webkit-scrollbar {
         radial-gradient(circle at 0 100%, transparent 13.5px, rgb(170, 173, 249) 14px, rgb(170, 173, 249) 15.6px, transparent 16.1px) right top / 16px 16px no-repeat,
         radial-gradient(circle at 0 0, transparent 13.5px, rgb(203, 166, 247) 14px, rgb(203, 166, 247) 15.6px, transparent 16.1px) right bottom / 16px 16px no-repeat,
         linear-gradient(rgb(170, 173, 249), rgb(203, 166, 247)) right center / 2px calc(100% - 32px) no-repeat,
-        radial-gradient(circle at 0 100%, rgba(24, 24, 37, 0.55) 14px, transparent 14.5px) right top / 16px 16px no-repeat,
-        radial-gradient(circle at 0 0, rgba(24, 24, 37, 0.55) 14px, transparent 14.5px) right bottom / 16px 16px no-repeat,
-        linear-gradient(rgba(24, 24, 37, 0.55), rgba(24, 24, 37, 0.55)) left center / 14px calc(100% - 32px) no-repeat !important;
+        radial-gradient(circle at 0 100%, rgb(24, 24, 37) 14px, transparent 14.5px) right top / 16px 16px no-repeat,
+        radial-gradient(circle at 0 0, rgb(24, 24, 37) 14px, transparent 14.5px) right bottom / 16px 16px no-repeat,
+        linear-gradient(rgb(24, 24, 37), rgb(24, 24, 37)) left center / 14px calc(100% - 32px) no-repeat !important;
 }
 html:not(#a)::-webkit-scrollbar-track,
 html body:not(#a)::-webkit-scrollbar-track,
@@ -1151,13 +1151,13 @@ body .ds_options > div:not(#a):not(#b)::after {
     box-sizing: border-box;
     border-radius: inherit;
     border: 2px solid transparent;
-    background: linear-gradient(rgba(24, 24, 37, 0.8), rgba(24, 24, 37, 0.8)) padding-box,
+    background: linear-gradient(rgba(24, 24, 37, 0.6), rgba(24, 24, 37, 0.6)) padding-box,
                 linear-gradient(rgba(69, 71, 90, 0.9), rgba(69, 71, 90, 0.9)) border-box;
-    -webkit-backdrop-filter: blur(16px) saturate(1.4);
-    backdrop-filter: blur(16px) saturate(1.4);
+    -webkit-backdrop-filter: blur(24px) saturate(1.4);
+    backdrop-filter: blur(24px) saturate(1.4);
 }
 body .ds_options > div:not(#a):not(#b):hover::after {
-    background: linear-gradient(rgba(24, 24, 37, 0.8), rgba(24, 24, 37, 0.8)) padding-box,
+    background: linear-gradient(rgba(24, 24, 37, 0.65), rgba(24, 24, 37, 0.65)) padding-box,
                 linear-gradient(135deg, rgb(137, 180, 250), rgb(203, 166, 247)) border-box;
 }
 body .ds_options > div:not(#a):not(#b)::before { color: rgb(var(--st-text-soft, 186, 194, 222)) !important; }
@@ -1238,7 +1238,7 @@ body .queue_overflow_ctn #queue_btn_ignore_menu .btn_medium:not(#a)::before { pa
 }
 .Panel.Focusable:has(> .Panel.Focusable form[role="search"]) > div:not(.Panel) > div > .Panel.Focusable:not(#a):not(#b):not(#c)::before,
 [id^="searchSuggestions"]:not(#a):not(#b):not(#c)::before {
-    background: rgba(24, 24, 37, 0.88) !important;
+    background: rgba(24, 24, 37, 0.6) !important;
     -webkit-backdrop-filter: blur(48px) saturate(1.4) !important;
     backdrop-filter: blur(48px) saturate(1.4) !important;
 }
@@ -1349,9 +1349,14 @@ body a.rsPEubiF9HI-:not(#a):hover {
 & behind it (#181825), and the glass drops to a light Mocha tint so the
 & colours behind glow through blurred while text behind stays unreadable.
 */
+/* 2026-11-22: the solid base moved to body::before (mocha-full.css, solid
+   mantle with the frame's round corners). A solid html/body fill is square,
+   so it poked out past the page frame's rounded top and bottom corners
+   (owner: "protruding edges"). The canvas stays clear; the glass still blurs
+   the solid body::before. */
 html:root:has(> body.v6):not(#a):not(#b),
 html:root:not(#a):not(#b) > body.v6:not(#a):not(#b) {
-    background-color: #181825 !important;
+    background-color: transparent !important;
 }
 html body .Panel.Focusable:has(> .Panel.Focusable form[role="search"]) > div:not(.Panel) > div > .Panel.Focusable:not(#a):not(#b):not(#c):not(#d):not(#e)::before,
 html body [id^="searchSuggestions"]:not(#a):not(#b):not(#c):not(#d):not(#e)::before,
@@ -1413,9 +1418,9 @@ html body a.PcE8-n5Eb6Y-:not(#a):not(#b) {
 html body a.PcE8-n5Eb6Y-:not(#a):not(#b):hover { background: rgba(69, 71, 90, 0.75) !important; color: #ffffff !important; }
 /* Category tile labels: dark Mocha glass chip instead of a white box. */
 html body .M6mNSwpY86U-:not(#a):not(#b) {
-    background: rgba(17, 17, 27, 0.72) !important;
-    -webkit-backdrop-filter: blur(12px) saturate(1.6) !important;
-    backdrop-filter: blur(12px) saturate(1.6) !important;
+    background: rgba(17, 17, 27, 0.58) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(1.4) !important;
+    backdrop-filter: blur(24px) saturate(1.4) !important;
     color: #cdd6f4 !important;
     border-radius: 10px !important;
     box-shadow: inset 0 0 0 1px rgba(205, 214, 244, 0.14) !important;
@@ -1636,4 +1641,532 @@ html body form[role="search"] button[type="submit"]:not(#a):not(#b) {
 }
 html body form[role="search"] button[type="submit"]:not(#a):not(#b) > svg {
     display: block !important; width: 14px !important; height: 14px !important; margin: 0 !important; flex: none !important; color: rgb(17, 17, 27) !important;
+}
+
+/*
+& Glass audit 2026-11-22, store pages.
+& The "..." button faded in on its parent's opacity, and an ancestor below
+& opacity 1 switches backdrop blur off, so it popped in as a flat tint. It
+& shows at once now, already frosted.
+*/
+html body.v6 .ds_options {
+    transition: none !important;
+}
+
+/* Game page news cards: Steam's grey gradient with a blurred white wash on
+   top (fake blur). Real Mocha glass and the 2px edge instead. */
+body a.OtherEvents_EventCtn:not(#a) {
+    background: rgba(24, 24, 37, 0.58) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(1.4) !important;
+    backdrop-filter: blur(24px) saturate(1.4) !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9), 0 4px 12px rgba(17, 17, 27, 0.45) !important;
+}
+body a.OtherEvents_EventCtn > .bVbljBZi-wU- {
+    display: none !important;
+}
+body a.OtherEvents_EventCtn:not(#a)::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    border-radius: inherit;
+    padding: 2px;
+    background: linear-gradient(135deg, rgb(137, 180, 250), rgb(203, 166, 247));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.15s ease-out;
+    pointer-events: none;
+}
+body a.OtherEvents_EventCtn:not(#a):hover::after,
+body a.OtherEvents_EventCtn:not(#a):focus-visible::after {
+    opacity: 1;
+}
+
+/* "More from <publisher>" banner: Steam blurs a copy of the publisher's
+   picture behind it (fake blur). Drop the copy; real glass instead. */
+body .Panel:has(> .Panel > div > img.FRI8flteHN0-):not(#a) {
+    background: rgba(24, 24, 37, 0.58) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(1.4) !important;
+    backdrop-filter: blur(24px) saturate(1.4) !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9), 0 4px 12px rgba(17, 17, 27, 0.45) !important;
+    border-radius: 16px !important;
+    overflow: hidden;
+}
+body img.FRI8flteHN0- {
+    display: none !important;
+}
+
+/* ===== 2026-11-22: app page stale sweep (owner: "it looks like regular Steam").
+   Every stock Steam colour left on a game page goes to a Mocha role. Cards use
+   the same recipe as the rest of this sheet: surface0 at 0.45, a 2px surface1
+   edge, Mocha text. ===== */
+
+/* Owned DLC rows: the green in-library badge sat in the row's top-left and the
+   name started under it. Inset the badge inside the row's curve and move the
+   name past it (make room, never hide the badge). */
+body a.game_area_dlc_row.ds_owned:not(#a):not(#b) {
+    min-height: 30px;
+}
+body a.game_area_dlc_row.ds_owned .ds_flag.ds_owned_flag:not(#a):not(#b) {
+    top: 50% !important;
+    left: 6px !important;
+    width: 22px !important;
+    height: 22px !important;
+    transform: translateY(-50%);
+    border-radius: 8px !important;
+}
+body a.game_area_dlc_row.ds_owned .ds_flag.ds_owned_flag:not(#a):not(#b)::before {
+    left: 3px !important;
+    top: 3px !important;
+}
+body a.game_area_dlc_row.ds_owned .game_area_dlc_name:not(#a):not(#b) {
+    padding-left: 30px !important;
+    line-height: 22px;
+}
+body a.game_area_dlc_row .game_area_dlc_price:not(#a):not(#b),
+body a.game_area_dlc_row .game_area_dlc_price *:not(#a):not(#b) {
+    color: rgb(205, 214, 244) !important;
+}
+body a.game_area_dlc_row.ds_owned .game_area_dlc_price:not(#a):not(#b) {
+    line-height: 22px;
+}
+
+/* The grey-blue wash behind "More from" and "More like" was Steam's own square
+   gradient. The panels carry the glass; the wrapper stays clear. */
+body div.related_items_ctn:not(#a):not(#b) {
+    background: transparent !important;
+}
+/* "More like <game>" had no publisher logo, so the glass rule above missed it.
+   Same glass as "More from". */
+body div.nKsKxQO2ePs-.Panel:not(#a):not(#b) {
+    background: rgba(24, 24, 37, 0.58) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(1.4) !important;
+    backdrop-filter: blur(24px) saturate(1.4) !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9), 0 4px 12px rgba(17, 17, 27, 0.45) !important;
+    border-radius: 16px !important;
+}
+body div._1LCgJ96WPe4-:not(#a):not(#b) {
+    color: rgb(205, 214, 244) !important;
+}
+/* Follow: same pill as "See All" beside it. */
+body div.FollowButton:not(#a):not(#b) {
+    background: rgba(49, 50, 68, 0.6) !important;
+    box-shadow: inset 0 0 0 2px rgba(49, 50, 68, 0.9) !important;
+    border-radius: 999px !important;
+}
+body div.FollowButton:not(#a):not(#b):hover {
+    box-shadow: inset 0 0 0 2px rgb(137, 180, 250) !important;
+}
+body div.FollowButton .FollowBtnText:not(#a):not(#b) {
+    color: rgb(137, 180, 250) !important;
+}
+
+/* Game capsules in the carousels: the black price bar becomes Mocha base. */
+body div.CapsuleBottomBar:not(#a):not(#b) {
+    background: rgb(30, 30, 46) !important;
+}
+body div.StoreSalePriceWidgetContainer:not(#a):not(#b) {
+    background: transparent !important;
+}
+body div.D3fuhd6kG6I-:not(#a):not(#b),
+body div.Cnw9IXSgr7I-:not(#a):not(#b) {
+    color: rgb(127, 132, 156) !important;
+}
+body div.D3fuhd6kG6I-:not(#a):not(#b)::before,
+body div.Cnw9IXSgr7I-:not(#a):not(#b)::before {
+    border-bottom-color: rgb(127, 132, 156) !important;
+}
+body div.OySWwOLLxFc-:not(#a):not(#b),
+body div.-sYwJqKAVvw-:not(#a):not(#b) {
+    color: rgb(205, 214, 244) !important;
+}
+body div.FY3FS-llgYw-:not(#a):not(#b) {
+    color: rgb(137, 180, 250) !important;
+}
+body div.Jhq3hD97Ms8-:not(#a):not(#b) {
+    background: rgba(49, 50, 68, 0.45) !important;
+}
+/* "IN LIBRARY" tag: Steam paints blue text on a blue tag, so it read as an
+   empty bar. Mocha blue tag, dark text and icon, rounded on its open side. */
+body span.LCYi5cxHqgI-.ZuMhm9DQqbw-:not(#a):not(#b) {
+    background: rgb(137, 180, 250) !important;
+    color: rgb(17, 17, 27) !important;
+    box-shadow: none !important;
+    border-radius: 0 8px 8px 0 !important;
+    font-weight: 600;
+}
+body span.LCYi5cxHqgI-.ZuMhm9DQqbw-:not(#a):not(#b) img {
+    filter: brightness(0) !important;
+    opacity: 0.85;
+}
+/* Genre tile under "More from". */
+body a.A6CaMMW9gjI-:not(#a):not(#b) {
+    background: rgba(49, 50, 68, 0.45) !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9) !important;
+    border-radius: 16px !important;
+}
+body a.A6CaMMW9gjI-:not(#a):not(#b) :is(._0efmIyaYm1o-, ._2bcxcrdUNdY-) {
+    background: none !important;
+}
+body div._077DfADYleA-:not(#a):not(#b) {
+    background: rgb(137, 180, 250) !important;
+}
+body div._077DfADYleA-:not(#a):not(#b) div {
+    color: rgb(17, 17, 27) !important;
+}
+
+/* Carousel arrows and the progress line under each row. */
+body .SliderBody :is(.carousel__back-button, .carousel__next-button) svg:not(#a) {
+    opacity: 1 !important;
+}
+body .SliderBody :is(.carousel__back-button, .carousel__next-button) polygon:not(#a) {
+    fill: rgb(166, 173, 200) !important;
+    transition: fill .15s ease-out;
+}
+body .SliderBody :is(.carousel__back-button, .carousel__next-button):hover polygon:not(#a) {
+    fill: rgb(137, 180, 250) !important;
+}
+body div.IxjyotVSZiA-:not(#a):not(#b) {
+    height: 2px !important;
+    background: rgba(69, 71, 90, 0.9) !important;
+    border-radius: 1px;
+}
+body div.cD9zjaueru0-:not(#a):not(#b) {
+    height: 4px !important;
+    top: 16px !important;
+    background: linear-gradient(90deg, rgb(137, 180, 250), rgb(203, 166, 247)) !important;
+    border-radius: 2px;
+}
+
+/* What Curators Say: the note becomes a card, "View all" a pill like See All. */
+body div.steam_curators_block div.no_curators_followed:not(#a):not(#b) {
+    background: rgba(49, 50, 68, 0.45) !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9) !important;
+    border-radius: 16px !important;
+    color: rgb(186, 194, 222) !important;
+    margin-top: 8px;
+}
+body div.steam_curators_block .block_header > .right > a:not(#a):not(#b) {
+    display: inline-block;
+    padding: 4px 14px !important;
+    background: rgba(49, 50, 68, 0.6) !important;
+    box-shadow: inset 0 0 0 2px rgba(49, 50, 68, 0.9) !important;
+    border-radius: 999px !important;
+    color: rgb(205, 214, 244) !important;
+    text-decoration: none !important;
+}
+body div.steam_curators_block .block_header > .right > a:not(#a):not(#b):hover {
+    box-shadow: inset 0 0 0 2px rgb(137, 180, 250) !important;
+}
+
+/* Customer reviews. */
+body div.review_ctn:not(#a):not(#b) {
+    border-top-color: transparent !important;
+}
+body div.dAKtJif-TvE-:not(#a):not(#b) {
+    border-bottom-color: rgba(49, 50, 68, 0.9) !important;
+}
+body span.fr-bGCVaw-k- a:not(#a):not(#b) {
+    text-decoration: none !important;
+    color: rgb(137, 180, 250) !important;
+}
+body span.fr-bGCVaw-k- a:not(#a):not(#b):hover {
+    color: rgb(180, 190, 254) !important;
+}
+body div.PwTlk5b4Rh0-:not(#a):not(#b),
+body div._3tTNLTWh51g-:not(#a):not(#b) {
+    background: rgba(49, 50, 68, 0.45) !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9) !important;
+    border-radius: 12px !important;
+}
+body div.PwTlk5b4Rh0-:not(#a):not(#b) {
+    border-radius: 16px !important;
+}
+body :is(div._3tTNLTWh51g-, div.VxxhsJVwAVI-):not(#a):not(#b) {
+    color: rgb(166, 173, 200) !important;
+}
+body span._0J6O0kq9Hts-:not(#a):not(#b) {
+    color: rgb(205, 214, 244) !important;
+}
+body span._4zGuwHiO90Y-:not(#a):not(#b) {
+    color: rgb(127, 132, 156) !important;
+}
+body span.ar-Pie428S4-:not(#a):not(#b) {
+    color: rgb(137, 180, 250) !important;
+}
+body div.nS3iAoyO-XI-.Panel:not(#a):not(#b) {
+    background: rgba(49, 50, 68, 0.45) !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9) !important;
+    border-radius: 16px !important;
+}
+body button.SnXunF8fARU-:not(#a):not(#b) {
+    color: rgb(205, 214, 244) !important;
+}
+body button.rmyhMJV7U78-:not(#a):not(#b) {
+    background: rgba(69, 71, 90, 0.6) !important;
+    color: rgb(205, 214, 244) !important;
+    border-radius: 8px !important;
+}
+body div.xmfAOc5jkEs-:not(#a):not(#b),
+body div.OOAOHdyNuHs-:not(#a):not(#b) {
+    color: rgb(186, 194, 222) !important;
+}
+body div.SxOhdk6O5JU-:not(#a):not(#b) {
+    border-bottom-color: rgba(49, 50, 68, 0.9) !important;
+}
+body div.lldeUKTkoO0-:not(#a):not(#b) {
+    color: rgb(205, 214, 244) !important;
+}
+/* Review cards. */
+body div._4rFF1L9jPC8-.Panel:not(#a):not(#b) {
+    background: rgba(49, 50, 68, 0.45) !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9) !important;
+    border-radius: 16px !important;
+    overflow: hidden;
+}
+body div.PaJFVCJu0g0-:not(#a):not(#b) {
+    background: rgba(30, 30, 46, 0.6) !important;
+}
+body div.H2acnhvyOf8-:not(#a):not(#b) {
+    background: rgba(137, 180, 250, 0.18) !important;
+}
+body div.H2acnhvyOf8-.Q-ri1pkIYZs-:not(#a):not(#b) {
+    background: rgba(243, 139, 168, 0.18) !important;
+}
+body div._6TbBRA-XF68-:not(#a):not(#b) {
+    color: rgb(205, 214, 244) !important;
+}
+body :is(div.zrWiY5l1Qvs-, div.bgorXAs2e8Y-, div.j8nIw0zXcJo-, div.FFdVb5PNBwQ-):not(#a):not(#b) {
+    color: rgb(127, 132, 156) !important;
+}
+body div.FFdVb5PNBwQ-.qXOh-7nWDCE-:not(#a):not(#b) {
+    color: rgb(186, 194, 222) !important;
+}
+body div.HnrHdXpIj-8-:not(#a):not(#b) {
+    background: rgb(69, 71, 90) !important;
+}
+body div.ev-4YE2674o-:not(#a):not(#b) {
+    background: rgba(49, 50, 68, 0.7) !important;
+    border-radius: 8px !important;
+}
+body div.D6w-d1v2-Vc-:not(#a):not(#b) {
+    color: rgb(186, 194, 222) !important;
+}
+body div.alw4hqxJ-Dg-.Panel:not(#a):not(#b) {
+    background: rgba(49, 50, 68, 0.6) !important;
+    border-radius: 8px !important;
+}
+body :is(div.o62k18gmiXQ-, div.ePITP9CnlMU-):not(#a):not(#b) {
+    color: rgb(137, 180, 250) !important;
+}
+
+/* Body text, headings and links left in Steam's grey-blue. */
+body :is(#appHubAppName, .game_purchase_options_editions_header_title, .game_purchase_price, .z7OUnz8a2LE-, .FNsnxK3tYRI-, .metacritic):not(#a):not(#b) {
+    color: rgb(205, 214, 244) !important;
+}
+body :is(.game_description_snippet, .release_date .date, .summary.column, .summary.column .responsive_hidden, .QvYBOAdgkPk-):not(#a):not(#b) {
+    color: rgb(186, 194, 222) !important;
+}
+body #game_area_description:not(#a):not(#b),
+body #game_area_description :is(strong, li, i, p, ul):not(#a):not(#b) {
+    color: rgb(186, 194, 222) !important;
+}
+body :is(.block_title, #genresAndManufacturer, .details_block .dev_row, .hltb-store-row, .x8oQENqyJ1s-, ._1jp-rCKW9iQ-, .onLSYXBtvEU-, .app_tag.add_button):not(#a):not(#b) {
+    color: rgb(166, 173, 200) !important;
+}
+body :is(.oDEFTUumdv8-.F2gk6wzla9E-, a.communitylink_points_shop_item, .FyNXXMXFmw0-, .similarapp):not(#a):not(#b) {
+    color: rgb(127, 132, 156) !important;
+}
+body :is(a.linkbar, a.all_languages, #game_area_description a):not(#a):not(#b) {
+    color: rgb(137, 180, 250) !important;
+}
+body .package_contents b:not(#a):not(#b) {
+    color: rgb(166, 227, 161) !important;
+}
+body button.game_purchase_options_editions_header_compare_button:not(#a):not(#b) {
+    background: rgba(49, 50, 68, 0.6) !important;
+    border: 0 !important;
+    box-shadow: inset 0 0 0 2px rgba(49, 50, 68, 0.9) !important;
+    border-radius: 999px !important;
+    color: rgb(205, 214, 244) !important;
+}
+body button.game_purchase_options_editions_header_compare_button:not(#a):not(#b):hover {
+    box-shadow: inset 0 0 0 2px rgb(137, 180, 250) !important;
+}
+body .package_contents a:not(#a):not(#b) {
+    background-color: transparent !important;
+    border-radius: 8px;
+    overflow: hidden;
+}
+/* Feature list chips. */
+body span.LtwI-MuOmiI-:not(#a):not(#b) {
+    background: rgba(137, 180, 250, 0.12) !important;
+}
+body span.d7UCTQDYGFg-:not(#a):not(#b) {
+    color: rgb(137, 180, 250) !important;
+}
+/* Languages table. */
+body #languageTable tr:not(#a):not(#b) {
+    border-bottom-color: rgba(49, 50, 68, 0.9) !important;
+}
+body #languageTable th:not(#a):not(#b) {
+    color: rgb(186, 194, 222) !important;
+}
+body #languageTable td:not(#a):not(#b) {
+    color: rgb(166, 173, 200) !important;
+}
+/* Points shop thumbnails. */
+body a.communitylink_points_shop_item:not(#a):not(#b) {
+    background-color: rgba(49, 50, 68, 0.45) !important;
+    border-radius: 8px !important;
+}
+/* Share, embed and report buttons. */
+body #shareEmbedRow a.btnv6_blue_hoverfade:not(#a):not(#b) {
+    background: rgba(49, 50, 68, 0.6) !important;
+    box-shadow: inset 0 0 0 2px rgba(49, 50, 68, 0.9) !important;
+    border-radius: 999px !important;
+    color: rgb(205, 214, 244) !important;
+}
+body #shareEmbedRow a.btnv6_blue_hoverfade:not(#a):not(#b) > span {
+    background: transparent !important;
+    color: inherit !important;
+}
+body #shareEmbedRow a.btnv6_blue_hoverfade:not(#a):not(#b):hover {
+    box-shadow: inset 0 0 0 2px rgb(137, 180, 250) !important;
+}
+/* Steam Awards banners. */
+body :is(a.steamawards2024_app_square_ctn, a.steamawards2022_app_square_ctn):not(#a):not(#b) {
+    border-color: rgba(69, 71, 90, 0.9) !important;
+    border-radius: 16px !important;
+    overflow: hidden;
+}
+body :is(.steamawards2024_app_banner_winner, .steamawards2022_app_banner_winner):not(#a):not(#b) {
+    background: rgb(137, 180, 250) !important;
+    color: rgb(17, 17, 27) !important;
+    border-radius: 6px;
+}
+body :is(.steamawards_app_banner_awardstitle, .steamawards2024_app_banner_header, .steamawards2022_app_banner_header, .steamawards2022_app_banner_year):not(#a):not(#b) {
+    color: rgb(205, 214, 244) !important;
+}
+body .steamawards2024_app_banner_year:not(#a):not(#b) {
+    color: rgb(203, 166, 247) !important;
+}
+/* "Read more" fade under long text: fade into the page, Mocha blue label. */
+body div.game_page_autocollapse_readmore:not(#a):not(#b) {
+    background: linear-gradient(90deg, rgba(24, 24, 37, 0) 0%, rgb(24, 24, 37) 40%) !important;
+    color: rgb(137, 180, 250) !important;
+}
+/* Hero: video bar, screenshot strip, header fade. */
+body div.hPeepTEP2A0-:not(#a):not(#b) {
+    background: rgba(17, 17, 27, 0.85) !important;
+}
+body div.QkF4JCVWpWw- span:not(#a):not(#b) {
+    color: rgb(186, 194, 222) !important;
+}
+body div.OX1oObP8BBs-:not(#a):not(#b) {
+    background: rgb(17, 17, 27) !important;
+    border-radius: 8px;
+    overflow: hidden;
+}
+/* Selected thumbnail: Steam's ring sits 3px outside the tile and the tile clips it.
+   Draw a 2px blue to mauve ring inside the tile on the same 8px radius instead. */
+body div.OX1oObP8BBs-.HxQpo4wzmz8-:not(#a):not(#b)::after {
+    inset: 0 !important;
+    border: 0 !important;
+    border-radius: 8px !important;
+    padding: 2px !important;
+    box-sizing: border-box !important;
+    background: linear-gradient(135deg, rgb(137, 180, 250), rgb(203, 166, 247)) !important;
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0) !important;
+    -webkit-mask-composite: xor !important;
+    mask-composite: exclude !important;
+    pointer-events: none;
+    z-index: 2;
+}
+body div.GssTy6neAgg-:not(#a):not(#b) {
+    background: rgba(17, 17, 27, 0.6) !important;
+}
+
+/* Sweep, second pass: the last stock colours the scan found. */
+body div.uacZ-90MOII-:not(#a):not(#b) {
+    background: linear-gradient(rgba(17, 17, 27, 0) 20%, rgba(17, 17, 27, 0.6)) !important;
+}
+body #protondb-badge :not(#a):not(#b) {
+    color: rgb(166, 173, 200);
+}
+body .package_contents_capsule > a:not(#a):not(#b) {
+    background-color: rgb(17, 17, 27) !important;
+    border-radius: 8px !important;
+    overflow: hidden;
+}
+body a._0JhQq90Mrho-:not(#a):not(#b) {
+    background: rgba(137, 180, 250, 0.18) !important;
+    color: rgb(137, 180, 250) !important;
+}
+body .DRM_notice a:not(#a):not(#b) {
+    color: rgb(137, 180, 250) !important;
+}
+body #languageTable td.checkcol span:not(#a):not(#b) {
+    color: rgb(137, 180, 250) !important;
+}
+body #gameAreaDLCSection h2 .note :is(a, em):not(#a):not(#b) {
+    color: rgb(205, 214, 244) !important;
+}
+body ul.bb_ul li:not(#a):not(#b) {
+    color: rgb(186, 194, 222) !important;
+}
+body .game_area_sys_req :is(li, ul):not(#a):not(#b) {
+    color: rgb(186, 194, 222) !important;
+}
+body .game_area_sys_req strong:not(#a):not(#b) {
+    color: rgb(205, 214, 244) !important;
+}
+body div.bb_img_expand:not(#a):not(#b) {
+    color: rgb(166, 173, 200) !important;
+}
+body #writeReviewTable label > a:not(#a):not(#b) {
+    color: rgb(166, 173, 200) !important;
+}
+/* ProtonDB tier dot keeps its meaning: gold becomes the Mocha yellow. */
+body #protondb-badge div[style*="background: rgb(207, 181, 59)"]:not(#a) {
+    background: rgb(249, 226, 175) !important;
+    color: rgb(17, 17, 27) !important;
+}
+/* ProtonDB and HowLongToBeat plugin text set in inline styles. */
+body #protondb-badge [style*="color: rgb(143, 152, 160)"]:not(#a) {
+    color: rgb(166, 173, 200) !important;
+}
+body #protondb-badge span[style*="background: rgb(136, 136, 136)"]:not(#a) {
+    background: rgb(127, 132, 156) !important;
+}
+body .hltb-store-row span:not(#a):not(#b) {
+    color: rgb(186, 194, 222) !important;
+}
+body #protondb-badge:not(#a):not(#b) {
+    color: rgb(205, 214, 244) !important;
+}
+body :is(.steamawards2024_app_banner_header, .steamawards2022_app_banner_header) span:not(#a):not(#b) {
+    color: rgb(180, 190, 254) !important;
+}
+body #protondb-badge [style*="color: rgb(198, 212, 223)"]:not(#a) {
+    color: rgb(205, 214, 244) !important;
+}
+/* Reviewer PC specs: the values. */
+body div.ev-4YE2674o- > div:not(#a):not(#b) {
+    color: rgb(186, 194, 222) !important;
+}
+
+/* 2026-11-22: store header menus grow to fit our padded rows. Steam fixes the
+   menu area at 250px and the More menu's sliding page at 206px, sized for its
+   stock rows; ours run taller, so Recommendations lost its last game row and
+   "DLC For You", and More lost the lower tiles and "Singleplayer". */
+body .RZQWX-64UNU-:not(#a):not(#b) {
+    height: auto !important;
+    min-height: 250px !important;
+}
+body .RZQWX-64UNU- .jYoDYbgCCU0-:has(> .sXPjq4p3Ws4-):not(#a):not(#b) {
+    min-height: 250px !important;
 }

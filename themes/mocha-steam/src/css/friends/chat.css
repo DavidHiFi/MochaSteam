@@ -606,9 +606,9 @@
 .friendsui-container .dropTargetBox {
     border: 2px dashed rgba(137, 180, 250, 0.75) !important;
     border-radius: 16px !important;
-    background: rgba(30, 30, 46, 0.85) !important;
-    -webkit-backdrop-filter: blur(22px);
-    backdrop-filter: blur(22px);
+    background: rgba(30, 30, 46, 0.6) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(1.4);
+    backdrop-filter: blur(24px) saturate(1.4);
     color: #cdd6f4 !important;
 }
 .friendsui-container .ChatTabs .dropTargetBox { border-radius: 16px !important; }

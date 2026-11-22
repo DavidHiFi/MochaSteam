@@ -5,7 +5,7 @@
 .DESCRIPTION
     No download step is needed. Run this in PowerShell:
 
-        irm https://raw.githubusercontent.com/DavidHiFi/millennium-stuff/main/setup/Install-MochaSetup.ps1 | iex
+        irm https://raw.githubusercontent.com/DavidHiFi/MochaSteam/main/setup/Install-MochaSetup.ps1 | iex
 
     From an extracted copy of the repository:
 
@@ -46,7 +46,7 @@ param(
 $ErrorActionPreference = 'Stop'
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
-$RepoZipUrl = 'https://codeload.github.com/DavidHiFi/millennium-stuff/zip/refs/heads/main'
+$RepoZipUrl = 'https://github.com/DavidHiFi/MochaSteam/archive/refs/heads/main.zip'
 $MillenniumInstallerUrl = 'https://github.com/SteamClientHomebrew/Installer/releases/latest/download/MillenniumInstaller-Windows.exe'
 
 function Step([string]$text) { Write-Host "==> $text" }
@@ -66,7 +66,7 @@ if ($PSScriptRoot) {
 if (-not $repoRoot) {
     $work = Join-Path $env:TEMP ('mocha-steam-setup-' + [guid]::NewGuid().ToString('N').Substring(0, 8))
     New-Item -ItemType Directory -Path $work -Force | Out-Null
-    $zip = Join-Path $work 'millennium-stuff.zip'
+    $zip = Join-Path $work 'mocha-steam.zip'
     Step 'Downloading the Mocha Steam setup from GitHub'
     Invoke-WebRequest -Uri $RepoZipUrl -OutFile $zip -UseBasicParsing
     Expand-Archive -LiteralPath $zip -DestinationPath $work -Force

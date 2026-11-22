@@ -88,9 +88,9 @@
        invalid and dropped. What was left was a 4px blur of the banner with no
        fill, which is why INSTALLED / LUA TOOLS / STEAMTOOLS sat unreadable on
        the artwork. Readability comes from the fill, not from more blur. */
-    background-color: rgba(var(--st-panel, 24, 24, 37), 0.72) !important;
-    backdrop-filter: blur(6px) !important;
-    -webkit-backdrop-filter: blur(6px) !important;
+    background-color: rgba(var(--st-panel, 24, 24, 37), 0.58) !important;
+    backdrop-filter: blur(24px) saturate(1.4) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(1.4) !important;
     box-shadow: 0px 4px 8px 0px rgb(0 0 0 / 50%);
 }
 ._1HS4twEHtDJ_8MWgJT4VBd:hover {
@@ -1520,8 +1520,8 @@ div:has(>._1J21tLst5SEhBPkVRT53UV._28ZR8gHitOrJaSLxcIAl2p) {
     ._3QS6OBHpvI5bXsSQA2zQuW.CommunityItem,
     ._1ul9ZRBfhF0vyj-hrit6nU.AuthorSection,
     ._1JlC29Ic6L-QvL-39X_d-X.PostTextEntryArea):not(#a):not(#b) {
-    -webkit-backdrop-filter: blur(14px) saturate(1.15) !important;
-    backdrop-filter: blur(14px) saturate(1.15) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(1.4) !important;
+    backdrop-filter: blur(24px) saturate(1.4) !important;
 }
 
 /* Activity day cards: one box, not three stacked fills. The headline row
@@ -1553,10 +1553,10 @@ div:has(>._1J21tLst5SEhBPkVRT53UV._28ZR8gHitOrJaSLxcIAl2p) {
 
 /* The client-update banner was Steam's bright blue strip. */
 ._2iJsgdTIX9Tj23rWnB7Q-c.Alert:not(#a):not(#b) {
-    background: rgba(30, 30, 46, .92) !important;
+    background: rgba(30, 30, 46, .6) !important;
     box-shadow: inset 0 0 0 2px rgba(69, 71, 90, .9) !important;
-    -webkit-backdrop-filter: blur(20px) saturate(1.15) !important;
-    backdrop-filter: blur(20px) saturate(1.15) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(1.4) !important;
+    backdrop-filter: blur(24px) saturate(1.4) !important;
     color: rgb(205, 214, 244) !important;
 }
 
@@ -1631,12 +1631,12 @@ div:has(>._1J21tLst5SEhBPkVRT53UV._28ZR8gHitOrJaSLxcIAl2p) {
    the full-width click area). */
 ._1J21tLst5SEhBPkVRT53UV:not(#a):not(#b) > div {
     position: relative !important;
-    background: rgba(30, 30, 46, .72) !important;
+    background: rgba(30, 30, 46, .58) !important;
     box-shadow: inset 0 0 0 2px rgba(69, 71, 90, .9) !important;
     border: none !important;
     border-radius: 16px !important;
-    -webkit-backdrop-filter: blur(14px) saturate(1.15) !important;
-    backdrop-filter: blur(14px) saturate(1.15) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(1.4) !important;
+    backdrop-filter: blur(24px) saturate(1.4) !important;
     transition: background-color .15s !important;
 }
 /* The text label gets slim pill padding; the floating icon-only version keeps
@@ -1697,10 +1697,10 @@ div:has(>._1J21tLst5SEhBPkVRT53UV._28ZR8gHitOrJaSLxcIAl2p) {
 .FramerateReportingBanner:not(#a):not(#b) {
     border: none !important;
     border-radius: 16px !important;
-    background: rgba(30, 30, 46, .72) !important;
+    background: rgba(30, 30, 46, .58) !important;
     box-shadow: inset 0 0 0 2px rgba(69, 71, 90, .9) !important;
-    -webkit-backdrop-filter: blur(14px) saturate(1.15) !important;
-    backdrop-filter: blur(14px) saturate(1.15) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(1.4) !important;
+    backdrop-filter: blur(24px) saturate(1.4) !important;
 }
 .FramerateReportingBanner .Title:not(#a) { color: rgb(205, 214, 244) !important; }
 .FramerateReportingBanner .Question:not(#a) { color: rgb(166, 173, 200) !important; }
