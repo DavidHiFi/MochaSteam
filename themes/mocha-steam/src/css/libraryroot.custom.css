@@ -113,14 +113,15 @@ body .AdvancedSearchPane label span { color: #cdd6f4 !important; }
 !   readable disabled Save, and the collection icon in the text colour.
 */
 body .AdvancedSearchPaneContainer::before { display: none !important; }
-/* 2026-11-23: one 20px pass under a 0.70 fill read as a dark smudge ("fake blur").
-   Two 20px passes smooth like one big blur without the big-blur breakdown, so the
-   fill drops to 0.50 and the colour moves under it like the acrylic menus. Picked
-   from five recipes on the live pane (pane_tune.py), all passing glass-check. */
+/* 2026-11-23 pm (owner: "I can clearly see stuff behind it"): Steam's page blur
+   always lets a faint sharp copy of the covers through (seen with no fill at all),
+   so only the fill can hide it. Three 20px passes under a 0.88 Mocha fill read
+   movement 3.7 to 4.4, inside Explorer's frost (3.4 to 4.6); 0.50 read 16 to 19.
+   Picked from fourteen recipes on the live pane (pane_tune*.py). */
 body .AdvancedSearchPane:not(#a):not(#b) {
-    background: rgba(30, 30, 46, 0.5) !important;
-    -webkit-backdrop-filter: blur(20px) blur(20px) saturate(1.5) !important;
-    backdrop-filter: blur(20px) blur(20px) saturate(1.5) !important;
+    background: rgba(30, 30, 46, 0.88) !important;
+    -webkit-backdrop-filter: blur(20px) blur(20px) blur(20px) saturate(1.5) !important;
+    backdrop-filter: blur(20px) blur(20px) blur(20px) saturate(1.5) !important;
 }
 body .AdvancedSearchPane .DialogDropDown:not(#a):not(#b) {
     box-sizing: border-box !important;

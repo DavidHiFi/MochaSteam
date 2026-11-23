@@ -66,8 +66,9 @@ end
 
 -- Pop-up menus are their own windows, so CSS blur inside them only sees the menu
 -- itself. Windows acrylic on the window frosts whatever is behind it: the Steam
--- page or the desktop. Mocha mantle #181825 at 60% as the tint (rice: 0.40 to 0.65).
-local MENU_TINT = 0x99251818
+-- page or the desktop. Tint: Mocha base #1E1E2E at 85%, the same recipe as the desktop
+-- menus (seamless-flyouts). 60% mantle let colour shapes read through (owner, 2026-11-23).
+local MENU_TINT = 0xD82E1E1E
 local function frost_menu(hwnd)
     local accent = ffi.new('MochaAccent[1]', {{4, 0x20, MENU_TINT, 0}})
     local composition = ffi.new('MochaComposition', {19, accent, ffi.sizeof(accent[0])})
