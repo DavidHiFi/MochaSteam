@@ -126,10 +126,12 @@ body.st-has-millennium-sidebar .DialogDropDownMenu:not(#a):not(#b) .DialogDropDo
 /* 2026-11-22: fill 0.74 + item fills 0.55 stacked to ~0.88 and read flat. Card 0.50, items clear at rest.
    2026-11-23: blur 24px degrades in Steam's renderer, so cover outlines and game labels read
    through. Same recipe as the filters pane: blur 20px, fill 0.70 (glass check PASS). */
+/* 2026-11-24: one pop-up recipe across the library (tooltip, hover card, lists, filters
+   pane): fill 0.85 over three 20px passes, with a solid grid base while it is open. */
 body.st-has-millennium-sidebar .DialogDropDownMenu:not(#a):not(#b) {
-    background: rgba(24, 24, 37, 0.7) !important;
-    -webkit-backdrop-filter: blur(20px) saturate(1.4) !important;
-    backdrop-filter: blur(20px) saturate(1.4) !important;
+    background: rgba(30, 30, 46, 0.85) !important;
+    -webkit-backdrop-filter: blur(20px) blur(20px) blur(20px) saturate(1.5) !important;
+    backdrop-filter: blur(20px) blur(20px) blur(20px) saturate(1.5) !important;
     border: 0 !important;
     box-shadow: inset 0 0 0 2px var(--st-dlg-edge), 0 12px 32px rgba(17, 17, 27, 0.55) !important;
     padding: 8px !important;

@@ -26,6 +26,11 @@
     /* Frosted floating surfaces (menus, dropdowns, tooltips, toasts) */
     --st-glass: rgba(24, 24, 37, 0.58);
     --st-glass-blur: blur(24px) saturate(1.4);
+    /* Pop-ups that sit over the game grid (tooltip, hover card, in-page list).
+       Measured 2026-11-24: at 0.58 / one 24px pass the covers still moved a lot
+       under them; this is the filters pane's recipe and lands in Explorer's band. */
+    --st-glass-thick: rgba(30, 30, 46, 0.85);
+    --st-glass-blur-thick: blur(20px) blur(20px) blur(20px) saturate(1.5);
     /* Hairline edge that separates one Mocha surface from the next.
        Taskbar dock border since 2026-11-07: surface1 #45475a at 90% is the
        exact colour+alpha the Windhawk docks use (#E645475A), per the owner's
@@ -53,9 +58,9 @@ body .TextToolTip {
     overflow: hidden;
     border-radius: var(--st-border-radius) !important;
     background-image: none !important;
-    background-color: var(--st-glass) !important;
-    -webkit-backdrop-filter: var(--st-glass-blur) !important;
-    backdrop-filter: var(--st-glass-blur) !important;
+    background-color: var(--st-glass-thick) !important;
+    -webkit-backdrop-filter: var(--st-glass-blur-thick) !important;
+    backdrop-filter: var(--st-glass-blur-thick) !important;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5), inset 0 0 0 2px var(--st-edge) !important;
     color: rgb(var(--st-text-strong, 205, 214, 244)) !important;
 }
@@ -104,9 +109,9 @@ body .DialogDropDownMenu {
     overflow-x: hidden;
     overflow-y: auto;
     border-radius: var(--st-border-radius) !important;
-    background-color: var(--st-glass) !important;
-    -webkit-backdrop-filter: var(--st-glass-blur) !important;
-    backdrop-filter: var(--st-glass-blur) !important;
+    background-color: var(--st-glass-thick) !important;
+    -webkit-backdrop-filter: var(--st-glass-blur-thick) !important;
+    backdrop-filter: var(--st-glass-blur-thick) !important;
     box-shadow: 0 10px 32px rgba(0, 0, 0, 0.55), inset 0 0 0 2px var(--st-edge) !important;
 }
 body .DialogDropDownMenu_Item {
@@ -125,9 +130,9 @@ body ._2ohOQgahhMYnIEfAQmv9B8 {
 body ._2sGn0cBsD44TjnUIh-lx9d {
     overflow: hidden;
     border-radius: var(--st-border-radius) !important;
-    background-color: var(--st-glass) !important;
-    -webkit-backdrop-filter: var(--st-glass-blur) !important;
-    backdrop-filter: var(--st-glass-blur) !important;
+    background-color: var(--st-glass-thick) !important;
+    -webkit-backdrop-filter: var(--st-glass-blur-thick) !important;
+    backdrop-filter: var(--st-glass-blur-thick) !important;
     box-shadow: inset 0 0 0 2px var(--st-edge) !important;
 }
 /* Glass audit 2026-11-22: Steam paints its own fake blur inside this card, a copy
@@ -150,6 +155,15 @@ body ._3vg1vYU7iTWqONciv9cuJN ._2sGn0cBsD44TjnUIh-lx9d {
 }
 body ._3vg1vYU7iTWqONciv9cuJN._1Ye_0niF2UqB8uQTbm8B6B ._2sGn0cBsD44TjnUIh-lx9d {
     opacity: 1;
+}
+/* 2026-11-24, same leak as the filters pane: the game grid is see-through to the
+   window glass, and backdrop-filter over it let a sharp copy of the covers through
+   any pop-up (sharp ratio 0.046 -> 0.013 with this). While a tooltip, the hover card
+   or an in-page list is up, the grid gets a solid Mocha base. */
+body:has(.TextToolTip) ._3lDczhulqraStjCitLYJ1K.Body:not(#a):not(#b),
+body:has(._3vg1vYU7iTWqONciv9cuJN._1Ye_0niF2UqB8uQTbm8B6B) ._3lDczhulqraStjCitLYJ1K.Body:not(#a):not(#b),
+body:has(.DialogDropDownMenu) ._3lDczhulqraStjCitLYJ1K.Body:not(#a):not(#b) {
+    background-color: #1e1e2e !important;
 }
 
 
