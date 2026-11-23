@@ -119,9 +119,17 @@ body .AdvancedSearchPaneContainer::before { display: none !important; }
    movement 3.7 to 4.4, inside Explorer's frost (3.4 to 4.6); 0.50 read 16 to 19.
    Picked from fourteen recipes on the live pane (pane_tune*.py). */
 body .AdvancedSearchPane:not(#a):not(#b) {
-    background: rgba(30, 30, 46, 0.88) !important;
+    background: rgba(30, 30, 46, 0.85) !important;
     -webkit-backdrop-filter: blur(20px) blur(20px) blur(20px) saturate(1.5) !important;
     backdrop-filter: blur(20px) blur(20px) blur(20px) saturate(1.5) !important;
+}
+/* 2026-11-24 (owner: "I can still see stuff too clearly behind it"): the sharp copy of
+   the covers came from the see-through game grid, not the pane. With a solid Mocha
+   backing under the grid the pane blur is clean (sharp detail 0.08 down to 0.01), so
+   the backing goes on only while the filters pane is open; the grid keeps its glass
+   otherwise. Fill back to 0.85 for Explorer's frost (pane_leak.py, pane_fill.py). */
+body:has(.AdvancedSearchPaneContainer.Visible) ._3lDczhulqraStjCitLYJ1K.Body:not(#a):not(#b) {
+    background-color: #1e1e2e !important;
 }
 body .AdvancedSearchPane .DialogDropDown:not(#a):not(#b) {
     box-sizing: border-box !important;
