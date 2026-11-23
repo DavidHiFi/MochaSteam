@@ -113,10 +113,14 @@ body .AdvancedSearchPane label span { color: #cdd6f4 !important; }
 !   readable disabled Save, and the collection icon in the text colour.
 */
 body .AdvancedSearchPaneContainer::before { display: none !important; }
+/* 2026-11-23: one 20px pass under a 0.70 fill read as a dark smudge ("fake blur").
+   Two 20px passes smooth like one big blur without the big-blur breakdown, so the
+   fill drops to 0.50 and the colour moves under it like the acrylic menus. Picked
+   from five recipes on the live pane (pane_tune.py), all passing glass-check. */
 body .AdvancedSearchPane:not(#a):not(#b) {
-    background: rgba(30, 30, 46, 0.7) !important;
-    -webkit-backdrop-filter: blur(20px) saturate(1.35) !important;
-    backdrop-filter: blur(20px) saturate(1.35) !important;
+    background: rgba(30, 30, 46, 0.5) !important;
+    -webkit-backdrop-filter: blur(20px) blur(20px) saturate(1.5) !important;
+    backdrop-filter: blur(20px) blur(20px) saturate(1.5) !important;
 }
 body .AdvancedSearchPane .DialogDropDown:not(#a):not(#b) {
     box-sizing: border-box !important;

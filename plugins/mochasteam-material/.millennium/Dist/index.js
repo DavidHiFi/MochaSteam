@@ -68,20 +68,24 @@ async function initialize() {
         const title = String(win?.document?.title || '');
         if (!title) return;
         menuTimers.get(win)?.();
+        // Steam finishes placing and showing a menu after the first calls, which can
+        // wipe the glass, so every step of the burst applies it again.
         let done = false;
         const attempt = () => {
-            if (done) return;
             const dpr = win.devicePixelRatio || 1;
             const rect = [win.screenX, win.screenY, win.outerWidth, win.outerHeight]
                 .map(v => Math.round(v * dpr)).join(',');
-            call('apply_menu_material', { title })
-                .then(ok => ok || call('apply_menu_material_at', { rect }))
+            // Screen box first: dropdown and right-click menus show "Menu" in the page but
+            // their window title is blank, and the title lookup would frost other hidden
+            // "Menu" windows and report success.
+            call('apply_menu_material_at', { rect })
+                .then(ok => ok || call('apply_menu_material', { title }))
                 .then(ok => {
                     if (ok) done = true;
                     win.document?.documentElement?.classList.toggle('mocha-acrylic', ok || done);
                 });
         };
-        menuTimers.set(win, burst(attempt, [0, 60, 200, 500]));
+        menuTimers.set(win, burst(attempt, [0, 60, 200, 500, 1000, 2000]));
     };
     const onMenu = win => {
         if (!win) return;
@@ -99,6 +103,7 @@ async function initialize() {
             win.document.addEventListener('visibilitychange', () => {
                 if (!win.document.hidden) scheduleMenu(win);
             });
+            win.addEventListener('resize', () => scheduleMenu(win));
         }
         scheduleMenu(win);
     };
@@ -135,6 +140,47 @@ async function initialize() {
         }
         scheduleThis();
     };
+    // Dropdown lists (library shelf and sort, the filters pane, settings) open inside the
+    // page by default, where only CSS blur can reach them and it reads as a dark smudge.
+    // Open them as their own menu windows instead (Steam's own path for narrow windows),
+    // so onMenu above gives them the same Windows acrylic as every other menu.
+    const forceDropdownPopups = () => {
+        let req;
+        try {
+            window.webpackChunksteamui?.push([[Symbol(pluginName)], {}, r => { req = r; }]);
+        } catch (error) {
+            console.error('[mochasteam-material]', error);
+        }
+        if (!req?.m) return false;
+        const ids = Object.keys(req.m);
+        ids.sort((a, b) => (b === '13240') - (a === '13240'));
+        for (const id of ids) {
+            const source = String(req.m[id]);
+            if (!source.includes('CreateContextMenuInstance(') || !source.includes('GetAllMenus(')) continue;
+            for (const value of Object.values(req(id) || {})) {
+                const proto = typeof value === 'function' ? value.prototype : null;
+                if (typeof proto?.CreateContextMenuInstance !== 'function') continue;
+                if (proto.mochaDropdownPopups) return true;
+                const original = proto.CreateContextMenuInstance;
+                proto.CreateContextMenuInstance = function (content, target, x, y, options) {
+                    // As a window, a list matched to the button width cuts off longer
+                    // choices (Sort by), so size it to its content, never under the button.
+                    if (!options?.bForcePopup && target?.closest?.('.DialogDropDown')) {
+                        options = { ...options, bForcePopup: true, bMatchWidth: false, bGrowToElementWidth: true };
+                    }
+                    return original.call(this, content, target, x, y, options);
+                };
+                proto.mochaDropdownPopups = true;
+                return true;
+            }
+        }
+        return false;
+    };
+    try {
+        if (!forceDropdownPopups()) console.warn('[mochasteam-material] dropdown menu hook not found');
+    } catch (error) {
+        console.error('[mochasteam-material]', error);
+    }
     Millennium.AddWindowCreateHook(onPopup);
     // Windows that existed before the plugin loaded (the main window, the root menus).
     try {
