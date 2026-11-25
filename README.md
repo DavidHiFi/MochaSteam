@@ -190,6 +190,17 @@ Thanks for the stars, the Steam client reports and the plugin fixes.
 
 - **Author:** Myself, [DavidHiFi](https://github.com/DavidHiFi)
 
+<!-- contributors:start -->
+- **AI coding agents:** [Claude Code](https://github.com/anthropics/claude-code), [OpenCode](https://github.com/anomalyco/opencode) and Halo Sparks
+
+<p>
+  <a href="https://github.com/DavidHiFi"><img src="https://github.com/DavidHiFi.png?size=96" width="48" height="48" alt="DavidHiFi" title="DavidHiFi"></a>
+  <a href="https://github.com/anthropics/claude-code"><img src="https://github.com/claude.png?size=96" width="48" height="48" alt="Claude Code" title="Claude Code"></a>
+</p>
+
+<sub>GitHub's contributor list also shows openhands-agent. Our machines had the wrong git name set from late October to November 26, 2026, so some commits by the agents above carry that name. OpenHands did not work on this project.</sub>
+<!-- contributors:end -->
+
 | Who | What |
 | --- | --- |
 | **SpaceEnergy** ([SpaceTheme for Steam](https://github.com/SpaceTheme/Steam)) | Mocha Steam is a fork of SpaceTheme (MIT), synced through commit `ce67165` with later fixes ported by hand, including ForgottenHero's hover-sidebar fix and EldinBegano's dropdown styling. |
