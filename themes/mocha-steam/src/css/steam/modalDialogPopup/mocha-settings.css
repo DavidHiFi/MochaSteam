@@ -60,12 +60,15 @@ body .ProgressBar .Percent:not(#a) {
     background: linear-gradient(90deg, rgb(137, 180, 250), rgb(203, 166, 247)) !important;
 }
 
-/* Text field (In Game) */
+/* Text field (In Game, DLC Search, Launch Options) */
 body input.DialogInput:not(#a) {
     border-radius: 12px !important;
     background: rgba(24, 24, 37, 0.7) !important;
-    box-shadow: inset 0 0 0 2px var(--st-edge) !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9) !important;
     color: rgb(205, 214, 244) !important;
+}
+body input.DialogInput:not(#a):hover {
+    background: rgba(49, 50, 68, 0.55) !important;
 }
 body input.DialogInput:not(#a):focus {
     box-shadow: inset 0 0 0 2px rgb(137, 180, 250) !important;
@@ -185,10 +188,200 @@ body .Pip:not(#a) {
 }
 body .DialogCheckbox:not(#a) {
     border-radius: 6px !important;
-    background-color: rgba(49, 50, 68, 0.6) !important;
-    box-shadow: inset 0 0 0 2px var(--st-edge) !important;
+    background-color: rgba(24, 24, 37, 0.85) !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9) !important;
+    transition: background-color 0.15s ease-out, box-shadow 0.15s ease-out !important;
+}
+body .DialogCheckbox:not(#a):hover {
+    background-color: rgba(49, 50, 68, 0.75) !important;
+    box-shadow: inset 0 0 0 2px rgb(137, 180, 250) !important;
+}
+body .DialogCheckbox.Active:not(#a) {
+    background-color: rgba(137, 180, 250, 0.16) !important;
+    box-shadow: inset 0 0 0 2px rgb(137, 180, 250) !important;
+}
+body .DialogCheckbox:not(#a) .SVGIcon_DialogCheck linearGradient stop:first-child {
+    stop-color: #89b4fa !important;
+}
+body .DialogCheckbox:not(#a) .SVGIcon_DialogCheck linearGradient stop:last-child {
+    stop-color: #cba6f7 !important;
 }
 body .SinglePageIntro .Bullet.Muted .IconCircle:not(#a) {
     background-color: rgb(88, 91, 112) !important;
     color: rgb(205, 214, 244) !important;
+}
+
+
+/*
+& Mocha settings, pass 2 (2026-11-26).
+& 1. Setting row docks in Game Properties and Steam Settings: consistent Mocha
+&    mantle fill, full rounded corners, 8px spacing, 2px #45475A resting border
+&    and a 2px blue-to-mauve hover ring (suppressed when hovering a child control).
+& 2. Game Properties DLC grid and Workshop list: rounded Mocha mantle table
+&    with 2px #45475A border, Mocha base sticky header, blue sort triangles,
+&    row hover highlight, and Mocha text/thumbnails.
+& 3. Single 2px border on SettingsDialogButton (removes dwmx.css inner 1px ring).
+*/
+
+/* Setting row docks (exclude MillenniumSettings, which edges DialogControlsSection) */
+body .PagedSettingsDialog:not(.MillenniumSettings) .DialogBody .Field.Background.Panel:not(#a) {
+    position: relative !important;
+    margin: 8px 0 !important;
+    padding: 12px 14px !important;
+    border: none !important;
+    border-radius: var(--st-border-radius, 16px) !important;
+    background-color: rgba(24, 24, 37, 0.62) !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9) !important;
+    transition: background-color 0.15s ease-out !important;
+}
+body .PagedSettingsDialog:not(.MillenniumSettings) .DialogBody .Field.Background.Panel:not(.Disabled):not(#a):hover {
+    background-color: rgba(49, 50, 68, 0.45) !important;
+}
+body .PagedSettingsDialog:not(.MillenniumSettings) .DialogBody .Field.Background.Panel.Disabled:not(#a) {
+    opacity: 0.45 !important;
+}
+body .PagedSettingsDialog:not(.MillenniumSettings) .DialogBody .Field.Background.Panel:not(#a)::after {
+    content: "" !important;
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 2 !important;
+    border-radius: inherit !important;
+    padding: 2px !important;
+    background: var(--st-ring, linear-gradient(135deg, rgb(137, 180, 250), rgb(203, 166, 247))) !important;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0) !important;
+    -webkit-mask-composite: xor !important;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0) !important;
+    mask-composite: exclude !important;
+    opacity: 0 !important;
+    transition: opacity 0.15s ease-out !important;
+    pointer-events: none !important;
+}
+body .PagedSettingsDialog:not(.MillenniumSettings) .DialogBody .Field.Background.Panel:not(.Disabled):not(#a):hover::after {
+    opacity: 1 !important;
+}
+body .PagedSettingsDialog:not(.MillenniumSettings) .DialogBody .Field.Background.Panel:not(#a):has(:is(button, input, .DialogDropDown, .Toggle, .DialogCheckbox):hover)::after {
+    opacity: 0 !important;
+}
+body .PagedSettingsDialog:not(.MillenniumSettings) .DialogBody .Field.Background.Panel:not(#a) ._2VcTlXFC64Jtg9gvtT6cmY {
+    padding: 0 !important;
+}
+body .PagedSettingsDialog:not(.MillenniumSettings) .DialogBody .Field.Background.Panel:not(#a) ._1W1to_azoBRG95oNAFpf9Q {
+    padding: 4px 0 0 !important;
+}
+
+/* Single 2px border on SettingsDialogButton (fixes doubled border with button.css) */
+body .DialogBody button.SettingsDialogButton:not(#a) {
+    background: rgba(30, 30, 46, 0.85) !important;
+    border: 2px solid rgba(69, 71, 90, 0.9) !important;
+    box-shadow: none !important;
+    color: rgb(205, 214, 244) !important;
+}
+body .DialogBody button.SettingsDialogButton:not(:disabled):not(#a):hover,
+body .DialogBody button.SettingsDialogButton:not(:disabled):not(#a):focus,
+body .DialogBody button.SettingsDialogButton:not(:disabled):not(#a).gpfocus {
+    border-color: transparent !important;
+    background: linear-gradient(rgb(49, 50, 68), rgb(49, 50, 68)) padding-box,
+        var(--st-ring, linear-gradient(135deg, rgb(137, 180, 250), rgb(203, 166, 247))) border-box !important;
+    box-shadow: none !important;
+    color: rgb(205, 214, 244) !important;
+}
+
+/* DLC top bar spacing */
+body .DialogBody .DlcTopRow:not(#a) {
+    margin: 0 0 12px !important;
+    padding: 0 !important;
+    background-color: transparent !important;
+    gap: 10px !important;
+}
+
+/* Steam Cloud usage accent text (replaces stock Steam #1a9fff blue) */
+body .DialogBody .SteamCloudUsage:not(#a) {
+    color: rgb(166, 173, 200) !important;
+}
+body .DialogBody .SteamCloudUsage:not(#a) > span,
+body .DialogBody .SteamCloudUsage:not(#a) [class*="Available"] {
+    color: rgb(137, 180, 250) !important;
+}
+
+/* Game Properties > DLC table */
+body .DialogBody .DlcGrid:not(#a) {
+    box-sizing: border-box !important;
+    column-gap: 0 !important;
+    row-gap: 0 !important;
+    border-radius: var(--st-border-radius, 16px) !important;
+    background-color: rgba(24, 24, 37, 0.72) !important;
+    border: 2px solid rgba(69, 71, 90, 0.9) !important;
+    box-shadow: none !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    align-content: start !important;
+    color: rgb(205, 214, 244) !important;
+}
+body .DialogBody .DlcGrid:not(#a) .DlcHeader {
+    background-color: rgba(30, 30, 46, 0.96) !important;
+    color: rgb(186, 194, 222) !important;
+    border-bottom: 1px solid rgba(69, 71, 90, 0.85) !important;
+    padding: 10px 12px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.04em !important;
+    transition: background-color 0.15s ease-out, color 0.15s ease-out !important;
+}
+body .DialogBody .DlcGrid:not(#a) .DlcHeader:hover {
+    background-color: rgba(49, 50, 68, 0.92) !important;
+    color: rgb(205, 214, 244) !important;
+}
+body .DialogBody .DlcGrid:not(#a) .TriangleUp {
+    border-bottom-color: rgb(137, 180, 250) !important;
+}
+body .DialogBody .DlcGrid:not(#a) .TriangleDown {
+    border-top-color: rgb(137, 180, 250) !important;
+}
+body .DialogBody .DlcGrid:not(#a) > .Panel:not(:first-child) > .Panel {
+    margin: 0 !important;
+    padding: 8px 12px !important;
+    border-bottom: 1px solid rgba(69, 71, 90, 0.32) !important;
+    transition: background-color 0.15s ease-out !important;
+}
+body .DialogBody .DlcGrid:not(#a) > .Panel:last-child > .Panel {
+    border-bottom: none !important;
+}
+body .DialogBody .DlcGrid:not(#a) > .Panel:not(:first-child):hover > .Panel {
+    background-color: rgba(49, 50, 68, 0.45) !important;
+}
+body .DialogBody .DlcGrid:not(#a) a,
+body .DialogBody .DlcGrid:not(#a) .Name {
+    color: rgb(205, 214, 244) !important;
+    text-decoration: none !important;
+}
+body .DialogBody .DlcGrid:not(#a) a:hover,
+body .DialogBody .DlcGrid:not(#a) a:hover .Name {
+    color: rgb(137, 180, 250) !important;
+}
+body .DialogBody .DlcGrid:not(#a) .Added,
+body .DialogBody .DlcGrid:not(#a) .SizeDisk {
+    color: rgb(166, 173, 200) !important;
+}
+body .DialogBody .DlcGrid:not(#a) .DlcArt,
+body .DialogBody .DlcGrid:not(#a) .DlcArt img {
+    border-radius: 8px !important;
+}
+
+/* Game Properties > Workshop list (same stock table shell as DLC) */
+body .DialogBody .WorkshopItemRowsScroll:not(#a) {
+    box-sizing: border-box !important;
+    border-radius: var(--st-border-radius, 16px) !important;
+    background-color: rgba(24, 24, 37, 0.72) !important;
+    border: 2px solid rgba(69, 71, 90, 0.9) !important;
+    box-shadow: none !important;
+    color: rgb(205, 214, 244) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body .PagedSettingsDialog:not(.MillenniumSettings) .DialogBody .Field.Background.Panel:not(#a),
+    body .PagedSettingsDialog:not(.MillenniumSettings) .DialogBody .Field.Background.Panel:not(#a)::after,
+    body .DialogBody .DlcGrid:not(#a) .DlcHeader,
+    body .DialogBody .DlcGrid:not(#a) > .Panel:not(:first-child) > .Panel,
+    body .DialogCheckbox:not(#a) {
+        transition: none !important;
+    }
 }
