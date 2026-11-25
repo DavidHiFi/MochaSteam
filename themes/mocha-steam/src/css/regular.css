@@ -36,7 +36,7 @@
        exact colour+alpha the Windhawk docks use (#E645475A), per the owner's
        "use my taskbar colours" request. The old surface2 grey moved down to
        --st-edge-strong so nothing lost the extra strength it had. */
-    --st-edge: rgba(49, 50, 68, 0.9);
+    --st-edge: rgba(69, 71, 90, 0.9);
     /* The stronger edge for surfaces that sit on busier fills (menus, toggle
        rails, focus rings): the old --st-edge surface2 #585b70. */
     --st-edge-strong: rgb(69, 71, 90);
@@ -65,12 +65,12 @@ body .TextToolTip {
     color: rgb(var(--st-text-strong, 205, 214, 244)) !important;
 }
 
-/* Combobox chips: frost the whole control as one pill instead of leaving a
-   flat translucent overlay behind the label. */
+/* Combobox chips: one dark pill, the same mantle fill as the filter chips
+   beside them (2026-11-26: no CSS blur on controls, rice rule). */
 body .DialogDropDown {
-    background-color: rgba(var(--st-surface-0), 0.45) !important;
-    -webkit-backdrop-filter: var(--st-glass-blur) !important;
-    backdrop-filter: var(--st-glass-blur) !important;
+    background-color: rgba(var(--st-mantle), 0.55) !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
 }
 body .DialogDropDown_CurrentDisplay,
 body .DialogDropDown_Arrow {

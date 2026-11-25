@@ -376,6 +376,238 @@ body .DialogBody .WorkshopItemRowsScroll:not(#a) {
     color: rgb(205, 214, 244) !important;
 }
 
+/*
+& Mocha settings, pass 3 (2026-11-26). Game Properties > Game Versions & Betas:
+& the selected version box, the versions table with its radio rows, and the
+& private access code row with its Check Code button.
+*/
+
+/* Selected version box */
+body .DialogBody :is(._3ooxUb30k7736aTVnO179S, .AppDetailsSelectedBeta):not(#a) {
+    position: relative !important;
+    box-sizing: border-box !important;
+    margin: 0 0 16px !important;
+    padding: 12px 14px !important;
+    border: none !important;
+    border-radius: var(--st-border-radius, 16px) !important;
+    background: rgba(24, 24, 37, 0.62) !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9) !important;
+    color: rgb(205, 214, 244) !important;
+}
+body .DialogBody :is(._3H9mJurCFIkAqvWpYfEaDM, .BetaLabel):not(#a) {
+    color: rgb(166, 173, 200) !important;
+    letter-spacing: 0.04em !important;
+}
+body .DialogBody :is(._1-tJH7xXk_v4ppGx6yLVXM, .BetasDropDown):not(#a) .DialogDropDown {
+    border-radius: 12px !important;
+}
+body .DialogBody :is(.GPL5WpWzbji_wIr98hPMz, .BetaOption, .Hn0jliyE--RzLZHuaFyhl, .BetaText):not(#a) {
+    color: rgb(205, 214, 244) !important;
+}
+body .DialogBody :is(._24BN2A3khkLXilnwdxCSHL, .LanguageBetaTag):not(#a) {
+    border-radius: 8px !important;
+    padding: 1px 8px !important;
+    background: rgb(30, 30, 46) !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9) !important;
+    color: rgb(203, 166, 247) !important;
+}
+body .DialogBody :is(._2pcC9_vmxhYbLrGmMseHr7, .BetaOptInMessages):not(#a) {
+    margin: 0 0 12px !important;
+}
+
+/* Versions table: one edged, rounded dock; header row on base, rows on mantle */
+body .DialogBody :is(._3jWpi0kJp_piNEvdMufMmy, .BetasTable):not(#a) {
+    box-sizing: border-box !important;
+    margin: 0 0 16px !important;
+    border: 2px solid rgba(69, 71, 90, 0.9) !important;
+    border-radius: var(--st-border-radius, 16px) !important;
+    background: rgba(24, 24, 37, 0.72) !important;
+    box-shadow: none !important;
+    overflow: hidden !important;
+    color: rgb(205, 214, 244) !important;
+}
+/* The header row sits just above the table: it becomes the table's top, so
+   the two read as one dock with one edge. */
+body .DialogBody :is(._3jWpi0kJp_piNEvdMufMmy, .BetasTable):not(#a) {
+    border-top: none !important;
+    border-radius: 0 0 var(--st-border-radius, 16px) var(--st-border-radius, 16px) !important;
+}
+body .DialogBody :is(.X3pN_ESh0aoxmm2nK65Hu, .BetaHeaderRow):not(#a) {
+    box-sizing: border-box !important;
+    margin: 0 !important;
+    padding: 10px 16px !important;
+    background: rgba(30, 30, 46, 0.96) !important;
+    border: 2px solid rgba(69, 71, 90, 0.9) !important;
+    border-bottom: 1px solid rgba(69, 71, 90, 0.85) !important;
+    border-radius: var(--st-border-radius, 16px) var(--st-border-radius, 16px) 0 0 !important;
+    box-shadow: none !important;
+    color: rgb(186, 194, 222) !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.04em !important;
+}
+body .DialogBody :is(._1LCoWsUrJmZHr7SVX0luaG, .BetaRow):not(#a) {
+    position: relative !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+    padding: 10px 14px !important;
+    border: none !important;
+    border-bottom: 1px solid rgba(69, 71, 90, 0.32) !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    color: rgb(205, 214, 244) !important;
+    transition: background-color 0.15s ease-out !important;
+}
+body .DialogBody :is(._1LCoWsUrJmZHr7SVX0luaG, .BetaRow):not(#a):last-child {
+    border-bottom: none !important;
+}
+body .DialogBody :is(._1LCoWsUrJmZHr7SVX0luaG, .BetaRow):not(#a):hover {
+    background: rgba(49, 50, 68, 0.45) !important;
+}
+body .DialogBody :is(._1LCoWsUrJmZHr7SVX0luaG, .BetaRow):is(.dB7T-kfL2b2b0jd9Zg9fa, .Selected):not(#a) {
+    background: rgba(137, 180, 250, 0.1) !important;
+}
+/* Hover ring on each row, inset so it sits inside the table's own edge */
+body .DialogBody :is(._1LCoWsUrJmZHr7SVX0luaG, .BetaRow):not(#a)::after {
+    content: "" !important;
+    position: absolute !important;
+    inset: 2px !important;
+    z-index: 2 !important;
+    border-radius: 12px !important;
+    padding: 2px !important;
+    background: var(--st-ring, linear-gradient(135deg, rgb(137, 180, 250), rgb(203, 166, 247))) !important;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0) !important;
+    -webkit-mask-composite: xor !important;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0) !important;
+    mask-composite: exclude !important;
+    opacity: 0 !important;
+    transition: opacity 0.15s ease-out !important;
+    pointer-events: none !important;
+}
+body .DialogBody :is(._1LCoWsUrJmZHr7SVX0luaG, .BetaRow):not(#a):hover::after {
+    opacity: 1 !important;
+}
+body .DialogBody :is(._33vTXbnDrHUQCTEKwJC3Eh, .BetaName):not(#a) {
+    color: rgb(205, 214, 244) !important;
+    font-weight: 600 !important;
+}
+body .DialogBody :is(._3OwCSCZC5BPFq4X7PLVzKp, .DescText):not(#a),
+body .DialogBody :is(._3FgV6oQH8JCN-J9BPCCs14, .BetaLastUpdated):not(#a) {
+    color: rgb(166, 173, 200) !important;
+}
+
+/* Radio buttons: mantle well with a 2px edge, a gradient dot when picked.
+   Steam's stock blue side bar on the picked row becomes the Mocha gradient. */
+body .DialogBody :is(._2d_FE9TOpHt1FsYhLEpjCp, .BetaRadioButton):not(#a) {
+    position: relative !important;
+    accent-color: rgb(137, 180, 250) !important;
+    border-left: none !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+body .DialogBody :is(._1LCoWsUrJmZHr7SVX0luaG, .BetaRow):is(.dB7T-kfL2b2b0jd9Zg9fa, .Selected):not(#a) :is(._2d_FE9TOpHt1FsYhLEpjCp, .BetaRadioButton)::before {
+    content: "" !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: 2px !important;
+    bottom: 2px !important;
+    width: 3px !important;
+    border-radius: 3px !important;
+    background: linear-gradient(180deg, rgb(137, 180, 250), rgb(203, 166, 247)) !important;
+}
+body .DialogBody :is(._2d_FE9TOpHt1FsYhLEpjCp, .BetaRadioButton):not(#a) input[type="radio"],
+body .DialogBody input[type="radio"]:is(._2d_FE9TOpHt1FsYhLEpjCp, .BetaRadioButton):not(#a) {
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    box-sizing: border-box !important;
+    width: 18px !important;
+    height: 18px !important;
+    margin: 0 !important;
+    border-radius: 50% !important;
+    border: 2px solid rgba(69, 71, 90, 0.9) !important;
+    background: rgb(24, 24, 37) !important;
+    cursor: pointer !important;
+    transition: border-color 0.15s ease-out, background 0.15s ease-out !important;
+}
+body .DialogBody :is(._1LCoWsUrJmZHr7SVX0luaG, .BetaRow):not(#a):hover input[type="radio"] {
+    border-color: rgb(137, 180, 250) !important;
+}
+body .DialogBody :is(._2d_FE9TOpHt1FsYhLEpjCp, .BetaRadioButton):not(#a) input[type="radio"]:checked,
+body .DialogBody input[type="radio"]:is(._2d_FE9TOpHt1FsYhLEpjCp, .BetaRadioButton):not(#a):checked {
+    border-color: transparent !important;
+    background: radial-gradient(circle, rgb(17, 17, 27) 0 3px, transparent 3.5px) padding-box,
+        linear-gradient(135deg, rgb(137, 180, 250), rgb(203, 166, 247)) border-box !important;
+}
+
+/* Private versions: mantle input and base button side by side, 8px apart */
+body .DialogBody :is(._2WZcpnJsf4iRuWPaYpL_gi, .BetaAccessCodeRow):not(#a) {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    margin: 8px 0 0 !important;
+    padding: 0 !important;
+}
+body .DialogBody :is(._2WZcpnJsf4iRuWPaYpL_gi, .BetaAccessCodeRow):not(#a) .DialogInput_Wrapper {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+}
+body .DialogBody :is(._2WZcpnJsf4iRuWPaYpL_gi, .BetaAccessCodeRow):not(#a) button {
+    margin: 0 !important;
+    flex: 0 0 auto !important;
+}
+body .DialogBody :is(._2WZcpnJsf4iRuWPaYpL_gi, .BetaAccessCodeRow):not(#a) input {
+    box-sizing: border-box !important;
+    height: 36px !important;
+    padding: 0 12px !important;
+    border: none !important;
+    border-radius: 12px !important;
+    background: rgb(24, 24, 37) !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9) !important;
+    color: rgb(205, 214, 244) !important;
+    outline: none !important;
+}
+body .DialogBody :is(._2WZcpnJsf4iRuWPaYpL_gi, .BetaAccessCodeRow):not(#a) input:hover {
+    background: rgba(49, 50, 68, 0.55) !important;
+}
+body .DialogBody :is(._2WZcpnJsf4iRuWPaYpL_gi, .BetaAccessCodeRow):not(#a) input:focus {
+    box-shadow: inset 0 0 0 2px rgb(137, 180, 250) !important;
+}
+body .DialogBody :is(._2WZcpnJsf4iRuWPaYpL_gi, .BetaAccessCodeRow):not(#a) input::placeholder {
+    color: rgb(127, 132, 156) !important;
+}
+body .DialogBody :is(._8mlSYPGYvvReePHSyquNs, .BetaOptIntoButton, ._1IwF6o-Z7lL4drKYAGGOAt, .CheckButton):not(#a),
+body .DialogBody :is(._2WZcpnJsf4iRuWPaYpL_gi, .BetaAccessCodeRow):not(#a) button {
+    box-sizing: border-box !important;
+    height: 36px !important;
+    min-width: 0 !important;
+    padding: 0 16px !important;
+    white-space: nowrap !important;
+    border: 2px solid rgba(69, 71, 90, 0.9) !important;
+    border-radius: 12px !important;
+    background: rgb(30, 30, 46) !important;
+    box-shadow: none !important;
+    color: rgb(205, 214, 244) !important;
+    transition: background 0.15s ease-out, border-color 0.15s ease-out !important;
+}
+body .DialogBody :is(._8mlSYPGYvvReePHSyquNs, .BetaOptIntoButton, ._1IwF6o-Z7lL4drKYAGGOAt, .CheckButton):not(#a):not(:disabled):hover,
+body .DialogBody :is(._2WZcpnJsf4iRuWPaYpL_gi, .BetaAccessCodeRow):not(#a) button:not(:disabled):hover {
+    border-color: transparent !important;
+    background: linear-gradient(rgb(49, 50, 68), rgb(49, 50, 68)) padding-box,
+        var(--st-ring, linear-gradient(135deg, rgb(137, 180, 250), rgb(203, 166, 247))) border-box !important;
+}
+body .DialogBody :is(._8mlSYPGYvvReePHSyquNs, .BetaOptIntoButton, ._1IwF6o-Z7lL4drKYAGGOAt, .CheckButton):not(#a):disabled,
+body .DialogBody :is(._2WZcpnJsf4iRuWPaYpL_gi, .BetaAccessCodeRow):not(#a) button:disabled {
+    opacity: 0.45 !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body .DialogBody :is(._1LCoWsUrJmZHr7SVX0luaG, .BetaRow):not(#a),
+    body .DialogBody :is(._1LCoWsUrJmZHr7SVX0luaG, .BetaRow):not(#a)::after {
+        transition: none !important;
+    }
+}
+
 @media (prefers-reduced-motion: reduce) {
     body .PagedSettingsDialog:not(.MillenniumSettings) .DialogBody .Field.Background.Panel:not(#a),
     body .PagedSettingsDialog:not(.MillenniumSettings) .DialogBody .Field.Background.Panel:not(#a)::after,

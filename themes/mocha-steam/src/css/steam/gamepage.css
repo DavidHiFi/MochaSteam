@@ -1706,3 +1706,249 @@ div:has(>._1J21tLst5SEhBPkVRT53UV._28ZR8gHitOrJaSLxcIAl2p) {
 .FramerateReportingBanner .Question:not(#a) { color: rgb(166, 173, 200) !important; }
 /* Friend names in the activity feed were near-black grey (81,81,81). */
 .AppActivityDay span.playerName:not(#a), span.playerName:not(#a) { color: rgb(166, 173, 200) !important; }
+
+/*
+! Round 2026-11-26: one box per section, even insets, hover ring on every edge
+  Each detail section was three boxes deep: the section edge, an inner panel
+  edge (square on the left column) and, on the left, cards butting against
+  both. Now the section is the one box: its heading sits 14px down, every
+  child is inset 16px, the inner panel draws nothing, and every edged box on
+  the page brightens to the blue-to-mauve ring on hover.
+*/
+._2r4TK4BAuU-J4FuF_O7v_5.AppDetailsSection:not(._3-V8vjmrwuJM6Ws3tsjFJj):not(#a):not(#b):not(#c) {
+    position: relative !important;
+    margin-top: 0 !important;
+    padding: 14px 16px 16px !important;
+    border-radius: 16px !important;
+    background: rgba(30, 30, 46, .55) !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, .9) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(1.4) !important;
+    backdrop-filter: blur(24px) saturate(1.4) !important;
+}
+/* Headings: plain label, no box, no side pad (lines up with the content). */
+._2r4TK4BAuU-J4FuF_O7v_5.AppDetailsSection:not(._3-V8vjmrwuJM6Ws3tsjFJj) > h2._3A_c3YHYd4YIjA8Y-olnPl:not(#a):not(#b):not(#c) {
+    margin: 0 !important;
+    padding: 0 !important;
+    min-height: 18px !important;
+    border-radius: 0 !important;
+    background: none !important;
+    box-shadow: none !important;
+}
+/* The inner panel draws nothing; the section owns the edge. */
+._2r4TK4BAuU-J4FuF_O7v_5.AppDetailsSection:not(._3-V8vjmrwuJM6Ws3tsjFJj) > ._31ptFGGMZrSQc5BCX1e5lm:not(#a):not(#b):not(#c) {
+    margin: 10px 0 0 !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    background: none !important;
+    box-shadow: none !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+}
+._2r4TK4BAuU-J4FuF_O7v_5.AppDetailsSection:not(._3-V8vjmrwuJM6Ws3tsjFJj) > ._31ptFGGMZrSQc5BCX1e5lm > ._5uvIN6jXDXzzck59F-nhv:not(#a):not(#b):not(#c) {
+    padding: 0 !important;
+    width: auto !important;
+}
+/* Achievement progress and Workshop highlight: a card inside the section. */
+._2r4TK4BAuU-J4FuF_O7v_5.AppDetailsSection ._38t1mljBjmJfqjpVzMT1CG.Highlight:not(#a):not(#b):not(#c) {
+    margin: 0 0 12px !important;
+    padding: 12px !important;
+    border-radius: 12px !important;
+}
+/* The progress track was a square edge round a rounded bar. */
+._2YzOLNBx6TonKU0Zmp20l4.ProgressBar:not(#a):not(#b) {
+    border-radius: 8px !important;
+    overflow: hidden !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, .9) !important;
+    background: rgb(24, 24, 37) !important;
+}
+._2YzOLNBx6TonKU0Zmp20l4.ProgressBar > ._1u7tlq5OcUVR8p7-ic_ZVw:not(#a):not(#b) {
+    background: none !important;
+    border-radius: 8px !important;
+}
+/* Controller row: the icon no longer sits 12px further in than the text. */
+._2r4TK4BAuU-J4FuF_O7v_5.AppDetailsSection svg.ControllerStatusSVG:not(#a):not(#b) { margin-left: 0 !important; }
+
+/* Gap between the activity column and the right column (they touched). */
+._3yTl3RiWfo-Itg-xp967wP.ActivityFeedContainer:not(#a):not(#b) { max-width: calc(67% - 12px) !important; }
+
+/* Activity days: a date label and its items, not a box round another box.
+   Each news or update item is the card. */
+.S2Fu9HxHCA5MaCLGrN2ib.AppActivityDay:not(#a):not(#b):not(#c) {
+    margin: 0 0 16px !important;
+    padding: 0 !important;
+    background: none !important;
+    box-shadow: none !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+}
+.S2Fu9HxHCA5MaCLGrN2ib.AppActivityDay > h4._19LfMT7PFWg2xHOqNjR99q:not(#a):not(#b) {
+    margin: 0 0 8px 2px !important;
+}
+.S2Fu9HxHCA5MaCLGrN2ib .UVeN0kaD3zv1feMj_mMw5.Event:not(#a):not(#b):not(#c) {
+    position: relative !important;
+    padding: 12px !important;
+    border-radius: 16px !important;
+    background: rgba(24, 24, 37, .6) !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, .9) !important;
+    transition: background-color .15s !important;
+}
+.S2Fu9HxHCA5MaCLGrN2ib .UVeN0kaD3zv1feMj_mMw5.Event:not(#a):not(#b):not(#c):hover {
+    background: rgba(17, 17, 27, .8) !important;
+}
+/* The news block inside an item carries the same Event class: it is content,
+   not a second card. */
+.S2Fu9HxHCA5MaCLGrN2ib .UVeN0kaD3zv1feMj_mMw5.Event .UVeN0kaD3zv1feMj_mMw5.Event:not(#a):not(#b):not(#c),
+.S2Fu9HxHCA5MaCLGrN2ib .UVeN0kaD3zv1feMj_mMw5.Event .UVeN0kaD3zv1feMj_mMw5.Event:not(#a):not(#b):not(#c):hover {
+    padding: 0 !important;
+    border-radius: 12px !important;
+    background: none !important;
+    box-shadow: none !important;
+}
+.S2Fu9HxHCA5MaCLGrN2ib .UVeN0kaD3zv1feMj_mMw5.Event .UVeN0kaD3zv1feMj_mMw5.Event:not(#a):not(#b):not(#c)::after { display: none !important; }
+
+/* Comment box: block so its wrapper is not 6px taller, Mocha input fill, and
+   a gradient edge on hover that keeps the same 2px. */
+._5uvIN6jXDXzzck59F-nhv .YFAtL5H6txGXk5T_IhpUF ._1JlC29Ic6L-QvL-39X_d-X.PostTextEntryArea:not(#a):not(#b):not(#c) {
+    display: block !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+    min-height: 44px !important;
+    border: 2px solid transparent !important;
+    border-radius: 16px !important;
+    padding: 10px 12px !important;
+    line-height: 20px !important;
+    box-shadow: none !important;
+    background: linear-gradient(rgb(24, 24, 37), rgb(24, 24, 37)) padding-box,
+                linear-gradient(rgba(69, 71, 90, .9), rgba(69, 71, 90, .9)) border-box !important;
+}
+._5uvIN6jXDXzzck59F-nhv .YFAtL5H6txGXk5T_IhpUF ._1JlC29Ic6L-QvL-39X_d-X.PostTextEntryArea:not(#a):not(#b):not(#c):hover {
+    background: linear-gradient(rgb(24, 24, 37), rgb(24, 24, 37)) padding-box,
+                linear-gradient(135deg, rgb(137, 180, 250), rgb(203, 166, 247)) border-box !important;
+}
+._5uvIN6jXDXzzck59F-nhv .YFAtL5H6txGXk5T_IhpUF ._1JlC29Ic6L-QvL-39X_d-X.PostTextEntryArea:not(#a):not(#b):not(#c):focus {
+    outline: none !important;
+    background: linear-gradient(rgb(24, 24, 37), rgb(24, 24, 37)) padding-box,
+                linear-gradient(rgb(137, 180, 250), rgb(137, 180, 250)) border-box !important;
+}
+/* Emoticon and Post: one row, same height, centred, 8px apart. The yellow
+   smiley takes the Mocha text colour. */
+._5uvIN6jXDXzzck59F-nhv .YFAtL5H6txGXk5T_IhpUF ._37e7DrDNmf1FmsMGA5y0A0:not(#a):not(#b) {
+    justify-content: flex-end !important;
+    align-items: center !important;
+    gap: 8px !important;
+}
+:is(.bACIuqv-b_9TztCczFK19.EmoticonButton, ._2JSyABqFEh-v_dwaTnBydR.PostButton):not(#a):not(#b):not(#c) {
+    box-sizing: border-box !important;
+    height: 32px !important;
+    min-height: 32px !important;
+    margin: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+.bACIuqv-b_9TztCczFK19.EmoticonButton:not(#a):not(#b):not(#c) { width: 44px !important; padding: 0 !important; }
+._2JSyABqFEh-v_dwaTnBydR.PostButton:not(#a):not(#b):not(#c) { padding: 0 16px !important; }
+._2JSyABqFEh-v_dwaTnBydR.PostButton ._3jvEkfXhmZjvEbkpEv5EsH:not(#a) { margin: 0 !important; line-height: 1 !important; }
+.bACIuqv-b_9TztCczFK19.EmoticonButton svg:not(#a) { filter: grayscale(1) brightness(1.5) !important; }
+/* The "new emoticons" dot was Steam yellow. */
+.bACIuqv-b_9TztCczFK19 ._5BtHMjT9usALaSWHGugdV.NewEmoticonIndicator:not(#a) {
+    background: radial-gradient(circle, rgba(203, 166, 247, .35), transparent 70%) !important;
+}
+.bACIuqv-b_9TztCczFK19 .u5Kx6dkUppvb-1qV4IIuy.NewEmoticonCircle:not(#a) {
+    background: rgb(203, 166, 247) !important;
+    box-shadow: none !important;
+}
+
+/* Comment and like row under each news item: Steam hides it until hover but
+   keeps its room, which left an empty strip at the bottom of every card.
+   Shown all the time, muted, so the strip carries something. */
+.UVeN0kaD3zv1feMj_mMw5.Event ._1yWgPveQ73QeYCdLcs6oFQ.RatingBar:not(#a):not(#b),
+.UVeN0kaD3zv1feMj_mMw5.Event ._1yWgPveQ73QeYCdLcs6oFQ.RatingBar:not(#a):not(#b) *:not(._2lVtDi3eSjGcLfXVsRgoUy) {
+    visibility: visible !important;
+}
+.UVeN0kaD3zv1feMj_mMw5.Event ._1yWgPveQ73QeYCdLcs6oFQ.RatingBar:not(#a):not(#b) { margin-top: 8px !important; }
+.UVeN0kaD3zv1feMj_mMw5.Event ._1yWgPveQ73QeYCdLcs6oFQ.RatingBar :is(._2RkIcXHXACX4EdBluR3nAH, ._3grvnr9zzkvx6NoBOdmTnf):not(#a) { color: rgb(127, 132, 156) !important; }
+.UVeN0kaD3zv1feMj_mMw5.Event ._1yWgPveQ73QeYCdLcs6oFQ.RatingBar svg._2AVfXlAuHy0YQ4h1B3Kk2R:not(#a),
+.UVeN0kaD3zv1feMj_mMw5.Event ._1yWgPveQ73QeYCdLcs6oFQ.RatingBar svg._2AVfXlAuHy0YQ4h1B3Kk2R:not(#a) path { fill: rgb(127, 132, 156) !important; color: rgb(127, 132, 156) !important; }
+.UVeN0kaD3zv1feMj_mMw5.Event ._1yWgPveQ73QeYCdLcs6oFQ.RatingBar ._3Mds9UG-5yRsWUclIV_Y9q.CanClick:not(#a):hover :is(svg, path, ._2RkIcXHXACX4EdBluR3nAH, ._3grvnr9zzkvx6NoBOdmTnf) {
+    fill: rgb(137, 180, 250) !important;
+    color: rgb(137, 180, 250) !important;
+}
+
+/* Section buttons (View controller settings, View My Achievements...) were
+   flat surface fills with no edge: standard pill now. */
+._3Cdin80d-hVsakHUZboheb.AppDetailsButton:not(#a):not(#b):not(#c) {
+    background: rgba(30, 30, 46, .72) !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, .9) !important;
+    border: none !important;
+    border-radius: 16px !important;
+    color: rgb(186, 194, 222) !important;
+    transition: background-color .15s, color .15s !important;
+}
+._3Cdin80d-hVsakHUZboheb.AppDetailsButton:not(#a):not(#b):not(#c):hover {
+    background: rgba(17, 17, 27, .85) !important;
+    color: rgb(205, 214, 244) !important;
+}
+
+/* The hover ring, on every edged box that did not have one yet: sections,
+   the links bar, activity items, highlight cards, the description and play
+   bars, the review prompt, author boxes, thumbnails, achievement tiles, the
+   collection badge, banners and the section buttons. */
+:is(._2r4TK4BAuU-J4FuF_O7v_5.AppDetailsSection:not(._3-V8vjmrwuJM6Ws3tsjFJj),
+    ._2r4TK4BAuU-J4FuF_O7v_5.AppDetailsSection._3-V8vjmrwuJM6Ws3tsjFJj > ._31ptFGGMZrSQc5BCX1e5lm,
+    .S2Fu9HxHCA5MaCLGrN2ib .UVeN0kaD3zv1feMj_mMw5.Event,
+    ._38t1mljBjmJfqjpVzMT1CG.Highlight,
+    ._3Y87YQY56ZCOqhgcZFaDc5.InnerContainer,
+    ._25oBZpa3dUcMw8QAsa2u67.AppGameInfoContainer,
+    ._3LE-6w1ItIAB4CKJFCa3Od.ReviewContainer,
+    ._1ul9ZRBfhF0vyj-hrit6nU.AuthorSection,
+    ._2B8NkDc3EmF3XM6hl1qpQ8.Thumbnail,
+    ._2aVnDeExEHiUFX0zwr_BTO.AdditionalItem,
+    ._1HS4twEHtDJ_8MWgJT4VBd.InCollection,
+    ._2iJsgdTIX9Tj23rWnB7Q-c.Alert,
+    .FramerateReportingBanner,
+    ._3Cdin80d-hVsakHUZboheb.AppDetailsButton):not(#a):not(#b):not(#c) {
+    position: relative !important;
+}
+:is(._2r4TK4BAuU-J4FuF_O7v_5.AppDetailsSection:not(._3-V8vjmrwuJM6Ws3tsjFJj),
+    ._2r4TK4BAuU-J4FuF_O7v_5.AppDetailsSection._3-V8vjmrwuJM6Ws3tsjFJj > ._31ptFGGMZrSQc5BCX1e5lm,
+    .S2Fu9HxHCA5MaCLGrN2ib .UVeN0kaD3zv1feMj_mMw5.Event,
+    ._38t1mljBjmJfqjpVzMT1CG.Highlight,
+    ._3Y87YQY56ZCOqhgcZFaDc5.InnerContainer,
+    ._25oBZpa3dUcMw8QAsa2u67.AppGameInfoContainer,
+    ._3LE-6w1ItIAB4CKJFCa3Od.ReviewContainer,
+    ._1ul9ZRBfhF0vyj-hrit6nU.AuthorSection,
+    ._2B8NkDc3EmF3XM6hl1qpQ8.Thumbnail,
+    ._2aVnDeExEHiUFX0zwr_BTO.AdditionalItem,
+    ._1HS4twEHtDJ_8MWgJT4VBd.InCollection,
+    ._2iJsgdTIX9Tj23rWnB7Q-c.Alert,
+    .FramerateReportingBanner,
+    ._3Cdin80d-hVsakHUZboheb.AppDetailsButton):not(#a):not(#b):not(#c)::after {
+    content: "" !important;
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 3 !important;
+    padding: 2px !important;
+    border-radius: inherit !important;
+    background: linear-gradient(135deg, rgb(137, 180, 250), rgb(203, 166, 247)) !important;
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0) !important;
+    -webkit-mask-composite: xor !important;
+    mask-composite: exclude !important;
+    opacity: 0 !important;
+    transition: opacity .15s !important;
+    pointer-events: none !important;
+}
+:is(._2r4TK4BAuU-J4FuF_O7v_5.AppDetailsSection:not(._3-V8vjmrwuJM6Ws3tsjFJj),
+    ._2r4TK4BAuU-J4FuF_O7v_5.AppDetailsSection._3-V8vjmrwuJM6Ws3tsjFJj > ._31ptFGGMZrSQc5BCX1e5lm,
+    .S2Fu9HxHCA5MaCLGrN2ib .UVeN0kaD3zv1feMj_mMw5.Event,
+    ._38t1mljBjmJfqjpVzMT1CG.Highlight,
+    ._3Y87YQY56ZCOqhgcZFaDc5.InnerContainer,
+    ._25oBZpa3dUcMw8QAsa2u67.AppGameInfoContainer,
+    ._3LE-6w1ItIAB4CKJFCa3Od.ReviewContainer,
+    ._1ul9ZRBfhF0vyj-hrit6nU.AuthorSection,
+    ._2B8NkDc3EmF3XM6hl1qpQ8.Thumbnail,
+    ._2aVnDeExEHiUFX0zwr_BTO.AdditionalItem,
+    ._1HS4twEHtDJ_8MWgJT4VBd.InCollection,
+    ._2iJsgdTIX9Tj23rWnB7Q-c.Alert,
+    .FramerateReportingBanner,
+    ._3Cdin80d-hVsakHUZboheb.AppDetailsButton):not(#a):not(#b):not(#c):hover::after { opacity: 1 !important; }

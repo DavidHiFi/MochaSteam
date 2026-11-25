@@ -168,7 +168,7 @@ body .AdvancedSearchPane .Buttons:not(#a):not(#b) { align-items: center !importa
 body .AdvancedSearchPane .AccessibilityOptionsButton:not(#a):not(#b) {
     color: #cdd6f4 !important;
     background: linear-gradient(rgba(49, 50, 68, 0.55), rgba(49, 50, 68, 0.55)) padding-box,
-        linear-gradient(rgba(88, 91, 112, 0.7), rgba(88, 91, 112, 0.7)) border-box !important;
+        linear-gradient(rgba(69, 71, 90, 0.9), rgba(69, 71, 90, 0.9)) border-box !important;
 }
 body .AdvancedSearchPane .AccessibilityOptionsButton:not(#a):not(#b):hover,
 body .AdvancedSearchPane .AccessibilityOptionsButton:not(#a):not(#b):focus-visible,
@@ -235,4 +235,10 @@ body ._3pSPluBgf0NeR1kkCLWMhR.Selected ._3O48LaKWcabKx07xdrt1TH.Label {
 }
 body ._29uten9Yy8q-n7woDEOXVF.SectionCount {
     color: rgb(127, 132, 156) !important;
+}
+
+/* Sidebar game names: Steam cuts long names off mid-letter (text-overflow:
+   clip). End them with an ellipsis instead (2026-11-26). */
+body :is(._1vO6BoiVslZgs1kqDGdUs8, .GameListEntryContainer) span {
+    text-overflow: ellipsis !important;
 }
