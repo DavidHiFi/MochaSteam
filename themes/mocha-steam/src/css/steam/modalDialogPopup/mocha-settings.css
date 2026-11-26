@@ -303,22 +303,61 @@ body .DialogBody .SteamCloudUsage:not(#a) [class*="Available"] {
     color: rgb(137, 180, 250) !important;
 }
 
-/* Game Properties > DLC table */
+/* Game Properties > DLC table.
+   2026-11-26 pass 4: the table no longer scrolls on its own. Its sticky header
+   let rows show through and its scrollbar lane cut the header short on the
+   right. Now the page scrolls, the header is a plain top row, and the edge is
+   drawn by two rings on top of the rows: grey at rest, gradient on hover. */
 body .DialogBody .DlcGrid:not(#a) {
+    position: relative !important;
     box-sizing: border-box !important;
+    flex: 0 0 auto !important;
+    height: auto !important;
+    max-height: none !important;
     column-gap: 0 !important;
     row-gap: 0 !important;
+    border: none !important;
     border-radius: var(--st-border-radius, 16px) !important;
     background-color: rgba(24, 24, 37, 0.72) !important;
-    border: 2px solid rgba(69, 71, 90, 0.9) !important;
     box-shadow: none !important;
-    overflow-x: hidden !important;
-    overflow-y: auto !important;
+    overflow: clip !important;
     align-content: start !important;
     color: rgb(205, 214, 244) !important;
 }
+body .DialogBody .DlcGrid:not(#a)::before,
+body .DialogBody .DlcGrid:not(#a)::after,
+body .DialogBody .WorkshopItemRowsScroll:not(#a)::before,
+body .DialogBody .WorkshopItemRowsScroll:not(#a)::after,
+body .DialogBody :is(._3ooxUb30k7736aTVnO179S, .AppDetailsSelectedBeta):not(#a)::after {
+    content: "" !important;
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 3 !important;
+    border-radius: inherit !important;
+    padding: 2px !important;
+    background: rgba(69, 71, 90, 0.9) !important;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0) !important;
+    -webkit-mask-composite: xor !important;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0) !important;
+    mask-composite: exclude !important;
+    pointer-events: none !important;
+}
+body .DialogBody .DlcGrid:not(#a)::after,
+body .DialogBody .WorkshopItemRowsScroll:not(#a)::after,
+body .DialogBody :is(._3ooxUb30k7736aTVnO179S, .AppDetailsSelectedBeta):not(#a)::after {
+    background: var(--st-ring, linear-gradient(135deg, rgb(137, 180, 250), rgb(203, 166, 247))) !important;
+    opacity: 0 !important;
+    transition: opacity 0.15s ease-out !important;
+}
+body .DialogBody .DlcGrid:not(#a):hover::after,
+body .DialogBody .WorkshopItemRowsScroll:not(#a):hover::after,
+body .DialogBody :is(._3ooxUb30k7736aTVnO179S, .AppDetailsSelectedBeta):not(#a):hover::after {
+    opacity: 1 !important;
+}
 body .DialogBody .DlcGrid:not(#a) .DlcHeader {
-    background-color: rgba(30, 30, 46, 0.96) !important;
+    position: static !important;
+    top: auto !important;
+    background-color: rgba(49, 50, 68, 0.3) !important;
     color: rgb(186, 194, 222) !important;
     border-bottom: 1px solid rgba(69, 71, 90, 0.85) !important;
     padding: 10px 12px !important;
@@ -327,8 +366,12 @@ body .DialogBody .DlcGrid:not(#a) .DlcHeader {
     transition: background-color 0.15s ease-out, color 0.15s ease-out !important;
 }
 body .DialogBody .DlcGrid:not(#a) .DlcHeader:hover {
-    background-color: rgba(49, 50, 68, 0.92) !important;
+    background-color: rgba(49, 50, 68, 0.6) !important;
     color: rgb(205, 214, 244) !important;
+}
+/* The page scrolls instead of the table */
+body .DialogBody:has(> .DlcGrid):not(#a) {
+    overflow-y: auto !important;
 }
 body .DialogBody .DlcGrid:not(#a) .TriangleUp {
     border-bottom-color: rgb(137, 180, 250) !important;
@@ -368,10 +411,11 @@ body .DialogBody .DlcGrid:not(#a) .DlcArt img {
 
 /* Game Properties > Workshop list (same stock table shell as DLC) */
 body .DialogBody .WorkshopItemRowsScroll:not(#a) {
+    position: relative !important;
     box-sizing: border-box !important;
+    border: none !important;
     border-radius: var(--st-border-radius, 16px) !important;
     background-color: rgba(24, 24, 37, 0.72) !important;
-    border: 2px solid rgba(69, 71, 90, 0.9) !important;
     box-shadow: none !important;
     color: rgb(205, 214, 244) !important;
 }
@@ -614,6 +658,170 @@ body .DialogBody :is(._2WZcpnJsf4iRuWPaYpL_gi, .BetaAccessCodeRow):not(#a) butto
     body .DialogBody .DlcGrid:not(#a) .DlcHeader,
     body .DialogBody .DlcGrid:not(#a) > .Panel:not(:first-child) > .Panel,
     body .DialogCheckbox:not(#a) {
+        transition: none !important;
+    }
+}
+
+/*
+& Mocha settings, pass 4 (2026-11-26). Install dialog: the "Install to" drive
+& rows were stock grey and stock blue, and the cog in the round button sat off
+& centre. Class names from Steam's own module (FolderOption, Active, ...).
+*/
+
+/* Drive rows: mantle docks with the one rest edge, 8px apart */
+body .Oo5JPcEk_erKEYAzYp2nY:not(#a) {
+    position: relative !important;
+    box-sizing: border-box !important;
+    margin: 0 0 8px !important;
+    padding: 12px 16px !important;
+    border: none !important;
+    border-radius: 12px !important;
+    background: rgb(24, 24, 37) !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9) !important;
+    color: rgb(205, 214, 244) !important;
+    transition: background-color 0.15s ease-out !important;
+}
+body .Oo5JPcEk_erKEYAzYp2nY:not(#a)::after {
+    content: "" !important;
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 2 !important;
+    border-radius: inherit !important;
+    padding: 2px !important;
+    background: var(--st-ring, linear-gradient(135deg, rgb(137, 180, 250), rgb(203, 166, 247))) !important;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0) !important;
+    -webkit-mask-composite: xor !important;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0) !important;
+    mask-composite: exclude !important;
+    opacity: 0 !important;
+    transition: opacity 0.15s ease-out !important;
+    pointer-events: none !important;
+}
+body .Oo5JPcEk_erKEYAzYp2nY:not(#a):is(:hover, ._2-svusNL8L22pzjYeV4GMS) {
+    background: rgb(49, 50, 68) !important;
+    color: rgb(205, 214, 244) !important;
+}
+body .Oo5JPcEk_erKEYAzYp2nY:not(#a):is(:hover, ._2-svusNL8L22pzjYeV4GMS)::after {
+    opacity: 1 !important;
+}
+/* The picked drive: the same selected look as the betas table */
+body .Oo5JPcEk_erKEYAzYp2nY.gkgG-dWgjpwS_aqlcMNTM:not(#a) {
+    background: linear-gradient(135deg, rgba(137, 180, 250, 0.16), rgba(203, 166, 247, 0.16)), rgb(24, 24, 37) !important;
+    box-shadow: inset 0 0 0 2px rgba(137, 180, 250, 0.6) !important;
+    color: rgb(205, 214, 244) !important;
+}
+body .Oo5JPcEk_erKEYAzYp2nY.gkgG-dWgjpwS_aqlcMNTM:not(#a):is(:hover, ._2-svusNL8L22pzjYeV4GMS) {
+    background: linear-gradient(135deg, rgba(137, 180, 250, 0.22), rgba(203, 166, 247, 0.22)), rgb(49, 50, 68) !important;
+}
+body .Oo5JPcEk_erKEYAzYp2nY:not(#a) ._2vs_5hKYSMZTn7dKHTim5D._3WMFKYH3gPd8T5RGPjpUah {
+    color: rgb(127, 132, 156) !important;
+}
+body .Oo5JPcEk_erKEYAzYp2nY:not(#a) ._3a3KjxO7NqnVAjxtVypiCk {
+    color: rgb(166, 173, 200) !important;
+}
+body .Oo5JPcEk_erKEYAzYp2nY:not(#a) ._VEHWl9XgUCHDV7oGKSW4 {
+    color: rgb(166, 173, 200) !important;
+}
+body :is(.Oo5JPcEk_erKEYAzYp2nY, .WonjNtnAq8aOefGl_x2v4):not(#a) ._1p727K-lt5u7dR3PbUTcNZ.bhL5Q352pNmO44_JjKZTX,
+body .WonjNtnAq8aOefGl_x2v4.bhL5Q352pNmO44_JjKZTX:not(#a) {
+    color: rgb(249, 226, 175) !important;
+}
+
+/* Cog button: one round base chip with the icon dead centre */
+body ._2pnPQKKjSPKgzPwlaXMqu_:not(#a) {
+    position: relative !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 32px !important;
+    min-width: 32px !important;
+    max-width: 32px !important;
+    height: 32px !important;
+    margin: 0 0 0 auto !important;
+    padding: 0 !important;
+    border: 2px solid rgba(69, 71, 90, 0.9) !important;
+    border-radius: 50% !important;
+    background: rgb(30, 30, 46) !important;
+    box-shadow: none !important;
+    line-height: 0 !important;
+    transition: background 0.15s ease-out, border-color 0.15s ease-out !important;
+}
+body ._2pnPQKKjSPKgzPwlaXMqu_:not(#a) > * {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+body ._2pnPQKKjSPKgzPwlaXMqu_:not(#a) svg {
+    display: block !important;
+    width: 18px !important;
+    height: 18px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    color: rgb(205, 214, 244) !important;
+}
+body ._2pnPQKKjSPKgzPwlaXMqu_:not(#a):hover {
+    border-color: transparent !important;
+    background: linear-gradient(rgb(49, 50, 68), rgb(49, 50, 68)) padding-box,
+        var(--st-ring, linear-gradient(135deg, rgb(137, 180, 250), rgb(203, 166, 247))) border-box !important;
+}
+
+/* Game Properties > Controller > Steam Input status.
+   2026-11-26 pass 5: Steam draws it as a flat grey box with 3px corners, indented
+   20px from the row above. Now it is a dock like the override row: same left edge,
+   mantle fill, 2px grey edge at rest and the gradient ring on hover. */
+body .DialogBody .TopGap.SteamInputStatus:not(#a) {
+    margin-left: 0 !important;
+}
+body .DialogBody ._3lj3-GDYOlcoIFB3fFo1ko:not(#a) {
+    position: relative !important;
+    margin-left: 0 !important;
+    padding: 10px 14px !important;
+    border: none !important;
+    border-radius: var(--st-border-radius, 16px) !important;
+    background-color: rgba(24, 24, 37, 0.62) !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9) !important;
+    transition: background-color 0.15s ease-out !important;
+}
+body .DialogBody ._3lj3-GDYOlcoIFB3fFo1ko:not(#a) ._3QVsc21O3y-P2jJiD5t6-s._11Gq_4A3cMXdDfUnoeM14v {
+    background-color: rgb(137, 180, 250) !important;
+}
+body .DialogBody ._3lj3-GDYOlcoIFB3fFo1ko:not(#a):hover {
+    background-color: rgba(49, 50, 68, 0.45) !important;
+}
+body .DialogBody ._3lj3-GDYOlcoIFB3fFo1ko:not(#a)::after {
+    content: "" !important;
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 2 !important;
+    border-radius: inherit !important;
+    padding: 2px !important;
+    background: var(--st-ring, linear-gradient(135deg, rgb(137, 180, 250), rgb(203, 166, 247))) !important;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0) !important;
+    -webkit-mask-composite: xor !important;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0) !important;
+    mask-composite: exclude !important;
+    pointer-events: none !important;
+    opacity: 0 !important;
+    transition: opacity 0.15s ease-out !important;
+}
+body .DialogBody ._3lj3-GDYOlcoIFB3fFo1ko:not(#a):hover::after {
+    opacity: 1 !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body .DialogBody ._3lj3-GDYOlcoIFB3fFo1ko:not(#a),
+    body .DialogBody ._3lj3-GDYOlcoIFB3fFo1ko:not(#a)::after,
+    body .DialogBody .DlcGrid:not(#a)::after,
+    body .DialogBody .WorkshopItemRowsScroll:not(#a)::after,
+    body .DialogBody :is(._3ooxUb30k7736aTVnO179S, .AppDetailsSelectedBeta):not(#a)::after,
+    body .Oo5JPcEk_erKEYAzYp2nY:not(#a),
+    body .Oo5JPcEk_erKEYAzYp2nY:not(#a)::after,
+    body ._2pnPQKKjSPKgzPwlaXMqu_:not(#a) {
         transition: none !important;
     }
 }

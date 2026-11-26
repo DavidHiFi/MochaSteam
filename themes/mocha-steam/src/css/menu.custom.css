@@ -359,6 +359,11 @@ html.ContextMenuPopup:has(.DialogDropDownMenu),
 html.ContextMenuPopup:has(.DialogDropDownMenu) body {
     background: transparent !important;
 }
+/* The plugin sizes the window to the list; nothing may scroll it sideways. */
+html.ContextMenuPopup:has(.DialogDropDownMenu),
+html.ContextMenuPopup:has(.DialogDropDownMenu) body {
+    overflow: hidden !important;
+}
 /* In the page, Steam pulls the Sort by list 70px left and 2px down to sit under its
    label. Inside its own window that shift cuts the left of every choice off. */
 html.ContextMenuPopup .DialogMenuPosition:has(> .DialogDropDownMenu):not(#a):not(#b) {

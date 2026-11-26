@@ -254,6 +254,27 @@ html.MillenniumWindow_MainSteamWindow ._1ENHEsrSLcTRtPQFl1F-wL {
     background-color: transparent !important;
     background-image: linear-gradient(to bottom, transparent, rgba(var(--st-mantle, 24, 24, 37), 0.55) 56px) !important;
 }
+/* Small windows (game properties, settings, dialogs): the plugin clears their native
+   caption to glass (html.mocha-glass-caption), so the page fades in from clear the same
+   way the main window does and the title bar runs straight into the body. Without the
+   class the caption stays solid and the solid body fill stays too. */
+html.ModalDialogPopup.mocha-glass-caption body:not(.ContextMenuPopupBody) {
+    border-radius: 0 !important;
+    background-color: transparent !important;
+    background-image: linear-gradient(to bottom, transparent, rgba(var(--st-mantle, 24, 24, 37), 0.55) 56px) !important;
+}
+/* In its own window the dialog frame fills the whole window, so its rounded top corners,
+   grey edge and second tint showed as an inner frame under the title bar (Steam Settings).
+   The window is the frame here: the dialog layer goes flat and clear. */
+html.ModalDialogPopup.mocha-glass-caption body:not(.ContextMenuPopupBody) .ModalPosition_Content,
+html.ModalDialogPopup.mocha-glass-caption body:not(.ContextMenuPopupBody) .ModalPosition_Content .PagedSettingsDialog {
+    border-radius: 0 !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+}
 html.MillenniumWindow_MainSteamWindow ._3Z7VQ1IMk4E3HsHvrkLNgo {
     background: transparent !important;
     -webkit-backdrop-filter: none !important;

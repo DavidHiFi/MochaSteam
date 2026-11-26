@@ -130,6 +130,26 @@ function apply_main_window_material()
     return extended and cleared
 end
 
+-- Small windows (game properties, settings, dialogs) get the same glass caption as the
+-- main window. The frontend passes the window's own title; only Steam windows with
+-- exactly that title are touched.
+function apply_window_material(title)
+    if type(title) ~= 'string' or title == '' or #title > 260 or title == 'Steam' then return false end
+    local margins = ffi.new('MochaMargins', {-1, -1, -1, -1})
+    local none = ffi.new('unsigned long[1]', 0xFFFFFFFE)
+    local applied = false
+    local hwnd = user32.FindWindowExA(nil, nil, 'SDL_app', title)
+    while hwnd ~= nil do
+        if is_steam_helper(hwnd)
+            and dwmapi.DwmExtendFrameIntoClientArea(hwnd, margins) == 0
+            and dwmapi.DwmSetWindowAttribute(hwnd, 35, none, 4) == 0 then
+            applied = true
+        end
+        hwnd = user32.FindWindowExA(nil, hwnd, 'SDL_app', title)
+    end
+    return applied
+end
+
 return {
     on_load = function() millennium.ready() end,
     on_frontend_loaded = function() end,

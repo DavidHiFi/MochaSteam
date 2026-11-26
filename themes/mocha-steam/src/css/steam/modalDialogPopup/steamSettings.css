@@ -159,10 +159,13 @@ body .DialogBody .onPxgvGKxGbKdE7dDWrMx ._2HosnnI_K6IvS1QMGhq46P {
     margin: 0;
     padding: 12px;
     background-color: rgb(var(--st-color-4)) !important;
-    box-shadow: unset !important;
+    /* One edge: the grey rest edge is drawn inside, where the hover ring lands.
+       A real border here put the ring inside it and doubled the edge. */
+    border: 0 !important;
+    box-shadow: inset 0 0 0 2px rgba(69, 71, 90, 0.9) !important;
 }
 body .DialogBody .onPxgvGKxGbKdE7dDWrMx ._2HosnnI_K6IvS1QMGhq46P:hover {
-    background-color: rgb(var(--st-color-3)) !important;
+    background-color: rgba(49, 50, 68, 0.45) !important;
 }
 
 
@@ -207,6 +210,9 @@ body .DialogBody .onPxgvGKxGbKdE7dDWrMx ._2HosnnI_K6IvS1QMGhq46P ._3wadwgMy2-9k8
 body .DialogBody .onPxgvGKxGbKdE7dDWrMx ._2HosnnI_K6IvS1QMGhq46P ._3Wb9yDmYPUJksCr7HmaT9H {
     grid-area: desc;
     text-align: left;
+    /* Longer lines ran past the card's right edge; wrap them inside it. */
+    min-width: 0;
+    white-space: normal !important;
 }
 
 

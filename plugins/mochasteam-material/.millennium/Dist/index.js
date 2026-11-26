@@ -61,9 +61,80 @@ async function initialize() {
         win.document.addEventListener('visibilitychange', scheduleMain);
         scheduleMain();
     };
+    // Small windows (game properties, settings, dialogs): the same glass caption as the
+    // main window. The page fades in from clear (html.mocha-glass-caption) only once the
+    // caption is confirmed, so a failed call keeps the solid look.
+    const dialogCancels = new WeakMap();
+    const scheduleDialog = win => {
+        dialogCancels.get(win)?.();
+        dialogCancels.set(win, burst(() => {
+            const title = String(win.document?.title || '');
+            if (!title || title === 'Steam') return;
+            call('apply_window_material', { title }).then(ok => {
+                if (ok) win.document?.documentElement?.classList.add('mocha-glass-caption');
+            });
+        }, [0, 40, 160, 600, 1500]));
+    };
+    const onDialog = win => {
+        if (!win || watched.has(win)) return;
+        watched.add(win);
+        for (const type of ['focus', 'blur', 'load']) win.addEventListener(type, () => scheduleDialog(win));
+        win.document.addEventListener('visibilitychange', () => scheduleDialog(win));
+        scheduleDialog(win);
+    };
     // Pop-up menus: frost the menu window itself, then let the card drop its solid
     // fill (html.mocha-acrylic). The card stays solid Mocha until that is confirmed.
     const menuTimers = new Map();
+    // Dropdown lists: Steam sizes the menu window from a measure taken before the theme
+    // has restyled the list, so the window came out too narrow (the frame's left edge
+    // scrolled off) and too tall (empty space under the last choice). Size the window
+    // to the styled list instead, keeping the side that touches the button in place.
+    const dropdownSize = win => {
+        const doc = win?.document;
+        const menu = doc?.querySelector('.DialogDropDownMenu');
+        const last = menu?.lastElementChild;
+        if (!menu || !last || doc.hidden) return null;
+        const ms = win.getComputedStyle(menu);
+        const px = v => parseFloat(v) || 0;
+        const edgeX = px(ms.borderLeftWidth) + px(ms.borderRightWidth);
+        const top = menu.getBoundingClientRect().top;
+        const bottom = last.getBoundingClientRect().bottom + px(win.getComputedStyle(last).marginBottom);
+        const w = Math.ceil(menu.scrollWidth + edgeX);
+        const h = Math.ceil(bottom - top + menu.scrollTop + px(ms.paddingBottom) + px(ms.borderBottomWidth));
+        if (!(w > 40 && h > 20)) return null;
+        // A long list Steam capped to the screen keeps its cap and scrolls.
+        const room = (win.screen?.availHeight || 0) + (win.screen?.availTop || 0) - win.screenY;
+        return { w, h: room > 40 ? Math.min(h, room) : h };
+    };
+    const opensUpward = win => {
+        try {
+            for (const [, popup] of window.g_PopupManager?.m_mapPopups || []) {
+                const owner = popup.m_popup;
+                if (!owner || owner === win) continue;
+                const button = owner.document?.querySelector('.DialogDropDown.Active');
+                if (button) return win.screenY < owner.screenY + button.getBoundingClientRect().top;
+            }
+        } catch (error) {
+            console.error('[mochasteam-material]', error);
+        }
+        return false;
+    };
+    const fitDropdown = win => {
+        const size = dropdownSize(win);
+        const steamWindow = win?.SteamClient?.Window;
+        if (!size || !steamWindow) return;
+        // Steam scrolls the focused choice into view; in a too-narrow window that slid
+        // the whole list sideways, so the frame's left edge went missing.
+        const doc = win.document;
+        for (const el of [doc.documentElement, doc.body, doc.querySelector('.DialogMenuPosition')]) {
+            if (el && el.scrollLeft) el.scrollLeft = 0;
+        }
+        const dpr = win.devicePixelRatio || 1;
+        const dw = size.w - win.innerWidth, dh = size.h - win.innerHeight;
+        if (Math.abs(dw) < 1 && Math.abs(dh) < 1) return;
+        if (opensUpward(win) && Math.abs(dh) >= 1) steamWindow.MoveTo(win.screenX, win.screenY - dh, dpr);
+        steamWindow.ResizeTo(size.w, size.h, dpr);
+    };
     const scheduleMenu = win => {
         const title = String(win?.document?.title || '');
         if (!title) return;
@@ -72,6 +143,7 @@ async function initialize() {
         // wipe the glass, so every step of the burst applies it again.
         let done = false;
         const attempt = () => {
+            try { fitDropdown(win); } catch (error) { console.error('[mochasteam-material]', error); }
             const dpr = win.devicePixelRatio || 1;
             const rect = [win.screenX, win.screenY, win.outerWidth, win.outerHeight]
                 .map(v => Math.round(v * dpr)).join(',');
@@ -111,6 +183,7 @@ async function initialize() {
         const name = String(popup.m_strName);
         if (name.startsWith('SP Desktop_')) return onMainWindow(popup.m_popup);
         if (/^contextmenu_\d+_/.test(name)) return onMenu(popup.m_popup);
+        if (/^PopupWindow_/.test(name)) return onDialog(popup.m_popup);
         if (!/^notificationtoasts_.+_desktop$/.test(name)) return;
         const win = popup.m_popup;
         const scheduleThis = () => schedule(name, win);
