@@ -475,8 +475,10 @@
 /*
 ! Gamepage main
 */
+/* 12px under the play bar, the same gap the sidebar docks keep, so the docks
+   below never touch the bar's edge. */
 ._27RcNu8aXKBpYkHcNNrt-X .OhSdLYuggDtBcWjYP0j_9 {
-    padding: 0;
+    padding: 12px 0 0;
 }
 
 
@@ -1372,11 +1374,32 @@ div:has(>._1J21tLst5SEhBPkVRT53UV._28ZR8gHitOrJaSLxcIAl2p) {
     box-shadow: 0px 4px 8px 0px rgba(var(--st-background-rgb), 0.5);
 }
 
-/* Non-Steam games: Steam's dashed placeholder box, drawn as a theme card. */
-._31ptFGGMZrSQc5BCX1e5lm ._1TGl52GwsFQg3CXUYvThP- {
-    border: 2px solid var(--st-edge, rgba(88, 91, 112, 0.7));
-    border-radius: var(--st-border-radius);
-    background-color: rgb(var(--st-color-2));
+/* Non-Steam games: Steam's dashed placeholder note. The section round it is the
+   only dock, so the note sits flat inside it, left-aligned on the section padding,
+   with no card of its own and no tall centred box. */
+._31ptFGGMZrSQc5BCX1e5lm ._1TGl52GwsFQg3CXUYvThP-:not(#a):not(#b):not(#c) {
+    min-height: 0 !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: none !important;
+    box-shadow: none !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    text-align: left !important;
+    line-height: 1.6 !important;
+}
+._2r4TK4BAuU-J4FuF_O7v_5.AppDetailsSection > ._31ptFGGMZrSQc5BCX1e5lm:has(> ._1TGl52GwsFQg3CXUYvThP-):not(#a):not(#b):not(#c) {
+    margin: 0 !important;
+}
+
+/* The left column is a plain block beside the floated sidebar, so its docks ran
+   under the sidebar and covered Notes and Recordings (non-Steam games, where the
+   left column is short). Its own layout context keeps it beside the sidebar. */
+._27RcNu8aXKBpYkHcNNrt-X .OhSdLYuggDtBcWjYP0j_9 > ._1sZgBDTw5NH-yuVDZK1SUU {
+    display: flow-root;
 }
 
 /* Play bar values under LAST PLAYED / PLAY TIME: Steam's 32% white measured
