@@ -128,9 +128,14 @@
 }
 
 ._3Tfp8-wTAttW3WVa_X9JVC._3Tfp8-wTAttW3WVa_X9JVC._3Tfp8-wTAttW3WVa_X9JVC {
-    opacity: .5;
-    padding: 0 !important;
-    background: unset !important;
+    opacity: 0.85;
+    width: 28px !important;
+    height: 28px !important;
+    padding: 5px !important;
+    box-sizing: border-box !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 10px !important;
 }
 ._3Tfp8-wTAttW3WVa_X9JVC._3Tfp8-wTAttW3WVa_X9JVC._3Tfp8-wTAttW3WVa_X9JVC:hover {
     opacity: 1;
@@ -163,32 +168,87 @@
 
 
 /*
-& List
+! Download rows, hover states, action buttons and drop zones (2026-11-26)
+! Stock sp.css painted hovered/dragged download rows rgb(61,68,80) with a
+! squared 2px radius, and row icon buttons rgb(103,112,123) / rgb(139,146,154)
+! with 2px radius. Keep every row rounded at the dock radius with the dark
+! Mocha hover fill; hover-rings.css adds the 2px blue-to-mauve gradient ring.
 */
-
-/* Divider *//*
-.SEmVpmXrYVl3OxL1sDFTg {
-    display: none;
+._1VNuYHM6BPBOJspC6zPf5r:not(#a) {
+    border-radius: var(--st-border-radius, 16px) !important;
+    transition: background-color 0.15s ease-out !important;
+}
+._1VNuYHM6BPBOJspC6zPf5r:hover:not(#a),
+._1VNuYHM6BPBOJspC6zPf5r._3-SbBb63lDnu6LzKV-q3Cg:not(#a),
+._21P7c4MWmsU2QSZeL-uyZo.gpfocus:not(._74yh4KBx-CqtDEw0dDxpH) ._1VNuYHM6BPBOJspC6zPf5r:not(#a) {
+    background-color: rgba(49, 50, 68, 0.55) !important;
+    border-radius: var(--st-border-radius, 16px) !important;
+}
+._1VNuYHM6BPBOJspC6zPf5r.IbePLaw-vSvhG1GTenYFg:not(#a) {
+    border-radius: var(--st-border-radius, 16px) !important;
+    background-color: rgb(var(--st-color-2)) !important;
+    box-shadow: inset 0 0 0 2px var(--st-edge, rgba(69, 71, 90, 0.9)) !important;
+}
+._1VNuYHM6BPBOJspC6zPf5r.IbePLaw-vSvhG1GTenYFg:hover:not(#a) {
+    background-color: rgba(49, 50, 68, 0.55) !important;
+    border-radius: var(--st-border-radius, 16px) !important;
 }
 
-
-
-/*
-! Installing now
-*//*
-.IbePLaw-vSvhG1GTenYFg .OINnOU8K5HzPe2nzczpZi {
-    border: none;
+/* Row action buttons (pause, download now, play, remove) */
+._1VNuYHM6BPBOJspC6zPf5r ._3oavRVhIS9tC3vBsFT4Ggi:not(#a),
+._1VNuYHM6BPBOJspC6zPf5r ._3oavRVhIS9tC3vBsFT4Ggi.DialogButton:enabled:not(#a),
+._1VNuYHM6BPBOJspC6zPf5r:hover ._3oavRVhIS9tC3vBsFT4Ggi.DialogButton:enabled:not(#a),
+._1VNuYHM6BPBOJspC6zPf5r.IbePLaw-vSvhG1GTenYFg ._2xR-V97DWI7svSjgiCb3N-.DialogButton:enabled:not(#a) {
+    border-radius: 10px !important;
+    background: rgb(30, 30, 46) !important;
+    border: 2px solid var(--st-edge, rgba(69, 71, 90, 0.9)) !important;
+    color: rgb(205, 214, 244) !important;
+    box-shadow: none !important;
+}
+._1VNuYHM6BPBOJspC6zPf5r ._3oavRVhIS9tC3vBsFT4Ggi:hover:not(#a),
+._1VNuYHM6BPBOJspC6zPf5r:hover ._3oavRVhIS9tC3vBsFT4Ggi.DialogButton:enabled:hover:not(#a),
+._1VNuYHM6BPBOJspC6zPf5r.IbePLaw-vSvhG1GTenYFg ._3oavRVhIS9tC3vBsFT4Ggi.DialogButton:enabled._2xR-V97DWI7svSjgiCb3N-:hover:not(#a) {
+    border-color: transparent !important;
+    background: linear-gradient(rgb(49, 50, 68), rgb(49, 50, 68)) padding-box,
+        var(--st-ring, linear-gradient(135deg, rgb(137, 180, 250), rgb(203, 166, 247))) border-box !important;
+    color: rgb(205, 214, 244) !important;
+}
+._1VNuYHM6BPBOJspC6zPf5r.IbePLaw-vSvhG1GTenYFg ._3oavRVhIS9tC3vBsFT4Ggi.DialogButton:enabled:not(._2xR-V97DWI7svSjgiCb3N-):not(#a) {
+    border-radius: 10px !important;
+    border-color: transparent !important;
+    background: rgb(137, 180, 250) !important;
+    color: rgb(17, 17, 27) !important;
+}
+._1VNuYHM6BPBOJspC6zPf5r.IbePLaw-vSvhG1GTenYFg ._3oavRVhIS9tC3vBsFT4Ggi.DialogButton:enabled:not(._2xR-V97DWI7svSjgiCb3N-):hover:not(#a) {
+    background: var(--st-ring, linear-gradient(135deg, rgb(137, 180, 250), rgb(203, 166, 247))) !important;
+    color: rgb(17, 17, 27) !important;
+}
+._1bq4x9pa4-9RLY-dXWUZTp ._1XjtfRHLm0-7aFDsMlcIl- .FmfZJt_PKB2p0mdDnNZ1a:not(#a) {
+    border-radius: var(--st-border-radius, 16px) !important;
+}
+._1VNuYHM6BPBOJspC6zPf5r:hover ._1vMU1vG5ZtLihr3mfXUymR._2XedpgsgZ3gMAUuPRtnfld div:not(#a) {
+    background-color: rgb(108, 112, 134) !important;
 }
 
-._1VNuYHM6BPBOJspC6zPf5r.IbePLaw-vSvhG1GTenYFg {
-    margin: 0 12px;
-    padding: 12px 0 12px 12px;
-    border-radius: var(--st-border-radius);
-    background-color: rgb(var(--st-accent-2), .15);
+/* Section list drop zone, divider rule, and auto-update hours hover */
+.OINnOU8K5HzPe2nzczpZi:not(#a) {
+    border-radius: var(--st-border-radius, 16px) !important;
 }
-._1VNuYHM6BPBOJspC6zPf5r.IbePLaw-vSvhG1GTenYFg:hover {
-    border-radius: var(--st-border-radius);
-    background-color: rgb(var(--st-accent-2), .3);
+.OINnOU8K5HzPe2nzczpZi._2m6Q3ca-wXeLIVShFCO51T:not(#a),
+.IbePLaw-vSvhG1GTenYFg .OINnOU8K5HzPe2nzczpZi._2m6Q3ca-wXeLIVShFCO51T:has(._3-SbBb63lDnu6LzKV-q3Cg):not(#a) {
+    border: 2px dashed rgba(137, 180, 250, 0.75) !important;
+}
+.OINnOU8K5HzPe2nzczpZi._2m6Q3ca-wXeLIVShFCO51T.d9VKGABvFZQGmdqtaicMo:not(#a),
+.IbePLaw-vSvhG1GTenYFg .OINnOU8K5HzPe2nzczpZi._2m6Q3ca-wXeLIVShFCO51T.d9VKGABvFZQGmdqtaicMo:has(._3-SbBb63lDnu6LzKV-q3Cg):not(#a) {
+    border: 2px solid rgb(137, 180, 250) !important;
+    background: rgba(137, 180, 250, 0.12) !important;
+}
+._1bq4x9pa4-9RLY-dXWUZTp ._1CTr1yKRkOXnJ4gSS1-1A3.Rule:not(#a) {
+    background-color: rgba(69, 71, 90, 0.5) !important;
+}
+._117rQTHH1RIewY7sSlvg3Z._2hSrM0aaC2uY2y83PI0NOr:hover ._34F9wkevkmNM4yJfpPQ0GL,
+._117rQTHH1RIewY7sSlvg3Z._2hSrM0aaC2uY2y83PI0NOr:hover.Sil68-ocRzI8Xeloq3d7R {
+    color: rgb(137, 180, 250) !important;
 }
 
 /* Graph banner: Steam's navy fill and blue sweep, tinted to the palette. */
@@ -203,6 +263,7 @@
 ! Round 2026-11-19: the graph panel was a square box inside the round page,
 ! and the finished and scheduled times broke onto two or three lines.
 */
+._3Mbhnlk1Go2j8yCdjthzc7.IbePLaw-vSvhG1GTenYFg:not(#a),
 ._3Mbhnlk1Go2j8yCdjthzc7._2KB3yVOsiRCK9qK6mwKl9c:not(#a) {
     border-radius: 16px !important;
     overflow: hidden !important;
